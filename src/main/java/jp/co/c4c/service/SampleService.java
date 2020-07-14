@@ -11,6 +11,7 @@ import jp.co.c4c.db.dto.SampleDto;
 
 @Component
 public class SampleService {
+
 	@Autowired
 	private SampleDao sampleDao;
 
