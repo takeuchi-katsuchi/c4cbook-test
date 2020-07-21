@@ -1,0 +1,35 @@
+
+section.bdy div.contents {
+  text-align: center;
+}
+section.bdy div.contents div.title {
+  font-size: 20px;
+  color: #66CCFF;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 30px;
+  border-bottom: 3px solid #66CCFF;
+}
+section.bdy div.contents div.text-message {
+  font-size: 18px;
+  text-align: left;
+  padding: 10px 30px;
+}
+section.bdy div.contents a.btn-rq {
+  display: inline-block;
+  margin: 5px 0 20px;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  color: #FF5F17;
+  border: solid 2px #FF5F17;
+  border-radius: 3px;
+  transition: .4s;
+}
+section.bdy div.contents a.btn-rq:hover {
+  background: #FF5F17;
+  color: white;
+}
+
+section.td-rq {
+	width: 100%;
+}
