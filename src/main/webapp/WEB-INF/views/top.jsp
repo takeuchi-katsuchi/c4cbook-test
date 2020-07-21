@@ -18,7 +18,7 @@
 <body>
   <jsp:include page="./header.jsp"></jsp:include>
   <section class="bdy">
-    <c:forEach var="i" begin="0" end="3" step="1">>
+    <c:forEach var="i" begin="0" end="3" step="1">
       <jsp:include page="./top-cell.jsp"></jsp:include>
     </c:forEach>
   </section>
