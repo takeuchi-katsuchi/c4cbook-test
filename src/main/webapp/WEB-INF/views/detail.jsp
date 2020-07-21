@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>詳細画面</title>
-<link rel="stylesheet" href="resources/css/header.css" media="screen">
-<link rel="stylesheet" href="resources/css/detail.css" media="screen">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>詳細画面</title>
+	<link rel="stylesheet" href="resources/css/header.css" media="screen">
+	<link rel="stylesheet" href="resources/css/detail.css" media="screen">
 </head>
 <body>
   <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer"/></jsp:include>

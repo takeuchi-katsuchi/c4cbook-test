@@ -1,22 +1,22 @@
-section.hdr div.contents {
+div.header {
   border-bottom: 3px solid #66CCFF;
 }
 
-section.hdr div.contents div.top {
+div.header div.top {
   font-size: 30px;
   font-weight: bold;
   color: #66CCFF;
   width: 40vw;
   text-align: center;
 }
-section.hdr div.contents div {
+div.header div {
   display: inline-block;
 }
-section.hdr div.contents div.menu {
+div.header div.menu {
   color: blue;
   text-align: right;
   width: 50vw;
 }
-section.hdr div.contents div.menu div,img {
+div.header div.menu div,img {
   width: 10vw;
 }
