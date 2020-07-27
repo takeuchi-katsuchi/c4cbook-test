@@ -22,7 +22,7 @@
    <div class="title">マイページ</div>
    <div class="bk-cnt">
     いままで読んだ本…
-    <p>15</p>
+    <p>${myForm.count}</p>
     冊
    </div>
 
