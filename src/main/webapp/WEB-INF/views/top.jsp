@@ -11,6 +11,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>トップ画面</title>
+    <p>${topForm.message}</p>
 	<link rel="stylesheet" href="resources/css/header.css" media="screen">
 	<link rel="stylesheet" href="resources/css/top.css" media="screen">
 	<link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
