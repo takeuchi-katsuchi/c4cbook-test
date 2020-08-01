@@ -2,10 +2,10 @@ package jp.co.c4c.db.dto;
 
 import java.util.Date;
 
-public class BK_T_FavoriteDto {
+public class BK_T_RequestCheerDto {
 
-    /** 本ID */
-    private int bookId;
+    /** 要望ID */
+    private int requestId;
     /** メンバーID */
     private int memId;
     /** 削除フラグ */
@@ -16,19 +16,19 @@ public class BK_T_FavoriteDto {
     private Date updateAt;
 
     /**
-     * 本IDを取得する
-     * @return bookId
+     * 要望IDを取得する
+     * @return requestId
      */
-    public int getBookId() {
-        return bookId;
+    public int getRequestId() {
+        return requestId;
     }
 
     /**
-     * 本IDを設定する
-     * @param bookId
+     * 要望IDを設定する
+     * @param requestId
      */
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
+    public void setRequestId(int requestId) {
+        this.requestId = requestId;
     }
 
     /**
@@ -41,7 +41,7 @@ public class BK_T_FavoriteDto {
 
     /**
      * メンバーIDを設定する
-     * @param memId
+     * @param memId セットする memId
      */
     public void setMemId(int memId) {
         this.memId = memId;

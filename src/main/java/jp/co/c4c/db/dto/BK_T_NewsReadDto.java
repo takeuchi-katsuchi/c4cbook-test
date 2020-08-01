@@ -2,34 +2,18 @@ package jp.co.c4c.db.dto;
 
 import java.util.Date;
 
-public class BK_T_FavoriteDto {
+public class BK_T_NewsReadDto {
 
-    /** 本ID */
-    private int bookId;
     /** メンバーID */
     private int memId;
+    /** 既読日時 */
+    private Date readAt;
     /** 削除フラグ */
     private int delFlg;
     /** データ作成日時 */
     private Date createAt;
     /** データ更新日時 */
     private Date updateAt;
-
-    /**
-     * 本IDを取得する
-     * @return bookId
-     */
-    public int getBookId() {
-        return bookId;
-    }
-
-    /**
-     * 本IDを設定する
-     * @param bookId
-     */
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
 
     /**
      * メンバーIDを取得する
@@ -41,10 +25,26 @@ public class BK_T_FavoriteDto {
 
     /**
      * メンバーIDを設定する
-     * @param memId
+     * @param memId セットする memId
      */
     public void setMemId(int memId) {
         this.memId = memId;
+    }
+
+    /**
+     * 既読日時を取得する
+     * @return readAt
+     */
+    public Date getReadAt() {
+        return readAt;
+    }
+
+    /**
+     * 既読日時を設定する
+     * @param readAt
+     */
+    public void setReadAt(Date readAt) {
+        this.readAt = readAt;
     }
 
     /**
