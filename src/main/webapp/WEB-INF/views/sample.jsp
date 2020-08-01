@@ -39,5 +39,21 @@
       </form:form>
     </div>
   </div>
+  <!-- top画面に遷移させるボタン -->
+  <form:form action="/top" method="post" enctype="multipart/form-data">
+      <input type="submit" value="トップ画面へ">
+   </form:form>
+   <!-- mypage画面に遷移させるボタン -->
+  <form:form action="/mypage" method="post" enctype="multipart/form-data">
+      <input type="submit" value="mypage画面へ">
+   </form:form>
+   <!-- 詳細画面に遷移させるボタン -->
+  <form:form action="/detail" method="post" enctype="multipart/form-data">
+      <input type="submit" value="詳細画面へ">
+   </form:form>
+   <!-- 要望画面に遷移させるボタン -->
+  <form:form action="/request" method="post" enctype="multipart/form-data">
+      <input type="submit" value="要望画面へ">
+   </form:form>
 </body>
 </html>
