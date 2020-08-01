@@ -1,4 +1,4 @@
-package src.main.java.jp.co.c4c.controller.ctrl;
+package jp.co.c4c.controller.ctrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,3 +29,4 @@ public class TopController {
 
 		return "top";
 	}
+}
