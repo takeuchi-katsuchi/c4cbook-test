@@ -1,61 +1,81 @@
 div.row {
 	display: inline-block;
 	vertical-align: top;
-    height: 150px;
-    padding-top: 25px;
+ height: 195px;
+ padding-top: 5px;
+}
 
+line {
+	display: gred;
 }
 
 div.book_img {
-    position: relative;
+ position: relative;
 }
 
-div.book_img img {
-    width: 130px;
-    padding-left: 20px;
-    border-radius: 10%;
-    height: 130px;
+.material {
+	position: absolute;
+	right: 45px;
+ bottom: 10px;
+ width: 35px;
+ height: 35px;
+}
+
+.heart {
+	position: absolute;
+	right: 10px;
+ bottom: 10px;
+ width: 35px;
+ height: 35px;
+}
+
+div.book_img img.javabook {
+	padding-top: 30px;
+ width: 130px;
+ padding-left: 20px;
+ border-radius: 2%;
+ height: 160px;
 }
 
 div.book_info {
 	width: 170px;
-	padding-left: 30px;
+	padding-left: 20px;
 }
 
-
-
-
-p.name {
-     font-size:18px;
-     font-weight: bold;
+div.name {
+	 padding-top: 35px;
+  font-size: 19px;
+  font-weight: bold;
 }
 
-p.author {
-    font-size:10px;
-    padding-top: 5px;
+div.author {
+	padding-top: 5px;
+ font-size:11px;
 }
 
-p.recommended {
-    margin-top: 0.7em;
-    padding: 0.1em;
-    padding-left: 0.4em;
-    width: 130px;
-    background-color:orange;
-    border-radius: 5%;
-    font-size:11px;
-    color: white
+div.recommended {
+ margin-top: 8px;
+ margin-bottom: 8px;
+ padding: 0.1em;
+ padding-left: 0.4em;
+ width: 130px;
+ background-color:orange;
+ border-radius: 5%;
+ font-size:11px;
+ color: white;
 }
 
 .tag {
-    margin-top: 0.5em;
-    padding: 0.5em, 1.0em; /* 背景色 */
-    list-style: none;
-    display: inline-block;
+ margin-top: 0.2em;
+ padding: 0.1em, 1.0em; /* 背景色 */
+ list-style: none;
+ display: gred;
+ height: 50px;
 }
 
 ul.tag li {
-    font-size:11px;
-    float: left;
-    padding-right: 20px;
-    padding-bottom: 10px;
+ font-size:11px;
+ float: left;
+ padding-right: 20px;
+ padding-bottom: 10px;
 }
