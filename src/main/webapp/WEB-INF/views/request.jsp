@@ -14,6 +14,10 @@
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/request.css" media="screen">
 <link rel="stylesheet" href="resources/css/request-cell.css" media="screen">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/readmore.js"></script>
+<script type="text/javascript" src="resources/js/readmore.min.js"></script>
+<script type="text/javascript" src="resources/js/request.js"></script>
 </head>
 <body>
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
@@ -23,7 +27,7 @@
    <div class="text-message">応援しよう！！！！！！！</div>
    <a href="#" class="btn-rq">本を要望する</a>
    <section class="td-rq">
-    <c:forEach var="i" begin="0" end="3" step="1">
+    <c:forEach var="i" begin="0" end="1" step="1">
      <jsp:include page="./request-cell.jsp"></jsp:include>
     </c:forEach>
    </section>
