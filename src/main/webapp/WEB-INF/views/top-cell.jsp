@@ -10,18 +10,18 @@
 <section class="request">
  <div class="line">
   <div class="row book_img">
-   <img src="resources/img/sample_book.jpg" alt="">
-   <div class="book_sample">
-    <img class="material" src="resources/img/book.png" alt="">
-   </div>
+   <img class="javabook" src="resources/img/sample_book.jpg" alt="">
+   <img class="material" src="resources/img/book.png" alt="">
+   <img class="heart" src="resources/img/heart.jpeg" alt="">
   </div>
   <div class="row book_info">
-   <p class="name">本のタイトル</p>
-   <p class="author">東野圭吾</p>
-   <p class="recommended">誰々に貸出中</p>
+   <div class="name">本のタイトル</div>
+   <div class="author">東野圭吾</div>
+   <div class="recommended">誰々に貸出中</div>
    <ul class="tag">
     <li>php</li>
-    <li>php</li>
+    <li>ps</li>
+    <li>java</li>
     <li>基本情報技術者試験</li>
    </ul>
   </div>
