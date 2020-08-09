@@ -3,13 +3,14 @@
  * ※以降は不要であれば削除
 SELECT
 
-count(RC.要望ID)
+要望ID,
+count(要望ID)
 
 FROM
-(SELECT * FROM book_db.要望応援テーブル WHERE 要望ID = パラメータ) RC
+book_db.要望応援テーブル
 
-WHERE
-  (SELECT 削除フラグ FROM book_db.要望テーブル WHERE 要望ID = パラメータ) = 0
+group by
+要望ID
 
  ※ここまで※
  */
@@ -18,11 +19,13 @@ WHERE
 
 select
 
-count(RC.REQUEST_ID)
+REQUEST_ID,
+MEM_ID,
+count(REQUEST_ID) as cnt
 
 from
-(select * from book_db.BK_T_REQUEST_CHEER where REQUEST_ID = CheerForRequestId) RC
+book_db.BK_T_REQUEST_CHEER
 
-where
-  (select DEL_FLG from book_db.BK_T_REQUEST where REQUEST_ID = CheerForRequestId) = 0
+group by
+REQUEST_ID
 ;
