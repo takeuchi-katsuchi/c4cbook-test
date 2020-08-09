@@ -9,15 +9,12 @@ R.タイトルかな,
 R.著者,
 R.著者かな,
 R.本画像,
-R.メンバーID AS R_MEM_ID,
+R.メンバーID,
 R.コメント,
 R.要望ステータス,
 
-RC.メンバーID AS RC_MEM_ID
-
 FROM
-  book_db.BK_T_REQUEST R,
-  book_db.BK_T_REQUEST_CHEER RC
+  book_db.BK_T_REQUEST
 
 WHERE
   R.DEL_FLG = 0
@@ -27,22 +24,19 @@ WHERE
 
 select
 
-R.REQUEST_ID,
-R.TITLE,
-R.TITLE_KANA,
-R.AUTHOR,
-R.AUTHOR_KANA,
-R.BOOK_IMG,
-R.MEM_ID as R_MEM_ID,
-R.COMMENT,
-R.REQUEST_STATUS,
-
-RC.MEM_ID as RC_MEM_ID
+REQUEST_ID,
+TITLE,
+TITLE_KANA,
+AUTHOR,
+AUTHOR_KANA,
+BOOK_IMG,
+MEM_ID,
+COMMENT,
+REQUEST_STATUS
 
 from
-  book_db.BK_T_REQUEST R,
-  book_db.BK_T_REQUEST_CHEER RC
+  book_db.BK_T_REQUEST
 
 where
-  R.DEL_FLG = 0
+  DEL_FLG = 0
 ;
