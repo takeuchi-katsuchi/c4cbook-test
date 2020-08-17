@@ -1,23 +1,21 @@
 package jp.co.c4c.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.controller.form.TopForm;
-import jp.co.c4c.db.dao.TopDao;
+import jp.co.c4c.controller.form.DetailForm;
+import jp.co.c4c.db.dao.DetailDao;
 
 @Component
-public class TopService {
+public class DetailService {
 
     @Autowired
-    private TopDao topDao;
+    private DetailDao detailDao;
 
     @Transactional
-    public List<TopForm> getAllBooks() {
-        return topDao.seletctAllBooks();
+    public DetailForm getBookById(int bookId) {
+        return detailDao.seletctBookById(bookId);
     }
 
 }
