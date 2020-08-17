@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="resources/css/request.css" media="screen">
 <link rel="stylesheet" href="resources/css/request-cell.css" media="screen">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script type="text/javascript" src="resources/js/readmore.js"></script>
-<script type="text/javascript" src="resources/js/readmore.min.js"></script>
 <script type="text/javascript" src="resources/js/request.js"></script>
 </head>
 <body>

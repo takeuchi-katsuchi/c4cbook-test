@@ -72,7 +72,7 @@ div.cheer_count {
   font-weight: bold;
 }
 
-div.reason {
+div.reason_close {
   background-color: yellow;
   font-size:13px;
   word-wrap: break-word;
@@ -82,10 +82,44 @@ div.reason {
   -ms-grid-row: 2;
   -ms-grid-column: 1;
   -ms-grid-column-span: 3;
-}
 
-.reason_text{
+/*さらに見る用 */
  overflow-y:hidden;
  overflow: hidden;
+ max-height: 50px;
+ line-height: 15px;
+ position: relative;
 }
 
+div.readmore {
+  position: absolute;
+  line-height: 15px;
+  top: 35px;
+  right: 0px;
+  background-color: white;
+}
+
+div.hide {
+  display :none;
+}
+
+div.reason_open {
+  background-color: yellow;
+  font-size:13px;
+  word-wrap: break-word;
+  text-align: left;
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+
+/*さらに見る用 */
+ overflow-y:hidden;
+ overflow: hidden;
+ line-height: 15px;
+ position: relative;
+
+/* これだけちがう */
+ height: auto;
+}

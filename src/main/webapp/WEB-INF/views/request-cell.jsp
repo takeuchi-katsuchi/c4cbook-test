@@ -21,33 +21,17 @@
    <div class="cheer_count">99+</div>
    <img src="resources/img/cheering.png" alt="">
   </div>
-  <div class="reason">
-   <article class="reason_text">要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由
-   要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由
-   要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由
-   要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由要望理由</article>
+  <div class="reason_close" id="reason_close">
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由
+   <div class="readmore" id="readmore">
+   	<a href="#" class="readMoreBtn" onclick="readMoreReason();" >ReadMore...</a>
+   </div>
   </div>
  </div>
 </section>
-
-
- <script>
-//  $(function() {
-
-//    $('article').height(50);
-
-//  });
-
- $(function () {
-   $('#read_text').readmore({
-     speed: 100,
-     collapsedHeight: 25,
-     moreLink: '<a href="#" class="sm">続きを読む</a>',
-     lessLink: '<a href="#" class="sm">閉じる</a>'
-   });
- })
-
-</script>
 
 <%-- アクティブ処理 --%>
 <input type="hidden" id="act_type" value="<%=request.getParameter("act_type")%>">
