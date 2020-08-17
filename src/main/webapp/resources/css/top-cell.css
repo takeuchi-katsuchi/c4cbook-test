@@ -1,12 +1,16 @@
-div.row {
-	display: inline-block;
-	vertical-align: top;
-	height: 195px;
-	padding-top: 5px;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-line {
+div.book_box {
 	display: gred;
+	padding-left: 10px;
+	height: 200px;
+}
+
+div.row {
+	display: inline-block;
 }
 
 div.book_img {
@@ -15,10 +19,12 @@ div.book_img {
 
 .material {
 	position: absolute;
-	right: 45px;
+	right: 50px;
 	bottom: 10px;
 	width: 35px;
 	height: 35px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.6);
 }
 
 .heart {
@@ -27,23 +33,26 @@ div.book_img {
 	bottom: 10px;
 	width: 35px;
 	height: 35px;
+	border-radius: 10px;
+	box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.6);
 }
 
 div.book_img img.javabook {
 	padding-top: 30px;
-	width: 130px;
+	width: 120px;
 	padding-left: 20px;
 	border-radius: 2%;
 	height: 160px;
+	border-radius: 20px;
 }
 
 div.book_info {
 	width: 170px;
-	padding-left: 20px;
+	height: 200px;
+	padding-left: 30px;
 }
 
 div.name {
-	padding-top: 35px;
 	font-size: 19px;
 	font-weight: bold;
 }
@@ -75,7 +84,4 @@ div.recommended {
 
 ul.tag li {
 	font-size: 11px;
-	float: left;
-	padding-right: 20px;
-	padding-bottom: 10px;
 }
