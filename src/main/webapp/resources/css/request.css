@@ -1,3 +1,8 @@
+section.bdy {
+  width: 360px;
+  margin: 0 auto;
+  min-height: 100vh;
+}
 
 section.bdy div.contents {
   text-align: center;
