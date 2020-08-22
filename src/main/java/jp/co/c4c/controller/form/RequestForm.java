@@ -1,9 +1,9 @@
 package jp.co.c4c.controller.form;
 
 /**
- * 食品リスト画面 Formクラス
+ * 本要望画面 Formクラス
  */
-public class requestForm {
+public class RequestForm {
 
     /** メッセージ */
     private String message;
