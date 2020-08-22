@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.controller.form.TopForm;
 import jp.co.c4c.db.dao.TopDao;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
 public class TopService {
@@ -16,7 +16,7 @@ public class TopService {
     private TopDao topDao;
 
     @Transactional
-    public List<TopForm> getAllBooks() {
+    public List<V_TopAndDetailDto> getAllBooks() {
         return topDao.seletctAllBooks();
     }
 

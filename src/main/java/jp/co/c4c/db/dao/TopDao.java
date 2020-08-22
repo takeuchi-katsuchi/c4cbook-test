@@ -5,7 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jp.co.c4c.controller.form.TopForm;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
+import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 import jp.sf.amateras.mirage.StringSqlResource;
@@ -16,30 +17,10 @@ public class TopDao {
     @Autowired
     public SqlManager sqlManager;
 
-    public List<TopForm> seletctAllBooks() {
+    public List<V_TopAndDetailDto> seletctAllBooks() {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetAllBooks.sql");
         System.out.print("Daoが接続されたよ");
-        final SqlResource sqlSrc = new StringSqlResource(
-                "SELECT \n" +
-                        "    book_db.BK_M_BOOK.BOOK_ID,\n" +
-                        "    book_db.BK_M_BOOK.TITLE,\n" +
-                        "    book_db.BK_M_BOOK.AUTHOR,\n" +
-                        "    book_db.BK_M_BOOK.TAG_IDS,\n" +
-                        "    book_db.BK_M_BOOK.OUTLINE,\n" +
-                        "    book_db.BK_M_BOOK.BOOK_IMG,\n" +
-                        "    book_db.BK_T_LEND.LEND_ID,\n" +
-                        "    book_db.BK_T_LEND.MEM_ID,\n" +
-                        "    book_db.BK_T_LEND.LEND_STATUS,\n" +
-                        "    book_db.M_MEM_BASIC.MEM_NAME\n" +
-                        "FROM\n" +
-                        "    book_db.BK_M_BOOK\n" +
-                        "LEFT JOIN\n" +
-                        "    book_db.BK_T_LEND ON book_db.BK_M_BOOK.BOOK_ID = book_db.BK_T_LEND.BOOK_ID\n" +
-                        "LEFT JOIN\n" +
-                        "    book_db.M_MEM_BASIC ON book_db.BK_T_LEND.MEM_ID = book_db.M_MEM_BASIC.MEM_ID\n" +
-                        "WHERE\n" +
-                        "    LEND_STATUS is NULL  || LEND_STATUS = 11\n" +
-                        "ORDER BY book_db.BK_M_BOOK.BOOK_ID;");
-        return sqlManager.getResultList(TopForm.class, sqlSrc);
 
+        return sqlManager.getResultList(V_TopAndDetailDto.class, sqlSrc);
     }
 }

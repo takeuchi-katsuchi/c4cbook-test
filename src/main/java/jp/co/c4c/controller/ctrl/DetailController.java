@@ -18,9 +18,7 @@ public class DetailController {
 
     @RequestMapping
     public String init(@RequestParam("bookId") int bookId, Model model, DetailForm form) {
-        DetailForm detailForm = detailService.getBookById(bookId);
-        model.addAttribute("detailForm", detailForm);
+        form.setV_TopAndDetailDto(detailService.getBookById(bookId));
         return "detail";
-
     }
 }

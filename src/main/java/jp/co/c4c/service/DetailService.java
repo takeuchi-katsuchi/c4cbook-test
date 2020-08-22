@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.controller.form.DetailForm;
 import jp.co.c4c.db.dao.DetailDao;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
 public class DetailService {
@@ -14,7 +14,7 @@ public class DetailService {
     private DetailDao detailDao;
 
     @Transactional
-    public DetailForm getBookById(int bookId) {
+    public V_TopAndDetailDto getBookById(int bookId) {
         return detailDao.seletctBookById(bookId);
     }
 
