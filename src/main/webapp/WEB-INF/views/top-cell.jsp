@@ -6,6 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
+
 <section class="request">
 	<div class="book_box">
 		<div class="row book_img">
@@ -30,8 +31,8 @@
 <input type="hidden" id="act_type"
 	value="<%=request.getParameter("act_type")%>">
 <script type="text/javascript">
-	var actType = document.getElementById('act_type').value;
-	if (actType != null && actType != '') {
-		document.getElementsByClassName(actType)[0].classList.add('actv');
-	}
+    var actType = document.getElementById('act_type').value;
+    if (actType != null && actType != '') {
+        document.getElementsByClassName(actType)[0].classList.add('actv');
+    }
 </script>
