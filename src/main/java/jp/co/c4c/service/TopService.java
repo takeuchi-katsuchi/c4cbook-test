@@ -15,9 +15,15 @@ public class TopService {
     @Autowired
     private TopDao topDao;
 
+    /**
+     * トップページに表示させる本のリストを取得
+     * @return
+     */
     @Transactional
     public List<V_TopAndDetailDto> getAllBooks() {
         return topDao.seletctAllBooks();
     }
+
+
 
 }
