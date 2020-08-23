@@ -19,6 +19,8 @@ public class DetailController {
     @RequestMapping
     public String init(@RequestParam("bookId") int bookId, Model model, DetailForm form) {
         form.setV_TopAndDetailDto(detailService.getBookById(bookId));
+        form.setV_LendHistoryDtoList(detailService.getLendHistorysById(bookId));
+        form.setV_FavoriteMemberDtoList(detailService.getFavoriteMembersById(bookId));
         return "detail";
     }
 }
