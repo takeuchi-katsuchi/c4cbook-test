@@ -31,7 +31,7 @@ public class V_TopAndDetailDto {
     private Date offerDate;
 
     /////////////////////
-    // BK_M_BookDto
+    // BK_T_LendDto
     /////////////////////
     /** 貸出ID */
     private int lendId;
@@ -47,7 +47,7 @@ public class V_TopAndDetailDto {
     private String review;
 
     /////////////////////
-    // BK_M_BookDto
+    // BK_M_MemBasicDto
     /////////////////////
     /** メンバー名 */
     private String memName;
