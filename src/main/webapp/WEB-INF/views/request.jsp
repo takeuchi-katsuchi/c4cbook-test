@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="resources/css/request-cell.css" media="screen">
 <script type="text/javascript" src="resources/js/request.js"></script>
 </head>
-<body onload="testtest();">
+<body>
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
  <section class="bdy">
   <div class="contents">
@@ -26,17 +26,17 @@
    <section class="td-rq">
     <c:forEach var="i" begin="0" end="1" step="1">
 		  <div class="line">
-		  <div class="book_img">
-		   <img class="bookImg" src="resources/img/sample_book.jpg" alt="">
+		  <div class="book_img_area">
+		   <img class="bookImg" id="bookImg" src="resources/img/sample_book.jpg" alt="">
 		  </div>
 		  <div class="book_info">
 		   <div class="name">Java SE 8 Silver 問題集</div>
 		   <div class="author">志賀 澄人</div>
 		   <div class="requester">要望者:小針 元気</div>
 		  </div>
-		  <div class="cheer_img">
+		  <div class="cheer_img_area">
 		   <div class="cheer_count">99+</div>
-		   <img src="resources/img/cheering.png" alt="">
+		   <img class="cheerImg" src="resources/img/cheering.png" alt="">
 		  </div>
 		  <div class="reason" id="reason_close">
 		   要望理由要望理由要望理由要望理由<BR>
