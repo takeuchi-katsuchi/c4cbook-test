@@ -10,7 +10,7 @@
 <section class="request">
  <div class="line">
   <div class="book_img">
-   <img src="resources/img/sample_book.jpg" alt="">
+   <img class="bookImg" src="resources/img/sample_book.jpg" alt="">
   </div>
   <div class="book_info">
    <div class="name">Java SE 8 Silver 問題集</div>
@@ -21,7 +21,7 @@
    <div class="cheer_count">99+</div>
    <img src="resources/img/cheering.png" alt="">
   </div>
-  <div class="reason_close" id="reason_close">
+  <div class="reason" id="reason_close">
    要望理由要望理由要望理由要望理由<BR>
    要望理由要望理由要望理由要望理由<BR>
    要望理由要望理由要望理由要望理由<BR>
@@ -29,6 +29,10 @@
    <div class="readmore" id="readmore">
    	<a href="#" class="readMoreBtn" onclick="readMoreReason();" >ReadMore...</a>
    </div>
+  </div>
+  <div class="rejected_img">
+  </div>
+  <div class="rejected_reason">
   </div>
  </div>
 </section>
