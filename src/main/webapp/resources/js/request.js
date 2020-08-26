@@ -156,7 +156,7 @@ window.onload = function(){
 	//////////却下理由の表示//////////
 
 	//テスト用の配列、本番は引数で配列受けて処理する
-	var testRejectFlgArray = new Array(1, 0);
+	var testRejectFlgArray = new Array(0, 1);
 
 	//本の画像応援ボタン　グレーアウト用
 	var bookImgs = document.getElementsByClassName( "bookImg" ) ;
@@ -178,6 +178,9 @@ window.onload = function(){
 			bookImgAreas[i].className += " end_pblctn";
 			cheerImgs[i].className += " end_pblctn";
 			cheerImgAreas[i].className += " end_pblctn";
+
+		//却下されたものじゃなければ
+		} else {
 
 			//非表示
 			rejectImgss[i].className += " hide";
