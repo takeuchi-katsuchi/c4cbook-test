@@ -1,42 +1,31 @@
 /* BK_T_RequestDao_RequestData.sql */
-/*
- * ※以降は不要であれば削除
-SELECT
-
-R.要望ID,
-R.タイトル,
-R.タイトルかな,
-R.著者,
-R.著者かな,
-R.本画像,
-R.メンバーID,
-R.コメント,
-R.要望ステータス,
-
-FROM
-  book_db.BK_T_REQUEST
-
-WHERE
-  R.DEL_FLG = 0
-;
- */
-
-
 select
-
-REQUEST_ID,
-TITLE,
-TITLE_KANA,
-AUTHOR,
-AUTHOR_KANA,
-BOOK_IMG,
-MEM_ID,
-COMMENT,
-REQUEST_STATUS
-
+R.REQUEST_ID,
+R.TITLE,
+R.TITLE_KANA,
+R.AUTHOR,
+R.AUTHOR_KANA,
+R.BOOK_IMG,
+R.MEM_ID,
+R.COMMENT,
+R.REQUEST_STATUS,
+RC.REQ_COUNT
 from
-  book_db.BK_T_REQUEST
-
+book_db.BK_T_REQUEST as R
+left join
+(select
+  book_db.BK_T_REQUEST_CHEER.REQUEST_ID,
+  book_db.BK_T_REQUEST_CHEER.MEM_ID,
+  count(book_db.BK_T_REQUEST_CHEER.REQUEST_ID) as REQ_COUNT
+ from
+  book_db.BK_T_REQUEST_CHEER
+ join
+  book_db.BK_T_REQUEST on book_db.BK_T_REQUEST_CHEER.REQUEST_ID = book_db.BK_T_REQUEST.REQUEST_ID
+ group by
+  BK_T_REQUEST_CHEER.REQUEST_ID
+ ) as RC
+on
+ R.REQUEST_ID = RC.REQUEST_ID
 where
   DEL_FLG = 0
 ;
