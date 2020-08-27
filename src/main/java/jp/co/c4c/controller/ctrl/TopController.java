@@ -18,9 +18,37 @@ public class TopController {
     @RequestMapping
     public String init(Model model, TopForm form) {
         form.setTopAndDetailDtoList(topService.getAllBooks());
+
+        /* tagIdを文字列に変換 */
+        for (int i = 0; i < form.getTopAndDetailDtoList().size(); i++) {
+            String[] tagIds = form.getTopAndDetailDtoList().get(i).getTagIds().split(",");
+            convertTag(tagIds);
+            form.getTopAndDetailDtoList().get(i).setTagIds(String.join(",", tagIds));
+        }
+
         return "top";
     }
-}
 
-//        List<V_Book_Lend_MemBasicDto> topForms = topService.getAllBooks();
-//        model.addAttribute("topForms", topForms);
+
+    /**
+     * tagIdを文字列に変換するメソッド（作成中）
+     * @param strings
+     * @return
+     */
+    public String[] convertTag (String[] strings) {
+        for (int i = 0; i < strings.length; i++) {
+            switch (strings[i]) {
+                case "1":
+                    strings[i] = "Java"; // 定数に入れ替える
+                    break;
+                case "2":
+                    strings[i] = "PHP";
+                    break;
+                default:
+                    break;
+            }
+        }
+        return strings;
+    }
+
+}

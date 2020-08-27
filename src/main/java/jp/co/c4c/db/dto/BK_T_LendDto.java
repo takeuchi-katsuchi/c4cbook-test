@@ -184,4 +184,15 @@ public class BK_T_LendDto {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+
+    public BK_T_LendDto() {
+    }
+
+    @Override
+    public String toString() {
+        return "BK_T_LendDto [lendId=" + lendId + ", bookId=" + bookId + ", memId=" + memId + ", lendStatus="
+                + lendStatus + ", fromDate=" + fromDate + ", toDate=" + toDate + ", review=" + review + ", delFlg="
+                + delFlg + ", createAt=" + createAt + ", updateAt=" + updateAt + "]";
+    }
+
 }
