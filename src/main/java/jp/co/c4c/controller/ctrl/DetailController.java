@@ -23,4 +23,5 @@ public class DetailController {
         form.setV_FavoriteMemberDtoList(detailService.getFavoriteMembersById(bookId));
         return "detail";
     }
+
 }

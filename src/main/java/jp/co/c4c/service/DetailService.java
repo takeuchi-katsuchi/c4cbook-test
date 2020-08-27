@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.c4c.db.dao.DetailDao;
+import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.V_FavoriteMemberDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
@@ -45,6 +46,11 @@ public class DetailService {
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
         return detailDao.seletctFavoriteMembersById(bookId);
+    }
+
+    @Transactional
+    public void saveLendBook(BK_T_LendDto bk_T_LendDto) {
+        detailDao.insertLendBook(bk_T_LendDto);
     }
 
 }

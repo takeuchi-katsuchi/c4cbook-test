@@ -17,6 +17,8 @@ public class V_LendHistoryDto {
     private int lendId;
     /** メンバーID */
     private int memId;
+    /** 貸出ステータス */
+    private int lendStatus;
     /** 貸出日 */
     private Date fromDate;
     /** 返却日 */
@@ -52,6 +54,14 @@ public class V_LendHistoryDto {
 
     public void setMemId(int memId) {
         this.memId = memId;
+    }
+
+    public int getLendStatus() {
+        return lendStatus;
+    }
+
+    public void setLendStatus(int lendStatus) {
+        this.lendStatus = lendStatus;
     }
 
     public Date getFromDate() {
