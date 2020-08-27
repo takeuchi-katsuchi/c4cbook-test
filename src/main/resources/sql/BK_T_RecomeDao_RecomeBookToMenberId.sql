@@ -1,54 +1,37 @@
 /* BK_T_RecomeDao_RecomeBookToMenberId.sql */
-/*
- * ※以降は不要であれば削除
-SELECT
-  B.本ID,
-  B.タイトル,
-  B.タイトルかな,
-  B.著者,
-  B.タグ,
-  B.画像,
 
-  R.おすすめID,
-  R.おすすめ日
-
-FROM
-  BK_M_BOOK B,
-  BK_T_RECOM R
-
-WHERE
-  B.本ID = R.本ID
-  R.TO_MEM_D = 自分（カトレアのID）
-  おすすめが今日の三ヵ月以内
-
-ORDER BY
-  R.おすすめ日 DESC
-
- ※ここまで※
- */
-
--- loginId ログインユーザのメンバーID
+-- MEM_IDを固定中
 
 select
   B.BOOK_ID,
   B.TITLE,
   B.TITLE_KANA,
   B.AUTHOR,
-  B.TAG_IMG,
-  B.BOOK_IMG,
+  B.TAG_IDS,
+  B.BOOK_IMG
 
-  R.RECOM_ID,
-  R.RECOM_DATE
+  LR.FROM_MEM_ID,
+  LR.RECOM_DATE
 
 from
-  BK_M_BOOK B,
-  BK_T_RECOM R
-
-where
-  B.本ID = R.本ID
-  R.TO_MEM_D = loginId
-  R.RECOM_DATE between R.RECOM_DATE and R.RECOM_DATE + INTERVAL 2 MONTH
-
-order by
-  R.RECOM_DATE asc
-;
+  book_db.BK_M_BOOK B
+JOIN
+(SELECT
+  book_db.BK_T_RECOM.RECOM_ID,
+  book_db.BK_T_RECOM.BOOK_ID,
+  book_db.BK_T_RECOM.FROM_MEM_ID,
+  book_db.BK_T_RECOM.TO_MEM_ID,
+  book_db.BK_T_RECOM.RECOM_DATE,
+  book_db.M_MEM_BASIC.MEM_NAME
+ FROM
+  book_db.BK_T_RECOM
+ JOIN
+  book_db.M_MEM_BASIC ON book_db.BK_T_RECOM.FROM_MEM_ID = book_db.M_MEM_BASIC.MEM_ID
+ WHERE
+  DATE_ADD(RECOM_DATE,INTERVAL 3 MONTH) > CURRENT_TIMESTAMP()
+ AND
+  book_db.BK_T_RECOM.TO_MEM_ID = 2
+ ) as LR
+ ON
+  B.BOOK_ID = LR.BOOK_ID
+  ;

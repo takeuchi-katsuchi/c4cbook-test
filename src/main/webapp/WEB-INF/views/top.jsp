@@ -14,15 +14,12 @@
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/top.css" media="screen">
 <link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
-<script src="https://kit.fontawesome.com/fdfc67613f.js"
- crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/fdfc67613f.js" crossorigin="anonymous"></script>
 </head>
 <body>
  <jsp:include page="./header.jsp"></jsp:include>
  <section class="bdy">
-  <c:forEach var="i" begin="0" end="3" step="1">
-   <jsp:include page="./top-cell.jsp"></jsp:include>
-  </c:forEach>
+  <jsp:include page="./top-cell.jsp"></jsp:include>
  </section>
 </body>
 </html>

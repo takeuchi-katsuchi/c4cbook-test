@@ -7,23 +7,33 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 
-<section class="bdy">
+<section class="request">
  <div class="line">
-  <div class="row book_img">
-   <img src="resources/img/sample_book.jpg" alt="">
+  <div class="book_img">
+   <img class="bookImg" src="resources/img/sample_book.jpg" alt="">
   </div>
-  <div class="row book_info">
-   <p class="name">Java SE 8 Silver 問題集</p>
-   <p class="author">志賀 澄人</p>
-   <p class="requester">要望者:小針 元気</p>
+  <div class="book_info">
+   <div class="name">Java SE 8 Silver 問題集</div>
+   <div class="author">志賀 澄人</div>
+   <div class="requester">要望者:小針 元気</div>
   </div>
-  <div class="row cheer_img">
+  <div class="cheer_img">
    <div class="cheer_count">99+</div>
    <img src="resources/img/cheering.png" alt="">
   </div>
- </div>
- <div class="reason">
-  <div class="text">要望理由</div>
+  <div class="reason" id="reason_close">
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由<BR>
+   要望理由要望理由要望理由要望理由
+   <div class="readmore" id="readmore">
+   	<a href="#" class="readMoreBtn" onclick="readMoreReason();" >ReadMore...</a>
+   </div>
+  </div>
+  <div class="rejected_img">
+  </div>
+  <div class="rejected_reason">
+  </div>
  </div>
 </section>
 

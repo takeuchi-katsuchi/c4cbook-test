@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/request.css" media="screen">
 <link rel="stylesheet" href="resources/css/request-cell.css" media="screen">
+<script type="text/javascript" src="resources/js/request.js"></script>
 </head>
 <body>
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
@@ -23,8 +24,41 @@
    <div class="text-message">応援しよう！！！！！！！</div>
    <a href="#" class="btn-rq">本を要望する</a>
    <section class="td-rq">
-    <c:forEach var="i" begin="0" end="3" step="1">
-     <jsp:include page="./request-cell.jsp"></jsp:include>
+    <c:forEach var="i" begin="0" end="1" step="1">
+		  <div class="line">
+		  <div class="book_img_area">
+		   <img class="bookImg" id="bookImg" src="resources/img/sample_book.jpg" alt="">
+		  </div>
+		  <div class="book_info">
+		   <div class="name">Java SE 8 Silver 問題集</div>
+		   <div class="author">志賀 澄人</div>
+		   <div class="requester">要望者:小針 元気</div>
+		  </div>
+		  <div class="cheer_img_area">
+		   <div class="cheer_count">99+</div>
+		   <img class="cheerImg" src="resources/img/cheering.png" alt="">
+		  </div>
+		  <div class="reason" id="reason_close">
+		   要望理由要望理由要望理由要望理由<BR>
+		   要望理由要望理由要望理由要望理由<BR>
+		   要望理由要望理由要望理由要望理由<BR>
+		   要望理由要望理由要望理由要望理由
+		   <div class="readmore">
+		   	<a href="#" class="readMoreBtn" onclick="readMoreReason(${i});" >ReadMore...</a>
+		   </div>
+		  </div>
+		  <div class="rejected_img">
+		  </div>
+		  <div class="reason_reject" id="reason_reject_close">
+		  却下理由却下理由却下理由却下理由<BR>
+		  却下理由却下理由却下理由却下理由<BR>
+		  却下理由却下理由却下理由却下理由<BR>
+		  却下理由却下理由却下理由却下理由
+		   <div class="readmore_reject">
+		   	<a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${i});" >ReadMore...</a>
+		   </div>
+		  </div>
+		 </div>
     </c:forEach>
    </section>
   </div>

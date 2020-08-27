@@ -12,12 +12,15 @@ import jp.co.c4c.service.TopService;
 @RequestMapping("/top")
 public class TopController {
 
-	@Autowired
- TopService topService;
+    @Autowired
+    TopService topService;
 
-	@RequestMapping
-	public String init(Model model, TopForm form) {
-
-	return "top";
- }
+    @RequestMapping
+    public String init(Model model, TopForm form) {
+        form.setTopAndDetailDtoList(topService.getAllBooks());
+        return "top";
+    }
 }
+
+//        List<V_Book_Lend_MemBasicDto> topForms = topService.getAllBooks();
+//        model.addAttribute("topForms", topForms);

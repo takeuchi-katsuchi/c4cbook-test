@@ -1,55 +1,61 @@
-section.request {
-  width: 375px;
-  margin: 0 auto;
-  min-height: 100vh;
-  padding: 5px;
-}
-
 div.line {
+ padding-top: 5px;
+ display: grid;
+ display: -ms-grid;
+ grid-template-rows: 150px 1fr;
+ grid-template-columns: 100px 200px 60px;
+ -ms-grid-rows: 150px 1fr;
+ -ms-grid-columns: 100px 200px 60px;
 }
 
-div.row {
-  display: inline-block;
-  vertical-align: top;
-  height: 150px;
-
-}
-
-div.book_img {
+div.book_img_area {
   background-color: #000000;
-  width: 100px
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  position:relative;
 }
 
-div.book_img img {
-  width: 100%;
+div.book_img_area img {
+  position: absolute;
 }
 
 div.book_info {
   background-color: #0000FF;
-  width: 200px;
-  padding: aout 0;
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  position: relative;
+  padding: 5px;
+  text-align: left;
 }
 
-p.name {
+div.name {
    font-size:16px;
 }
 
-p.author {
+div.author {
   font-size:13px;
 }
 
-p.requester {
+div.requester {
   font-size:15px;
-  margin-top: 5px
+  position: absolute;
+  bottom: 5px;
 }
 
-div.cheer_img {
+div.cheer_img_area {
   background-color: #FF0000;
   position:relative;
-  width: 60px;
+  grid-row: 1 / 2;
+  grid-column: 3 / 4;
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
 }
 
-div.cheer_img img {
+div.cheer_img_area img {
   width: 100%;
   position: absolute;
   top: 50%;
@@ -59,7 +65,7 @@ div.cheer_img img {
 
 div.cheer_count {
   position: absolute;
-  top: 60%;
+  top: 58%;
   left: 50%;
   transform : translate(-50%,-50%);
   z-index: 1;
@@ -67,8 +73,127 @@ div.cheer_count {
   font-weight: bold;
 }
 
-div.reason {
-  background-color: #FF0000;
-  font-size:100%;
-  height: 50%;
+#reason_close {
+  background-color: yellow;
+  font-size:13px;
+  word-wrap: break-word;
+  text-align: left;
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  padding: 5px 0px 0px 5px;
+
+/*さらに見る用 */
+ overflow-y:hidden;
+ overflow: hidden;
+ max-height: 50px;
+ line-height: 15px;
+ position: relative;
+}
+
+#reason_open {
+  background-color: yellow;
+  font-size:13px;
+  word-wrap: break-word;
+  text-align: left;
+  grid-row: 2 / 3;
+  grid-column: 1 / 4;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
+  padding: 5px 0px 0px 5px;
+
+  /*さらに見る用 */
+  overflow-y:hidden;
+  overflow: hidden;
+  line-height: 15px;
+  position: relative;
+
+  /* これだけちがう */
+  height: auto;
+}
+
+div.readmore {
+  position: absolute;
+  line-height: 15px;
+  top: 40px;
+  right: 0px;
+  background-color: white;
+}
+
+div.rejected_img{
+  background-color: green;
+  grid-row: 3 / 4;
+  grid-column: 1 / 2;
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+
+  width: 100px;
+  overflow-y:hidden;
+  overflow: hidden;
+  height: auto;
+  line-height: 15px;
+  position: relative;
+}
+
+#reason_reject_close{
+  background-color: purple;
+  font-size:13px;
+  text-align: left;
+  word-wrap: break-word;
+  grid-row: 3 / 4;
+  grid-column: 2 / 4;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  width: 260px;
+  overflow-y:hidden;
+  overflow: hidden;
+  max-height: 50px;
+  line-height: 15px;
+  position: relative;
+  padding: 5px 0px 0px 5px;
+}
+
+#reason_reject_open {
+  background-color: purple;
+  font-size:13px;
+  text-align: left;
+  word-wrap: break-word;
+  grid-row: 3 / 4;
+  grid-column: 2 / 4;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 3;
+  width: 260px;
+  overflow-y:hidden;
+  overflow: hidden;
+  line-height: 15px;
+  position: relative;
+  padding: 5px 0px 0px 5px;
+
+  /* これだけちがう */
+  height: auto;
+}
+
+div.readmore_reject {
+  position: absolute;
+  line-height: 15px;
+  top: 40px;
+  right: 0px;
+  background-color: white;
+}
+
+/* 表示無くす用 */
+div.hide {
+  display :none;
+}
+
+/* グレーアウト用 */
+div.end_pblctn {
+  background-color: #808080;
+  opacity: 0.5;
+
 }

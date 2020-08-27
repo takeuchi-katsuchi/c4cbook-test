@@ -1,55 +1,30 @@
 /* BK_T_LendDao_LendedBookDataByMenberId.sql */
-/*
- * ※以降は不要であれば削除
-SELECT
-  B.本ID,
-  B.タイトル,
-  B.タイトルかな,
-  B.著者,
-  B.タグ,
-  B.画像,
 
-  L.貸出ステータス
-
-FROM
-  BK_M_BOOK B,
-  BK_T_LEND L
-
-WHERE
-　L.削除フラグ = 0,
-  L.メンバーID = 自分（カトレアのID）
-  B.本ID = L.本ID
-
-ORDER BY
-  L.貸出ステータス ASC,
-  L.返却日 DESC
-
- ※ここまで※
- */
-
--- loginId ログインユーザのメンバーID
+-- MEM_IDは現在固定
 
 select
+  book_db.BK_M_BOOK.BOOK_ID,
+  book_db.BK_M_BOOK.TITLE,
+  book_db.BK_M_BOOK.TITLE_KANA,
+  book_db.BK_M_BOOK.AUTHOR,
+  book_db.BK_M_BOOK.TAG_IDS,
+  book_db.BK_M_BOOK.BOOK_IMG,
 
-  B.BOOK_ID,
-  B.TITLE,
-  B.TITLE_KANA,
-  B.AUTHOR,
-  B.TAG_IMG,
-  B.BOOK_IMG,
-
-  L.LEND_STATUS
-
+  book_db.BK_T_LEND.BOOK_ID,
+  book_db.BK_T_LEND.LEND_ID,
+  book_db.BK_T_LEND.MEM_ID,
+  book_db.BK_T_LEND.LEND_STATUS,
+  book_db.BK_T_LEND.FROM_DATE,
+  book_db.BK_T_LEND.TO_DATE
 from
-  BK_M_BOOK B,
-  BK_T_LEND L
-
+  book_db.BK_M_BOOK
+join
+  book_db.BK_T_LEND on book_db.BK_M_BOOK.BOOK_ID = book_db.BK_T_LEND.BOOK_ID
 where
-  L.DEL_FLG = 0,
-  L.MEM_ID = loginId
-  B.BOOK_ID = F.BOOK_ID
-
+  book_db.BK_T_LEND.DEL_FLG = 0
+and
+  book_db.BK_T_LEND.MEM_ID = 2
 order by
-  L.LEND_STATUS asc,
-  L.TO_DATE desc
+  book_db.BK_T_LEND.BOOK_ID asc,
+  book_db.BK_T_LEND.LEND_ID asc
 ;
