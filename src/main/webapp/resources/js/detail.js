@@ -1,81 +1,19 @@
 $(document).ready(function() {
 	console.log("JQuery OK");
 
-	let calendarEvents = [];
 	var bookId = $("#postBookId").val();
-	getLendHistory();
-	function getLendHistory(){
-		$.ajax({
-			url: 'api/getLendHistory',
-			type: 'get',
-			data: `bookId=${bookId}`,
-			success: function(response) {
-				let lendHistorys = [];
-				for (i = 0; i < response.data.length; i++) {
-					if (response.data[i]["lendStatus"] == 19) {
-						continue;
-					} else {
-						let fromDate = new Date(response.data[i]["fromDate"]);
-						let toDate = new Date(response.data[i]["toDate"]);
-						response.data[i]["period"] = (toDate - fromDate) / 86400000;
-						lendHistorys.push(response.data[i]);
-					}
-				}
-				console.log(lendHistorys);
-				for (i = 0; i < lendHistorys.length; i++) {
-					for (j = 0; j <= lendHistorys[i]["period"]; j++) {
-						let title, dt, color;
-						dt = new Date(lendHistorys[i]["fromDate"] + (86400000 * j));
-						dt = dateFormat(dt);
-						if (lendHistorys[i]["lendStatus"] == 11) {
-							title = `${lendHistorys[i]["memName"]}/貸出`;
-							color = "#00ff00";
-							let obj = {
-								title: title,
-								start: dt,
-								color: color
-							};
-							calendarEvents.push(obj);
-						} else {
-							title = `${lendHistorys[i]["memName"]}/予約`;
-							color = "#ffff00";
-							let obj = {
-								title: title,
-								start: dt,
-								color: color
-							};
-						calendarEvents.push(obj);
-						}
-					}
-				}
-			},
-			error: function() {
-				alert("error");
-			}
-		});
-	}
+	let calendarEvents = [];
+
 	// 貸出・予約カレンダー表示
 	$(`#LendingProcedureModal`).on('shown.bs.modal', function() {
-		// DOMを取得
-		var calendarEl = document.getElementById('calendar');
-		// 指定DOMにカレンダープラグインを適用する
-		var calendar = new FullCalendar.Calendar(calendarEl, {
-			plugins: ['dayGrid'],
-			events: calendarEvents
-			/*
-			[
-				{
-					title: '小針さんに貸出',
-					start: '2020-08-20',
-				}
-			]
-			*/
-		});
-		calendar.render();
+		getLendHistory();
 
-		$(`#LendingProcedureModal`).on('hidden.bs.modal', function() {
-			calendar.destroy()
+
+
+		$(`#save`).on('click', function() {
+			saveLendReserve()
 		});
+
 
 	});
 
@@ -104,8 +42,111 @@ $(document).ready(function() {
 		}
 	});
 
+
+
+
+	// dateformatメソッド
+	function dateFormat(date) {
+		var y = date.getFullYear();
+		var m = date.getMonth() + 1;
+		var d = date.getDate();
+		if (m < 10) { m = '0' + m; }
+		if (d < 10) { d = '0' + d; }
+		// フォーマット整形済みの文字列を戻り値にする
+		return y + '-' + m + '-' + d;
+	}
+
+	// 貸出履歴をAjaxで取得
+	function getLendHistory() {
+		$.ajax({
+			url: 'api/getLendHistory',
+			type: 'get',
+			data: `bookId=${bookId}`,
+			success: function(response) {
+				let lendHistorys = [];
+				for (i = 0; i < response.data.length; i++) {
+					if (response.data[i]["lendStatus"] == 19) {
+						continue;
+					} else {
+						let fromDate = new Date(response.data[i]["fromDate"]);
+						let toDate = new Date(response.data[i]["toDate"]);
+						response.data[i]["period"] = (toDate - fromDate) / 86400000;
+						lendHistorys.push(response.data[i]);
+					}
+				}
+				console.log(lendHistorys);
+				for (i = 0; i < lendHistorys.length; i++) {
+					for (j = 0; j <= lendHistorys[i]["period"]; j++) {
+						let title, dt, color;
+						dt = new Date(lendHistorys[i]["fromDate"] + (86400000 * j));
+						dt = dateFormat(dt);
+						if (lendHistorys[i]["lendStatus"] == 11) {
+							title = `${lendHistorys[i]["memName"]}/貸出`;
+							color = "#00ff00";
+						} else {
+							title = `${lendHistorys[i]["memName"]}/予約`;
+							color = "#ffff00";
+						}
+						let obj = {
+							title: title,
+							start: dt,
+							color: color
+						};
+						calendarEvents.push(obj);
+					}
+				}
+				// DOMを取得
+				var calendarEl = document.getElementById('calendar');
+				// 指定DOMにカレンダープラグインを適用する
+				var calendar = new FullCalendar.Calendar(calendarEl, {
+					plugins: ['dayGrid'],
+					events: calendarEvents
+					/*
+					[
+						{
+							title: '小針さんに貸出',
+							start: '2020-08-20',
+						}
+					]
+					*/
+				});
+				calendar.render();
+
+				let chkDateCount = 0;
+				$(`td.fc-day.fc-widget-content`).click(function() {
+					console.log(chkDateCount);
+					if (chkDateCount === 0){
+						let fromDate = $(this).data('date');
+						$(this).css("background-color", "skyblue");
+						chkDateCount++;
+						$(`#postFromDate`).val(fromDate);
+					} else if (chkDateCount === 1){
+						let toDate = $(this).data('date');
+						$(this).css("background-color", "skyblue");
+						$(`#postToDate`).val(toDate);
+						chkDateCount = 0;
+					}
+
+				});
+
+				$(`#LendingProcedureModal`).on('hidden.bs.modal', function() {
+					calendar.destroy();
+					calendarEvents = [];
+				});
+			},
+			error: function() {
+				alert("error");
+				$(`#LendingProcedureModal`).on('hidden.bs.modal', function() {
+					calendar.destroy();
+					calendarEvents = [];
+				});
+			}
+		});
+	}
+
+
 	// 貸出・予約手続きAjax呼び出し
-	$(`#save`).on('click', function() {
+	function saveLendReserve() {
 		var formData = {
 			bookId: $("#postBookId").val(),
 			memId: $("#postMemberId").val(),
@@ -125,6 +166,8 @@ $(document).ready(function() {
 				dataType: 'json',
 				success: function(response) {
 					console.log(response.status);
+					console.log(response.data);
+					alert("予約が確定しました");
 					$('#LendingProcedureModal').modal('hide');
 				},
 				error: function() {
@@ -133,18 +176,6 @@ $(document).ready(function() {
 				}
 			});
 		}
-	});
-
-	// dateformatメソッド
-	function dateFormat(date) {
-		var y = date.getFullYear();
-		var m = date.getMonth() + 1;
-		var d = date.getDate();
-		if (m < 10) { m = '0' + m; }
-		if (d < 10) { d = '0' + d; }
-		// フォーマット整形済みの文字列を戻り値にする
-		return y + '-' + m + '-' + d;
 	}
-
 });
 

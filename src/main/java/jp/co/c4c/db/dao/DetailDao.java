@@ -32,7 +32,7 @@ public class DetailDao {
      * @return
      */
     public V_TopAndDetailDto seletctBookById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetDetailBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_DitailDao_BookDataByBookId.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);

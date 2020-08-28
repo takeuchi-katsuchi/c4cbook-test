@@ -21,7 +21,7 @@ public class TopDao {
      * @return
      */
     public List<V_TopAndDetailDto> seletctAllBooks() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetAllBooks.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_TopDao_getAllBooks.sql");
         System.out.print("Daoが接続されたよ");
 
         return sqlManager.getResultList(V_TopAndDetailDto.class, sqlSrc);

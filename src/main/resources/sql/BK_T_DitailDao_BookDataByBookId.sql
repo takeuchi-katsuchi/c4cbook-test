@@ -58,5 +58,5 @@ left join
 on
   B.BOOK_ID = RC.BOOK_ID
 where
-  B.BOOK_ID = 2
+  B.BOOK_ID = /*bookId*/
  ;
