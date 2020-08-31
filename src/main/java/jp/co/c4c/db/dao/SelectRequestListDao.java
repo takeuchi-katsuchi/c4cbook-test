@@ -28,7 +28,7 @@ public class SelectRequestListDao {
      * @return
      */
     public List<V_RequestDto> seletctRequestList() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_RequestData.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestData.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
 

@@ -12,18 +12,15 @@ import jp.co.c4c.service.RequestService;
 @RequestMapping("/request")
 public class RequestController {
 
-	@Autowired
-	RequestService RequestService;
+    @Autowired
+    RequestService requestService;
 
-	@RequestMapping
-	public String init(Model model, RequestForm form) {
+    @RequestMapping
+    public String init(Model model, RequestForm form) {
 
-	    model.addAttribute("message", "要望ページ");
+        form.setReqInfoList(requestService.getRequestList());
 
-	 // formに格納する
-        form.setMessage("要望ページ");
-
-		return "request";
-	}
+        return "request";
+    }
 
 }
