@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="resources/css/top.css" media="screen">
 <link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
 <script src="https://kit.fontawesome.com/fdfc67613f.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="resources/js/top.js"></script>
 </head>
 <body>
  <jsp:include page="./header.jsp"></jsp:include>
