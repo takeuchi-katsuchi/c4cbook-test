@@ -2,7 +2,6 @@
  margin: 0;
  padding: 0;
 }
-
 div.book_box {
  display: gred;
  padding-left: 10px;
@@ -11,19 +10,19 @@ div.book_box {
  justify-content: center;
  align-items: center;
 }
-
 div.row {
  display: inline-block;
 }
-
 div.book_img {
+ padding-top: 60px;
+ padding-left: 20px;
  position: relative;
  height: 200px;
+ width: 150px;
 }
-
 .fa-book-open {
  position: absolute;
- right: 55px;
+ right: 65px;
  bottom: 12px;
  width: 37px;
  height: 37px;
@@ -32,15 +31,24 @@ div.book_img {
  color: #9de5ff;
  background-color: white;
 }
+.book_count {
+ position: absolute;
+ right: 67px;
+ bottom: 15px;
+}
+.heart_count {
+ position: absolute;
+ right: 22px;
+ bottom: 15px;
+}
 /* 本読んでいない状態 */
 .noread {
  color: pink;
  visibility: hidden;
 }
-
 .fa-heart {
  position: absolute;
- right: 10px;
+ right: 20px;
  bottom: 12px;
  width: 37px;
  height: 37px;
@@ -55,20 +63,10 @@ div.book_img {
  visibility: #FFEEFF;
 }
 
-div.book_img img.javabook {
- padding-top: 30px;
- width: 120px;
- padding-left: 20px;
- border-radius: 2%;
- height: auto;
- border-radius: 20px;
-}
-
 div.book_info {
  width: 170px;
  padding-left: 25px;
 }
-
 div.name {
  position: relative;
  text-shadow: 0 0 2px white;
@@ -78,7 +76,6 @@ div.name {
  font-weight: bold;
  word-wrap: break-word;
 }
-
 div.name:before {
  content: "";
  position: absolute;
@@ -93,12 +90,10 @@ div.name:before {
  transform: translateY(-50%);
  z-index: -1;
 }
-
 div.author {
  padding-top: 3px;
  font-size: 11px;
 }
-
 div.recommended {
  margin-top: 4px;
  margin-bottom: 4px;
@@ -110,13 +105,11 @@ div.recommended {
  font-size: 11px;
  color: white;
 }
-
 ul.tag {
  width: 150px;
  padding: 0;
  font-size: 0px;
 }
-
 ul.tag li {
  display: inline-block;
  text-align: center;
@@ -127,7 +120,6 @@ ul.tag li {
  padding: 1px;
  border-radius: 10px 0px 0px 10px;
 }
-
 ul.tag li:before {
  content: '●';
  color: white;
