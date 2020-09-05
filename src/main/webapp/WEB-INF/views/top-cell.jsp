@@ -21,14 +21,13 @@
    <div class="name">本のタイトル</div>
    <div class="author">東野圭吾</div>
    <div class="recommended">誰々に貸出中</div>
-   <ul class="tag">
-    <li>資格</li>
-    <li>入門書</li>
-    <li>web開発</li>
-    <li>ビジネス</li>
-    <li>娯楽・実用</li>
-   </ul>
+   <c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
+    <ul class="tag">
+     <li>${topAndDetail.favCount}</li>
+    </ul>
+   </c:forEach>
   </div>
+
  </div>
 </section>
 <%-- アクティブ処理 --%>

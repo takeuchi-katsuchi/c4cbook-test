@@ -1,5 +1,4 @@
 window.onload = function(){
-	alert("ページが読み込まれました！");
 	// ページ読み込み時に実行したい処理
 	//////////画像の表示//////////
 	//bookImgクラスのimgを取得
@@ -20,10 +19,8 @@ window.onload = function(){
 	for (var i = 0;  i < i_imgs;  i++) {
 		if ( imgs[i].complete ) {
 			src_width = imgs[i].naturalWidth;
-			console.log('aaa', src_width);
 
 			src_height = imgs[i].naturalHeight;
-			console.log('bbb', src_height);
 			//縦長なら
 			if ( src_width < src_height ) {
 				//縦を200で固定して同じ縦横比で横を設定
