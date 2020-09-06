@@ -7,7 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.c4c.db.dao.DetailDao;
+import jp.co.c4c.db.dto.BK_M_MemBasicDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
+import jp.co.c4c.db.dto.BK_T_RecomDto;
 import jp.co.c4c.db.dto.V_FavoriteMemberDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
@@ -29,14 +31,20 @@ public class DetailService {
     }
 
     /**
-     * 詳細ページに表示させる貸出履歴を取得
+     * 詳細ページに表示させる貸出履歴（ByBookId）を取得
      * @param bookId
      * @return
      */
     @Transactional
-    public List<V_LendHistoryDto> getLendHistorysById(int bookId) {
+    public List<V_LendHistoryDto> getLendHistorysByBookId(int bookId) {
         return detailDao.seletctLendHistorysById(bookId);
     }
+
+
+//    @Transactional
+//    public BK_T_LendDto getLendHistorysByLendId(int lendId) {
+//        return detailDao.selectLendHistoryByLendId(lendId);
+//    }
 
     /**
      * 詳細ページに表示させるお気に入りした人を取得
@@ -48,9 +56,68 @@ public class DetailService {
         return detailDao.seletctFavoriteMembersById(bookId);
     }
 
+    /**
+     * 新規貸出履歴を登録
+     * @param bk_T_LendDto
+     */
     @Transactional
     public void saveLendBook(BK_T_LendDto bk_T_LendDto) {
         detailDao.insertLendBook(bk_T_LendDto);
+    }
+
+    /**
+     * 貸出履歴を更新
+     * @param bk_T_LendDto
+     */
+    @Transactional
+    public void updateLendBook(BK_T_LendDto bk_T_LendDto) {
+        detailDao.updateLendBookByLendId(bk_T_LendDto);
+    }
+
+    /**
+     * 予約取り消し
+     * @param lendId
+     */
+    @Transactional
+    public void deleteLendBook(int lendId) {
+        detailDao.deleteLendBookByLendId(lendId);
+    }
+
+    /**
+     * メンバー全員取得
+     * @return
+     */
+    @Transactional
+    public List<BK_M_MemBasicDto> getAllMembers(){
+        return detailDao.selectAllMembers();
+    }
+
+    /**
+     * メンバーIDでメンバーを取得
+     * @param memId
+     * @return
+     */
+    @Transactional
+    public BK_M_MemBasicDto getMemberById(int memId){
+        return detailDao.selectMemberByMemId(memId);
+    }
+
+    /**
+     * おすすめを登録
+     * @param bk_T_RecomDto
+     */
+    @Transactional
+    public void saveRecom(BK_T_RecomDto bk_T_RecomDto){
+        detailDao.insertRecom(bk_T_RecomDto);
+    }
+
+    /**
+     * レビュー登録
+     * @param bk_T_LendDto
+     */
+    @Transactional
+    public void saveReview(BK_T_LendDto bk_T_LendDto){
+        detailDao.updateLendBookforReview(bk_T_LendDto);
     }
 
 }

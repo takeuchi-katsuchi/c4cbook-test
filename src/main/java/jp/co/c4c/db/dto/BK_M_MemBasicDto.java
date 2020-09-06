@@ -2,17 +2,26 @@ package jp.co.c4c.db.dto;
 
 import java.util.Date;
 
+import jp.sf.amateras.mirage.annotation.Column;
+import jp.sf.amateras.mirage.annotation.Table;
+
+@Table(name = "M_MEM_BASIC")
 public class BK_M_MemBasicDto {
 
     /** メンバーID */
+    @Column(name = "MEM_ID")
     private int memId;
     /** メンバー名 */
+    @Column(name = "MEM_NAME")
     private String memName;
     /** 削除フラグ */
+    @Column(name = "DEL_FLG")
     private int delFlg;
     /** データ作成日時 */
+    @Column(name = "CREATE_AT")
     private Date createAt;
     /** データ更新日時 */
+    @Column(name = "UPDATE_AT")
     private Date updateAt;
 
     /**
@@ -27,7 +36,7 @@ public class BK_M_MemBasicDto {
      * メンバーIDを設定する
      * @param memId
      */
-    public void setBookId(int memId) {
+    public void setMemId(int memId) {
         this.memId = memId;
     }
 
@@ -94,4 +103,5 @@ public class BK_M_MemBasicDto {
     public void setUpdateAt(Date updateAt) {
         this.updateAt = updateAt;
     }
+
 }

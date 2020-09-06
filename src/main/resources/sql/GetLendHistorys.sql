@@ -9,11 +9,11 @@ SELECT
     M.MEM_NAME
 FROM
 	book_db.BK_M_BOOK as B
-LEFT JOIN
+JOIN
 	book_db.BK_T_LEND as L
 ON
 	B.BOOK_ID = L.BOOK_ID
-LEFT JOIN
+JOIN
 	book_db.M_MEM_BASIC as M
 ON
 	L.MEM_ID = M.MEM_ID

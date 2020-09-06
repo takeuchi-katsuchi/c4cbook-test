@@ -1,0 +1,8 @@
+SELECT
+	M.MEM_ID,
+	M.MEM_NAME,
+    M.DEL_FLG,
+    M.CREATE_AT,
+    M.UPDATE_AT
+FROM book_db.M_MEM_BASIC as M
+WHERE DEL_FLG = 0;

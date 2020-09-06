@@ -41,15 +41,6 @@
             <div class="row book_info">
                 <div class="name">${detailForm.v_TopAndDetailDto.title}</div>
                 <div class="author">${detailForm.v_TopAndDetailDto.author}</div>
-                <c:choose>
-                    <c:when
-                        test="${empty detailForm.v_TopAndDetailDto.memName}">
-                        <div class="recommended">貸出可能</div>
-                    </c:when>
-                    <c:otherwise>
-                        <div class="recommended">${detailForm.v_TopAndDetailDto.memName}さんに貸出中</div>
-                    </c:otherwise>
-                </c:choose>
                 <ul class="tag">
                     <li>ps</li>
                     <li>java</li>
@@ -61,10 +52,10 @@
             <li>読まれた回数：${detailForm.v_TopAndDetailDto.lendCount}</li>
             <li>お気に入り：${detailForm.v_TopAndDetailDto.favCount}</li>
         </ul>
-        <%--  <jsp:include page="./top-cell.jsp"></jsp:include> --%>
+
         <div class="contents">
-            <a href="#" class="btn-rent">貸出し・予約</a>
-            <button id="openLendingProcedureModal" type="button" class="btn btn-primary" data-toggle="modal" data-target="#LendingProcedureModal">
+            <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button>
+            <button id="openLendingProcedureModal" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#LendingProcedureModal">
                 貸出し・予約
              </button>
             <p class="detal-text">${detailForm.v_TopAndDetailDto.outline}</p>
@@ -83,20 +74,19 @@
                         class="tab-label" for="TAB-01">貸出し履歴</label>
                     <div class="tab-content">
                         <c:choose>
-                            <c:when
-                                test="${empty detailForm.v_LendHistoryDtoList}">
-                                <div class="recommended">貸出し履歴はありません。</div>
+                            <c:when test="${empty detailForm.v_LendHistoryDtoList}">
+                                <div>貸出し履歴はありません。</div>
                             </c:when>
 
                             <c:otherwise>
                                 <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
-                                            <ul>
-                                                <li>
-                                                    <fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" />
-                                                    〜<fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" />
-                                                    ${lendHistory.memName}
-                                                </li>
-                                            </ul>
+                                    <ul>
+                                        <li>
+                                            <fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" />
+                                            〜<fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" />
+                                            ${lendHistory.memName}
+                                        </li>
+                                    </ul>
                                 </c:forEach>
                             </c:otherwise>
                         </c:choose>
@@ -108,7 +98,7 @@
                         <c:choose>
                             <c:when
                                 test="${empty detailForm.v_FavoriteMemberDtoList}">
-                                <div class="recommended">お気に入りしている人はいません。</div>
+                                <div>お気に入りしている人はいません。</div>
                             </c:when>
                             <c:otherwise>
                                 <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="favoriteMember">
@@ -133,7 +123,7 @@
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myLargeModalLabel">貸出し・予約</h5>
+                    <h5 class="modal-title" id="myLargeModalLabel">予約・貸出手続き</h5>
                     <button type="button" class="close"
                         data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -143,29 +133,23 @@
                 <div class="modal-body">
                     <div id='calendar'></div>
                     <!-- 現在のLendStatus -->
-                    <input id="getLendStatus" type="hidden" value="${detailForm.v_TopAndDetailDto.lendStatus}">
+                    <div id="showStatus"></div>
 
-                    <c:choose>
-                        <c:when
-                            test="${empty detailForm.v_TopAndDetailDto.memName}">
-                            <div class="recommended">貸出可能</div>
-                        </c:when>
-                        <c:otherwise>
-                            <div class="recommended">${detailForm.v_TopAndDetailDto.memName}さんに貸出中</div>
-                        </c:otherwise>
-                    </c:choose>
                     <div class="mb-2 mt-2">
                         貸出：<input id="lendChkBox" type="checkbox">
                         予約：<input id="reserveChkBox" type="checkbox" checked="checked"><br>
                     </div>
                     <form id="lendReserveForm" action="">
-                        貸出日：<input id="postFromDate" type="date" name="fromDate"> 返却日：<input id="postToDate" type="date" name="toDate">
+                        貸出日：<input id="postFromDate" type="text" name="fromDate" readonly="readonly">
+                        返却日：<input id="postToDate" type="text" name="toDate" readonly="readonly">
                         <!-- BookId -->
                         <input id="postBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
                         <!-- メンバーID -->
                         <input id="postMemberId" type="hidden" name="memId" value=1>
                         <!-- LendStatus -->
                         <input id="postLendStatus" type="hidden" name="lendStatus" value=10>
+                        <!-- 誰かに貸出中 -->
+                        <input id="isSomeoneLending" type="hidden" name="isSomeoneLending" value=0>
                     </form>
                 </div>
 
@@ -178,7 +162,77 @@
         </div>
     </div>
 
+    <div class="modal fade" id="myModal2">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">予約・貸出ステータス更新</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body form-group">
+                    <form id="updateLendStatusForm" action="">
+                        貸出：<input id="updateLendChkBox" type="checkbox">
+                        予約：<input id="updateReserveChkBox" type="checkbox"><br>
+                        貸出日：<input id="updateFromDate" class="form-control" type="date" name="fromDate">
+                        返却日：<input id="updateToDate" class="form-control" type="date" name="toDate">
+                        <!-- LendId -->
+                        <input id="updateLendId" type="hidden" name="lendId" value="">
+                        <!-- BookId -->
+                        <input id="updateBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
+                        <!-- メンバーID -->
+                        <input id="updateMemberId" type="hidden" name="memId" value="1">
+                        <!-- LendStatus -->
+                        <input id="updateLendStatus" type="hidden" name="lendStatus" value="">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="returnBook" type="button" class="btn btn-success">返却</button>
+                    <button id="cancelReserve" type="button" class="btn btn-danger">予約取消</button>
+                    <button id="update" type="button" class="btn btn-primary">更新</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="reviewModal">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">おすすめ・レビュー</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                </div>
+                <div class="modal-body form-group">
+                    <h4>おすすめしてみませんか?（最大5人まで）</h4>
+                    <div class="col-6">
+                        <form id="recomForm" action="">
+                            <select id="toMemberId" class="form-control" multiple>
+                            <c:forEach items="${detailForm.bk_M_MemBasicDtoList}" var="member">
+                                <option value="${member.memId}">${member.memName} さん</option>
+                            </c:forEach>
+                            </select>
+                            <!-- BookId -->
+                            <input id="recomBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
+                            <!-- fromメンバーID -->
+                            <input id="fromMemberId" type="hidden" name="memId" value="1">
+                        </form>
+                    </div>
+                    <br>
+                    <h4>この本のレビューをしましょう</h4>
+                    <div class="col">
+                        <form id="reviewForm" class="mt-2" action="">
+                            <textarea id="reviewContent" class="form-control" rows="5" cols=""></textarea>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button id="sendReview" type="button" class="btn btn-primary">送信</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script src="resources/js/detail.js"></script>
