@@ -54,7 +54,7 @@
         </ul>
 
         <div class="contents">
-            <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button>
+<!--             <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
             <button id="openLendingProcedureModal" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#LendingProcedureModal">
                 貸出し・予約
              </button>
