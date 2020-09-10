@@ -1,2 +1,7 @@
-SELECT * FROM book_db.BK_T_LEND
-WHERE LEND_ID = /*lendId*/;
+select
+    *
+from
+    book_db.BK_T_LEND
+where
+    LEND_ID = /*lendId*/
+;

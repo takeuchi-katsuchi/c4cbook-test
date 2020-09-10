@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.db.dao.DetailDao;
+import jp.co.c4c.db.dao.SelectBookDataDao;
 import jp.co.c4c.db.dto.BK_M_MemBasicDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_RecomDto;
@@ -18,7 +18,7 @@ import jp.co.c4c.db.dto.V_TopAndDetailDto;
 public class DetailService {
 
     @Autowired
-    private DetailDao detailDao;
+    private SelectBookDataDao SelectBookDataDao;
 
     /**
      * 詳細ページに表示させる本を取得
@@ -27,7 +27,7 @@ public class DetailService {
      */
     @Transactional
     public V_TopAndDetailDto getBookById(int bookId) {
-        return detailDao.seletctBookById(bookId);
+        return SelectBookDataDao.seletctBookById(bookId);
     }
 
     /**
@@ -37,7 +37,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_LendHistoryDto> getLendHistorysByBookId(int bookId) {
-        return detailDao.seletctLendHistorysById(bookId);
+        return SelectBookDataDao.seletctLendHistorysById(bookId);
     }
 
 
@@ -53,7 +53,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
-        return detailDao.seletctFavoriteMembersById(bookId);
+        return SelectBookDataDao.seletctFavoriteMembersById(bookId);
     }
 
     /**
@@ -62,7 +62,7 @@ public class DetailService {
      */
     @Transactional
     public void saveLendBook(BK_T_LendDto bk_T_LendDto) {
-        detailDao.insertLendBook(bk_T_LendDto);
+        SelectBookDataDao.insertLendBook(bk_T_LendDto);
     }
 
     /**
@@ -71,7 +71,7 @@ public class DetailService {
      */
     @Transactional
     public void updateLendBook(BK_T_LendDto bk_T_LendDto) {
-        detailDao.updateLendBookByLendId(bk_T_LendDto);
+        SelectBookDataDao.updateLendBookByLendId(bk_T_LendDto);
     }
 
     /**
@@ -80,7 +80,7 @@ public class DetailService {
      */
     @Transactional
     public void deleteLendBook(int lendId) {
-        detailDao.deleteLendBookByLendId(lendId);
+        SelectBookDataDao.deleteLendBookByLendId(lendId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class DetailService {
      */
     @Transactional
     public List<BK_M_MemBasicDto> getAllMembers(){
-        return detailDao.selectAllMembers();
+        return SelectBookDataDao.selectAllMembers();
     }
 
     /**
@@ -99,7 +99,7 @@ public class DetailService {
      */
     @Transactional
     public BK_M_MemBasicDto getMemberById(int memId){
-        return detailDao.selectMemberByMemId(memId);
+        return SelectBookDataDao.selectMemberByMemId(memId);
     }
 
     /**
@@ -108,7 +108,7 @@ public class DetailService {
      */
     @Transactional
     public void saveRecom(BK_T_RecomDto bk_T_RecomDto){
-        detailDao.insertRecom(bk_T_RecomDto);
+        SelectBookDataDao.insertRecom(bk_T_RecomDto);
     }
 
     /**
@@ -117,7 +117,7 @@ public class DetailService {
      */
     @Transactional
     public void saveReview(BK_T_LendDto bk_T_LendDto){
-        detailDao.updateLendBookforReview(bk_T_LendDto);
+        SelectBookDataDao.updateLendBookforReview(bk_T_LendDto);
     }
 
 }
