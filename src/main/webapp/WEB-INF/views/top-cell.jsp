@@ -7,28 +7,28 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <section class="request">
+<c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
  <div class="book_box">
   <div class="row book_img">
    <img class="javabook" src="resources/img/sample_book.jpg" alt="">
    <i class="fas fa-book-open fa-2x"></i>
    <i class="noread fas fa-book-open fa-2x"></i>
-   <p class='book_count'>99+</p>
+   <p class='book_count'>${topAndDetail.lendCount}</p>
    <i class="fas fa-heart fa-2x"></i>
    <i class="noheart fas fa-heart fa-2x"></i>
-   <p class='heart_count'>99+</p>
+   <p class='heart_count'>${topAndDetail.favCount}</p>
   </div>
   <div class="row book_info">
-   <div class="name">本のタイトル</div>
-   <div class="author">東野圭吾</div>
-   <div class="recommended">誰々に貸出中</div>
-   <c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
+   <div class="name">${topAndDetail.title}</div>
+   <div class="author">${topAndDetail.author}</div>
+   <div class="recommended">${topAndDetail.memId}に貸出中</div>
     <ul class="tag">
-     <li>${topAndDetail.favCount}</li>
+     <li>${topAndDetail.tagIds}</li>
     </ul>
-   </c:forEach>
   </div>
 
  </div>
+ </c:forEach>
 </section>
 <%-- アクティブ処理 --%>
 <input type="hidden" id="act_type"
