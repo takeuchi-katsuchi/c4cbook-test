@@ -10,7 +10,7 @@ import jp.co.c4c.service.RequestService;
 
 @Controller
 @RequestMapping("/request")
-public class requestController {
+public class RequestController {
 
 	@Autowired
 	RequestService RequestService;

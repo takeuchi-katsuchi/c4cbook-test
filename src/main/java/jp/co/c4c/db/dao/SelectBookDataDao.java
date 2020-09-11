@@ -23,7 +23,7 @@ import jp.sf.amateras.mirage.SqlResource;
  *
  */
 @Component
-public class DetailDao {
+public class SelectBookDataDao {
 
     @Autowired
     public SqlManager sqlManager;
