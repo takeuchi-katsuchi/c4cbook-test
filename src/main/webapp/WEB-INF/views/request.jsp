@@ -24,7 +24,7 @@
   <div class="text-message">応援しよう！！！！！！！</div>
   <a href="#" class="btn-rq">本を要望する</a>
    <section class="td-rq">
-    <c:forEach items="${requestForm.reqInfoList}" var="reqInfo">
+    <c:forEach items="${requestForm.reqInfoList}" varStatus="status" var="reqInfo">
      <div class="line">
       <div class="book_img_area">
        <img class="bookImg" id="bookImg" src="resources/img/sample_book.jpg" alt="">
@@ -33,29 +33,31 @@
        <div class="name"><c:out value="${reqInfo.title}"/></div>
        <div class="author"><c:out value="${reqInfo.author}"/></div>
        <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
+       <div class="requestDate">要望日:<c:out value="2020/09/04"/></div>
       </div>
       <div class="cheer_img_area">
        <div class="cheer_count"><c:out value="${reqInfo.reqCount}"/></div>
        <img class="cheerImg" src="resources/img/cheering.png" alt="">
       </div>
       <div class="reason" id="reason_close">
-       要望理由要望理由要望理由要望理由<BR>
-       要望理由要望理由要望理由要望理由<BR>
-       要望理由要望理由要望理由要望理由<BR>
-        要望理由要望理由要望理由要望理由
+       <div class="sub-ttl">要望理由</div>
+       <div class="reason-text"><c:out value="${reqInfo.comment}"/></div>
        <div class="readmore">
-        <a href="#" class="readMoreBtn" onclick="readMoreReason(${i});" >ReadMore...</a>
+        <a href="#" class="readMoreBtn" onclick="readMoreReason(${status.index});return false;" >ReadMore...</a>
        </div>
       </div>
       <div class="rejected_img">
       </div>
       <div class="reason_reject" id="reason_reject_close">
-       却下理由却下理由却下理由却下理由<BR>
-       却下理由却下理由却下理由却下理由<BR>
-       却下理由却下理由却下理由却下理由<BR>
-       却下理由却下理由却下理由却下理由
+       <div class="sub-ttl">却下理由</div>
+       <div class="reason-text">
+        却下理由却下理由却下理由却下理由<BR>
+        却下理由却下理由却下理由却下理由<BR>
+        却下理由却下理由却下理由却下理由<BR>
+        却下理由却下理由却下理由却下理由
+       </div>
        <div class="readmore_reject">
-        <a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${i});" >ReadMore...</a>
+        <a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${status.index});return false;" >ReadMore...</a>
        </div>
       </div>
      </div>

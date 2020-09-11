@@ -43,7 +43,7 @@ window.onload = function(){
 	for (var i = 0;  i < i_roasons;  i++) {
 
 		//3行以上なければ
-		if (reasons[i].clientHeight < 50) {
+		if (reasons[i].clientHeight < 68) {
 			readmores[i].className += " hide";
 		};
 
@@ -61,7 +61,7 @@ window.onload = function(){
 	for (var i = 0;  i < i_roasons_reject;  i++) {
 
 		//3行以上なければ
-		if (reasons_reject[i].clientHeight < 50) {
+		if (reasons_reject[i].clientHeight < 68) {
 			readmores_reject[i].className += " hide";
 		};
 
