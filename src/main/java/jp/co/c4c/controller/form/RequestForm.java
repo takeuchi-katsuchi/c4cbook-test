@@ -1,26 +1,23 @@
 package jp.co.c4c.controller.form;
 
+import java.util.List;
+
+import jp.co.c4c.db.dto.V_RequestDto;
+
+
 /**
  * 本要望画面 Formクラス
  */
 public class RequestForm {
 
-    /** メッセージ */
-    private String message;
+    /** 本要望情報一覧 */
+    private List<V_RequestDto> reqInfoList;
 
-    /**
-     * メッセージ
-     * @return メッセージ
-     */
-    public String getMessage() {
-        return message;
-    }
-    /**
-     * メッセージ
-     * @param message メッセージ
-     */
-    public void setMessage(String message) {
-        this.message = message;
+    public List<V_RequestDto> getReqInfoList() {
+        return reqInfoList;
     }
 
+    public void setReqInfoList(List<V_RequestDto> reqInfoList) {
+        this.reqInfoList = reqInfoList;
+    }
 }
