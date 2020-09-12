@@ -1,5 +1,4 @@
 /* BK_T_LendDao_Submit_LendBook.sql */
- */
 
 insert into book_db.BK_T_LEND
 (
