@@ -18,7 +18,7 @@ import jp.co.c4c.db.dto.V_TopAndDetailDto;
 public class DetailService {
 
     @Autowired
-    private SelectBookDataDao SelectBookDataDao;
+    private SelectBookDataDao selectBookDataDao;
 
     /**
      * 詳細ページに表示させる本を取得
@@ -27,7 +27,7 @@ public class DetailService {
      */
     @Transactional
     public V_TopAndDetailDto getBookById(int bookId) {
-        return SelectBookDataDao.seletctBookById(bookId);
+        return selectBookDataDao.seletctBookById(bookId);
     }
 
     /**
@@ -37,7 +37,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_LendHistoryDto> getLendHistorysByBookId(int bookId) {
-        return SelectBookDataDao.seletctLendHistorysById(bookId);
+        return selectBookDataDao.seletctLendHistorysById(bookId);
     }
 
 
@@ -53,7 +53,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
-        return SelectBookDataDao.seletctFavoriteMembersById(bookId);
+        return selectBookDataDao.seletctFavoriteMembersById(bookId);
     }
 
     /**
@@ -62,7 +62,7 @@ public class DetailService {
      */
     @Transactional
     public void saveLendBook(BK_T_LendDto bk_T_LendDto) {
-        SelectBookDataDao.insertLendBook(bk_T_LendDto);
+        selectBookDataDao.insertLendBook(bk_T_LendDto);
     }
 
     /**
@@ -71,7 +71,7 @@ public class DetailService {
      */
     @Transactional
     public void updateLendBook(BK_T_LendDto bk_T_LendDto) {
-        SelectBookDataDao.updateLendBookByLendId(bk_T_LendDto);
+        selectBookDataDao.updateLendBookByLendId(bk_T_LendDto);
     }
 
     /**
@@ -80,7 +80,7 @@ public class DetailService {
      */
     @Transactional
     public void deleteLendBook(int lendId) {
-        SelectBookDataDao.deleteLendBookByLendId(lendId);
+        selectBookDataDao.deleteLendBookByLendId(lendId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class DetailService {
      */
     @Transactional
     public List<BK_M_MemBasicDto> getAllMembers(){
-        return SelectBookDataDao.selectAllMembers();
+        return selectBookDataDao.selectAllMembers();
     }
 
     /**
@@ -99,7 +99,7 @@ public class DetailService {
      */
     @Transactional
     public BK_M_MemBasicDto getMemberById(int memId){
-        return SelectBookDataDao.selectMemberByMemId(memId);
+        return selectBookDataDao.selectMemberByMemId(memId);
     }
 
     /**
@@ -108,7 +108,7 @@ public class DetailService {
      */
     @Transactional
     public void saveRecom(BK_T_RecomDto bk_T_RecomDto){
-        SelectBookDataDao.insertRecom(bk_T_RecomDto);
+        selectBookDataDao.insertRecom(bk_T_RecomDto);
     }
 
     /**
@@ -117,7 +117,7 @@ public class DetailService {
      */
     @Transactional
     public void saveReview(BK_T_LendDto bk_T_LendDto){
-        SelectBookDataDao.updateLendBookforReview(bk_T_LendDto);
+        selectBookDataDao.updateLendBookforReview(bk_T_LendDto);
     }
 
 }
