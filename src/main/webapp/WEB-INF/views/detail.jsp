@@ -149,7 +149,7 @@
                                 <!-- BookId -->
                                 <input id="postBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
                                 <!-- メンバーID -->
-                                <input id="postMemberId" type="hidden" name="memId" value=1>
+                                <input id="postMemberId" type="hidden" name="memId" value="${webSessionDto.memId}">
                                 <!-- LendStatus -->
                                 <input id="postLendStatus" type="hidden" name="lendStatus" value=10>
                                 <!-- 誰かに貸出中 -->
@@ -185,7 +185,7 @@
                         <!-- BookId -->
                         <input id="updateBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
                         <!-- メンバーID -->
-                        <input id="updateMemberId" type="hidden" name="memId" value="1">
+                        <input id="updateMemberId" type="hidden" name="memId" value="${webSessionDto.memId}">
                         <!-- LendStatus -->
                         <input id="updateLendStatus" type="hidden" name="lendStatus" value="">
                     </form>
@@ -222,7 +222,7 @@
                             <!-- BookId -->
                             <input id="recomBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
                             <!-- fromメンバーID -->
-                            <input id="fromMemberId" type="hidden" name="memId" value="1">
+                            <input id="fromMemberId" type="hidden" name="memId" value="${webSessionDto.memId}">
                         </form>
                     </div>
                     <br>
