@@ -34,9 +34,9 @@
     <section class="bdy">
         <div class="book_box">
             <div class="row book_img">
-                <img class="javabook" src="resources/img/sample_book.jpg" alt="">
+<!--                 <img class="javabook" src="resources/img/sample_book.jpg" alt="">
                 <img class="material" src="resources/img/book.png" alt="">
-                <img class="heart" src="resources/img/heart.jpeg" alt="">
+                <img class="heart" src="resources/img/heart.jpeg" alt=""> -->
             </div>
             <div class="row book_info">
                 <div class="name">${detailForm.v_TopAndDetailDto.title}</div>
@@ -55,7 +55,7 @@
 
         <div class="contents">
 <!--             <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
-            <button id="openLendingProcedureModal" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#LendingProcedureModal">
+            <button id="openLendingProcedureModal" type="button" class="btn btn-secondary">
                 貸出し・予約
              </button>
             <p class="detal-text">${detailForm.v_TopAndDetailDto.outline}</p>
@@ -134,28 +134,33 @@
                     <div id='calendar'></div>
                     <!-- 現在のLendStatus -->
                     <div id="showStatus"></div>
-
-                    <div class="mb-2 mt-2">
-                        貸出：<input id="lendChkBox" type="checkbox">
-                        予約：<input id="reserveChkBox" type="checkbox" checked="checked"><br>
-                    </div>
-                    <form id="lendReserveForm" action="">
-                        貸出日：<input id="postFromDate" type="text" name="fromDate" readonly="readonly">
-                        返却日：<input id="postToDate" type="text" name="toDate" readonly="readonly">
-                        <!-- BookId -->
-                        <input id="postBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
-                        <!-- メンバーID -->
-                        <input id="postMemberId" type="hidden" name="memId" value=1>
-                        <!-- LendStatus -->
-                        <input id="postLendStatus" type="hidden" name="lendStatus" value=10>
-                        <!-- 誰かに貸出中 -->
-                        <input id="isSomeoneLending" type="hidden" name="isSomeoneLending" value=0>
-                    </form>
+                        <form id="lendReserveForm" class="row mt-2" action="">
+                            <div class="col-sm-4 mb-1">
+                                貸出：<input id="lendChkBox" type="checkbox">
+                                予約：<input id="reserveChkBox" type="checkbox" checked="checked">
+                            </div>
+                            <div class="col-sm-4 mb-1">
+                                貸出日：<input id="postFromDate" type="text" name="fromDate" readonly="readonly">
+                            </div>
+                            <div class="col-sm-4 mb-1">
+                                返却日：<input id="postToDate" type="text" name="toDate" readonly="readonly">
+                            </div>
+                            <div>
+                                <!-- BookId -->
+                                <input id="postBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
+                                <!-- メンバーID -->
+                                <input id="postMemberId" type="hidden" name="memId" value=1>
+                                <!-- LendStatus -->
+                                <input id="postLendStatus" type="hidden" name="lendStatus" value=10>
+                                <!-- 誰かに貸出中 -->
+                                <input id="isSomeoneLending" type="hidden" name="isSomeoneLending" value=0>
+                            </div>
+                        </form>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button id="save" type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                    <button id="save" type="button" class="btn btn-primary">予約</button>
                 </div>
 
             </div>
@@ -186,8 +191,8 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="returnBook" type="button" class="btn btn-success">返却</button>
-                    <button id="cancelReserve" type="button" class="btn btn-danger">予約取消</button>
+                    <button id="returnBook" type="button" class="btn btn-success d-none">返却</button>
+                    <button id="cancelReserve" type="button" class="btn btn-danger d-none">予約取消</button>
                     <button id="update" type="button" class="btn btn-primary">更新</button>
                 </div>
             </div>
@@ -205,11 +210,15 @@
                     <h4>おすすめしてみませんか?（最大5人まで）</h4>
                     <div class="col-6">
                         <form id="recomForm" action="">
-                            <select id="toMemberId" class="form-control" multiple>
-                            <c:forEach items="${detailForm.bk_M_MemBasicDtoList}" var="member">
-                                <option value="${member.memId}">${member.memName} さん</option>
-                            </c:forEach>
-                            </select>
+                            <div id="toMemberWrapper">
+                                <input id="toMemberId" type="hidden" value="">
+                                <div id="toMemberNames">
+                                    <c:forEach items="${detailForm.bk_M_MemBasicDtoList}" var="member">
+                                        <span id="toMem" data-id="${member.memId}">${member.memName} さん</span> <br>
+                                    </c:forEach>
+                                </div>
+                            </div>
+
                             <!-- BookId -->
                             <input id="recomBookId" type="hidden" name="bookId" value="${detailForm.v_TopAndDetailDto.bookId}">
                             <!-- fromメンバーID -->

@@ -5,7 +5,8 @@ $(document).ready(function() {
 	// 新規貸出・予約登録
 	//////////////////////////////////////////////////////////////////////
 	// 貸出・予約カレンダー表示　GET 貸出履歴をAjaxで取得 呼び出し
-	$(document).on('shown.bs.modal', `#LendingProcedureModal`, function() {
+	$(document).on('click', `#openLendingProcedureModal`, function() {
+		$(`#openLendingProcedureModal`).prop('disabled', true);
 		getLendHistorysByBookId();
 	});
 
@@ -141,9 +142,19 @@ $(document).ready(function() {
 				elem.css('background-color', 'red');
 				chkDateCount++;
 			}
+			console.log(fromDateObj);
 		} else if (chkDateCount === 1) {
 			toDateObj = pickDate(elem)
-			if (lendHistoryDateList.includes(toDateObj.selectedDate)) {
+			let count = (toDateObj.selectedDateTime - fromDateObj.selectedDateTime) / 86400000;
+			// 選択した期間をリストに格納
+			let selectedDateList = [];
+			for (i = 0; i <= count; i ++){
+				selectedDateList.push(dateFormat(new Date(fromDateObj.selectedDateTime + (i * 86400000))));
+			}
+			// 貸出履歴の日付リストの中に、選択した期間リストの日付が含まれていたらtrue　
+			var isContains = selectedDateList.some(el =>lendHistoryDateList.includes(el));
+			// trueならその日付は選択できない
+			if (isContains) {
 				alert(alertMessage1);
 			} else {
 				if (toDateObj.selectedDateTime < fromDateObj.selectedDateTime) {
@@ -154,6 +165,7 @@ $(document).ready(function() {
 					chkDateCount = 0;
 				}
 			}
+			console.log(toDateObj);
 		}
 	}
 
@@ -206,7 +218,11 @@ $(document).ready(function() {
 			type: 'get',
 			data: `bookId=${bookId}`,
 			success: function(response) {
+				$(`#openLendingProcedureModal`).prop('disabled', false);
+				console.log(response);
+				$(`#LendingProcedureModal`).modal('show');
 				$(`#isSomeoneLending`).val(0);
+				$('#lendChkBox').prop('disabled', false);
 				let lendHistorys = [];
 				for (i = 0; i < response.data.length; i++) {
 					// 貸出 or 予約ステータスのみ取得（返却ステータスはスキップ）
@@ -244,6 +260,7 @@ $(document).ready(function() {
 						title = `${lendHistorys[i]["memName"]} さんに貸出予定`;
 						color = "#ffff00";
 					}
+					console.log(lendHistoryDateList);
 					// カレンダーに表示させるobj
 					let obj = {
 						id: `lendId-${lendId},memId-${memId}`,
@@ -265,6 +282,12 @@ $(document).ready(function() {
 				var calendarEl = document.getElementById('calendar');
 				// 指定DOMにカレンダープラグインを適用する
 				var calendar = new FullCalendar.Calendar(calendarEl, {
+					locale: 'ja',
+					header: {                                 // ヘッダーに表示する内容を指定します
+				      left:   'title',                        // ヘッダーの左側に表示する物を指定
+				      center: '',                             // ヘッダーの中央に表示する物を指定
+				      right:  'prev,next'               // ヘッダーの左側に表示する物を指定
+				    },
 					plugins: ['dayGrid'],
 					events: calendarEvents,
 					eventClick: function(info) {
@@ -291,8 +314,8 @@ $(document).ready(function() {
 									$('#updateLendChkBox').prop('disabled', true);
 								}
 								// 予約取消ボタンのみ表示
-								$(`#cancelReserve`).show();
-								$(`#returnBook`).hide();
+								$(`#cancelReserve`).removeClass('d-none');
+								$(`#returnBook`).addClass('d-none');
 								// 前の操作が残っていた場合初期化
 								if ($('#updateLendChkBox').prop('checked', true)) {
 									$('#updateLendChkBox').prop('checked', false);
@@ -306,8 +329,8 @@ $(document).ready(function() {
 								$('#updateLendChkBox').prop('disabled', true);
 								$('#updateReserveChkBox').prop('disabled', true);
 								// 返却ボタンのみ表示
-								$(`#cancelReserve`).hide();
-								$(`#returnBook`).show();
+								$(`#cancelReserve`).addClass('d-none');
+								$(`#returnBook`).removeClass('d-none');
 								// 前の操作が残っていた場合初期化
 								if ($('#updateReserveChkBox').prop('checked', true)) {
 									$('#updateReserveChkBox').prop('checked', false);
@@ -416,18 +439,36 @@ $(document).ready(function() {
 					alert(response.status);
 					$(`#myModal2`).modal('hide');
 					$('#LendingProcedureModal').modal('hide');
-					console.log(response)
-					console.log(response.data["lendStatus"]);
 
 					if (response.data["lendStatus"] == 19) {
 						$(`#reviewModal`).modal('show');
 					}
+
+					// 選択したMemIdをリストに保持
+					let selectedValList = [];
+					$(document).on('click','#toMem', function(){
+						let selectedId = $(this).data('id');
+						if (selectedValList.includes(selectedId)){
+							let index = selectedValList.indexOf(selectedId);
+							selectedValList.splice(index,1);
+							$(this).toggleClass('selected');
+						} else {
+							if (selectedValList.length < 5){
+								selectedValList.push(selectedId);
+								$(this).toggleClass('selected');
+							} else {
+								alert('5人以上は選択できません。');
+							}
+						}
+						console.log(selectedValList);
+					});
+
 					$(`#sendReview`).on('click', function() {
 						if (!confirm('レビューを送信しますか')) {
 							return false;
 						} else {
-							if (0 < $(`#toMemberId`).val().length) {
-								sendRecomendation();
+							if (0 < selectedValList.length) {
+								sendRecomendation(selectedValList);
 							}
 							if ($('#reviewContent').val() !== "") {
 								sendReview(response.data["lendId"]);
@@ -435,7 +476,6 @@ $(document).ready(function() {
 							$(`#reviewModal`).modal('hide');
 						}
 					});
-
 				},
 				error: function() {
 					alert("error");
@@ -471,8 +511,7 @@ $(document).ready(function() {
 		}
 	}
 	// POST Ajax おすすめ
-	function sendRecomendation() {
-		let selectedValList = $(`#toMemberId`).val();
+	function sendRecomendation(selectedValList) {
 		for (i = 0; i < selectedValList.length; i++) {
 			let formData = {
 				bookId: $(`#recomBookId`).val(),
