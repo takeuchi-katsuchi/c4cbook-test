@@ -15,9 +15,10 @@ import jp.co.c4c.controller.form.DetailForm;
 import jp.co.c4c.db.dto.ApiResponse;
 import jp.co.c4c.db.dto.BK_M_MemBasicDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.BK_T_RecomDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.service.DetailService;
+import jp.sf.amateras.mirage.exception.SQLRuntimeException;
 
 
 /**
@@ -113,16 +114,22 @@ public class DetailApiController {
      * @return
      */
     @RequestMapping(value = "/api/sendRecomendation", method = RequestMethod.POST)
-    public ResponseEntity<Object> sendRecommendation(@RequestBody BK_T_RecomDto bk_T_RecomDto) {
-        // おすすめする人をDBから取得
+    public ResponseEntity<Object> sendRecommendation(@RequestBody BK_T_RecomDto bk_T_RecomDto) throws SQLRuntimeException {
+        // おすすめする人の名前をDBから取得
         BK_M_MemBasicDto bk_M_MemBasicDto = detailService.getMemberById(bk_T_RecomDto.getToMemId());
         String toMemName = bk_M_MemBasicDto.getMemName();
         ApiResponse<BK_T_RecomDto> response = new ApiResponse<>();
-        response.setStatus(toMemName + "さんにおすすめしました。");
-        //　おすすめを登録
-        detailService.saveRecom(bk_T_RecomDto);
 
-        return new ResponseEntity<Object>(response, HttpStatus.OK);
+        try {
+            //　おすすめを登録
+            detailService.saveRecom(bk_T_RecomDto);
+            response.setStatus(toMemName + "さんにおすすめしました。");
+            return new ResponseEntity<Object>(response, HttpStatus.OK);
+        } catch (SQLRuntimeException e) {
+            System.out.println(e);
+            response.setStatus(toMemName + "さんにはおすすめ済みです。");
+            return new ResponseEntity<Object>(response, HttpStatus.OK);
+        }
     }
 
     /**

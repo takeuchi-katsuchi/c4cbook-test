@@ -110,7 +110,7 @@ section.bdy div.contents div.offer p.com {
  flex: 1;
 }
 
-.tab-label:not (:last-of-type ) {
+.tab-label:not :last-of-type {
  margin-right: 5px;
 }
 
@@ -120,7 +120,7 @@ section.bdy div.contents div.offer p.com {
  overflow: hidden;
  opacity: 0;
 }
-/* アクティブなタブ */
+/* 繧｢繧ｯ繝�繧｣繝悶↑繧ｿ繝� */
 .tab-switch:checked+.tab-label {
  background: DeepSkyBlue;
 }
@@ -133,7 +133,7 @@ section.bdy div.contents div.offer p.com {
  transition: .5s opacity;
  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
 }
-/* ラジオボタン非表示 */
+/* 繝ｩ繧ｸ繧ｪ繝懊ち繝ｳ髱櫁｡ｨ遉ｺ */
 .tab-switch {
  display: none;
 }
@@ -141,4 +141,24 @@ section.bdy div.contents div.offer p.com {
 section.ftr {
  background-color: #66CCFF;
  height: 10px;
+}
+
+/* おすすめ・レビューモーダル用 */
+#toMemberWrapper {
+ height: 100px;
+ width: 250px;
+ overflow-y: scroll;
+ border: 1px solid #ced4da;
+ border-radius: .25rem;
+}
+
+#toMem {
+ cursor: pointer;
+}
+#toMem:hover {
+ background-color: #fffacd;
+}
+
+.selected {
+ background-color: #fffacd;
 }
