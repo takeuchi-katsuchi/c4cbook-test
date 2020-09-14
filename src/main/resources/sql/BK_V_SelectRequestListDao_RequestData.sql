@@ -9,6 +9,8 @@ select
     book_db.BK_T_REQUEST.MEM_ID,
     book_db.BK_T_REQUEST.comment,
     book_db.BK_T_REQUEST.REQUEST_STATUS,
+    book_db.BK_T_REQUEST.REJECT_COMMENT,
+    book_db.BK_T_REQUEST.CREATE_AT,
     RM.MEM_NAME,
     CC.REQ_COUNT
 from

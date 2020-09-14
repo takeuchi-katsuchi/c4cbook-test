@@ -1,5 +1,7 @@
 package jp.co.c4c.db.dto;
 
+import java.util.Date;
+
 public class V_RequestDto {
 
     /////////////////////
@@ -15,12 +17,28 @@ public class V_RequestDto {
     private String author;
     /** 著者かな */
     private String authorKana;
+    /** 本画像 */
+    private byte[] bookImg;
     /** 要望者ID */
     private String memId;
+    /** 要望コメント */
+    private String comment;
     /** 要望ステータス */
     private String requestStatus;
+    /** 否認コメント */
+    private String rejectComment;
+    /** データ作成日時 */
+    private Date createAt;
+
+    /////////////////////
+    // BK_M_MemBasicDto
+    /////////////////////
     /** 要望者名 */
     private String memName;
+
+    /////////////////////
+    // その他
+    /////////////////////
     /** 応援数 */
     private int reqCount;
 
@@ -104,6 +122,22 @@ public class V_RequestDto {
     }
 
     /**
+     * 著者かなを取得する
+     * @return bookImg
+     */
+    public byte[] getBookImg() {
+        return bookImg;
+    }
+
+    /**
+     * 著者かなを設定する
+     * @param authorKana
+     */
+    public void setBookImg(byte[] bookImg) {
+        this.bookImg = bookImg;
+    }
+
+    /**
      * 要望者IDを取得する
      * @return memId
      */
@@ -120,6 +154,22 @@ public class V_RequestDto {
     }
 
     /**
+     * 要望者コメントを取得する
+     * @return memId
+     */
+    public String getComment() {
+        return comment;
+    }
+
+    /**
+     * 要望者コメントを設定する
+     * @param memId セットする memId
+     */
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    /**
      * 要望ステータスを取得する
      * @return requestStatus
      */
@@ -133,6 +183,38 @@ public class V_RequestDto {
      */
     public void setRequestStatus(String requestStatus) {
         this.requestStatus = requestStatus;
+    }
+
+    /**
+     * 否認コメントを取得する
+     * @return rejectComment
+     */
+    public String getRejectComment() {
+        return rejectComment;
+    }
+
+    /**
+     * 否認コメントを設定する
+     * @param rejectComment セットする rejectComment
+     */
+    public void setRejectComment(String rejectComment) {
+        this.rejectComment = rejectComment;
+    }
+
+    /**
+     * データ作成日時を取得する
+     * @return createAt
+     */
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    /**
+     * データ作成日時を設定する
+     * @param createAt セットする createAt
+     */
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
     }
 
     /**
