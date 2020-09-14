@@ -15,8 +15,9 @@
  <link rel="stylesheet" href="resources/css/request.css" media="screen">
  <link rel="stylesheet" href="resources/css/request-cell.css" media="screen">
  <script type="text/javascript" src="resources/js/request.js"></script>
+ <script type="text/javascript" src="resources/js/_cmn.js"></script>
 </head>
-<body>
+<body onload="requestOnload();">
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
  <section class="bdy">
   <div class="contents">
@@ -27,11 +28,13 @@
     <c:forEach items="${requestForm.reqInfoList}" varStatus="status" var="reqInfo">
      <div class="line">
       <div class="book_img_area">
-       <img class="bookImg" id="bookImg" src="resources/img/sample_book.jpg" alt="">
+       <img class="book-img" id="bookImg" src="resources/img/sample_book.jpg" alt="">
       </div>
       <div class="book_info">
        <div class="name"><c:out value="${reqInfo.title}"/></div>
        <div class="author"><c:out value="${reqInfo.author}"/></div>
+      </div>
+      <div class="requester_info">
        <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
        <div class="requestDate">要望日:<c:out value="2020/09/04"/></div>
       </div>
@@ -41,12 +44,21 @@
       </div>
       <div class="reason" id="reason_close">
        <div class="sub-ttl">要望理由</div>
-       <div class="reason-text"><c:out value="${reqInfo.comment}"/></div>
+       <div class="reason-text">
+<%--        <c:out value="${reqInfo.comment}"/> --%>
+        要望理由要望理由要望理由要望理由<BR>
+        要望理由要望理由要望理由要望理由<BR>
+        要望理由要望理由要望理由要望理由<BR>
+        要望理由要望理由要望理由要望理由
+       </div>
        <div class="readmore">
         <a href="#" class="readMoreBtn" onclick="readMoreReason(${status.index});return false;" >ReadMore...</a>
        </div>
       </div>
       <div class="rejected_img">
+       <div class="">
+        <img class="reject-arrow" src="resources/img/arrow_reject.png" alt="">
+       </div>
       </div>
       <div class="reason_reject" id="reason_reject_close">
        <div class="sub-ttl">却下理由</div>
