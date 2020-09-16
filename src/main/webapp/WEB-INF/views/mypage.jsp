@@ -12,7 +12,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>マイページ画面</title>
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
-<link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
+<link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/mypage.css" media="screen">
 </head>
 <body>
@@ -31,13 +31,13 @@
      <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">予約・履歴</label>
      <div class="tab-content">
       <div class="col">
-        <jsp:include page="./top-cell.jsp"></jsp:include>
+        <jsp:include page="./book-list.jsp"></jsp:include>
       </div>
       <hr style="border: 0; border-top: 1.5px solid lightgray;">
       <div class="col">
        <img style="width: 130px; height: auto; float: left;" src="./sample_book.jpg" alt="">
        <div class="sub-contents">
-        <jsp:include page="./top-cell.jsp"></jsp:include>
+        <jsp:include page="./book-list.jsp"></jsp:include>
        </div>
       </div>
      </div>

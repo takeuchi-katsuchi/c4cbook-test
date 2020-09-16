@@ -13,14 +13,14 @@
 <title>トップ画面</title>
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/top.css" media="screen">
-<link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
+<link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <script src="https://kit.fontawesome.com/fdfc67613f.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="resources/js/top.js"></script>
+<script type="text/javascript" src="resources/js/_cmn.js"></script>
 </head>
 <body>
  <jsp:include page="./header.jsp"></jsp:include>
  <section class="bdy">
-  <jsp:include page="./top-cell.jsp"></jsp:include>
+  <jsp:include page="./book-list.jsp"></jsp:include>
  </section>
 </body>
 </html>
