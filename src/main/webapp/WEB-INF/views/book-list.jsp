@@ -21,7 +21,17 @@
   <div class="row book_info">
    <div class="name">${topAndDetail.title}</div>
    <div class="author">${topAndDetail.author}</div>
-   <div class="recommended">${topAndDetail.memId}に貸出中</div>
+   <c:choose>
+  	<c:when test="${topAndDetail.memName != null}">
+     <%-- 条件に当てはまる場合 --%>
+     <div class="rent_disable">${topAndDetail.memName}に貸出中</div>
+  	</c:when>
+  	<c:otherwise>
+     <%-- 上記すべての条件に当てはまらない場合 --%>
+     <div class="rent_able">貸出可能です</div>
+  	</c:otherwise>
+   </c:choose>
+
     <ul class="tag">
      <li>${topAndDetail.tagIds}</li>
     </ul>
