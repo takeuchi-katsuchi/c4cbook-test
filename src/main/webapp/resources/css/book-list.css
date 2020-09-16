@@ -94,17 +94,30 @@ div.author {
  padding-top: 3px;
  font-size: 11px;
 }
-div.recommended {
+div.rent_able {
  margin-top: 4px;
  margin-bottom: 4px;
  padding: 0.1em;
  padding-left: 0.4em;
  width: 130px;
- background-color: orange;
  border-radius: 5%;
  font-size: 11px;
  color: white;
+ background-color: blue;
 }
+
+div.rent_disable {
+ margin-top: 4px;
+ margin-bottom: 4px;
+ padding: 0.1em;
+ padding-left: 0.4em;
+ width: 130px;
+ border-radius: 5%;
+ font-size: 11px;
+ color: white;
+ background-color: orange;
+}
+
 ul.tag {
  width: 150px;
  padding: 0;
