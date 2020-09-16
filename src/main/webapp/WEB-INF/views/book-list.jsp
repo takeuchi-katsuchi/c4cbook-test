@@ -10,7 +10,7 @@
 <c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
  <div class="book_box">
   <div class="row book_img">
-   <img class="javabook" src="resources/img/sample_book.jpg" alt="">
+   <img class="book-img" src="resources/img/sample_book.jpg" alt="">
    <i class="fas fa-book-open fa-2x"></i>
    <i class="noread fas fa-book-open fa-2x"></i>
    <p class='book_count'>${topAndDetail.lendCount}</p>
