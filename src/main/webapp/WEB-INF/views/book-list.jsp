@@ -8,9 +8,12 @@
 <!DOCTYPE html>
 <section class="request">
 <c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
+ <c:url var="detailLink" value="/detail">
+    <c:param name="bookId" value="${topAndDetail.bookId}" />
+ </c:url>
  <div class="book_box">
   <div class="row book_img">
-   <img class="book-img" src="resources/img/sample_book.jpg" alt="">
+  <a href="${detailLink}"><img class="book-img" src="resources/img/sample_book.jpg" alt=""></a>
    <i class="fas fa-book-open fa-2x"></i>
    <i class="noread fas fa-book-open fa-2x"></i>
    <p class='book_count'>${topAndDetail.lendCount}</p>
@@ -19,7 +22,7 @@
    <p class='heart_count'>${topAndDetail.favCount}</p>
   </div>
   <div class="row book_info">
-   <div class="name">${topAndDetail.title}</div>
+   <div class="name"><a href="${detailLink}">${topAndDetail.title}</a></div>
    <div class="author">${topAndDetail.author}</div>
    <c:choose>
   	<c:when test="${topAndDetail.memName != null}">
