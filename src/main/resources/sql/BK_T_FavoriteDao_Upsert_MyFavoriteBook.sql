@@ -12,13 +12,10 @@ insert into book_db.BK_T_FAVORITE
    )
 values
    (
-    bookId,
-    mId,
-    delFlg,
-    createAt,
-    updateAt
+    /*bookId*/,
+    /*memId*/,
+    /*delFlg*/,
+    /*createAt*/,
+    /*updateAt*/
    )
-on DUPLICATE key update
-   DEL_FLG = delFlg,
-   UPDATE_AT = updateAt;
 ;

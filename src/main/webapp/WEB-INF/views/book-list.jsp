@@ -14,13 +14,31 @@
  <div class="book_box">
   <div class="row book_img">
   <a href="${detailLink}"><img class="book-img" src="resources/img/sample_book.jpg" alt=""></a>
-   <i class="fas fa-book-open fa-2x"></i>
-   <i class="noread fas fa-book-open fa-2x"></i>
+   <c:choose>
+    <c:when test="${topForm.myLendedBookIdList.contains(topAndDetail.bookId)}">
+      <%-- 読書済みの場合 --%>
+      <i class="fas fa-book-open fa-2x"></i>
+    </c:when>
+    <c:otherwise>
+      <%-- 読書済みでない場合 --%>
+      <i class="noread fas fa-book fa-2x"></i>
+    </c:otherwise>
+   </c:choose>
    <p class='book_count'>${topAndDetail.lendCount}</p>
-   <i class="fas fa-heart fa-2x"></i>
-   <i class="noheart fas fa-heart fa-2x"></i>
-   <p class='heart_count'>${topAndDetail.favCount}</p>
+
+   <c:choose>
+    <c:when test="${topForm.myFavoriteBookIdList.contains(topAndDetail.bookId)}">
+      <%-- お気に入りしてる場合 --%>
+      <i class="fas fa-heart fa-2x" name="fav" data-id="${topAndDetail.bookId}"></i>
+    </c:when>
+    <c:otherwise>
+     <%-- お気に入りしていない場合 --%>
+     <i class="noheart fas fa-heart fa-2x" name="fav" data-id="${topAndDetail.bookId}"></i>
+    </c:otherwise>
+   </c:choose>
+   <p class='heart_count' data-id="${topAndDetail.bookId}">${topAndDetail.favCount}</p>
   </div>
+
   <div class="row book_info">
    <div class="name"><a href="${detailLink}">${topAndDetail.title}</a></div>
    <div class="author">${topAndDetail.author}</div>

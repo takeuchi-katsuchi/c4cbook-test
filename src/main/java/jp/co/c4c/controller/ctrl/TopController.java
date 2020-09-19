@@ -1,12 +1,18 @@
 package jp.co.c4c.controller.ctrl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.c4c.controller.form.TopForm;
+import jp.co.c4c.db.dto.BK_T_FavoriteDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.TopService;
@@ -28,12 +34,28 @@ public class TopController {
     }
 
     @RequestMapping
-    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, TopForm form) {
+    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, Model model, TopForm form) {
         // ログインチェック
         boolean isLogined = commonService.isLogined(webSessionDto);
         if (!isLogined) return "redirect:login";
 
+        // 全ての本のリストをfromにセット
         form.setTopAndDetailDtoList(topService.getAllBooks());
+
+        int memId = webSessionDto.getMemId();
+        // ログインユーザーがお気に入りしている本のリストformにセット
+        List<BK_T_FavoriteDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
+        List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
+                .map(BK_T_FavoriteDto::getBookId)
+                .collect(Collectors.toList());
+        form.setMyFavoriteBookIdList(myFavoriteBookIdList);
+
+        // ログインユーザーが読書済みの本のリストを取得
+        List<V_LendHistoryDto> bk_T_LendDtoList = topService.getlendedBooks(memId);
+        List<Integer> myLendedBookIdList = bk_T_LendDtoList.stream()
+                .map(V_LendHistoryDto::getBookId)
+                .collect(Collectors.toList());
+        form.setMyLendedBookIdList(myLendedBookIdList);
 
         /* tagIdを文字列に変換 */
         for (int i = 0; i < form.getTopAndDetailDtoList().size(); i++) {
