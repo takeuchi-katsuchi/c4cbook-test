@@ -19,7 +19,7 @@ from
             book_db.BK_T_FAVORITE join book_db.M_MEM_BASIC
                 on book_db.BK_T_FAVORITE.MEM_ID = book_db.M_MEM_BASIC.MEM_ID
         where
-            book_db.BK_T_FAVORITE.MEM_ID = 2
+            book_db.BK_T_FAVORITE.MEM_ID = /*memId*/
     ) as FC
         on B.BOOK_ID = FC.BOOK_ID
 ;

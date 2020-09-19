@@ -14,13 +14,13 @@ div.row {
  display: inline-block;
 }
 div.book_img {
- padding-top: 60px;
+/*  padding-top: 60px; */
  padding-left: 20px;
  position: relative;
  height: 200px;
  width: 150px;
 }
-.fa-book-open {
+.fa-book-open,.fa-book {
  position: absolute;
  right: 65px;
  bottom: 12px;
@@ -43,8 +43,8 @@ div.book_img {
 }
 /* 本読んでいない状態 */
 .noread {
- color: pink;
- visibility: hidden;
+ color: #9de5ff;
+ visibility: #FFEEFF;
 }
 .fa-heart {
  position: absolute;
@@ -137,4 +137,8 @@ ul.tag li:before {
  content: '●';
  color: white;
  margin-right: 1px;
+}
+
+i.fa-heart {
+ cursor:pointer;
 }
