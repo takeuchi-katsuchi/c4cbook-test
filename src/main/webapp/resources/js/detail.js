@@ -463,17 +463,32 @@ $(document).ready(function() {
 						console.log(selectedValList);
 					});
 
-					$(`#sendReview`).on('click', function() {
-						if (!confirm('レビューを送信しますか')) {
-							return false;
+					let reviewLength;
+					$(document).on('input', '#reviewContent',function(){
+						reviewLength = $(this).val().length;
+						$('#reviewLength').text(reviewLength);
+						if(1000 < reviewLength){
+							$('#reviewLength').addClass('red');
 						} else {
-							if (0 < selectedValList.length) {
-								sendRecomendation(selectedValList);
+							$('#reviewLength').removeClass('red');
+						}
+					});
+
+					$(`#sendReview`).on('click', function() {
+						if (1000 < reviewLength){
+							alert("レビューは1000文字以内で入力してください。")
+						} else {
+							if (!confirm('レビューを送信しますか')) {
+								return false;
+							} else {
+								if (0 < selectedValList.length) {
+									sendRecomendation(selectedValList);
+								}
+								if (reviewLength !== 0) {
+									sendReview(response.data["lendId"]);
+								}
+								$(`#reviewModal`).modal('hide');
 							}
-							if ($('#reviewContent').val() !== "") {
-								sendReview(response.data["lendId"]);
-							}
-							$(`#reviewModal`).modal('hide');
 						}
 					});
 				},

@@ -120,7 +120,7 @@ section.bdy div.contents div.offer p.com {
  overflow: hidden;
  opacity: 0;
 }
-/* 繧｢繧ｯ繝�繧｣繝悶↑繧ｿ繝� */
+/* 郢ｧ�ｽ｢郢ｧ�ｽｯ郢晢ｿｽ郢ｧ�ｽ｣郢晄じ竊醍ｹｧ�ｽｿ郢晢ｿｽ */
 .tab-switch:checked+.tab-label {
  background: DeepSkyBlue;
 }
@@ -133,7 +133,7 @@ section.bdy div.contents div.offer p.com {
  transition: .5s opacity;
  box-shadow: 0 0 3px rgba(0, 0, 0, .2);
 }
-/* 繝ｩ繧ｸ繧ｪ繝懊ち繝ｳ髱櫁｡ｨ遉ｺ */
+/* 郢晢ｽｩ郢ｧ�ｽｸ郢ｧ�ｽｪ郢晄�翫■郢晢ｽｳ鬮ｱ讚�ｽ｡�ｽｨ驕会ｽｺ */
 .tab-switch {
  display: none;
 }
@@ -143,7 +143,7 @@ section.ftr {
  height: 10px;
 }
 
-/* おすすめ・レビューモーダル用 */
+/* 縺翫☆縺吶ａ繝ｻ繝ｬ繝薙Η繝ｼ繝｢繝ｼ繝�繝ｫ逕ｨ */
 #toMemberWrapper {
  height: 100px;
  width: 250px;
@@ -161,4 +161,8 @@ section.ftr {
 
 .selected {
  background-color: #fffacd;
+}
+
+.red {
+ color: red;
 }

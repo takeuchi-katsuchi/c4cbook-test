@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>詳細画面</title>
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
-<link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
+<link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/detail.css" media="screen">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -54,7 +54,7 @@
         </ul>
 
         <div class="contents">
-<!--             <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
+           <!--  <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
             <button id="openLendingProcedureModal" type="button" class="btn btn-secondary">
                 貸出し・予約
              </button>
@@ -231,6 +231,7 @@
                         <form id="reviewForm" class="mt-2" action="">
                             <textarea id="reviewContent" class="form-control" rows="5" cols=""></textarea>
                         </form>
+                        <div class="text-right"><span id="reviewLength">0</span>/1000</div>
                     </div>
                 </div>
                 <div class="modal-footer">
