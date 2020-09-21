@@ -166,3 +166,24 @@ section.ftr {
 .red {
  color: red;
 }
+
+.table td, .table th {
+ padding:0px !important;
+}
+
+.sticky_table_wrapper {
+  height: 200px;
+  width: 250px;
+  overflow-y: scroll;
+}
+
+.sticky_table thead th {
+  /* 縦スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  /* tbody内のセルより手前に表示する */
+  z-index: 1;
+  background-color: #ced4da;
+
+}

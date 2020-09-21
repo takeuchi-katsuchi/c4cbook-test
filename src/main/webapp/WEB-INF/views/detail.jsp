@@ -69,9 +69,7 @@
 
             <div class="tab">
                 <div class="tab-wrap">
-                    <input id="TAB-01" type="radio" name="TAB"
-                        class="tab-switch" checked="checked" /><label
-                        class="tab-label" for="TAB-01">貸出し履歴</label>
+                    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">貸出し履歴</label>
                     <div class="tab-content">
                         <c:choose>
                             <c:when test="${empty detailForm.v_LendHistoryDtoList}">
@@ -79,21 +77,30 @@
                             </c:when>
 
                             <c:otherwise>
-                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
-                                    <ul>
-                                        <li>
-                                            <fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" />
-                                            〜<fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" />
-                                            ${lendHistory.memName}
-                                        </li>
-                                    </ul>
-                                </c:forEach>
+                            	<div class="container sticky_table_wrapper">
+		                            	<table class="text-center table table-bordered sticky_table">
+		                            		<thead>
+			                            		<tr>
+			                            			<th>貸出日</th>
+			                            			<th>返却日</th>
+			                            			<th>名前</th>
+			                            		</tr>
+		                            		</thead>
+			                                <tbody>
+				                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
+			                            		<tr>
+			                            			<td><fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" /></td>
+			                            			<td><fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" /></td>
+			                            			<td>${lendHistory.memName}</td>
+			                            		</tr>
+				                                </c:forEach>
+			                                </tbody>
+		                            	</table>
+	                            </div>
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <input id="TAB-02" type="radio" name="TAB"
-                        class="tab-switch" /><label class="tab-label"
-                        for="TAB-02">お気に入りしている人</label>
+                    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">お気に入りしている人</label>
                     <div class="tab-content">
                         <c:choose>
                             <c:when
@@ -101,7 +108,7 @@
                                 <div>お気に入りしている人はいません。</div>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="favoriteMember">
+                                <c:forEach items="${detailForm.v_FavoriteMemberDtoList}" var="favoriteMember">
                                             <ul>
                                                 <li>${favoriteMember.memName}</li>
                                             </ul>

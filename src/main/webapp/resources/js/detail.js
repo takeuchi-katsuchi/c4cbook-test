@@ -463,7 +463,7 @@ $(document).ready(function() {
 						console.log(selectedValList);
 					});
 
-					let reviewLength;
+					let reviewLength = 0;
 					$(document).on('input', '#reviewContent',function(){
 						reviewLength = $(this).val().length;
 						$('#reviewLength').text(reviewLength);
