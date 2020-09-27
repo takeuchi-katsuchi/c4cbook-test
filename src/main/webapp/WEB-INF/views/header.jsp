@@ -10,8 +10,8 @@
 <div class="header">
   <div class="top">C4CBOOK</div>
   <div class="menu">
-    <div><img src="resources/img/filter.png" alt="フィルタ"></div>
-    <div><img src="resources/img/sort.png" alt="ソート"></div>
+    <div><img src="resources/img/filter.png" alt="フィルタ" class="openfilter"></div>
+    <div><img src="resources/img/sort.png" alt="ソート" class="opensort"></div>
     <div><img src="resources/img/news.png" alt="お知らせ"></div>
     <div><img src="resources/img/menu.png" alt="メニュー"></div>
   </div>
