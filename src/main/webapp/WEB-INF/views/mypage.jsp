@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/mypage.css" media="screen">
+<link rel="stylesheet" href="resources/css/modal.css" media="screen">
 </head>
 <body>
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
@@ -49,5 +50,7 @@
    </div>
   </div>
  </section>
+ <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+ <jsp:include page="./modal.jsp"></jsp:include>
 </body>
 </html>
