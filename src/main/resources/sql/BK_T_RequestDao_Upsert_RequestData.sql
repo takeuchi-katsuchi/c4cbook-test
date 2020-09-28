@@ -18,19 +18,19 @@ insert into book_db.BK_T_REQUEST
 )
 values
 (
-    requestId,
-    title,
-    titleKana,
-    author,
-    authorKana,
-    bookImg,
-    memId,
-    comment,
-    requestStatus,
-    rejectComment,
-    delFlg,
-    createAt,
-    updateAt
+    /*requestId*/,
+    /*title*/,
+    /*titleKana*/,
+    /*author*/,
+    /*authorKana*/,
+    /*bookImg*/,
+    /*memId*/,
+    /*comment*/,
+    /*requestStatus*/,
+    /*rejectComment*/,
+    /*delFlg*/,
+    /*createAt*/,
+    /*updateAt*/
 )
 on DUPLICATE key update REQUEST_STATUS = status, REJECT_COMMENT = rejectComment, DEL_FLG = delFlg, UPDATE_AT = updateAt
 ;
