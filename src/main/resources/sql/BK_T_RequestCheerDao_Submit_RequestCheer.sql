@@ -10,10 +10,10 @@ insert into book_db.BK_T_REQUEST_CHEER
 )
 values
 (
-    requestId,
-    memId,
-    delFlg,
-    createAt,
-    updateAt
+    /*requestId*/,
+    /*memId*/,
+    /*delFlg*/,
+    /*createAt*/,
+    /*updateAt*/
 )
 ;
