@@ -69,46 +69,6 @@ imgResize();
 		};
 
 	};
-
-	//////////却下理由の表示//////////
-
-	//テスト用の配列、本番は引数で配列受けて処理する
-	var testRejectFlgArray = new Array(0, 1);
-
-	//本の画像応援ボタン　グレーアウト用
-	var bookImgs = document.getElementsByClassName( "book-img" ) ;
-	var bookImgAreas = document.getElementsByClassName( "book_img_area" ) ;
-	var cheerImgs = document.getElementsByClassName( "cheerImg" ) ;
-	var cheerImgAreas = document.getElementsByClassName( "cheer_img_area" ) ;
- var bookInfo = document.getElementsByClassName("book_info");
- var requesterInfo = document.getElementsByClassName("requester_info");
-
-	//却下理由　非表示用
-	var rejectImgss = document.getElementsByClassName( "rejected_img" ) ;
-	var rejectReasons = document.getElementsByClassName( "reason_reject" ) ;
-
-	for (var i = 0;  i < testRejectFlgArray.length;  i++) {
-
-		//拒否された物であれば（拒否フラグたってれば）
-		if ( testRejectFlgArray[i] == 1 ) {
-
-			//グレーアウト
-			bookImgs[i].className += " end_pblctn";
-			bookImgAreas[i].className += " end_pblctn";
-			cheerImgs[i].className += " end_pblctn";
-			cheerImgAreas[i].className += " end_pblctn";
-   bookInfo[i].className += " end_pblctn";
-   requesterInfo[i].className += " end_pblctn";
-
-		//却下されたものじゃなければ
-		} else {
-
-			//非表示
-			rejectImgss[i].className += " hide";
-			rejectReasons[i].className += " hide";
-
-		};
-	};
 }
 
 //////////モーダル//////////

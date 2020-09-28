@@ -27,39 +27,45 @@
    <section class="td-rq">
     <c:forEach items="${requestForm.reqInfoList}" varStatus="status" var="reqInfo">
      <div class="line">
-      <div class="book_img_area">
-       <img class="book-img" id="bookImg" src="resources/img/sample_book.jpg" alt="">
-      </div>
-      <div class="book_info">
-       <div class="name"><c:out value="${reqInfo.title}"/></div>
-       <div class="author"><c:out value="${reqInfo.author}"/></div>
-      </div>
-      <div class="requester_info">
-       <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
-       <div class="requestDate">要望日:<fmt:formatDate value="${reqInfo.createAt}" pattern="M月 d日" /></div>
-      </div>
-      <div class="cheer_img_area">
-       <div class="cheer_count"><c:out value="${reqInfo.reqCount}"/></div>
-       <img class="cheerImg" src="resources/img/cheering.png" alt="" onclick="cheerBook();">
-      </div>
-      <div class="reason" id="reason_close">
-       <div class="sub-title">要望理由</div>
-       <div class="reason-text"><c:out value="${reqInfo.comment}"/></div>
-       <div class="readmore">
-        <a href="#" class="readMoreBtn" onclick="readMoreReason(${status.index});return false;" >ReadMore...</a>
+      <div class="line-book-info" <c:if test="${reqInfo.requestStatus == 9 }">id="end_pblctn"</c:if>>
+       <div class="book_img_area">
+        <img class="book-img" id="bookImg" src="resources/img/sample_book.jpg" alt="">
+       </div>
+       <div class="book_info">
+        <div class="name"><c:out value="${reqInfo.title}"/></div>
+        <div class="author"><c:out value="${reqInfo.author}"/></div>
+       </div>
+       <div class="requester_info">
+        <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
+        <div class="requestDate">要望日:<fmt:formatDate value="${reqInfo.createAt}" pattern="M月 d日" /></div>
+       </div>
+       <div class="cheer_img_area">
+        <div class="cheer_count"><c:out value="${reqInfo.reqCount}"/></div>
+        <img class="cheerImg" src="resources/img/cheering.png" alt="" onclick="cheerBook();">
        </div>
       </div>
-      <div class="rejected_img">
-       <div class="">
-        <img class="reject-arrow" src="resources/img/arrow_reject.png" alt="">
+      <div class="line-reasons">
+       <div class="reason" id="reason_close">
+        <div class="sub-title">要望理由</div>
+        <div class="reason-text"><c:out value="${reqInfo.comment}"/></div>
+        <div class="readmore">
+         <a href="#" class="readMoreBtn" onclick="readMoreReason(${status.index});return false;" >ReadMore...</a>
+        </div>
        </div>
-      </div>
-      <div class="reason_reject" id="reason_reject_close">
-       <div class="sub-title">却下理由</div>
-       <div class="reason-text"><c:out value="${reqInfo.rejectComment}"/></div>
-       <div class="readmore_reject">
-        <a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${status.index});return false;" >ReadMore...</a>
+       <c:if test="${reqInfo.requestStatus == 9 }">
+       <div class="line-reason-reject">
+        <div class="rejected_img">
+          <img class="reject-arrow" src="resources/img/arrow_reject.png" alt="">
+        </div>
+        <div class="reason_reject" id="reason_reject_close">
+         <div class="sub-title">却下理由</div>
+         <div class="reason-text"><c:out value="${reqInfo.rejectComment}"/></div>
+         <div class="readmore_reject">
+          <a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${status.index});return false;" >ReadMore...</a>
+         </div>
+        </div>
        </div>
+       </c:if>
       </div>
      </div>
     </c:forEach>
@@ -90,7 +96,7 @@
      <div>著者</div>
      <div><input type="text"></div>
      <div>要望理由</div>
-     <div><textarea class="reg-reason" id="textarea" wrap="hard" cols="18"></textarea></div>
+     <div><textarea class="reg-reason" id="textarea"></textarea></div>
     </div>
     <div class="reg-img"></div>
    </div>
