@@ -49,6 +49,15 @@ div.line {
  -ms-grid-columns: 100px 50px 140px 70px;
 }
 
+.line-book-info {
+  grid-row: 1 / 3;
+  grid-column: 1 / 5;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 4;
+}
+
 div.book_img_area {
 /*   background-color: #000000; */
   grid-row: 1 / 3;
@@ -247,7 +256,7 @@ div.end_pblctn {
 
 }
 
-.sub-ttl {
+.sub-title {
  border-left: 7px solid;
  line-height: 15px;
  font-size: 13px;
@@ -258,11 +267,16 @@ div.end_pblctn {
 }
 
 .reason-text {
- border: 1px solid black;
- padding: 5px 0px 0px 5px;
+ padding: 5px 0px 0px 10px;
 }
 
 .reject-arrow {
  width: 100px;
- height: 68px;
+ height: 67px;
+}
+
+.reg-reason {
+ resize: none;
+ width: 300px;
+ line-height: 30px;
 }
