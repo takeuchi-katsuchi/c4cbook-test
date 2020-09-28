@@ -24,7 +24,7 @@
 
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-4 mt-4">
+            <div class="col-sm-4 mt-4">
             <h4>ログイン</h4>
                 <form action="" method="post">
                     <select class="form-control" name="memId">

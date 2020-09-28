@@ -17,7 +17,7 @@ import jp.sf.amateras.mirage.SqlResource;
  *
  */
 @Component
-public class SelectFavoriteMembersDao {
+public class SelectFavoritedMembersDao {
 
     @Autowired
     public SqlManager sqlManager;
@@ -27,8 +27,8 @@ public class SelectFavoriteMembersDao {
      * @param bookId
      * @return
      */
-    public List<V_FavoriteMemberDto> seletctFavoriteMembersById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetFavoriteMembers.sql");
+    public List<V_FavoriteMemberDto> seletctFavoritedMembersById(int bookId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_FavoritedBookDataByBookId.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);

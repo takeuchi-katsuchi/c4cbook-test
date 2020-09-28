@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>詳細画面</title>
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
-<link rel="stylesheet" href="resources/css/top-cell.css" media="screen">
+<link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/detail.css" media="screen">
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -54,7 +54,7 @@
         </ul>
 
         <div class="contents">
-<!--             <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
+           <!--  <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
             <button id="openLendingProcedureModal" type="button" class="btn btn-secondary">
                 貸出し・予約
              </button>
@@ -69,9 +69,7 @@
 
             <div class="tab">
                 <div class="tab-wrap">
-                    <input id="TAB-01" type="radio" name="TAB"
-                        class="tab-switch" checked="checked" /><label
-                        class="tab-label" for="TAB-01">貸出し履歴</label>
+                    <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">貸出し履歴</label>
                     <div class="tab-content">
                         <c:choose>
                             <c:when test="${empty detailForm.v_LendHistoryDtoList}">
@@ -79,21 +77,30 @@
                             </c:when>
 
                             <c:otherwise>
-                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
-                                    <ul>
-                                        <li>
-                                            <fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" />
-                                            〜<fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" />
-                                            ${lendHistory.memName}
-                                        </li>
-                                    </ul>
-                                </c:forEach>
+                            	<div class="container sticky_table_wrapper">
+		                            	<table class="text-center table table-bordered sticky_table">
+		                            		<thead>
+			                            		<tr>
+			                            			<th>貸出日</th>
+			                            			<th>返却日</th>
+			                            			<th>名前</th>
+			                            		</tr>
+		                            		</thead>
+			                                <tbody>
+				                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
+			                            		<tr>
+			                            			<td><fmt:formatDate value="${lendHistory.fromDate}" pattern="yyyy/MM/dd" /></td>
+			                            			<td><fmt:formatDate value="${lendHistory.toDate}" pattern="yyyy/MM/dd" /></td>
+			                            			<td>${lendHistory.memName}</td>
+			                            		</tr>
+				                                </c:forEach>
+			                                </tbody>
+		                            	</table>
+	                            </div>
                             </c:otherwise>
                         </c:choose>
                     </div>
-                    <input id="TAB-02" type="radio" name="TAB"
-                        class="tab-switch" /><label class="tab-label"
-                        for="TAB-02">お気に入りしている人</label>
+                    <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">お気に入りしている人</label>
                     <div class="tab-content">
                         <c:choose>
                             <c:when
@@ -101,7 +108,7 @@
                                 <div>お気に入りしている人はいません。</div>
                             </c:when>
                             <c:otherwise>
-                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="favoriteMember">
+                                <c:forEach items="${detailForm.v_FavoriteMemberDtoList}" var="favoriteMember">
                                             <ul>
                                                 <li>${favoriteMember.memName}</li>
                                             </ul>
@@ -231,6 +238,7 @@
                         <form id="reviewForm" class="mt-2" action="">
                             <textarea id="reviewContent" class="form-control" rows="5" cols=""></textarea>
                         </form>
+                        <div class="text-right"><span id="reviewLength">0</span>/1000</div>
                     </div>
                 </div>
                 <div class="modal-footer">
