@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.c4c.controller.form.RequestForm;
 import jp.co.c4c.db.dto.WebSessionDto;
@@ -13,12 +14,20 @@ import jp.co.c4c.service.RequestService;
 
 @Controller
 @RequestMapping("/request")
+@SessionAttributes("webSessionDto")
 public class RequestController {
 
     @Autowired
     RequestService requestService;
     @Autowired
     CommonService commonService;
+
+    //セッションのオブジェクト代入格納メソッド
+    @ModelAttribute("webSessionDto")
+    public WebSessionDto setWebSessionDto(WebSessionDto webSessionDto) {
+        return webSessionDto;
+    }
+
 
     @RequestMapping
     public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, Model model, RequestForm form) {

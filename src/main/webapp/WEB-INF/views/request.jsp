@@ -40,7 +40,7 @@
       </div>
       <div class="cheer_img_area">
        <div class="cheer_count"><c:out value="${reqInfo.reqCount}"/></div>
-       <img class="cheerImg" src="resources/img/cheering.png" alt="">
+       <img class="cheerImg" src="resources/img/cheering.png" alt="" onclick="cheerBook();">
       </div>
       <div class="reason" id="reason_close">
        <div class="sub-title">要望理由</div>
@@ -97,7 +97,7 @@
 
    <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-    <button id="save" type="button" class="btn btn-primary">要望する</button>
+    <button id="save" type="button" class="btn btn-primary" onclick="requestBook();">要望する</button>
    </div>
 
    </div>

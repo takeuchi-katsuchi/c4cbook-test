@@ -137,23 +137,21 @@ $(document).ready(function() {
 //////////応援ボタン//////////
 function cheerBook(){
    var formData = {
-   requestId: $("#postBookId").val(),
-   memId: $("#postMemberId").val(),
-   lendStatus: $("#postLendStatus").val(),
-   fromDate: $("#postFromDate").val(),
-   toDate: $("#postToDate").val()
+   requestId: 1,
+   memId: 1
   }
   if (!confirm('応援しますか?')) {
    return false;
   } else {
    $.ajax({
-    url: 'api/proceedLendReserve',
+    url: 'api/cheerBook',
     type: 'post',
     contentType: "application/json",
     data: JSON.stringify(formData),
     dataType: 'json',
     success: function(response) {
-     //kスントアップして再表示
+     //カウントアップして再表示
+     alert("sucsses");
     },
     error: function() {
      alert("error");
@@ -167,21 +165,25 @@ function cheerBook(){
 //////////「要望する」ボタン//////////
 function requestBook(){
    var formData = {
-   bookImg: $("#postBookId").val(),
-   title: $("#postMemberId").val(),
-   comment: $("#postLendStatus").val()
+   title: "あいうえお",
+   titleKana: "あいうえお",
+   author: "こばり",
+   authorKana: "こばり",
+   mem_id: 1,
+   comment: "こめんとです"
   }
   if (!confirm('応援しますか?')) {
    return false;
   } else {
    $.ajax({
-    url: 'api/proceedLendReserve',
+    url: 'api/requestBook',
     type: 'post',
     contentType: "application/json",
     data: JSON.stringify(formData),
     dataType: 'json',
     success: function(response) {
-     //kスントアップして再表示
+     //モーダルの入力欄全クリアしてモーダルを閉じる
+     alert("sucsses");
     },
     error: function() {
      alert("error");
