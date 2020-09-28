@@ -1,22 +1,27 @@
-div.header {
-  border-bottom: 3px solid #66CCFF;
+section.header {
+ border-bottom: 3px solid #66CCFF;
 }
-
-div.header div.top {
-  font-size: 30px;
-  font-weight: bold;
-  color: #66CCFF;
-  width: 40vw;
-  text-align: center;
+section.header div.top {
+ font-size: 30px;
+ font-weight: bold;
+ color: #66CCFF;
+ text-align: center;
+ display: inline-block;
 }
-div.header div {
-  display: inline-block;
+section.header div.menu {
+ color: blue;
+ margin: 0 auto;
+ display: grid;
+ grid-template-columns: repeat(4, 1fr);
+ width: 170px;
+ float: right;
+ text-align: center;
 }
-div.header div.menu {
-  color: blue;
-  text-align: right;
-  width: 50vw;
+section header div.menu div {
+ display: flex;
+ align-items: center;
+ justify-content: center;
 }
-div.header div.menu div,img {
-  width: 10vw;
+section.header div.menu div, img {
+ width: 35px;
 }
