@@ -39,4 +39,7 @@ from
         on book_db.BK_T_REQUEST.REQUEST_ID = CC.REQUEST_ID
 where
     DEL_FLG = 0
+order by
+book_db.BK_T_REQUEST.REQUEST_STATUS = 9 ASC,
+book_db.BK_T_REQUEST.CREATE_AT DESC
 ;
