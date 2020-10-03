@@ -1,0 +1,145 @@
+* {
+ margin: 0;
+ padding: 0;
+}
+div.book_box {
+ display: gred;
+ padding-left: 10px;
+ height: 200px;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+div.row {
+ display: inline-block;
+}
+div.book_img {
+/*  padding-top: 60px; */
+ padding-left: 20px;
+ position: relative;
+ height: 200px;
+ width: 150px;
+}
+
+.fa-book-open,.fa-book {
+ position: absolute;
+ right: 65px;
+ bottom: 12px;
+ width: 37px;
+ height: 37px;
+ border-radius: 10px;
+ box-shadow: 0 0 3px #9de5ff;
+ color: #9de5ff;
+ background-color: white;
+}
+.book_count {
+ position: absolute;
+ right: 67px;
+ bottom: 15px;
+}
+.heart_count {
+ position: absolute;
+ right: 22px;
+ bottom: 15px;
+}
+/* ñ{ì«ÇÒÇ≈Ç¢Ç»Ç¢èÛë‘ */
+.noread {
+ color: #9de5ff;
+ visibility: #FFEEFF;
+}
+.fa-heart {
+ position: absolute;
+ right: 20px;
+ bottom: 12px;
+ width: 37px;
+ height: 37px;
+ border-radius: 10px;
+ box-shadow: 0 0 3px #9de5ff;
+ color: #FF3333;
+ background-color: white;
+}
+/* é©ï™Ç™Ç®ãCÇ…ì¸ÇËìoò^ÇµÇƒÇ¢Ç»Ç¢èÛë‘ */
+.noheart {
+ color: pink;
+ visibility: #FFEEFF;
+}
+
+div.book_info {
+ width: 170px;
+ padding-left: 25px;
+}
+div.name {
+ position: relative;
+ text-shadow: 0 0 2px white;
+ color: #333;
+ padding-right: 30px;
+ font-size: 19px;
+ font-weight: bold;
+ word-wrap: break-word;
+}
+div.name:before {
+ content: "";
+ position: absolute;
+ background: #9de5ff;
+ width: 50px;
+ height: 50px;
+ border-radius: 50%;
+ top: 50%;
+ /* border: dashed 1px white; */
+ left: -15px;
+ -webkit-transform: translateY(-50%);
+ transform: translateY(-50%);
+ z-index: -1;
+}
+div.author {
+ padding-top: 3px;
+ font-size: 11px;
+}
+div.rent_able {
+ margin-top: 4px;
+ margin-bottom: 4px;
+ padding: 0.1em;
+ padding-left: 0.4em;
+ width: 130px;
+ border-radius: 5%;
+ font-size: 11px;
+ color: white;
+ background-color: blue;
+}
+
+div.rent_disable {
+ margin-top: 4px;
+ margin-bottom: 4px;
+ padding: 0.1em;
+ padding-left: 0.4em;
+ width: 130px;
+ border-radius: 5%;
+ font-size: 11px;
+ color: white;
+ background-color: orange;
+}
+
+ul.tag {
+ width: 150px;
+ padding: 0;
+ font-size: 0px;
+}
+ul.tag li {
+ display: inline-block;
+ text-align: center;
+ font-size: 10px;
+ background: #dbebf8;
+ vertical-align: middle;
+ margin: 4px;
+ padding: 1px;
+ border-radius: 10px 0px 0px 10px;
+}
+ul.tag li:before {
+ content: 'Åú';
+ color: white;
+ margin-right: 1px;
+}
+
+i.fa-heart {
+ cursor:pointer;
+}
