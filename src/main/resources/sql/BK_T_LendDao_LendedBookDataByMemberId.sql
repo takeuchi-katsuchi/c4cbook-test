@@ -1,4 +1,4 @@
-/* BK_T_LendDao_LendedBookDataByMenberId.sql */
+/* BK_T_LendDao_LendedBookDataByMemberId.sql */
 
 -- MEM_IDは現在固定
 

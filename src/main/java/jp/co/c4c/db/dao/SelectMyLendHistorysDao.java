@@ -28,7 +28,7 @@ public class SelectMyLendHistorysDao {
      * @return
      */
     public List<V_LendHistoryDto> seletctLendHistorysByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_LendedBookDataByMenberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_LendedBookDataByMemberId.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
