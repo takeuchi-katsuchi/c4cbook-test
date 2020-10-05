@@ -7,7 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jp.co.c4c.db.dto.V_FavoriteMemberDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
@@ -17,23 +17,22 @@ import jp.sf.amateras.mirage.SqlResource;
  *
  */
 @Component
-public class SelectFavoriteMembersDao {
+public class SelectMyLendHistorysDao {
 
     @Autowired
     public SqlManager sqlManager;
 
     /**
-     * 詳細ページに表示させるお気に入りした人のデータを取得
-     * @param bookId
+     * ログインユーザーが読書済みのリストを取得
+     * @param memId
      * @return
      */
-    public List<V_FavoriteMemberDto> seletctFavoriteMembersById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetFavoriteMembers.sql");
+    public List<V_LendHistoryDto> seletctLendHistorysByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_LendedBookDataByMemberId.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
-        param.put("bookId", bookId);
-
-        return sqlManager.getResultList(V_FavoriteMemberDto.class, sqlSrc, param);
+        param.put("memId", memId);
+        return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
     }
 
 }

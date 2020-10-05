@@ -14,13 +14,14 @@ div.row {
  display: inline-block;
 }
 div.book_img {
- padding-top: 60px;
+/*  padding-top: 60px; */
  padding-left: 20px;
  position: relative;
  height: 200px;
  width: 150px;
 }
-.fa-book-open {
+
+.fa-book-open,.fa-book {
  position: absolute;
  right: 65px;
  bottom: 12px;
@@ -41,10 +42,10 @@ div.book_img {
  right: 22px;
  bottom: 15px;
 }
-/* æœ¬èª­ã‚“ã§ã„ãªã„çŠ¶æ…‹ */
+/* –{“Ç‚ñ‚Å‚¢‚È‚¢ó‘Ô */
 .noread {
- color: pink;
- visibility: hidden;
+ color: #9de5ff;
+ visibility: #FFEEFF;
 }
 .fa-heart {
  position: absolute;
@@ -57,7 +58,7 @@ div.book_img {
  color: #FF3333;
  background-color: white;
 }
-/* è‡ªåˆ†ãŒãŠæ°—ã«å…¥ã‚Šç™»éŒ²ã—ã¦ã„ãªã„çŠ¶æ…‹ */
+/* ©•ª‚ª‚¨‹C‚É“ü‚è“o˜^‚µ‚Ä‚¢‚È‚¢ó‘Ô */
 .noheart {
  color: pink;
  visibility: #FFEEFF;
@@ -134,7 +135,11 @@ ul.tag li {
  border-radius: 10px 0px 0px 10px;
 }
 ul.tag li:before {
- content: 'â—';
+ content: 'œ';
  color: white;
  margin-right: 1px;
+}
+
+i.fa-heart {
+ cursor:pointer;
 }

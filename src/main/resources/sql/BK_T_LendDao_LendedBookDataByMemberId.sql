@@ -1,4 +1,4 @@
-/* BK_T_LendDao_LendedBookDataByMenberId.sql */
+/* BK_T_LendDao_LendedBookDataByMemberId.sql */
 
 -- MEM_IDは現在固定
 
@@ -23,7 +23,9 @@ join
 where
   book_db.BK_T_LEND.DEL_FLG = 0
 and
-  book_db.BK_T_LEND.MEM_ID = 2
+  book_db.BK_T_LEND.MEM_ID = /*memId*/
+and
+  book_db.BK_T_LEND.LEND_STATUS= 19
 order by
   book_db.BK_T_LEND.BOOK_ID asc,
   book_db.BK_T_LEND.LEND_ID asc

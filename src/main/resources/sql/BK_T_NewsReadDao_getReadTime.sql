@@ -1,11 +1,13 @@
-/* BK_T_NewsReadDao_update.sql */
-
--- MEM_IDは現在固定
+/* BK_T_NewsReadDao_getReadTime.sql */
 
 select
-    READ_AT
+    R.MEM_ID,
+    R.READ_AT,
+    R.DEL_FLG,
+    R.CREATE_AT,
+    R.UPDATE_AT
 from
-    book_db.BK_T_NEWS_READ
+    book_db.BK_T_NEWS_READ as R
 where
-    MEM_ID = 2
+     MEM_ID = /*memId*/
 ;

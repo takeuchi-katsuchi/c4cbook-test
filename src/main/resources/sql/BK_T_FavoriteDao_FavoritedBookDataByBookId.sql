@@ -1,11 +1,13 @@
 /* BK_T_FavoriteDao_FavoritedBookDataByBookId.sql */
-select
+SELECT
+	F.BOOK_ID,
     F.MEM_ID,
-    book_db.M_MEM_BASIC.MEM_NAME
-from
-    book_db.BK_T_FAVORITE F join book_db.M_MEM_BASIC
-        on F.MEM_ID = book_db.M_MEM_BASIC.MEM_ID
-where
-    F.BOOK_ID =
-    /*bookId*/
-;
+    M.MEM_NAME
+FROM
+	book_db.BK_T_FAVORITE as F
+JOIN
+	book_db.M_MEM_BASIC as M
+ON
+	F.MEM_ID = M.MEM_ID
+WHERE
+	BOOK_ID = /*bookId*/;
