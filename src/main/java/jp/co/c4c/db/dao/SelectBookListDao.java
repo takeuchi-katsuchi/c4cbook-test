@@ -32,7 +32,7 @@ public class SelectBookListDao {
 
     /**
      * マイページに表示させる本のリストを取得
-     * @param bookId
+     * @param memId
      * @return
      */
     public List<V_MyPageDto> seletctBooksByMemId(int memId) {

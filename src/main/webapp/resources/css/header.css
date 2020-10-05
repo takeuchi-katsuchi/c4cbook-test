@@ -1,27 +1,73 @@
 section.header {
  border-bottom: 3px solid #66CCFF;
+ margin: 0 10vw 0 10vw;
 }
-section.header div.top {
- font-size: 30px;
+
+section.header input{
+ border:none;
+}
+
+section.header div.title {
+ font-size: 3vw;
  font-weight: bold;
  color: #66CCFF;
- text-align: center;
+ width: 40vw;
+ text-align: left;
+}
+
+section.header div {
  display: inline-block;
 }
+
 section.header div.menu {
  color: blue;
- margin: 0 auto;
- display: grid;
- grid-template-columns: repeat(4, 1fr);
- width: 170px;
- float: right;
- text-align: center;
+ text-align: right;
 }
-section header div.menu div {
+
+section.header div.menu div, img {
+ width: 5vw;
+}
+
+/* Topmenu部分 */
+div.menu  li{
+    float: left;
+    position:relative;
+}
+
+/* プルダウンメニュー関連 */
+section.header div.menu  ul.pulldown{
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    color: #000;
+    width: 30vw;
+    }
+
+section.header div.menu  ul.pulldown li ul {
+    display: none;
+    width: 100%;
+    position: absolute;
+    margin-left: -5px;
+    margin-top: 5px;
+    padding: 0;
+    background: #dee2e6;
+    border: solid 1px #000000;
+}
+
+section.header div.menu  ul.pulldown li.slidebtn ul li{
+    width: 100%;
+    list-style-type: none;
+}
+
+section.header div.menu  ul.pulldown li a{
+    padding: 5px 0;
+    margin: -5px 5px -5px -5px;
+    display: block;
+    color: #000;
+}
+
+section.header div.menu div {
  display: flex;
  align-items: center;
  justify-content: center;
-}
-section.header div.menu div, img {
- width: 35px;
 }
