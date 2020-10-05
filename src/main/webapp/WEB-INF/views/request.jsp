@@ -10,7 +10,7 @@
  <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
  <title>要望画面</title>
- <link rel="stylesheet" href="resources/css/common.css" media="screen">
+<!--  <link rel="stylesheet" href="resources/css/common.css" media="screen"> -->
  <link rel="stylesheet" href="resources/css/header.css" media="screen">
  <link rel="stylesheet" href="resources/css/request.css" media="screen">
  <script type="text/javascript" src="resources/js/_cmn.js"></script>
@@ -40,9 +40,10 @@
         <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
         <div class="requestDate">要望日:<fmt:formatDate value="${reqInfo.createAt}" pattern="M月 d日" /></div>
        </div>
-       <div class="cheer_img_area">
-        <div class="cheer_count"><c:out value="${reqInfo.reqCount}"/></div>
-        <img class="cheerImg" src="resources/img/cheering.png" alt="" onclick="cheerBook();">
+       <div class="cheer_img_area" onclick="cheerBook('${reqInfo.requestId}','${webSessionDto.memId}');">
+        <div class="cheer_count" id="cheer_count${reqInfo.requestId}"><c:out value="${reqInfo.reqCount}"/></div>
+        <img class="cheerImg" id="cheer-none-img${reqInfo.requestId}" src="resources/img/cheering_none.png" alt="">
+        <img class="cheerImg off" id="cheer-img${reqInfo.requestId}" src="resources/img/cheering.png" alt="">
        </div>
       </div>
       <div class="line-reasons">

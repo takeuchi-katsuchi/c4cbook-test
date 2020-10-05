@@ -272,3 +272,14 @@ div.hide {
  width: 300px;
  line-height: 30px;
 }
+
+
+
+
+
+    .on {
+      opacity: 1;
+    }
+    .off {
+      opacity: 0;
+    }

@@ -95,12 +95,13 @@ $(document).ready(function() {
 });
 
 //////////応援ボタン//////////
-function cheerBook(){
+function cheerBook(requestId,memberId){
+
    var formData = {
-   requestId: 1,
-   memId: 1
+   requestId: requestId,
+   memId: memberId
   }
-  if (!confirm('応援しますか?')) {
+  if (!confirm('この本を応援しますか?')) {
    return false;
   } else {
    $.ajax({
@@ -111,10 +112,21 @@ function cheerBook(){
     dataType: 'json',
     success: function(response) {
      //カウントアップして再表示
-     alert("sucsses");
+     var nowCount = Number(document.getElementById('cheer_count' + requestId).innerText);
+     var nextCount = nowCount + 1;
+     document.getElementById('cheer_count' + requestId).innerText = nextCount;
+     document.getElementById('cheer_count' + requestId).setAttribute('src', 'resources/img/cheering.png');
+
+     //100超えたら99+
+     if(nextCount > 99){
+      document.getElementById('cheer_count' + requestId).innerText = "99+";
+     }
+
+     //応援画像を変更
+     document.getElementById('cheer-img' + requestId).classList.remove('off');
     },
     error: function() {
-     alert("error");
+     alert("要望は各本につき1度だけ応援できます。");
 //     $(`#myModal2`).modal('hide');
 //     $('#LendingProcedureModal').modal('hide');
     }
@@ -130,7 +142,8 @@ function requestBook(){
    author: "こばり",
    authorKana: "こばり",
    mem_id: 1,
-   comment: "こめんとです"
+   comment: "こめんとです",
+   requestStatus: 0
   }
   if (!confirm('応援しますか?')) {
    return false;
@@ -151,3 +164,8 @@ function requestBook(){
    });
   }
 }
+
+
+
+
+
