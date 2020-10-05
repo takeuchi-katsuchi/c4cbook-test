@@ -1,4 +1,4 @@
-/* BK_T_RequestDao_Submit_RequestData.sql */
+/* BK_T_RequestDao_Upsert_RequestData.sql */
 
 insert into book_db.BK_T_REQUEST
 (
@@ -32,5 +32,5 @@ values
     /*createAt*/,
     /*updateAt*/
 )
-on DUPLICATE key update REQUEST_STATUS = status, REJECT_COMMENT = rejectComment, DEL_FLG = delFlg, UPDATE_AT = updateAt
+on DUPLICATE key update REQUEST_STATUS = /*requestStatus*/, REJECT_COMMENT = /*rejectComment*/, DEL_FLG = /*delFlg*/, UPDATE_AT = /*updateAt*/
 ;
