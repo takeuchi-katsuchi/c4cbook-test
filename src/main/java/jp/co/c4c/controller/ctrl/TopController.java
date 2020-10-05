@@ -43,6 +43,10 @@ public class TopController {
         form.setTopAndDetailDtoList(topService.getAllBooks());
 
         int memId = webSessionDto.getMemId();
+
+//        // お知らせ既読状態取得
+//        form.setNewsReadStatus(topService.getNews(memId));
+
         // ログインユーザーがお気に入りしている本のリストformにセット
         List<BK_T_FavoriteDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
         List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
