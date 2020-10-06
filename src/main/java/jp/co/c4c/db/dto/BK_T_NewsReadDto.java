@@ -25,7 +25,7 @@ public class BK_T_NewsReadDto {
 
     /**
      * メンバーIDを設定する
-     * @param memId セットする memId
+     * @param memId
      */
     public void setMemId(int memId) {
         this.memId = memId;

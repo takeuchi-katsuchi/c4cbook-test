@@ -86,7 +86,7 @@ public class TopService {
      * @return
      */
     @Transactional
-public BK_T_NewsReadDto getNews(int memId) {
+    public BK_T_NewsReadDto getNews(int memId) {
         return selectNewsReadDataDao.seletctNewsReadData(memId);
     }
 

@@ -22,11 +22,11 @@ public class SelectNewsReadDataDao {
      * @param memId
      * @return
      */
-    public BK_T_NewsReadDto  seletctNewsReadData(int memId) {
+    public BK_T_NewsReadDto seletctNewsReadData(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_getReadTime.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
+        System.out.print(BK_T_NewsReadDto.class);
         return sqlManager.getSingleResult(BK_T_NewsReadDto.class, sqlSrc, param);
     }
 
