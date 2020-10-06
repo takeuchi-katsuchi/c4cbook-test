@@ -571,3 +571,38 @@ $(document).ready(function() {
 
 });
 
+var listContents = $("#review-list-more li").length;
+$("#review-list-more").each(function(){
+
+
+    // 最初に表示させる数
+    var Num = 3;
+
+    // 最初はmoreボタン表示にし、
+    $(this).find('#more-btn').show();
+    $(this).find('#close-btn').hide();
+    // 10行目まで表示
+    $(this).find("li:not(:lt("+Num+"))").hide();
+
+    // moreボタンがクリックされた時
+    $('#more-btn').click(function(){
+        // Numに+3ずつしていく = 3行ずつ追加する
+        Num +=3;
+        $(this).parent().find("li:lt("+Num+")").slideDown();
+
+        // liの個数よりNumが多い時、
+        if(listContents <= Num){
+            Num = 3;// 「閉じる」がクリックされた後、表示させるアイテムの数
+            gtNum = Num-1;
+            $('#more-btn').hide();
+            $('#close-btn').show();
+
+            // 「閉じる」がクリックされたら、
+            $('#close-btn').click(function(){
+                $(this).parent().find("li:gt("+gtNum+")").slideUp();// 11行目以降は非表示にし、
+                $(this).hide();// 閉じるボタンを非表示
+                $('#more-btn').show();// moreボタン表示に
+            });
+        }
+    });
+});
