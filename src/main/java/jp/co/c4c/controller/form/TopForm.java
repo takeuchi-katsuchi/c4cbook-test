@@ -3,6 +3,7 @@ package jp.co.c4c.controller.form;
 import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
+import jp.co.c4c.db.dto.V_MyPageDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 /**
@@ -11,9 +12,10 @@ import jp.co.c4c.db.dto.V_TopAndDetailDto;
 public class TopForm {
 
     List<V_TopAndDetailDto> topAndDetailDtoList;
-    BK_T_NewsReadDto NewsReadStatus;
+    BK_T_NewsReadDto bK_T_NewsReadDto;
     List<Integer> myFavoriteBookIdList;
     List<Integer> myLendedBookIdList;
+    List<V_MyPageDto> myLendingBookList;
 
     public List<V_TopAndDetailDto> getTopAndDetailDtoList() {
         return topAndDetailDtoList;
@@ -21,15 +23,6 @@ public class TopForm {
 
     public void setTopAndDetailDtoList(List<V_TopAndDetailDto> topAndDetailDtoList) {
         this.topAndDetailDtoList = topAndDetailDtoList;
-    }
-
-
-    public BK_T_NewsReadDto getNewsReadStatus() {
-        return NewsReadStatus;
-    }
-
-    public void setNewsReadStatus(BK_T_NewsReadDto newsReadStatus ) {
-        this.NewsReadStatus = newsReadStatus;
     }
 
     public List<Integer> getMyFavoriteBookIdList() {
@@ -46,6 +39,22 @@ public class TopForm {
 
     public void setMyLendedBookIdList(List<Integer> myLendedBookIdList) {
         this.myLendedBookIdList = myLendedBookIdList;
+    }
+
+    public BK_T_NewsReadDto getBK_T_NewsReadDto() {
+        return bK_T_NewsReadDto;
+    }
+
+    public void setBK_T_NewsReadDto(BK_T_NewsReadDto bK_T_NewsReadDto) {
+        this.bK_T_NewsReadDto = bK_T_NewsReadDto;
+    }
+
+    public List<V_MyPageDto> getMyLendingBookList() {
+        return myLendingBookList;
+    }
+
+    public void setMyLendingBookList(List<V_MyPageDto> myLendingBookList) {
+        this.myLendingBookList = myLendingBookList;
     }
 
 }

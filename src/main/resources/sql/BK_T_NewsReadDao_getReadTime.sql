@@ -1,13 +1,9 @@
 /* BK_T_NewsReadDao_getReadTime.sql */
 
 select
-    R.MEM_ID,
-    R.READ_AT,
-    R.DEL_FLG,
-    R.CREATE_AT,
-    R.UPDATE_AT
+    book_db.BK_T_NEWS_READ.READ_AT
 from
-    book_db.BK_T_NEWS_READ as R
+    book_db.BK_T_NEWS_READ
 where
-     MEM_ID = /*memId*/
+    book_db.BK_T_NEWS_READ.MEM_ID = /*memId*/
 ;

@@ -13,6 +13,7 @@
 <title>トップ画面</title>
 <link rel="stylesheet" href="resources/css/common.css" media="screen">
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
+<link rel="stylesheet" href="resources/css/menu.css" media="screen">
 <link rel="stylesheet" href="resources/css/top.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/modal.css" media="screen">
@@ -23,6 +24,7 @@
 <input id="loginMember" type="hidden" value="${webSessionDto.memId}">
  <jsp:include page="./header.jsp"></jsp:include>
  <section class="bdy">
+  <jsp:include page="./menu.jsp"></jsp:include>
   <jsp:include page="./book-list.jsp"></jsp:include>
  </section>
 
