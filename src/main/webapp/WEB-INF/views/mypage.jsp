@@ -13,6 +13,7 @@
 <title>マイページ画面</title>
 <link rel="stylesheet" href="resources/css/common.css" media="screen">
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
+<link rel="stylesheet" href="resources/css/menu.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/mypage.css" media="screen">
 <link rel="stylesheet" href="resources/css/modal.css" media="screen">
@@ -21,6 +22,7 @@
   <jsp:include page="./header.jsp"><jsp:param
       name="act_type" value="farmer" /></jsp:include>
   <section class="bdy">
+    <jsp:include page="./menu.jsp"></jsp:include>
     <div class="contents">
       <div class="title">マイページ</div>
       <div class="bk-cnt">
