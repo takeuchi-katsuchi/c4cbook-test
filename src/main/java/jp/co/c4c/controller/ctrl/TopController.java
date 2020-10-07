@@ -10,11 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.TopForm;
 import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_MyPageDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
+import jp.co.c4c.service.MyService;
 import jp.co.c4c.service.TopService;
 
 @Controller
@@ -26,6 +29,8 @@ public class TopController {
     TopService topService;
     @Autowired
     CommonService commonService;
+    @Autowired
+    MyService myService;
 
     //セッションのオブジェクト代入格納メソッド
     @ModelAttribute("webSessionDto")
@@ -44,9 +49,6 @@ public class TopController {
 
         int memId = webSessionDto.getMemId();
 
-//        // お知らせ既読状態取得
-//        form.setNewsReadStatus(topService.getNews(memId));
-
         // ログインユーザーがお気に入りしている本のリストformにセット
         List<BK_T_FavoriteDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
         List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
@@ -61,6 +63,14 @@ public class TopController {
                 .collect(Collectors.toList());
         form.setMyLendedBookIdList(myLendedBookIdList);
 
+        // ログインユーザーの貸出・予約履歴全件取得
+        List<V_MyPageDto> myPageDtoList = myService.getBooksByMemId(memId);
+
+        List<V_MyPageDto> myLendingBookList = myPageDtoList.stream()
+                .filter(obj -> obj.getLendStatus() == LendStatus.LENDING.getLendStatus())
+                .collect(Collectors.toList());
+        form.setMyLendingBookList(myLendingBookList);
+
         /* tagIdを文字列に変換 */
         for (int i = 0; i < form.getTopAndDetailDtoList().size(); i++) {
             String[] tagIds = form.getTopAndDetailDtoList().get(i).getTagIds().split(",");
@@ -68,9 +78,13 @@ public class TopController {
             form.getTopAndDetailDtoList().get(i).setTagIds(String.join(",", tagIds));
         }
 
+        // お知らせ既読状態取得
+//        form.setBK_T_NewsReadDto(topService.getNews(memId));
+
+//        System.out.print(myLendingBookList);
+
         return "top";
     }
-
 
     /**
      * tagIdを文字列に変換するメソッド（作成中）

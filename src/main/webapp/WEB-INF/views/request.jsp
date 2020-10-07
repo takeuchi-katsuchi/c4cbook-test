@@ -12,6 +12,7 @@
  <title>要望画面</title>
 <!--  <link rel="stylesheet" href="resources/css/common.css" media="screen"> -->
  <link rel="stylesheet" href="resources/css/header.css" media="screen">
+ <link rel="stylesheet" href="resources/css/menu.css" media="screen">
  <link rel="stylesheet" href="resources/css/request.css" media="screen">
  <script type="text/javascript" src="resources/js/_cmn.js" charset="UTF-8"></script>
 
@@ -21,6 +22,7 @@
 <body onload="requestOnload();">
  <jsp:include page="./header.jsp"><jsp:param name="act_type" value="farmer" /></jsp:include>
  <section class="bdy">
+  <jsp:include page="./menu.jsp"></jsp:include>
   <div class="contents">
   <div class="title">本の要望</div>
   <div class="text-message">応援しよう！！！！！！！</div>

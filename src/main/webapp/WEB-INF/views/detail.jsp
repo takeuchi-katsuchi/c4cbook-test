@@ -12,6 +12,7 @@
 <title>詳細画面</title>
 <link rel="stylesheet" href="resources/css/common.css" media="screen">
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
+<link rel="stylesheet" href="resources/css/menu.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/detail.css" media="screen">
 
@@ -33,6 +34,7 @@
         <jsp:param name="act_type" value="farmer" />
     </jsp:include>
     <section class="bdy">
+      <jsp:include page="./menu.jsp"></jsp:include>
         <div class="book_box">
             <div class="row book_img">
 <!--                 <img class="javabook" src="resources/img/sample_book.jpg" alt="">
