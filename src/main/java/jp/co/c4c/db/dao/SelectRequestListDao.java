@@ -50,7 +50,7 @@ public class SelectRequestListDao {
         param.put("titleKana", bK_T_RequestDto.getTitleKana());
         param.put("author", bK_T_RequestDto.getAuthor());
         param.put("authorKana", bK_T_RequestDto.getAuthorKana());
-        param.put("mem_id", bK_T_RequestDto.getMem_id());
+        param.put("memId", bK_T_RequestDto.getMemId());
         param.put("comment", bK_T_RequestDto.getComment());
         param.put("requestStatus", 0);
         param.put("delFlg", 0);

@@ -17,7 +17,7 @@ public class BK_T_RequestDto {
     /** 画像 */
     private byte[] bookImg;
     /** 要望メンバーID */
-    private int mem_id;
+    private int memId;
     /** 要望コメント */
     private String comment;
     /** 要望ステータス */
@@ -131,18 +131,16 @@ public class BK_T_RequestDto {
      * 要望メンバーIDを取得する
      * @return mem_id
      */
-    public int getMem_id() {
-        return mem_id;
+    public int getMemId() {
+        return memId;
     }
 
     /**
      * 要望メンバーIDを設定する
      * @param mem_id
-     */
-    public void setMem_id(int mem_id) {
-        this.mem_id = mem_id;
+     */    public void setMemId(int memId) {
+        this.memId = memId;
     }
-
     /**
      * 要望コメントを取得する
      * @return comment

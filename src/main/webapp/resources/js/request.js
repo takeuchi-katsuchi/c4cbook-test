@@ -135,17 +135,18 @@ function cheerBook(requestId,memberId){
 }
 
 //////////「要望する」ボタン//////////
-function requestBook(){
+function requestBook(memberId){
+
    var formData = {
-   title: "あいうえお",
-   titleKana: "あいうえお",
-   author: "こばり",
-   authorKana: "こばり",
-   mem_id: 1,
-   comment: "こめんとです",
+   title: document.getElementById('inpt-title').value,
+   titleKana: document.getElementById('inpt-title').value,
+   author: document.getElementById('inpt-author').value,
+   authorKana: document.getElementById('inpt-author').value,
+   memId: memberId,
+   comment: document.getElementById('textarea').value,
    requestStatus: 0
   }
-  if (!confirm('応援しますか?')) {
+  if (!confirm('要望を確定しますか?')) {
    return false;
   } else {
    $.ajax({
@@ -156,7 +157,7 @@ function requestBook(){
     dataType: 'json',
     success: function(response) {
      //モーダルの入力欄全クリアしてモーダルを閉じる
-     alert("sucsses");
+     alert("sucsses：" + response);
     },
     error: function() {
      alert("error");

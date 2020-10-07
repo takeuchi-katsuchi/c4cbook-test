@@ -13,7 +13,7 @@
 <!--  <link rel="stylesheet" href="resources/css/common.css" media="screen"> -->
  <link rel="stylesheet" href="resources/css/header.css" media="screen">
  <link rel="stylesheet" href="resources/css/request.css" media="screen">
- <script type="text/javascript" src="resources/js/_cmn.js"></script>
+ <script type="text/javascript" src="resources/js/_cmn.js" charset="UTF-8"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
@@ -40,7 +40,7 @@
         <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
         <div class="requestDate">要望日:<fmt:formatDate value="${reqInfo.createAt}" pattern="M月 d日" /></div>
        </div>
-       <div class="cheer_img_area" onclick="cheerBook('${reqInfo.requestId}','${webSessionDto.memId}');">
+       <div class="cheer_img_area" <c:if test="${reqInfo.requestStatus != 9 }"> onclick="cheerBook('${reqInfo.requestId}','${webSessionDto.memId}');"</c:if>>
         <div class="cheer_count" id="cheer_count${reqInfo.requestId}"><c:out value="${reqInfo.reqCount}"/></div>
         <img class="cheerImg" id="cheer-none-img${reqInfo.requestId}" src="resources/img/cheering_none.png" alt="">
         <img class="cheerImg off" id="cheer-img${reqInfo.requestId}" src="resources/img/cheering.png" alt="">
@@ -94,9 +94,9 @@
     </div>
     <div class="reg-book-info">
      <div>タイトル</div>
-     <div><input type="text"></div>
+     <div><input type="text" id="inpt-title"></div>
      <div>著者</div>
-     <div><input type="text"></div>
+     <div><input type="text" id="inpt-author"></div>
      <div>要望理由</div>
      <div><textarea class="reg-reason" id="textarea"></textarea></div>
     </div>
@@ -105,7 +105,7 @@
 
    <div class="modal-footer">
     <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-    <button id="save" type="button" class="btn btn-primary" onclick="requestBook();">要望する</button>
+    <button id="save" type="button" class="btn btn-primary" onclick="requestBook('${webSessionDto.memId}');">要望する</button>
    </div>
 
    </div>
