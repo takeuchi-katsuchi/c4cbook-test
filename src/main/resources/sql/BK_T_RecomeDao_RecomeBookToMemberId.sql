@@ -1,4 +1,4 @@
-/* BK_T_RecomeDao_RecomeBookToMenberId.sql */
+/* BK_T_RecomeDao_RecomeBookToMemberId.sql */
 -- MEM_IDを固定中
 
 select
@@ -6,9 +6,11 @@ select
     B.TITLE,
     B.TITLE_KANA,
     B.AUTHOR,
+    B.AUTHOR_KANA,
     B.TAG_IDS,
     B.BOOK_IMG,
     LR.FROM_MEM_ID,
+    LR.MEM_NAME,
     LR.RECOM_DATE
 from
     book_db.BK_M_BOOK B join (
@@ -24,7 +26,7 @@ from
                 on book_db.BK_T_RECOM.FROM_MEM_ID = book_db.M_MEM_BASIC.MEM_ID
         where
             DATE_ADD(RECOM_DATE, interval 3 month) > current_timestamp ()
-            and book_db.BK_T_RECOM.TO_MEM_ID = 2
+            and book_db.BK_T_RECOM.TO_MEM_ID = /*memId*/
     ) as LR
         on B.BOOK_ID = LR.BOOK_ID
  ;

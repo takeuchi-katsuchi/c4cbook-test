@@ -3,7 +3,7 @@ package jp.co.c4c.controller.form;
 import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
-import jp.co.c4c.db.dto.V_MyPageDto;
+import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 /**
@@ -15,7 +15,7 @@ public class TopForm {
     BK_T_NewsReadDto bK_T_NewsReadDto;
     List<Integer> myFavoriteBookIdList;
     List<Integer> myLendedBookIdList;
-    List<V_MyPageDto> myLendingBookList;
+    List<V_MyLendHistoryDto> myLendingBookList;
 
     public List<V_TopAndDetailDto> getTopAndDetailDtoList() {
         return topAndDetailDtoList;
@@ -49,11 +49,11 @@ public class TopForm {
         this.bK_T_NewsReadDto = bK_T_NewsReadDto;
     }
 
-    public List<V_MyPageDto> getMyLendingBookList() {
+    public List<V_MyLendHistoryDto> getMyLendingBookList() {
         return myLendingBookList;
     }
 
-    public void setMyLendingBookList(List<V_MyPageDto> myLendingBookList) {
+    public void setMyLendingBookList(List<V_MyLendHistoryDto> myLendingBookList) {
         this.myLendingBookList = myLendingBookList;
     }
 
