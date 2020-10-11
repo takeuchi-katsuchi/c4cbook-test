@@ -149,10 +149,84 @@
 
           <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label
             class="tab-label" for="TAB-02">おすすめ</label>
-          <div class="tab-content">おすすめの本がありません。</div>
+          <div class="tab-content">
+            <div class="col">
+              <c:choose>
+                <%-- ログインユーザーに貸出中の本がない場合 --%>
+                <c:when test="${myForm.recomToMeBookList.size() == 0}">
+                  おすすめの本はありません。
+                </c:when>
+                <%-- ログインユーザーに貸出中の本がある場合 --%>
+                <c:otherwise>
+                  <c:forEach items="${myForm.recomToMeBookList}"
+                    var="recomToMeBook">
+                    <c:url var="detailLink" value="/detail">
+                      <c:param name="bookId"
+                        value="${recomToMeBook.bookId}" />
+                    </c:url>
+                    <div class="book_box">
+                      <div class="row book_img">
+                        <a href="${detailLink}"><img
+                          class="book-img"
+                          src="resources/img/sample_book.jpg" alt=""></a>
+                      </div>
+
+                      <div class="row book_info">
+                        <div class="name">
+                          <a href="${detailLink}">${recomToMeBook.title}</a>
+                        </div>
+                        <div class="author">${recomToMeBook.author}</div>
+                        <ul class="tag">
+                          <li>${recomToMeBook.tagIds}</li>
+                        </ul>
+                        おすすめしている人
+                        <div>${recomToMeBook.memName}</div>
+                      </div>
+                    </div>
+                  </c:forEach>
+                </c:otherwise>
+              </c:choose>
+            </div>
+          </div>
           <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label
             class="tab-label" for="TAB-03">お気に入り</label>
-          <div class="tab-content">お気に入りの本がありません。</div>
+          <div class="tab-content">
+            <div class="col">
+              <c:choose>
+                <%-- ログインユーザーに貸出中の本がない場合 --%>
+                <c:when test="${myForm.myFavoriteBookList.size() == 0}">
+                  お気に入りの本はありません。
+                </c:when>
+                <%-- ログインユーザーに貸出中の本がある場合 --%>
+                <c:otherwise>
+                  <c:forEach items="${myForm.myFavoriteBookList}"
+                    var="myFavoriteBook">
+                    <c:url var="detailLink" value="/detail">
+                      <c:param name="bookId"
+                        value="${myFavoriteBook.bookId}" />
+                    </c:url>
+                    <div class="book_box">
+                      <div class="row book_img">
+                        <a href="${detailLink}"><img
+                          class="book-img"
+                          src="resources/img/sample_book.jpg" alt=""></a>
+                      </div>
+
+                      <div class="row book_info">
+                        <div class="name">
+                          <a href="${detailLink}">${myFavoriteBook.title}</a>
+                        </div>
+                        <div class="author">${myFavoriteBook.author}</div>
+                        <ul class="tag">
+                          <li>${myFavoriteBook.tagIds}</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </c:forEach>
+                </c:otherwise>
+              </c:choose>
+            </div>
+          </div>
         </div>
       </div>
     </div>

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.TopForm;
-import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.V_MyPageDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
+import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.MyService;
@@ -50,9 +50,9 @@ public class TopController {
         int memId = webSessionDto.getMemId();
 
         // ログインユーザーがお気に入りしている本のリストformにセット
-        List<BK_T_FavoriteDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
+        List<V_MyFavoriteBookDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
         List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
-                .map(BK_T_FavoriteDto::getBookId)
+                .map(V_MyFavoriteBookDto::getBookId)
                 .collect(Collectors.toList());
         form.setMyFavoriteBookIdList(myFavoriteBookIdList);
 
@@ -64,9 +64,9 @@ public class TopController {
         form.setMyLendedBookIdList(myLendedBookIdList);
 
         // ログインユーザーの貸出・予約履歴全件取得
-        List<V_MyPageDto> myPageDtoList = myService.getBooksByMemId(memId);
+        List<V_MyLendHistoryDto> myPageDtoList = myService.getBooksByMemId(memId);
 
-        List<V_MyPageDto> myLendingBookList = myPageDtoList.stream()
+        List<V_MyLendHistoryDto> myLendingBookList = myPageDtoList.stream()
                 .filter(obj -> obj.getLendStatus() == LendStatus.LENDING.getLendStatus())
                 .collect(Collectors.toList());
         form.setMyLendingBookList(myLendingBookList);
