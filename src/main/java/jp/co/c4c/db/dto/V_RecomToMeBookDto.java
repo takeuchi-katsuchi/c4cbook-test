@@ -1,8 +1,9 @@
 package jp.co.c4c.db.dto;
 
 import java.util.Arrays;
+import java.util.Date;
 
-public class V_MyPageDto {
+public class V_RecomToMeBookDto {
 
     /////////////////////
     // BK_M_BookDto
@@ -23,12 +24,18 @@ public class V_MyPageDto {
     private byte[] bookImg;
 
     /////////////////////
-    // BK_T_LendDto
+    // BK_T_RecomDto
     /////////////////////
-    /** メンバーID */
+    /** FROMメンバーID */
     private int memId;
-    /** 貸出ステータス */
-    private int lendStatus;
+    /** おすすめ日 */
+    private Date recomDate;
+
+    /////////////////////
+    // BK_M_MemBasicDto
+    /////////////////////
+    /** メンバー名 */
+    private String memName;
 
     public int getBookId() {
         return bookId;
@@ -94,19 +101,28 @@ public class V_MyPageDto {
         this.memId = memId;
     }
 
-    public int getLendStatus() {
-        return lendStatus;
+    public Date getRecomDate() {
+        return recomDate;
     }
 
-    public void setLendStatus(int lendStatus) {
-        this.lendStatus = lendStatus;
+    public void setRecomDate(Date recomDate) {
+        this.recomDate = recomDate;
+    }
+
+    public String getMemName() {
+        return memName;
+    }
+
+    public void setMemName(String memName) {
+        this.memName = memName;
     }
 
     @Override
     public String toString() {
-        return "V_MyPageDto [bookId=" + bookId + ", title=" + title + ", titleKana=" + titleKana + ", author=" + author
-                + ", authorKana=" + authorKana + ", tagIds=" + tagIds + ", bookImg=" + Arrays.toString(bookImg)
-                + ", memId=" + memId + ", lendStatus=" + lendStatus + "]";
+        return "V_MyRecommendedBookDto [bookId=" + bookId + ", title=" + title + ", titleKana=" + titleKana
+                + ", author=" + author + ", authorKana=" + authorKana + ", tagIds=" + tagIds + ", bookImg="
+                + Arrays.toString(bookImg) + ", memId=" + memId + ", recomDate=" + recomDate + ", memName=" + memName
+                + "]";
     }
 
 }

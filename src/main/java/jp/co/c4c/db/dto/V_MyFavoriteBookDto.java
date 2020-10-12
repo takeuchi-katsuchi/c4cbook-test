@@ -1,6 +1,8 @@
 package jp.co.c4c.db.dto;
 
-public class BK_T_FavoriteDto {
+import java.util.Arrays;
+
+public class V_MyFavoriteBookDto {
 
     /////////////////////
     // BK_M_BookDto
@@ -21,6 +23,12 @@ public class BK_T_FavoriteDto {
     private byte[] bookImg;
     /** メンバーID */
     private int memId;
+
+    /////////////////////
+    // BK_M_MemBasicDto
+    /////////////////////
+    /** メンバー名 */
+    private String memName;
 
     public int getBookId() {
         return bookId;
@@ -84,6 +92,21 @@ public class BK_T_FavoriteDto {
 
     public void setMemId(int memId) {
         this.memId = memId;
+    }
+
+    public String getMemName() {
+        return memName;
+    }
+
+    public void setMemName(String memName) {
+        this.memName = memName;
+    }
+
+    @Override
+    public String toString() {
+        return "V_MyFavoriteBookDto [bookId=" + bookId + ", title=" + title + ", titleKana=" + titleKana + ", author="
+                + author + ", authorKana=" + authorKana + ", tagIds=" + tagIds + ", bookImg=" + Arrays.toString(bookImg)
+                + ", memId=" + memId + ", memName=" + memName + "]";
     }
 
 }

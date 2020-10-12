@@ -7,31 +7,29 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
+import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
-/**
- * @author takayukiyamaoka
- *
- */
 @Component
-public class SelectMyFavoriteBooksDao {
+public class SelectRecomToMeBookListDao {
 
     @Autowired
     public SqlManager sqlManager;
 
     /**
-     * ログインユーザーがお気に入り済みの本のリストを取得
+     * マイページに表示させるおすすめされている本のリストを取得
      * @param memId
      * @return
      */
-    public List<V_MyFavoriteBookDto> seletctFavoriteBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_FavoritedBookDataByMemberId.sql");
+    public List<V_RecomToMeBookDto> seletctRecommendedBooksByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomeDao_RecomeBookToMemberId.sql");
         System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
-        return sqlManager.getResultList(V_MyFavoriteBookDto.class, sqlSrc, param);
+
+        return sqlManager.getResultList(V_RecomToMeBookDto.class, sqlSrc, param);
     }
+
 }
