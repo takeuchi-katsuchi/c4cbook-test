@@ -42,10 +42,10 @@
         <div class="requester">要望者:<c:out value="${reqInfo.memName}"/></div>
         <div class="requestDate">要望日:<fmt:formatDate value="${reqInfo.createAt}" pattern="M月 d日" /></div>
        </div>
-       <div class="cheer_img_area" <c:if test="${reqInfo.requestStatus != 9 }"> onclick="cheerBook('${reqInfo.requestId}','${webSessionDto.memId}');"</c:if>>
+       <div class="cheer_img_area" onclick="cheerBook('${reqInfo.requestId}', '${webSessionDto.memId}', '${reqInfo.requestStatus}',${requestForm.chkMyCheerReqIdExist(reqInfo.requestId)});">
         <div class="cheer_count" id="cheer_count${reqInfo.requestId}"><c:out value="${reqInfo.reqCount}"/></div>
         <img class="cheerImg" id="cheer-none-img${reqInfo.requestId}" src="resources/img/cheering_none.png" alt="">
-        <img class="cheerImg off" id="cheer-img${reqInfo.requestId}" src="resources/img/cheering.png" alt="">
+        <img class="cheerImg <c:if test="${!requestForm.chkMyCheerReqIdExist(reqInfo.requestId)}">off</c:if>" id="cheer-img${reqInfo.requestId}" src="resources/img/cheering.png" alt="">
        </div>
       </div>
       <div class="line-reasons">

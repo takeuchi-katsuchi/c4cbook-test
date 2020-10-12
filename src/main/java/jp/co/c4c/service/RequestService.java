@@ -10,6 +10,8 @@ import jp.co.c4c.db.dao.SelectRequestListDao;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_RequestCheerDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
+import jp.co.c4c.db.dto.V_MyCheerBookDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_RequestDto;
 
 @Component
@@ -44,5 +46,15 @@ public class RequestService {
     @Transactional
     public void saveCheerCount(BK_T_RequestCheerDto bK_T_RequestCheerDto) {
         selectRequestListDao.insertCheerBook(bK_T_RequestCheerDto);
+    }
+
+    /**
+     * ログインユーザーが応援済みの本のリストを取得
+     * @param memId
+     * @return
+     */
+    @Transactional
+    public List<V_MyCheerBookDto> getCheerBooks(int memId) {
+        return selectRequestListDao.seletctCheerBooksByMemId(memId);
     }
 }

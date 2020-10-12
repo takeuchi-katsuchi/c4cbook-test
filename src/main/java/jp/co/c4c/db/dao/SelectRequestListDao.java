@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 
 import jp.co.c4c.db.dto.BK_T_RequestCheerDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
+import jp.co.c4c.db.dto.V_MyCheerBookDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_RequestDto;
 import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
@@ -36,6 +38,19 @@ public class SelectRequestListDao {
         Map<String, Object> param = new HashMap<>();
 
         return sqlManager.getResultList(V_RequestDto.class, sqlSrc, param);
+    }
+
+    /**
+     * ログインユーザーが応援済みの本のリストを取得
+     * @param memId
+     * @return
+     */
+    public List<V_MyCheerBookDto> seletctCheerBooksByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestIdByMemberId.sql");
+        System.out.print("Daoが接続されたよ");
+        Map<String, Object> param = new HashMap<>();
+        param.put("memId", memId);
+        return sqlManager.getResultList(V_MyCheerBookDto.class, sqlSrc, param);
     }
 
     /**

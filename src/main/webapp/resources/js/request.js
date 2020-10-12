@@ -95,9 +95,19 @@ $(document).ready(function() {
 });
 
 //////////応援ボタン//////////
-function cheerBook(requestId,memberId){
+function cheerBook(requestId,memberId,requestStatus,test){
 
-   var formData = {
+  if(test){
+   alert("既に応援済みの本は応援できません");
+   return false;
+  }
+
+  if(requestStatus == 9) {
+   alert("既に却下済みの本は応援できません");
+   return false;
+  }
+
+  var formData = {
    requestId: requestId,
    memId: memberId
   }
@@ -136,6 +146,18 @@ function cheerBook(requestId,memberId){
 
 //////////「要望する」ボタン//////////
 function requestBook(memberId){
+
+  //バリデーションチェック
+  //入力欄ID
+  var ids = new Array('inpt-title','inpt-author','textarea');
+  var itemNames = new Array('タイトル','著者','要望理由');
+
+  for( var i=0; i<ids.length; i++) {
+    if(document.getElementById(ids[i]).value == "") {
+      alert(itemNames[i] + 'は必ず入力してください。');
+      return false;
+    }
+  }
 
    var formData = {
    title: document.getElementById('inpt-title').value,
