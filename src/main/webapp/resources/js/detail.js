@@ -571,6 +571,40 @@ $(document).ready(function() {
 
 });
 
+$('.review-contents').each(function(e){
+
+    let $comment = $(this);
+    // 元の文章を変数に格納
+    let comment = $comment.html();
+    let length = comment.length;
+    let commentShow;
+    let commentText;
+    if($comment.height() > 50){
+      // 文章の要素の高さが50を超えていたら隠す用のisHiddenクラスを付与
+      $comment.addClass('isHidden');
+
+      commentShow = comment.replace(/<br>/g, "\u00a0").substring(0, 68);
+      commentText = commentShow += '<span class="review-contents-more">' + '... 続きを読む' + '</span>';
+      $comment.html(commentText);
+
+      // 続きを読むをクリックで元の文章を表示
+      $comment.on('click', '.review-contents-more', function(e){
+        let $anchor = $(e.currentTarget);
+        let $anchorParent = $anchor.parent();
+        $anchorParent.removeClass('isHidden');
+        $anchorParent.html(''); // 一旦空にする
+        $anchorParent.html(comment).append('<span class="review-contents-hide">' + '閉じる' + '</span>');
+        // 閉じるをクリックで元に戻す
+        $('.review-contents-hide').on('click', function(e){
+          let $anchorHide = $(e.currentTarget).parent();
+          $anchorHide.addClass('isHidden');
+          $anchorHide.html('');
+          $anchorHide.html(commentText);
+        });
+      });
+    }
+});
+
 var listContents = $("#review-list-more li").length;
 $("#review-list-more").each(function(){
 
