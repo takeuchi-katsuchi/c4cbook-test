@@ -10,8 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.TopForm;
+import jp.co.c4c.db.dto.BK_T_FavoriteDto;
+import jp.co.c4c.db.dto.BK_T_LendDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
@@ -78,10 +80,22 @@ public class TopController {
             form.getTopAndDetailDtoList().get(i).setTagIds(String.join(",", tagIds));
         }
 
-        // お知らせ既読状態取得
-//        form.setBK_T_NewsReadDto(topService.getNews(memId));
+        // お知らせメッセージ_貸出期限通知用の情報を取得
+        List<BK_T_LendDto> lendNewsList = topService.getLendNewsByMemId(memId);
+        form.setLendNewsList(lendNewsList);
 
-//        System.out.print(myLendingBookList);
+        int LendingCnt = form.getCountMyLendingBookList();
+        model.addAttribute("LendingCnt", LendingCnt);
+
+         // お知らせ既読状態取得
+//        form.setReadStatusNews(topService.getNewOfferBooks(memId));
+
+        // お知らせメッセージ_本入荷通知の情報を取得
+//        List<BK_M_BookDto> offerBookNewsList = topService.getofferBookNewsList();
+//        form.setLendNewsList(lendNewsList);
+
+        // お知らせ既読状態更新
+       //  form.setBK_T_NewsReadDto(topService.getNews(memId));
 
         return "top";
     }

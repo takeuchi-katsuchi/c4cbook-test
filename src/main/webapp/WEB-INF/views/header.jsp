@@ -15,8 +15,12 @@
    <li><img src="resources/img/sort.png" alt="ソート"></li>
    <li class="slidebtn"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
     <ul class="submenu">
-     <li><a href="#">${topForm.myLendingBookList}</a></li>
-     <li><a href="#">返却期限...</a></li>
+     <c:if test="${LendingCnt >= 1}">
+      <li class="news"><a href="/c4cbook/mypage">返却期限が近付いている本が${LendingCnt}件あります。</a></li>
+     </c:if>
+     <c:if test="${LendingCnt >= 1}">
+      <li class="news">要望を出した本が承認されました。</li>
+     </c:if>
     </ul></li>
    <li class="drowerbtn"><a><img src="resources/img/menu.png" alt="メニュー"></a>
   </ul>

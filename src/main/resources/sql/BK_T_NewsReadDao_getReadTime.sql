@@ -1,9 +1,7 @@
-/* BK_T_NewsReadDao_getReadTime.sql */
-
-select
+SELECT
     book_db.BK_T_NEWS_READ.READ_AT
-from
+FROM
     book_db.BK_T_NEWS_READ
-where
+WHERE
     book_db.BK_T_NEWS_READ.MEM_ID = /*memId*/
 ;
