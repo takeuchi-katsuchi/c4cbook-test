@@ -16,7 +16,6 @@ public class TopForm {
     List<BK_T_NewsReadDto> readStatus;
     List<Integer> myFavoriteBookIdList;
     List<Integer> myLendedBookIdList;
-    List<V_MyPageDto> myLendingBookList;
     List<BK_T_LendDto> lendNewsList;
     List<V_MyLendHistoryDto> myLendingBookList;
 

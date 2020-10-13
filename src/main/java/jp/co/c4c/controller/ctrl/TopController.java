@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.TopForm;
-import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
