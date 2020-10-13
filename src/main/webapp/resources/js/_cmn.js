@@ -1,5 +1,4 @@
-//window.onload = function(){
- window.addEventListener('load', function(){
+function imgResize(){
  // ページ読み込み時に実行したい処理
  //////////画像の表示//////////
  //bookImgクラスのimgを取得
@@ -64,4 +63,4 @@
    };
   };
  };
-})
+}

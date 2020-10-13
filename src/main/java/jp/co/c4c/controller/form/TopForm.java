@@ -4,7 +4,7 @@ import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
-import jp.co.c4c.db.dto.V_MyPageDto;
+import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 /**
@@ -18,6 +18,7 @@ public class TopForm {
     List<Integer> myLendedBookIdList;
     List<V_MyPageDto> myLendingBookList;
     List<BK_T_LendDto> lendNewsList;
+    List<V_MyLendHistoryDto> myLendingBookList;
 
     public List<V_TopAndDetailDto> getTopAndDetailDtoList() {
         return topAndDetailDtoList;
@@ -62,6 +63,14 @@ public class TopForm {
     // 貸出数を取得
     public int getCountMyLendingBookList() {
         return lendNewsList.size();
+    }
+
+    public List<V_MyLendHistoryDto> getMyLendingBookList() {
+        return myLendingBookList;
+    }
+
+    public void setMyLendingBookList(List<V_MyLendHistoryDto> myLendingBookList) {
+        this.myLendingBookList = myLendingBookList;
     }
 
 }

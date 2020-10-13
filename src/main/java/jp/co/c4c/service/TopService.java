@@ -16,6 +16,7 @@ import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
@@ -49,7 +50,7 @@ public class TopService {
      * @return
      */
     @Transactional
-    public List<BK_T_FavoriteDto> getFavoriteBooks(int memId) {
+    public List<V_MyFavoriteBookDto> getFavoriteBooks(int memId) {
         return selectFavoriteBooksDao.seletctFavoriteBooksByMemId(memId);
     }
 

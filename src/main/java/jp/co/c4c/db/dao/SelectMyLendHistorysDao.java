@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
@@ -33,6 +34,20 @@ public class SelectMyLendHistorysDao {
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
+    }
+    
+    /**
+     * マイページに表示させる予約・貸出履歴のリストを取得
+     * @param memId
+     * @return
+     */
+    public List<V_MyLendHistoryDto> seletctBooksByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookDao_BookDataByMemberId.sql");
+        System.out.print("Daoが接続されたよ");
+        Map<String, Object> param = new HashMap<>();
+        param.put("memId", memId);
+
+        return sqlManager.getResultList(V_MyLendHistoryDto.class, sqlSrc, param);
     }
 
 }
