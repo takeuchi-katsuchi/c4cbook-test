@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.V_MyPageDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 import jp.sf.amateras.mirage.ClasspathSqlResource;
@@ -28,6 +29,19 @@ public class SelectBookListDao {
         System.out.print("Daoが接続されたよ");
 
         return sqlManager.getResultList(V_TopAndDetailDto.class, sqlSrc);
+    }
+
+    /**
+     *  お知らせに表示させる貸出期限が近い本の件数を取得
+     * @param memId
+     * @return
+     */
+    public List<BK_T_LendDto> seletctLendPiriodByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookDao_LendPriodByMemberId.sql");
+        Map<String, Object> param = new HashMap<>();
+        param.put("memId", memId);
+
+        return sqlManager.getResultList(BK_T_LendDto.class, sqlSrc, param);
     }
 
     /**

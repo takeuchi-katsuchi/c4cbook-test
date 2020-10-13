@@ -9,7 +9,8 @@ select
   book_db.BK_M_BOOK.TAG_IDS,
   book_db.BK_M_BOOK.BOOK_IMG,
   book_db.BK_T_LEND.MEM_ID,
-  book_db.BK_T_LEND.LEND_STATUS
+  book_db.BK_T_LEND.LEND_STATUS,
+  book_db.BK_T_LEND.TO_DATE
 from
   book_db.BK_M_BOOK
 join

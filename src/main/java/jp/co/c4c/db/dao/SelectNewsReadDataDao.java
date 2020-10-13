@@ -1,6 +1,7 @@
 package jp.co.c4c.db.dao;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,11 @@ public class SelectNewsReadDataDao {
      * @param memId
      * @return
      */
-    public BK_T_NewsReadDto seletctNewsReadData(int memId) {
+    public List<BK_T_NewsReadDto> seletctNewsReadData(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_getReadTime.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
-        System.out.print(BK_T_NewsReadDto.class);
-        return sqlManager.getSingleResult(BK_T_NewsReadDto.class, sqlSrc, param);
+        return sqlManager.getResultList(BK_T_NewsReadDto.class, sqlSrc, param);
     }
 
 }
