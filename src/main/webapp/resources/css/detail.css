@@ -79,6 +79,58 @@ section.bdy div.contents div.offer p.com {
  margin: 0 0 10px
 }
 
+section.bdy div.detail-review ul li {
+ list-style-type: none;
+ margin: 10px;
+}
+
+section.bdy div.detail-review div.review-contents {
+ font-size: 11px;
+ position: relative;
+ height: auto;
+}
+
+section.bdy div.detail-review div.review-contents.isHidden {
+  overflow-y:hidden;
+}
+
+section.bdy div.detail-review span.review-contents-hide {
+  display: block;
+  text-align: center;
+}
+
+section.bdy div.detail-review span.review-contents-more, span.review-contents-hide {
+  cursor: pointer;
+  color: #03A9F4;
+}
+
+section.bdy div.detail-review div.reviewer {
+ font-size: 11px;
+ text-align: right;
+}
+
+section.bdy div.detail-review div.reviewer span {
+ padding: 0 10px 0 0;
+}
+
+section.bdy div.detail-review div.read-more {
+ text-align: center;
+ margin: 10px auto;
+ padding: 2px;
+ font-size: 9px;
+ color: #fff;
+ border-radius: .25rem;
+ width: 200px;
+}
+
+section.bdy div.detail-review #more-btn {
+ background: #03A9F4;
+}
+
+section.bdy div.detail-review #close-btn {
+ background:#666;
+}
+
 .tab-wrap {
  display: flex;
  flex-wrap: wrap;

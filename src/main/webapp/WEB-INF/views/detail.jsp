@@ -124,6 +124,66 @@
                 </div>
             </div>
         </div>
+        <div class="detail-review">
+          <div class="review-title">レビュー</div>
+          <div id="review-list-more">
+          <%--  あとで修正する --%>
+          <%-- <c:forEach items="${detailForm.〇〇}" var="〇〇"> --%>
+           <ul>
+            <li>
+            <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+            <li>
+             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
+             <div class="reviewer">
+              <span>2020/10/10</span>
+              <span>中川愛華</span>
+             </div>
+            </li>
+           </ul>
+           <div class="read-more" id="more-btn">その他のレビューを表示<i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+           <div class="read-more" id="close-btn">閉じる<i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+          </div>
+        </div>
     </section>
 
 
