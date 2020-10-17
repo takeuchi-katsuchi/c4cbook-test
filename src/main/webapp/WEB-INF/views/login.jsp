@@ -21,7 +21,9 @@
 <script src="https://kit.fontawesome.com/fdfc67613f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <jsp:include page="./header.jsp"></jsp:include>
+    <section class="header">
+        <h2 class="title">C4CBOOK</h2>
+    </section>
 
     <div class="container">
         <div class="row justify-content-center">
