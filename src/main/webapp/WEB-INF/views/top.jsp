@@ -32,7 +32,7 @@
 <input id="loginMember" type="hidden" value="${webSessionDto.memId}">
 <section class="bdy">
  <jsp:include page="./menu.jsp"></jsp:include>
- <jsp:include page="./book-list_tmp.jsp"></jsp:include>
+ <jsp:include page="./book-list.jsp"></jsp:include>
 </section>
 <jsp:include page="./modal.jsp"></jsp:include>
 
