@@ -5,7 +5,7 @@ $(document).ready(function() {
 	$('i[name="fav"]').on('click', function() {
 		let bookId = $(this).data('id');
 		let memId = $("#loginMember").val();
-		let heartCountElem = $(this).parent().find('p.heart_count');
+		let heartCountElem = $(this).parent().parent().find('div.icon_img_area.heart-count');
 
 		// お気に入り未の場合
 		if ($(this).hasClass("noheart")) {
