@@ -6,6 +6,7 @@ select
     B.TAG_IDS,
     B.OUTLINE,
     B.BOOK_IMG,
+    B.OFFER_DATE,
     LM.LEND_ID,
     LM.MEM_ID,
     LM.LEND_STATUS,
