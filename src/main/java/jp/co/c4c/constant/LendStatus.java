@@ -8,7 +8,7 @@ public enum LendStatus {
 
     private int lendStatus;
 
-    private LendStatus(int lendStatus) {
+    LendStatus(int lendStatus) {
         this.lendStatus = lendStatus;
     }
 
