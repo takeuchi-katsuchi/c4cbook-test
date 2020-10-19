@@ -57,7 +57,11 @@ public class DetailController {
 
         // お気に入りしてる人
         form.setV_FavoriteMemberDtoList(detailService.getFavoriteMembersById(bookId));
+        // おすすめしてる人
+        form.setV_RecomMemDtoList(detailService.getRecomMembersById(bookId));
         return "detail";
+
+
     }
 
 }

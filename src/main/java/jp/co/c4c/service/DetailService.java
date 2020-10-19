@@ -2,24 +2,11 @@ package jp.co.c4c.service;
 
 import java.util.List;
 
+import jp.co.c4c.db.dao.*;
+import jp.co.c4c.db.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import jp.co.c4c.db.dao.DeleteLendBookDao;
-import jp.co.c4c.db.dao.InsertLendBookDao;
-import jp.co.c4c.db.dao.InsertRecomDao;
-import jp.co.c4c.db.dao.SelectBookDataDao;
-import jp.co.c4c.db.dao.SelectFavoritedMembersDao;
-import jp.co.c4c.db.dao.SelectLendHistorysDao;
-import jp.co.c4c.db.dao.SelectMemberDao;
-import jp.co.c4c.db.dao.UpdateLendBookDao;
-import jp.co.c4c.db.dto.BK_M_MemBasicDto;
-import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.BK_T_RecomDto;
-import jp.co.c4c.db.dto.V_FavoriteMemberDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
 public class DetailService {
@@ -30,6 +17,8 @@ public class DetailService {
     private SelectLendHistorysDao selectLendHistorysDao;
     @Autowired
     private SelectFavoritedMembersDao selectFavoritedMembersDao;
+    @Autowired
+    private SelectRecomMemByBookIdDao selectRecomMemByBookIdDao;
     @Autowired
     private InsertLendBookDao insertLendBookDao;
     @Autowired
@@ -69,6 +58,16 @@ public class DetailService {
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
         return selectFavoritedMembersDao.seletctFavoritedMembersById(bookId);
+    }
+
+    /**
+     * 詳細ページに表示させるおすすめしている人をBookIdで取得
+     * @param bookId
+     * @return
+     */
+    @Transactional
+    public List<V_RecomMemDto> getRecomMembersById(int bookId) {
+        return selectRecomMemByBookIdDao.seletctRecomMembersByBookId(bookId);
     }
 
     /**
