@@ -19,8 +19,11 @@
       <c:if test="${LendingCnt >= 1}">
        <li class="news"><a href="/c4cbook/mypage">返却期限が近付いている本が${LendingCnt}件あります。</a></li>
       </c:if>
-      <c:if test="${LendingCnt >= 1}">
-       <li class="news">要望を出した本が承認されました。</li>
+      <c:if test="${readStatus}">
+       <li class="news">新しく入った本があります。</li>
+      </c:if>
+      <c:if test="${readStatus}">
+       <li class="news">要望していた本が承認されました。</li>
       </c:if>
      </ul></li>
     <li class="drowerbtn"><a><img src="resources/img/menu.png" alt="メニュー"></a>

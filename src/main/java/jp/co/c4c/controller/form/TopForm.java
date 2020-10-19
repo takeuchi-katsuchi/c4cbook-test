@@ -1,9 +1,9 @@
 package jp.co.c4c.controller.form;
 
+import java.util.Date;
 import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.BK_T_NewsReadDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
@@ -13,7 +13,7 @@ import jp.co.c4c.db.dto.V_TopAndDetailDto;
 public class TopForm {
 
     List<V_TopAndDetailDto> topAndDetailDtoList;
-    List<BK_T_NewsReadDto> readStatus;
+    Date readTime;
     List<Integer> myFavoriteBookIdList;
     List<Integer> myLendedBookIdList;
     List<BK_T_LendDto> lendNewsList;
@@ -43,12 +43,14 @@ public class TopForm {
         this.myLendedBookIdList = myLendedBookIdList;
     }
 
-    public List<BK_T_NewsReadDto> getReadStatusNews() {
-        return readStatus;
+    // お知らせ既読更新日時取得
+    public Date getReadTimeNews() {
+        return readTime;
     }
 
-    public void setReadStatusNews(List<BK_T_NewsReadDto> readStatus) {
-        this.readStatus = readStatus;
+    // お知らせ既読更新日時をformへセット
+    public void setReadTimeNews(Date readTime) {
+        this.readTime = readTime;
     }
 
     public List<BK_T_LendDto> getLendNewsList() {

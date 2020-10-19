@@ -1,5 +1,6 @@
 package jp.co.c4c.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import jp.co.c4c.db.dao.SelectBookListDao;
 import jp.co.c4c.db.dao.SelectMyFavoriteBooksDao;
 import jp.co.c4c.db.dao.SelectMyLendHistorysDao;
 import jp.co.c4c.db.dao.SelectNewsReadDataDao;
+import jp.co.c4c.db.dao.UpdateNewsReadDateDao;
 import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
@@ -29,11 +31,13 @@ public class TopService {
     @Autowired
     private SelectMyLendHistorysDao selectMyLendHistorysDao;
     @Autowired
+    private SelectNewsReadDataDao selectNewsReadDataDao;
+    @Autowired
+    private UpdateNewsReadDateDao updateNewsReadDateDao;
+    @Autowired
     private InsertMyFavoriteBookDao insertMyFavoriteBookDao;
     @Autowired
     private DeleteMyFavoriteBookDao deleteMyFavoriteBookDao;
-    @Autowired
-    private SelectNewsReadDataDao selectNewsReadDataDao;
 
     /**
      * トップページに表示させる本のリストを取得
@@ -93,32 +97,46 @@ public class TopService {
     }
 
     /**
+     * お知らせの既読時間を取得
+     * @param memId
+     * @return
+     */
+    @Transactional
+    public BK_T_NewsReadDto getNewReadTime(int memId) {
+        return selectNewsReadDataDao.seletctNewsReadTime(memId);
+    }
+
+    /**
+     * お知らせの既読状態を取得
+     */
+    public boolean getRedStatus(Date readTime) {
+        Date currentTime = new Date();
+
+        // 既読時間が現時刻より前か判定
+        return readTime.before(currentTime);
+    }
+
+    /**
      * お知らせの既読状態を取得
      * @param memId
      * @return
      */
     @Transactional
-    public List<BK_T_NewsReadDto> getNewOfferBooks(int memId) {
-
-        List<BK_T_NewsReadDto> testList = selectNewsReadDataDao.seletctNewsReadData(memId);
-
-        System.out.print(testList);
-
-        return testList;
+    public void updateReadTimeNews(int memId) {
+        updateNewsReadDateDao.updateNewsReadDateByMemId(memId);
     }
 
-//    /**
-//     * 新規提供本有無を確認
-//     * @param memId
-//     * @return
-//     */
-//    @Transactional
-//    public BK_T_NewsReadDto getNewOfferBooks(int memId) {
-//
-//        List<V_TopAndDetailDto> newOfferBooks = selectBookListDao.seletctAllBooks();
-//        Date CompairDate = new Date();
-//
-//        return selectNewsReadDataDao.seletctNewsReadData(memId);
-//    }
+    //    /**
+    //     * 新規提供本有無を確認
+    //     * @return
+    //     */
+    //    @Transactional
+    //    public List<BK_M_BookDto> getofferBookNewsList(Date readTime) {
+    //
+    //        List<BK_M_BookDto> newOfferBooks = selectBookListDao.seletctAllBooks();
+    //        Date CompairDate = new Date();
+    //
+    //        return selectNewsReadDataDao.seletctNewsReadData();
+    //    }
 
 }

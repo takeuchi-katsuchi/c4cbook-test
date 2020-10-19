@@ -1,7 +1,6 @@
 package jp.co.c4c.db.dao;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,18 +15,25 @@ import jp.sf.amateras.mirage.SqlResource;
 public class SelectNewsReadDataDao {
 
     @Autowired
-    public static SqlManager sqlManager;
+    public SqlManager sqlManager;
 
     /**
      * お知らせの未読情報を取得
      * @param memId
      * @return
      */
-    public List<BK_T_NewsReadDto> seletctNewsReadData(int memId) {
+    public BK_T_NewsReadDto seletctNewsReadTime(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_getReadTime.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
-        return sqlManager.getResultList(BK_T_NewsReadDto.class, sqlSrc, param);
+
+        // sql実行のため力技でパラメータを設定
+        String sqlPramOrg = param.toString();
+        char sqlPram = sqlPramOrg.charAt(7);
+
+        return sqlManager.getSingleResultBySql(BK_T_NewsReadDto.class,
+                "select READ_AT from book_db.BK_T_NEWS_READ where book_db.BK_T_NEWS_READ.MEM_ID = " + sqlPram);
+        //           return sqlManager.getSingleResult(BK_T_NewsReadDto.class,sqlSrc,param);
     }
 
 }
