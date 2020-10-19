@@ -120,7 +120,20 @@
                         </c:choose>
                     </div>
                     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">おすすめしている人</label>
-                    <div class="tab-content">おすすめしている人はいません。</div>
+                    <div class="tab-content">
+                        <c:choose>
+                            <c:when test="${empty detailForm.v_RecomMemDtoList}">
+                                <div>おすすめしている人はいません。</div>
+                            </c:when>
+                            <c:otherwise>
+                                <c:forEach items="${detailForm.v_RecomMemDtoList}" var="recomMember">
+                                    <ul>
+                                        <li>${recomMember.memName}</li>
+                                    </ul>
+                                </c:forEach>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
                 </div>
             </div>
         </div>

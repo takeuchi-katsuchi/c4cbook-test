@@ -2,11 +2,7 @@ package jp.co.c4c.controller.form;
 
 import java.util.List;
 
-import jp.co.c4c.db.dto.BK_M_MemBasicDto;
-import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.V_FavoriteMemberDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.V_TopAndDetailDto;
+import jp.co.c4c.db.dto.*;
 
 /**
  * 詳細画面 Formクラス
@@ -19,6 +15,8 @@ public class DetailForm {
     List<V_LendHistoryDto> v_LendHistoryDtoList;
     /** お気に入りした人 */
     List<V_FavoriteMemberDto> v_FavoriteMemberDtoList;
+    /** おすすめしてる人 */
+    List<V_RecomMemDto> v_RecomMemDtoList;
     /** 貸出履歴 ByLendId */
     BK_T_LendDto bk_T_LendDto;
     /** メンバー全員 ByLendId */
@@ -64,4 +62,11 @@ public class DetailForm {
         this.bk_M_MemBasicDtoList = bk_M_MemBasicDtoList;
     }
 
+    public List<V_RecomMemDto> getV_RecomMemDtoList() {
+        return v_RecomMemDtoList;
+    }
+
+    public void setV_RecomMemDtoList(List<V_RecomMemDto> v_RecomMemDtoList) {
+        this.v_RecomMemDtoList = v_RecomMemDtoList;
+    }
 }
