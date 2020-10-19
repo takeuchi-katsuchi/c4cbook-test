@@ -1,11 +1,10 @@
 /* BK_T_NewsReadDao_update.sql */
 
--- MEM_IDは現在固定
-
 update
     book_db.BK_T_NEWS_READ
 set
-    READ_AT = now()
+    READ_AT = SYSDATE(),
+    UPDATE_AT =  SYSDATE()
 where
-    MEM_ID = 1
+    MEM_ID = /*memId*/
 ;
