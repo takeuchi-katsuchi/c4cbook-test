@@ -35,7 +35,7 @@ public class TopController {
     @Autowired
     MyService myService;
 
-    //ƒZƒbƒVƒ‡ƒ“‚ÌƒIƒuƒWƒFƒNƒg‘ã“üŠi”[ƒƒ\ƒbƒh
+    //ã‚»ãƒƒã‚·ãƒ§ãƒ³ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆä»£å…¥æ ¼ç´ãƒ¡ã‚½ãƒƒãƒ‰
     @ModelAttribute("webSessionDto")
     public WebSessionDto setWebSessionDto(WebSessionDto webSessionDto) {
         return webSessionDto;
@@ -43,31 +43,31 @@ public class TopController {
 
     @RequestMapping
     public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, Model model, TopForm form) {
-        // ƒƒOƒCƒ“ƒ`ƒFƒbƒN
+        // ãƒ­ã‚°ã‚¤ãƒ³ãƒã‚§ãƒƒã‚¯
         boolean isLogined = commonService.isLogined(webSessionDto);
         if (!isLogined)
             return "redirect:login";
 
-        // ‘S‚Ä‚Ì–{‚ÌƒŠƒXƒg‚ğfrom‚ÉƒZƒbƒg
+        // å…¨ã¦ã®æœ¬ã®ãƒªã‚¹ãƒˆã‚’fromã«ã‚»ãƒƒãƒˆ
         form.setTopAndDetailDtoList(topService.getAllBooks());
 
         int memId = webSessionDto.getMemId();
 
-        // ƒƒOƒCƒ“ƒ†[ƒU[‚ª‚¨‹C‚É“ü‚è‚µ‚Ä‚¢‚é–{‚ÌƒŠƒXƒgform‚ÉƒZƒbƒg
+        // ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒãŠæ°—ã«å…¥ã‚Šã—ã¦ã„ã‚‹æœ¬ã®ãƒªã‚¹ãƒˆformã«ã‚»ãƒƒãƒˆ
         List<V_MyFavoriteBookDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
         List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
                 .map(V_MyFavoriteBookDto::getBookId)
                 .collect(Collectors.toList());
         form.setMyFavoriteBookIdList(myFavoriteBookIdList);
 
-        // ƒƒOƒCƒ“ƒ†[ƒU[‚ª“Ç‘Ï‚İ‚Ì–{‚ÌƒŠƒXƒg‚ğæ“¾
+        // ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒèª­æ›¸æ¸ˆã¿ã®æœ¬ã®ãƒªã‚¹ãƒˆã‚’å–å¾—
         List<V_LendHistoryDto> bk_T_LendDtoList = topService.getlendedBooks(memId);
         List<Integer> myLendedBookIdList = bk_T_LendDtoList.stream()
                 .map(V_LendHistoryDto::getBookId)
                 .collect(Collectors.toList());
         form.setMyLendedBookIdList(myLendedBookIdList);
 
-        // ƒƒOƒCƒ“ƒ†[ƒU[‚Ì‘İoE—\–ñ—š—ğ‘SŒæ“¾
+        // ãƒ­ã‚°ã‚¤ãƒ³ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®è²¸å‡ºãƒ»äºˆç´„å±¥æ­´å…¨ä»¶å–å¾—
         List<V_MyLendHistoryDto> myPageDtoList = myService.getBooksByMemId(memId);
 
         List<V_MyLendHistoryDto> myLendingBookList = myPageDtoList.stream()
@@ -75,60 +75,60 @@ public class TopController {
                 .collect(Collectors.toList());
         form.setMyLendingBookList(myLendingBookList);
 
-        /* tagId‚ğ•¶š—ñ‚É•ÏŠ· */
+        /* tagIdã‚’æ–‡å­—åˆ—ã«å¤‰æ› */
         for (int i = 0; i < form.getTopAndDetailDtoList().size(); i++) {
             String[] tagIds = form.getTopAndDetailDtoList().get(i).getTagIds().split(",");
             convertTag(tagIds);
             form.getTopAndDetailDtoList().get(i).setTagIds(String.join(",", tagIds));
         }
 
-        // ‚¨’m‚ç‚¹ƒƒbƒZ[ƒW_‘İoŠúŒÀ’Ê’m—p‚Ìî•ñ‚ğæ“¾
+        // ãŠçŸ¥ã‚‰ã›ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸_è²¸å‡ºæœŸé™é€šçŸ¥ç”¨ã®æƒ…å ±ã‚’å–å¾—
         List<BK_T_LendDto> lendNewsList = topService.getLendNewsByMemId(memId);
         form.setLendNewsList(lendNewsList);
 
         int LendingCnt = form.getCountMyLendingBookList();
         model.addAttribute("LendingCnt", LendingCnt);
 
-        // ‚¨’m‚ç‚¹Šù“ÇŠÔ‚ğæ“¾
+        // ãŠçŸ¥ã‚‰ã›æ—¢èª­æ™‚é–“ã‚’å–å¾—
         BK_T_NewsReadDto newsReadAt = topService.getNewReadTime(memId);
         form.setReadTimeNews(newsReadAt.getReadAt());
 
-        // ‚¨’m‚ç‚¹Šù“ÇƒXƒe[ƒ^ƒX‚ğæ“¾
+        // ãŠçŸ¥ã‚‰ã›æ—¢èª­ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’å–å¾—
         Date readTime = form.getReadTimeNews();
         boolean readStatus = topService.getRedStatus(readTime);
 
         model.addAttribute("readStatus", readStatus);
 
-        //        // ‚¨’m‚ç‚¹ƒƒbƒZ[ƒW_–{“ü‰×’Ê’m‚Ìî•ñ‚ğæ“¾
+        //        // ãŠçŸ¥ã‚‰ã›ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸_æœ¬å…¥è·é€šçŸ¥ã®æƒ…å ±ã‚’å–å¾—
         //        List<BK_M_BookDto> offerBookNewsList = topService.getofferBookNewsList(readTime);
         //        form.setLendNewsList(lendNewsList);
 
-        //        // ‚¨’m‚ç‚¹ƒƒbƒZ[ƒW_—v–]‚µ‚½–{‚Ì³”F’Ê’m‚Ìî•ñ‚ğæ“¾
+        //        // ãŠçŸ¥ã‚‰ã›ãƒ¡ãƒƒã‚»ãƒ¼ã‚¸_è¦æœ›ã—ãŸæœ¬ã®æ‰¿èªé€šçŸ¥ã®æƒ…å ±ã‚’å–å¾—
         //        List<BK_M_BookDto> offerBookNewsList = topService.getofferBookNewsList(readTime);
         //        form.setLendNewsList(lendNewsList);
 
-        // ‚¨’m‚ç‚¹Šù“Çó‘ÔXV
+        // ãŠçŸ¥ã‚‰ã›æ—¢èª­çŠ¶æ…‹æ›´æ–°
         topService.updateReadTimeNews(memId);
 
         return "top";
     }
 
     /**
-     * tagId‚ğ•¶š—ñ‚É•ÏŠ·‚·‚éƒƒ\ƒbƒhiì¬’†j
+     * tagIdã‚’æ–‡å­—åˆ—ã«å¤‰æ›ã™ã‚‹ãƒ¡ã‚½ãƒƒãƒ‰ï¼ˆä½œæˆä¸­ï¼‰
      * @param strings
      * @return
      */
     public String[] convertTag(String[] strings) {
         for (int i = 0; i < strings.length; i++) {
             switch (strings[i]) {
-            case "1":
-                strings[i] = "Java"; // ’è”‚É“ü‚ê‘Ö‚¦‚é
-                break;
-            case "2":
-                strings[i] = "PHP";
-                break;
-            default:
-                break;
+                case "1":
+                    strings[i] = "Java"; // å®šæ•°ã«å…¥ã‚Œæ›¿ãˆã‚‹
+                    break;
+                case "2":
+                    strings[i] = "PHP";
+                    break;
+                default:
+                    break;
             }
         }
         return strings;
