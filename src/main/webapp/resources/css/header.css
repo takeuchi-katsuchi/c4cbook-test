@@ -53,6 +53,7 @@ section.header div.menu  ul.pulldown li ul {
     background: #5597da;
     border: solid 1px #000000;
     padding: 0 1vw 0 1vw;
+    z-index: 1;
 }
 
 section.header div.menu  ul.pulldown li.slidebtn ul li{
