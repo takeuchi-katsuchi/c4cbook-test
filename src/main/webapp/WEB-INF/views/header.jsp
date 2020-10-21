@@ -12,9 +12,9 @@
   <h2 class="title">C4CBOOK</h2>
   <div class="menu">
    <ul class="pulldown">
-    <li><img src="resources/img/filter.png" alt="フィルタ"></li>
-    <li><img src="resources/img/sort.png" alt="ソート"></li>
-    <li class="slidebtn"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
+    <li class="use_top"><img src="resources/img/filter.png" alt="フィルタ"></li>
+    <li class="use_top"><img src="resources/img/sort.png" alt="ソート"></li>
+    <li class="slidebtn, use_top"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
      <ul class="submenu">
       <c:if test="${LendingCnt >= 1}">
        <li class="news"><a href="/c4cbook/mypage">返却期限が近付いている本が${LendingCnt}件あります。</a></li>
