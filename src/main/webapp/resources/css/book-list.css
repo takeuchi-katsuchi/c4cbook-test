@@ -49,19 +49,7 @@ div.name {
     font-weight: bold;
     margin-bottom: 5px;
 }
-div.name:before {
-    content: "";
-    position: absolute;
-    background: #9de5ff;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    top: 50%;
-    left: -15px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    z-index: -1;
-}
+
 div.author {
     font-size: 11px;
     margin-bottom: 5px;
