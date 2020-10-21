@@ -12,27 +12,22 @@
 
 .sort_title {
 	color: #0033FF;
-	padding: 15px 0px 5px 15px;
-	font-size: 20px;
 	font-family: sans-serif;
 	font-weight: 700;
-	border-bottom: dashed 2px #0033FF;
 }
 
 .sort_column {
-	cursor: pointer;
-	padding-top: 10px;
-	padding-left: 20px;
 	font-size: 15px;
-	font-family: sans-serif;
 }
 
-.sort_column::after {
-	content: "▼";
-	font-size: 18px;
-	margin-left: 10px;
-	color: #0033FF;
+.table {
+	margin-bottom: 0 !important;
 }
+
+.checkbox {
+	margin-left: 5px;
+}
+
 
 .filter_modal {
 	position: fixed;

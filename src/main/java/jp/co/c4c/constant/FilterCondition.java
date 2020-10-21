@@ -6,8 +6,7 @@ public enum FilterCondition {
     NYUMONSYO("2"),
     WEBKAIHATSU("3"),
     JIKOKEIHATSU("4"),
-    GORAKU("5"),
-    JITSUYOU("6");
+    GORAKU("5");
 
     private final String filterCond;
 

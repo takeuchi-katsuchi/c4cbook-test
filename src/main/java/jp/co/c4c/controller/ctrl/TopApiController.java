@@ -1,16 +1,15 @@
 package jp.co.c4c.controller.ctrl;
 
+import jp.co.c4c.db.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import jp.co.c4c.db.dto.ApiResponse;
-import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.service.TopService;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author takayukiyamaoka
@@ -48,5 +47,35 @@ public class TopApiController {
         response.setData(bk_T_FavoriteDto);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
+
+    // 並び替え、タグ絞り込みように本のリストを取得
+    @RequestMapping(value = "/api/getBookList", method = RequestMethod.GET)
+    public ResponseEntity<Object> showBookList(@RequestParam(name = "memId") int memId) {
+        ApiResponse<V_TopAndDetailDto> response = new ApiResponse<>();
+
+        List<V_TopAndDetailDto> v_topAndDetailDtoList = topService.getAllBooks();
+
+        // ログインユーザーがお気に入りしている本のリストを取得
+        List<V_MyFavoriteBookDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);
+        List<Integer> myFavoriteBookIdList = bk_T_FavoriteDtoList.stream()
+                .map(V_MyFavoriteBookDto::getBookId)
+                .collect(Collectors.toList());
+
+        // ログインユーザーが読書済みの本のリストを取得を取得
+        List<V_LendHistoryDto> bk_T_LendDtoList = topService.getlendedBooks(memId);
+        List<Integer> myLendedBookIdList = bk_T_LendDtoList.stream()
+                .map(V_LendHistoryDto::getBookId)
+                .collect(Collectors.toList());
+
+
+        response.setStatus("Success");
+        response.setDataList(v_topAndDetailDtoList);
+        response.setMyFavoriteBookIdList(myFavoriteBookIdList);
+        response.setMyLendedBookIdList(myLendedBookIdList);
+
+        return new ResponseEntity<Object>(response, HttpStatus.OK);
+    }
+
+
 
 }

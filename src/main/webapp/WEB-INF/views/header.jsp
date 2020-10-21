@@ -13,7 +13,7 @@
   <div class="menu">
    <ul class="pulldown">
     <li class="use_top"><img src="resources/img/filter.png" alt="フィルタ"></li>
-    <li class="use_top"><img src="resources/img/sort.png" alt="ソート"></li>
+    <li class="use_top"><img id="sorting" src="resources/img/sort.png" alt="ソート" data-toggle="modal"data-target="#sort_modal"></li>
     <li class="slidebtn, use_top"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
      <ul class="submenu">
       <c:if test="${LendingCnt >= 1}">
