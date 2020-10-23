@@ -2,7 +2,6 @@ package jp.co.c4c.util;
 
 import jp.co.c4c.constant.TagCondition;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Base64;
 
@@ -28,7 +27,6 @@ public class CommonUtil {
      * @param data
      * @return img
      */
-    @Transactional
     public String convByteToString(byte[] data) {
         if (data == null) { return null; }
 
