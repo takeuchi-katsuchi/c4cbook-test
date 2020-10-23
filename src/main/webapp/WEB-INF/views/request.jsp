@@ -49,24 +49,18 @@
        </div>
       </div>
       <div class="line-reasons">
-       <div class="reason" id="reason_close">
+       <div class="reason-req" id="reason_close">
         <div class="sub-title">要望理由</div>
         <div class="reason-text"><c:out value="${reqInfo.comment}"/></div>
-        <div class="readmore">
-         <a href="#" class="readMoreBtn" onclick="readMoreReason(${status.index});return false;" >ReadMore...</a>
-        </div>
        </div>
        <c:if test="${reqInfo.requestStatus == 9 }">
        <div class="line-reason-reject">
         <div class="rejected_img">
           <img class="reject-arrow" src="resources/img/arrow_reject.png" alt="">
         </div>
-        <div class="reason_reject" id="reason_reject_close">
+        <div class="reason_reject">
          <div class="sub-title">却下理由</div>
          <div class="reason-text"><c:out value="${reqInfo.rejectComment}"/></div>
-         <div class="readmore_reject">
-          <a href="#" class="readMoreBtn_reject" onclick="readMoreRejectReason(${status.index});return false;" >ReadMore...</a>
-         </div>
         </div>
        </div>
        </c:if>
@@ -97,8 +91,12 @@
     <div class="reg-book-info">
      <div>タイトル</div>
      <div><input type="text" id="inpt-title"></div>
+     <div>タイトル（かな）</div>
+     <div><input type="text" id="inpt-title-kana"></div>
      <div>著者</div>
      <div><input type="text" id="inpt-author"></div>
+     <div>著者（かな）</div>
+     <div><input type="text" id="inpt-author-kana"></div>
      <div>要望理由</div>
      <div><textarea class="reg-reason" id="textarea"></textarea></div>
     </div>
