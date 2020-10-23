@@ -196,7 +196,7 @@ $(document).ready(function () {
             $('.request').append(`
                     <div class="book_box">
 						<div class="book_img_area">
-							<a href="${destinationUrl}"><img class="book-img" src="resources/img/sample_book.jpg" alt=""></a>
+							<a href="${destinationUrl}"><img class="book-img" src="data:image/jpeg;base64,${editedList[i]["encodedBookImg"]}" alt=""></a>
 						</div>
 			
 						<div class="book_info">

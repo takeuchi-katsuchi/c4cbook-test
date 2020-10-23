@@ -23,6 +23,8 @@ public class V_TopAndDetailDto {
     private String outline;
     /** 画像 */
     private byte[] bookImg;
+    /** 画像（encode）*/
+    private String encodedBookImg;
     /** 提供メンバーID */
     private int offerMemId;
     /** 提供メンバーコメント */
@@ -122,6 +124,14 @@ public class V_TopAndDetailDto {
 
     public void setBookImg(byte[] bookImg) {
         this.bookImg = bookImg;
+    }
+
+    public String getEncodedBookImg() {
+        return encodedBookImg;
+    }
+
+    public void setEncodedBookImg(String encodedBookImg) {
+        this.encodedBookImg = encodedBookImg;
     }
 
     public int getOfferMemId() {
