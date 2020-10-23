@@ -44,7 +44,14 @@ public class TopController {
             return "redirect:login";
 
         // 全ての本のリストをfromにセット
-        form.setTopAndDetailDtoList(topService.getAllBooks());
+        List<V_TopAndDetailDto> v_topAndDetailDtoList = topService.getAllBooks();
+        CommonUtil commonUtil = new CommonUtil();
+        for (V_TopAndDetailDto v_topAndDetailDto : v_topAndDetailDtoList) {
+            // 画像のバイナリデータを文字列に変換
+            String dataString = commonUtil.convByteToString(v_topAndDetailDto.getBookImg());
+            v_topAndDetailDto.setEncodedBookImg(dataString);
+        }
+        form.setTopAndDetailDtoList(v_topAndDetailDtoList);
 
         int memId = webSessionDto.getMemId();
 

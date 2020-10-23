@@ -55,6 +55,13 @@ public class TopApiController {
         ApiResponse<V_TopAndDetailDto> response = new ApiResponse<>();
 
         List<V_TopAndDetailDto> v_topAndDetailDtoList = topService.getAllBooks();
+        CommonUtil commonUtil = new CommonUtil();
+        for (V_TopAndDetailDto v_topAndDetailDto : v_topAndDetailDtoList) {
+            // 画像のバイナリデータを文字列に変換
+            String dataString = commonUtil.convByteToString(v_topAndDetailDto.getBookImg());
+            v_topAndDetailDto.setEncodedBookImg(dataString);
+        }
+
         /* tagIdを文字列に変換 */
         for (int i = 0; i < v_topAndDetailDtoList.size(); i++) {
             String[] tagIds = v_topAndDetailDtoList.get(i).getTagIds().split(",");
