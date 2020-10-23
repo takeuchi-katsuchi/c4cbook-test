@@ -6,39 +6,35 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<%--<div class="top_sort sort_modal">--%>
-<%--	<div class="sort_title">トップ画面並び替え</div>--%>
-<%--	<div class="sort_column latest_and_arrivalday">最新入荷日順</div>--%>
-<%--	<div class="sort_column japanese_syllabary">五十音順</div>--%>
-<%--	<div class="sort_column number_of_favorites">お気に入り数順</div>--%>
-<%--	<div class="sort_column number_of_read">読まれた回数順</div>--%>
-<%--</div>--%>
-
 <!-- ソートModal -->
 <div class="modal fade" id="sort_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h5 class="modal-title sort_title" id="exampleModalLabel">トップ画面並び替え</h5>
+				<h5 class="modal-title sort_title" id="exampleModalLabel">並び替え</h5>
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
 				</button>
 			</div>
 			<div class="modal-body">
-				<table class="table table-borderless" width="100%">
-					<tr>
-						<th><div class="sort_column">最新入荷日順</div></th>
-						<td><input class="checkbox" type="checkbox" name="sortCond" value="1" disabled="disabled"></td>
-						<th><div class="sort_column">五十音順</div></th>
-						<td><input class="checkbox" type="checkbox" name="sortCond" value="2" disabled="disabled"></td>
-					</tr>
-					<tr>
-						<th><div class="sort_column">お気に入り数順</div></th>
-						<td><input class="checkbox" type="checkbox" name="sortCond" value="3" disabled="disabled"></td>
-						<th><div class="sort_column">読まれた回数順</div></th>
-						<td><input class="checkbox" type="checkbox" name="sortCond" value="4" disabled="disabled"></td>
-					</tr>
-				</table>
+				<div class="row">
+					<div class="col-5">
+						<input id="sort_1" type="checkbox" name="sortCond" value="1" disabled="disabled">
+						<label for="sort_1">最新入荷日順</label>
+					</div>
+					<div class="col-5">
+						<input id="sort_2" type="checkbox" name="sortCond" value="2" disabled="disabled">
+						<label for="sort_2">五十音順</label>
+					</div>
+					<div class="col-5">
+						<input id="sort_3" type="checkbox" name="sortCond" value="3" disabled="disabled">
+						<label for="sort_3">お気に入り数順</label>
+					</div>
+					<div class="col-5">
+						<input id="sort_4" type="checkbox" name="sortCond" value="4" disabled="disabled">
+						<label for="sort_4">読まれた回数順</label>
+					</div>
+				</div>
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -47,141 +43,43 @@
 	</div>
 </div>
 
-
-<div class="mypage_sort sort_modal">
-	<div class="sort_title">マイページ画面並び替え</div>
-	<div class="sort_column latest_and_arrivalday">最新入荷日順</div>
-	<div class="sort_column japanese_syllabary">五十音順</div>
-	<div class="sort_column number_of_favorites">お気に入り数順</div>
-	<div class="sort_column number_of_read">読まれた回数順</div>
+<!-- フィルターModal -->
+<div class="modal fade" id="filter_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title filter_title">タグ絞り込み</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="col-4">
+						<input type="checkbox" name="filter_column_name" id="filter_1" />
+						<label for="filter_1">資格</label>
+					</div>
+					<div class="col-4">
+						<input type="checkbox"name="filter_column_name" id="filter_column2" />
+						<label for="filter_column2">入門書</label>
+					</div>
+					<div class="col-4">
+						<input type="checkbox" name="filter_column_name" id="filter_column3" />
+						<label for="filter_column3">web開発</label>
+					</div>
+					<div class="col-4">
+						<input type="checkbox" name="filter_column_name" id="filter_column4" />
+						<label for="filter_column4">自己啓発</label>
+					</div>
+					<div class="col-4">
+						<input type="checkbox" name="filter_column_name" id="filter_column5" />
+						<label for="filter_column5">娯楽・実用</label>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
 </div>
-
-<div class="request_sort sort_modal">
-	<div class="sort_title">要望画面並び替え</div>
-	<div class="sort_column latest_and_arrivalday">最新入荷日順</div>
-	<div class="sort_column japanese_syllabary">五十音順</div>
-	<div class="sort_column number_of_favorites">お気に入り数順</div>
-	<div class="sort_column number_of_read">読まれた回数順</div>
-</div>
-
-
-<div class="top_filter filter_modal">
-	<div class="filter_title">トップ画面タグ絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column1" />
-		<label for="filter_column1">資格</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column2" /> <label
-			for="filter_column2">入門書</label> <input type="checkbox"
-													name="filter_column_name" id="filter_column3" /> <label
-			for="filter_column3">web開発</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column4" /> <label
-			for="filter_column4">自己啓発</label> <input type="checkbox"
-													 name="filter_column_name" id="filter_column5" /> <label
-			for="filter_column5">娯楽・実用</label>
-	</div>
-	<div class="filter_title">条件絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column6" />
-		<label for="filter_column6">おすすめ</label> <input type="checkbox"
-														name="filter_column_name" id="filter_column7" /> <label
-			for="filter_column7">お気に入り</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column8" /> <label
-			for="filter_column8">読まれた回数</label> <input type="checkbox"
-													   name="filter_column_name" id="filter_column9" /> <label
-			for="filter_column9">未読</label>
-	</div>
-	<div class="close">閉じる ✖︎</div>
-</div>
-
-<div class="mypage_filter filter_modal">
-	<div class="filter_title">マイページ画面タグ絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column1" />
-		<label for="filter_column1">資格</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column2" /> <label
-			for="filter_column2">入門書</label> <input type="checkbox"
-													name="filter_column_name" id="filter_column3" /> <label
-			for="filter_column3">web開発</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column4" /> <label
-			for="filter_column4">自己啓発</label> <input type="checkbox"
-													 name="filter_column_name" id="filter_column5" /> <label
-			for="filter_column5">娯楽・実用</label>
-	</div>
-	<div class="filter_title">条件絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column6" />
-		<label for="filter_column6">おすすめ</label> <input type="checkbox"
-														name="filter_column_name" id="filter_column7" /> <label
-			for="filter_column7">お気に入り</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column8" /> <label
-			for="filter_column8">読まれた回数</label> <input type="checkbox"
-													   name="filter_column_name" id="filter_column9" /> <label
-			for="filter_column9">未読</label>
-	</div>
-	<div class="close">閉じる ✖︎</div>
-</div>
-
-<div class="request_filter filter_modal">
-	<div class="filter_title">要望画面タグ絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column1" />
-		<label for="filter_column1">資格</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column2" /> <label
-			for="filter_column2">入門書</label> <input type="checkbox"
-													name="filter_column_name" id="filter_column3" /> <label
-			for="filter_column3">web開発</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column4" /> <label
-			for="filter_column4">自己啓発</label> <input type="checkbox"
-													 name="filter_column_name" id="filter_column5" /> <label
-			for="filter_column5">娯楽・実用</label>
-	</div>
-	<div class="filter_title">条件絞り込み</div>
-	<div class="filter_column">
-		<input type="checkbox" name="filter_column_name" id="filter_column6" />
-		<label for="filter_column6">おすすめ</label> <input type="checkbox"
-														name="filter_column_name" id="filter_column7" /> <label
-			for="filter_column7">お気に入り</label> <input type="checkbox"
-													  name="filter_column_name" id="filter_column8" /> <label
-			for="filter_column8">読まれた回数</label> <input type="checkbox"
-													   name="filter_column_name" id="filter_column9" /> <label
-			for="filter_column9">未読</label>
-	</div>
-	<div class="close">閉じる ✖︎</div>
-</div>
-
-
-
-<script>
-	$('.opensort').click(function() {
-		switch (location.pathname) {
-			case "/c4cbook/top":
-				$('.top_sort').fadeIn();
-				break;
-			case "/c4cbook/mypage":
-				$('.mypage_sort').fadeIn();
-				break;
-			case "/c4cbook/request":
-				$('.request_sort').fadeIn();
-				break;
-		}
-	});
-
-	// $('.openfilter').click(function() {
-	// 	console.log(location.pathname)
-	// 	switch (location.pathname) {
-	// 		case "/c4cbook/top":
-	// 			$('.top_filter').fadeIn();
-	// 			break;
-	// 		case "/c4cbook/mypage":
-	// 			$('.mypage_filter').fadeIn();
-	// 			break;
-	// 		case "/c4cbook/request":
-	// 			$('.request_filter').fadeIn();
-	// 			break;
-	// 	}
-	// });
-	//
-	// $('.close').click(function() {
-	// 	$('.top_filter').fadeOut();
-	// });
-</script>

@@ -72,6 +72,11 @@ $(document).ready(function () {
         getBookList(memId);
     });
 
+    $(document).on('click', '#filtering', function () {
+        // 並び替え絞り込み用に、本のデータを全件クライアント側に保持
+        getBookList(memId);
+    });
+
     // 非同期でbookListを取得
     function getBookList(memId) {
         $.ajax({
@@ -83,7 +88,7 @@ $(document).ready(function () {
                 favBookIdList = response.myFavoriteBookIdList;
                 lendBookIdList = response.myLendedBookIdList;
                 // 読み込みが完了したらチェックボックスを活性化
-                $('.checkbox').prop('disabled', false);
+                $('input[type="checkbox"]').prop('disabled', false);
             },
             error: function () {
             }
@@ -216,8 +221,8 @@ $(document).ready(function () {
     }
 
     // チェックボックスの選択制御
-    $('.checkbox').on("click", function () {
-        $('.checkbox').prop('checked', false);  //  全部のチェックを外す
+    $('input[type="checkbox"]').on("click", function () {
+        $('input[type="checkbox"]').prop('checked', false);  //  全部のチェックを外す
         $(this).prop('checked', true);  //  押したやつだけチェックつける
     });
 

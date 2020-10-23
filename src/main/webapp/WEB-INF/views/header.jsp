@@ -12,7 +12,7 @@
   <h2 class="title">C4CBOOK</h2>
   <div class="menu">
    <ul class="pulldown">
-    <li class="use_top"><img src="resources/img/filter.png" alt="フィルタ"></li>
+    <li class="use_top"><img id="filtering" src="resources/img/filter.png" alt="フィルタ" data-toggle="modal"data-target="#filter_modal"></li>
     <li class="use_top"><img id="sorting" src="resources/img/sort.png" alt="ソート" data-toggle="modal"data-target="#sort_modal"></li>
     <li class="slidebtn, use_top"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
      <ul class="submenu">
