@@ -1,6 +1,7 @@
 package jp.co.c4c.controller.ctrl;
 
 import jp.co.c4c.db.dto.*;
+import jp.co.c4c.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +55,12 @@ public class TopApiController {
         ApiResponse<V_TopAndDetailDto> response = new ApiResponse<>();
 
         List<V_TopAndDetailDto> v_topAndDetailDtoList = topService.getAllBooks();
+        /* tagIdを文字列に変換 */
+        for (int i = 0; i < v_topAndDetailDtoList.size(); i++) {
+            String[] tagIds = v_topAndDetailDtoList.get(i).getTagIds().split(",");
+            CommonUtil.convertTag(tagIds);
+            v_topAndDetailDtoList.get(i).setTagIds(String.join(",", tagIds));
+        }
 
         // ログインユーザーがお気に入りしている本のリストを取得
         List<V_MyFavoriteBookDto> bk_T_FavoriteDtoList = topService.getFavoriteBooks(memId);

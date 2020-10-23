@@ -31,7 +31,9 @@
                 </c:choose>
 
                 <ul class="tag">
-                    <li>${topAndDetail.tagIds}</li>
+                <c:forEach items="${topAndDetail.tagIds}" var="tag">
+                    <li>${tag}</li>
+                </c:forEach>
                 </ul>
                 <div class="icon_img_wrap">
                     <div class="icon_img_area">

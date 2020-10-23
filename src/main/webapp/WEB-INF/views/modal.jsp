@@ -56,24 +56,24 @@
 			<div class="modal-body">
 				<div class="row">
 					<div class="col-4">
-						<input type="checkbox" name="filter_column_name" id="filter_1" />
+						<input id="filter_1" type="checkbox" name="filterCond" value="1" disabled="disabled"/>
 						<label for="filter_1">資格</label>
 					</div>
 					<div class="col-4">
-						<input type="checkbox"name="filter_column_name" id="filter_column2" />
+						<input id="filter_column2" type="checkbox"name="filterCond" value="2" disabled="disabled"/>
 						<label for="filter_column2">入門書</label>
 					</div>
 					<div class="col-4">
-						<input type="checkbox" name="filter_column_name" id="filter_column3" />
+						<input id="filter_column3" type="checkbox" name="filterCond" value="3" disabled="disabled"/>
 						<label for="filter_column3">web開発</label>
 					</div>
 					<div class="col-4">
-						<input type="checkbox" name="filter_column_name" id="filter_column4" />
+						<input id="filter_column4" type="checkbox" name="filterCond" value="4" disabled="disabled"/>
 						<label for="filter_column4">自己啓発</label>
 					</div>
 					<div class="col-4">
-						<input type="checkbox" name="filter_column_name" id="filter_column5" />
-						<label for="filter_column5">娯楽・実用</label>
+						<input id="filter_column5" type="checkbox" name="filterCond" value="5" disabled="disabled"/>
+						<label for="filter_column5">娯楽</label>
 					</div>
 				</div>
 			</div>

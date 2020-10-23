@@ -99,43 +99,76 @@ $(document).ready(function () {
     // 並び替えの処理
     ////////////////////////////////////////////////////////
     let sortCond;
+    let editedList = null;
     $('input[name="sortCond"]').on('change', function () {
         sortCond = $(this).val();
 
-        let sortedList = null;
         // 最新入荷日順
         if (sortCond === "1") {
-            sortedList = getSortedListLatest(dataList);
+            editedList = getSortedListLatest(dataList);
             // あいうえお順
         } else if (sortCond === "2") {
-            sortedList = getSortedListKana(dataList);
+            editedList = getSortedListKana(dataList);
             // お気に入り数順
         } else if (sortCond === "3") {
-            sortedList = getSortedListFav(dataList);
+            editedList = getSortedListFav(dataList);
             // 読まれた回数順
         } else if (sortCond === "4") {
-            sortedList = getSortedListLend(dataList);
+            editedList = getSortedListLend(dataList);
         }
+        // 要素を並び替え後のデータに入れ替え
+        insertNewElement(editedList);
+    });
 
+    /////////////////////////////////////////////////////////
+    // タグ絞り込みの処理
+    ////////////////////////////////////////////////////////
+    let filterCond;
+    $('input[name="filterCond"]').on('change', function () {
+        filterCond = $(this).val();
+
+        // 資格
+        if (filterCond === "1") {
+            editedList = getFilteredList_1(dataList);
+            // 入門書
+        } else if (filterCond === "2") {
+            editedList = getFilteredList_2(dataList);
+            // WEB開発
+        } else if (filterCond === "3") {
+            editedList = getFilteredList_3(dataList);
+            // 実用書
+        } else if (filterCond === "4") {
+            editedList = getFilteredList_4(dataList);
+            // 娯楽
+        }　else if (filterCond === "5") {
+            editedList = getFilteredList_5(dataList);
+        }
+        // 要素をタグで絞り込み後のデータに入れ替え
+        insertNewElement(editedList);
+    });
+    /////////////////////////////////////////////////////////
+    // 並び替え or タグで絞り込んだ要素に入れ替え
+    ////////////////////////////////////////////////////////
+    function insertNewElement (editedList) {
         // 元々の要素を削除
         $(`.request`).children().remove();
         // 並び替えた要素を全件追加する
-        for (let i = 0; i < sortedList.length; i++) {
+        for (let i = 0; i < editedList.length; i++) {
             // url
-            let destinationUrl = `/c4cbook/detail?bookId=${sortedList[i]["bookId"]}`
-            let memName = sortedList[i]["memName"];
-            let lendStatusObj;
+            let destinationUrl = `/c4cbook/detail?bookId=${editedList[i]["bookId"]}`
+            let memName = editedList[i]["memName"];
 
+            let lendStatusObj;
             // memNameがnullの場合貸出可能
             if (memName === null) {
                 lendStatusObj = `<div class="rent_able">貸出可能です</div>`
-            // memNameがnullでない場合誰々に貸出中
+                // memNameがnullでない場合誰々に貸出中
             } else {
                 lendStatusObj = `<div class="rent_disable">${memName}に貸出中</div>`
             }
 
             let bookId, elem1, elem2;
-            bookId = sortedList[i]["bookId"];
+            bookId = editedList[i]["bookId"];
             // 読書済みの場合本が開いたアイコンを表示
             if (lendBookIdList.includes(bookId)) {
                 elem1 = `<i class="fas fa-book-open fa-2x"></i>`
@@ -151,6 +184,14 @@ $(document).ready(function () {
                 elem2 = `<i class="noheart fas fa-heart fa-2x" name="fav" data-id="${bookId}"></i>`
             }
 
+            // 挿入するタグを分割し、li要素に変換
+            let tagIds, elemTag;
+            tagIds = editedList[i]["tagIds"].split(",");
+            elemTag = "";
+            for (j = 0; j <tagIds.length; j++) {
+                elemTag = elemTag + `<li>${tagIds[j]}</li>`
+            }
+
             // 要素を追加
             $('.request').append(`
                     <div class="book_box">
@@ -159,30 +200,33 @@ $(document).ready(function () {
 						</div>
 			
 						<div class="book_info">
-							<div class="name"><a href="${destinationUrl}">${sortedList[i]["title"]}</a></div>
-							<div class="author">${sortedList[i]["author"]}</div>
+							<div class="name"><a href="${destinationUrl}">${editedList[i]["title"]}</a></div>
+							<div class="author">${editedList[i]["author"]}</div>
 							${lendStatusObj}
 							<ul class="tag">
-								<li>${sortedList[i]["tagIds"]}</li>
+								${elemTag}
 							</ul>
 							<div class="icon_img_wrap">
 								<div class="icon_img_area">
                                     ${elem1}
 								</div>
-								<div class="icon_img_area book-count">${sortedList[i]["lendCount"]}</div>
+								<div class="icon_img_area book-count">${editedList[i]["lendCount"]}</div>
 								<div class="icon_img_area">
 									${elem2}
 								</div>
 								<div class="icon_img_area heart-count">
-										${sortedList[i]["favCount"]}
+										${editedList[i]["favCount"]}
 								</div>
 							</div>
 						</div>
                     </div>
 		                `);
         }
-    });
+    }
 
+    /////////////////////////////////////////////////////////
+    // 並び替えのメソッド
+    ////////////////////////////////////////////////////////
     function getSortedListLatest(list) {
         let sortedList = list.sort(function (a, b) {
             if (a.offerDate > b.offerDate) return -1;
@@ -191,7 +235,6 @@ $(document).ready(function () {
         });
         return sortedList;
     }
-
 
     function getSortedListKana(list) {
         let sortedList = list.sort(function (a, b) {
@@ -218,6 +261,63 @@ $(document).ready(function () {
             return 0;
         });
         return sortedList;
+    }
+
+    /////////////////////////////////////////////////////////
+    // タグ絞り込みのメソッド
+    ////////////////////////////////////////////////////////
+    function getFilteredList_1(list) {
+        let filteredList = [];
+        for (i = 0; i < list.length; i ++) {
+            let tagIds = list[i]["tagIds"].split(",");
+            if(tagIds.includes("資格")){
+                filteredList.push(list[i]);
+            }
+        }
+        return filteredList;
+    }
+
+    function getFilteredList_2(list) {
+        let filteredList = [];
+        for (i = 0; i < list.length; i ++) {
+            let tagIds = list[i]["tagIds"].split(",");
+            if(tagIds.includes("入門書")){
+                filteredList.push(list[i]);
+            }
+        }
+        return filteredList;
+    }
+
+    function getFilteredList_3(list) {
+        let filteredList = [];
+        for (i = 0; i < list.length; i ++) {
+            let tagIds = list[i]["tagIds"].split(",");
+            if(tagIds.includes("WEB開発")){
+                filteredList.push(list[i]);
+            }
+        }
+        return filteredList;
+    }
+
+    function getFilteredList_4(list) {
+        let filteredList = [];
+        for (i = 0; i < list.length; i ++) {
+            let tagIds = list[i]["tagIds"].split(",");
+            if(tagIds.includes("実用書")){
+                filteredList.push(list[i]);
+            }
+        }
+        return filteredList;
+    }
+    function getFilteredList_5(list) {
+        let filteredList = [];
+        for (i = 0; i < list.length; i ++) {
+            let tagIds = list[i]["tagIds"].split(",");
+            if(tagIds.includes("娯楽")){
+                filteredList.push(list[i]);
+            }
+        }
+        return filteredList;
     }
 
     // チェックボックスの選択制御
