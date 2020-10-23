@@ -1,9 +1,12 @@
 package jp.co.c4c.controller.ctrl;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import jp.co.c4c.constant.LendStatus;
+import jp.co.c4c.controller.form.TopForm;
+import jp.co.c4c.db.dto.*;
+import jp.co.c4c.service.CommonService;
+import jp.co.c4c.service.MyService;
+import jp.co.c4c.service.TopService;
+import jp.co.c4c.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,17 +14,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import jp.co.c4c.constant.LendStatus;
-import jp.co.c4c.controller.form.TopForm;
-import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.BK_T_NewsReadDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
-import jp.co.c4c.db.dto.V_MyLendHistoryDto;
-import jp.co.c4c.db.dto.WebSessionDto;
-import jp.co.c4c.service.CommonService;
-import jp.co.c4c.service.MyService;
-import jp.co.c4c.service.TopService;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/top")
@@ -78,7 +73,7 @@ public class TopController {
         /* tagIdを文字列に変換 */
         for (int i = 0; i < form.getTopAndDetailDtoList().size(); i++) {
             String[] tagIds = form.getTopAndDetailDtoList().get(i).getTagIds().split(",");
-            convertTag(tagIds);
+            CommonUtil.convertTag(tagIds);
             form.getTopAndDetailDtoList().get(i).setTagIds(String.join(",", tagIds));
         }
 
@@ -112,26 +107,4 @@ public class TopController {
 
         return "top";
     }
-
-    /**
-     * tagIdを文字列に変換するメソッド（作成中）
-     * @param strings
-     * @return
-     */
-    public String[] convertTag(String[] strings) {
-        for (int i = 0; i < strings.length; i++) {
-            switch (strings[i]) {
-                case "1":
-                    strings[i] = "Java"; // 定数に入れ替える
-                    break;
-                case "2":
-                    strings[i] = "PHP";
-                    break;
-                default:
-                    break;
-            }
-        }
-        return strings;
-    }
-
 }
