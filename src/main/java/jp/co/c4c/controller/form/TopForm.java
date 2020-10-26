@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_LendDto;
+import jp.co.c4c.db.dto.BK_T_RecomDto;
+import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
@@ -18,6 +20,9 @@ public class TopForm {
     List<Integer> myLendedBookIdList;
     List<BK_T_LendDto> lendNewsList;
     List<V_MyLendHistoryDto> myLendingBookList;
+    List<V_TopAndDetailDto> offerBookNewsList;
+    List<BK_T_RequestDto> requestBookNewsList;
+    List<BK_T_RecomDto> recomeBookNewsList;
 
     public List<V_TopAndDetailDto> getTopAndDetailDtoList() {
         return topAndDetailDtoList;
@@ -72,6 +77,33 @@ public class TopForm {
 
     public void setMyLendingBookList(List<V_MyLendHistoryDto> myLendingBookList) {
         this.myLendingBookList = myLendingBookList;
+    }
+
+    // 新規入荷本のお知らせ情報をfromへセット
+    public List<V_TopAndDetailDto> getOfferBookNewsList() {
+        return offerBookNewsList;
+    }
+
+    public void setOfferBookNewsList(List<V_TopAndDetailDto> offerBookNewsList) {
+        this.offerBookNewsList= offerBookNewsList;
+    }
+
+    // 要望承認のお知らせ情報をfromへセット
+    public List<BK_T_RequestDto> getRequestBookNewsList() {
+        return requestBookNewsList;
+    }
+
+    public void setRequestBookNewsList(List<BK_T_RequestDto> requestBookNewsList) {
+        this.requestBookNewsList= requestBookNewsList;
+    }
+
+    // おすすめされたお知らせ情報をfromへセット
+    public List<BK_T_RecomDto> getRecomeBookNewsList() {
+        return recomeBookNewsList;
+    }
+
+    public void setRecomeBookNewsList(List<BK_T_RecomDto> recomeBookNewsList) {
+        this.recomeBookNewsList= recomeBookNewsList;
     }
 
 }

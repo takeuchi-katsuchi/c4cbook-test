@@ -1,12 +1,9 @@
 package jp.co.c4c.controller.ctrl;
 
-import jp.co.c4c.constant.LendStatus;
-import jp.co.c4c.controller.form.TopForm;
-import jp.co.c4c.db.dto.*;
-import jp.co.c4c.service.CommonService;
-import jp.co.c4c.service.MyService;
-import jp.co.c4c.service.TopService;
-import jp.co.c4c.util.CommonUtil;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,9 +11,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
+import jp.co.c4c.constant.LendStatus;
+import jp.co.c4c.controller.form.TopForm;
+import jp.co.c4c.db.dto.BK_T_LendDto;
+import jp.co.c4c.db.dto.BK_T_NewsReadDto;
+import jp.co.c4c.db.dto.BK_T_RecomDto;
+import jp.co.c4c.db.dto.BK_T_RequestDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
+import jp.co.c4c.db.dto.V_MyLendHistoryDto;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
+import jp.co.c4c.db.dto.WebSessionDto;
+import jp.co.c4c.service.CommonService;
+import jp.co.c4c.service.MyService;
+import jp.co.c4c.service.TopService;
+import jp.co.c4c.util.CommonUtil;
 
 @Controller
 @RequestMapping("/top")
@@ -101,13 +110,29 @@ public class TopController {
 
         model.addAttribute("readStatus", readStatus);
 
-        //        // お知らせメッセージ_本入荷通知の情報を取得
-        //        List<BK_M_BookDto> offerBookNewsList = topService.getofferBookNewsList(readTime);
-        //        form.setLendNewsList(lendNewsList);
+        // お知らせメッセージ_本入荷通知の情報を取得
+        List<V_TopAndDetailDto> offerBookNewsList = topService.getOfferBookNewsList(readTime);
+        form.setOfferBookNewsList(offerBookNewsList);
 
-        //        // お知らせメッセージ_要望した本の承認通知の情報を取得
-        //        List<BK_M_BookDto> offerBookNewsList = topService.getofferBookNewsList(readTime);
-        //        form.setLendNewsList(lendNewsList);
+        // 入荷された本の数を確認
+        int newBooksCnt = offerBookNewsList.size();
+        model.addAttribute("newBooksCnt", newBooksCnt);
+
+        // お知らせメッセージ_要望した本の承認通知の情報を取得
+        List<BK_T_RequestDto> requestBookNewsList = topService.getRequestBookNewsList(memId,readTime);
+        form.setRequestBookNewsList(requestBookNewsList);
+
+        // 承認された本の数を確認
+        int newApprovalCnt = requestBookNewsList.size();
+        model.addAttribute("newApprovalCnt", newApprovalCnt);
+
+       // お知らせメッセージ_おすすめされた本通知の情報を取得
+       List<BK_T_RecomDto> recomeBookNewsList = topService.getRecomeBookNewsList(memId,readTime);
+       form.setRecomeBookNewsList(recomeBookNewsList);
+
+       // 承認された本の数を確認
+       int recomeBooksCnt = recomeBookNewsList.size();
+       model.addAttribute("recomeBooksCnt", recomeBooksCnt);
 
         // お知らせ既読状態更新
         topService.updateReadTimeNews(memId);

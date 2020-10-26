@@ -12,18 +12,25 @@
   <h2 class="title">C4CBOOK</h2>
   <div class="menu">
    <ul class="pulldown">
-    <li class="use_top"><img id="filtering" src="resources/img/filter.png" alt="フィルタ" data-toggle="modal"data-target="#filter_modal"></li>
-    <li class="use_top"><img id="sorting" src="resources/img/sort.png" alt="ソート" data-toggle="modal"data-target="#sort_modal"></li>
-    <li class="slidebtn, use_top"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
+    <li class="use_top"><img id="filtering" src="resources/img/filter.png" alt="フィルタ" data-toggle="modal" data-target="#filter_modal"></li>
+    <li class="use_top"><img id="sorting" src="resources/img/sort.png" alt="ソート" data-toggle="modal" data-target="#sort_modal"></li>
+    <li class="slidebtn"><a href="#"><img src="resources/img/news.png" alt="お知らせ"></a>
      <ul class="submenu">
       <c:if test="${LendingCnt >= 1}">
        <li class="news"><a href="/c4cbook/mypage">返却期限が近付いている本が${LendingCnt}件あります。</a></li>
       </c:if>
-      <c:if test="${readStatus}">
-       <li class="news">新しく入った本があります。</li>
+      <c:if test="${newBooksCnt >= 1}">
+       <c:forEach items="${topForm.offerBookNewsList}" var="list">
+        <li class="news">新しく「${list.title}」が入りました。</li>
+       </c:forEach>
       </c:if>
-      <c:if test="${readStatus}">
-       <li class="news">要望していた本が承認されました。</li>
+      <c:if test="${newApprovalCnt >= 1}">
+       <c:forEach items="${topForm.requestBookNewsList}" var="list">
+        <li class="news">要望していた「${list.title}」が承認されました。</li>
+       </c:forEach>
+      </c:if>
+      <c:if test="${recomeBooksCnt >= 1}">
+       <li class="news">本がおすすめされました。</li>
       </c:if>
      </ul></li>
     <li class="drowerbtn"><a><img src="resources/img/menu.png" alt="メニュー"></a>
