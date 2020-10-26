@@ -120,6 +120,7 @@ $(document).ready(function () {
         insertNewElement(editedList);
     });
 
+/*
     /////////////////////////////////////////////////////////
     // タグ絞り込みの処理
     ////////////////////////////////////////////////////////
@@ -198,7 +199,7 @@ $(document).ready(function () {
 						<div class="book_img_area">
 							<a href="${destinationUrl}"><img class="book-img" src="data:image/jpeg;base64,${editedList[i]["encodedBookImg"]}" alt=""></a>
 						</div>
-			
+
 						<div class="book_info">
 							<div class="name"><a href="${destinationUrl}">${editedList[i]["title"]}</a></div>
 							<div class="author">${editedList[i]["author"]}</div>
@@ -223,6 +224,7 @@ $(document).ready(function () {
 		                `);
         }
     }
+*/
 
     /////////////////////////////////////////////////////////
     // 並び替えのメソッド

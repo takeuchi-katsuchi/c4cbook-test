@@ -23,6 +23,7 @@ public class UpdateNewsReadDateDao {
     public void updateNewsReadDateByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_Update.sql");
         Map<String, Object> param = new HashMap<>();
+        param.put("memId", memId);
 
         sqlManager.executeUpdate(sqlSrc, param);
     }
