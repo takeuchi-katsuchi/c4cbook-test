@@ -18,19 +18,19 @@
 			</div>
 			<div class="modal-body">
 				<div class="row">
-					<div class="col-5">
+					<div class="col-6">
 						<input id="sort_1" type="checkbox" name="sortCond" value="1" disabled="disabled">
 						<label for="sort_1">最新入荷日順</label>
 					</div>
-					<div class="col-5">
+					<div class="col-6">
 						<input id="sort_2" type="checkbox" name="sortCond" value="2" disabled="disabled">
 						<label for="sort_2">五十音順</label>
 					</div>
-					<div class="col-5">
+					<div class="col-6">
 						<input id="sort_3" type="checkbox" name="sortCond" value="3" disabled="disabled">
 						<label for="sort_3">お気に入り数順</label>
 					</div>
-					<div class="col-5">
+					<div class="col-6">
 						<input id="sort_4" type="checkbox" name="sortCond" value="4" disabled="disabled">
 						<label for="sort_4">読まれた回数順</label>
 					</div>

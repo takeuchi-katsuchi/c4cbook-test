@@ -120,7 +120,7 @@ $(document).ready(function () {
         insertNewElement(editedList);
     });
 
-/*
+
     /////////////////////////////////////////////////////////
     // タグ絞り込みの処理
     ////////////////////////////////////////////////////////
@@ -224,13 +224,13 @@ $(document).ready(function () {
 		                `);
         }
     }
-*/
 
     /////////////////////////////////////////////////////////
     // 並び替えのメソッド
     ////////////////////////////////////////////////////////
     function getSortedListLatest(list) {
-        let sortedList = list.sort(function (a, b) {
+        let sortedList;
+        sortedList = list.sort(function (a, b) {
             if (a.offerDate > b.offerDate) return -1;
             if (a.offerDate < b.offerDate) return 1;
             return 0;
@@ -239,7 +239,8 @@ $(document).ready(function () {
     }
 
     function getSortedListKana(list) {
-        let sortedList = list.sort(function (a, b) {
+        let sortedList;
+        sortedList = list.sort(function (a, b) {
             if (a.titleKana < b.titleKana) return -1;
             if (a.titleKana > b.titleKana) return 1;
             return 0;
@@ -248,7 +249,8 @@ $(document).ready(function () {
     }
 
     function getSortedListFav(list) {
-        let sortedList = list.sort(function (a, b) {
+        let sortedList;
+        sortedList = list.sort(function (a, b) {
             if (a.favCount > b.favCount) return -1;
             if (a.favCount < b.favCount) return 1;
             return 0;
@@ -257,7 +259,8 @@ $(document).ready(function () {
     }
 
     function getSortedListLend(list) {
-        let sortedList = list.sort(function (a, b) {
+        let sortedList;
+        sortedList = list.sort(function (a, b) {
             if (a.lendCount > b.lendCount) return -1;
             if (a.lendCount < b.lendCount) return 1;
             return 0;
