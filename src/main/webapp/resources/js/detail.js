@@ -1,5 +1,4 @@
 $(document).ready(function() {
-	console.log("JQuery OK");
 	var bookId = $("#postBookId").val();
 	//////////////////////////////////////////////////////////////////////
 	// 新規貸出・予約登録
@@ -142,7 +141,6 @@ $(document).ready(function() {
 				elem.css('background-color', 'red');
 				chkDateCount++;
 			}
-			console.log(fromDateObj);
 		} else if (chkDateCount === 1) {
 			toDateObj = pickDate(elem)
 			let count = (toDateObj.selectedDateTime - fromDateObj.selectedDateTime) / 86400000;
@@ -165,7 +163,6 @@ $(document).ready(function() {
 					chkDateCount = 0;
 				}
 			}
-			console.log(toDateObj);
 		}
 	}
 
@@ -219,7 +216,6 @@ $(document).ready(function() {
 			data: `bookId=${bookId}`,
 			success: function(response) {
 				$(`#openLendingProcedureModal`).prop('disabled', false);
-				console.log(response);
 				$(`#LendingProcedureModal`).modal('show');
 				$(`#isSomeoneLending`).val(0);
 				$('#lendChkBox').prop('disabled', false);
@@ -260,7 +256,6 @@ $(document).ready(function() {
 						title = `${lendHistorys[i]["memName"]} さんに貸出予定`;
 						color = "#ffff00";
 					}
-					console.log(lendHistoryDateList);
 					// カレンダーに表示させるobj
 					let obj = {
 						id: `lendId-${lendId},memId-${memId}`,
@@ -446,21 +441,19 @@ $(document).ready(function() {
 
 					// 選択したMemIdをリストに保持
 					let selectedValList = [];
-					$(document).on('click','#toMem', function(){
-						let selectedId = $(this).data('id');
+					$(document).on('click','input[name="toMem"]', function(){
+						let selectedId = $(this).val();
 						if (selectedValList.includes(selectedId)){
 							let index = selectedValList.indexOf(selectedId);
 							selectedValList.splice(index,1);
-							$(this).toggleClass('selected');
 						} else {
 							if (selectedValList.length < 5){
 								selectedValList.push(selectedId);
-								$(this).toggleClass('selected');
 							} else {
+								$(this).prop('checked', false);
 								alert('5人以上は選択できません。');
 							}
 						}
-						console.log(selectedValList);
 					});
 
 					let reviewLength = 0;
