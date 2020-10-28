@@ -29,8 +29,7 @@ public class SelectRequestListDao {
 
     /**
      * 要望ページに表示させるデータを取得
-     * @param
-     * @return
+     * @return List<V_RequestDto>
      */
     public List<V_RequestDto> seletctRequestList() {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestData.sql");
@@ -43,7 +42,7 @@ public class SelectRequestListDao {
     /**
      * ログインユーザーが応援済みの本のリストを取得
      * @param memId
-     * @return
+     * @return List<V_MyCheerBookDto>
      */
     public List<V_MyCheerBookDto> seletctCheerBooksByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestIdByMemberId.sql");

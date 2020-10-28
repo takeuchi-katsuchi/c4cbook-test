@@ -1,23 +1,31 @@
-
+/**
+ * OnLoad処理
+ * @param {number} duration スクロール時間のミリ秒です。
+ */
+/**
+ * OnLoad処理
+ */
  function requestOnload() {
-	// ページ読み込み時に実行したい処理
 
  //本の画像のリサイズ
 imgResize();
 
 }
 
-//////////モーダル//////////
-
+/**
+ * モーダル表示
+ */
 $(document).ready(function() {
 
  $(document).on('click', `#openLendingProcedureModal`, function() {
      $(`#LendingProcedureModal`).modal('show');
  });
 
- });
+});
 
- //////////テキストエリア高さ自動//////////
+/**
+ * テキストエリア改行に合わせ高さ自動調節
+ */
  $(function() {
   var $textarea = $('#textarea');
   var lineHeight = parseInt($textarea.css('lineHeight'));
@@ -27,10 +35,16 @@ $(document).ready(function() {
   });
 });
 
-//////////応援ボタン//////////
-function cheerBook(requestId,memberId,requestStatus,test){
+/**
+ * 応援ボタン押下時処理
+ * @param {int} requestId 応援ボタンが押された本の要望ID
+ * @param {int} memberId ログインしているユーザのID
+ * @param {int} requestStatus 応援ボタンが押された本のステータス（0：要望中、9：却下済み）
+ * @param {boolean} memberId ログインしているユーザが既に応援済みか否か
+ */
+function cheerBook(requestId,memberId,requestStatus,isExsist){
 
-  if(test){
+  if(isExsist){
    alert("既に応援済みの本は応援できません");
    return false;
   }
@@ -69,25 +83,36 @@ function cheerBook(requestId,memberId,requestStatus,test){
      document.getElementById('cheer-img' + requestId).classList.remove('off');
     },
     error: function() {
-     alert("要望は各本につき1度だけ応援できます。");
+     alert("応援の登録に失敗しました");
     }
    });
   }
 }
 
-//////////「要望する」ボタン//////////
+/**
+ * 本の要望登録時処理
+ * @param {int} memberId ログインしているユーザのID
+ */
 function requestBook(memberId){
 
   //バリデーションチェック
   //入力欄ID
-  var ids = new Array('inpt-title','inpt-author','textarea');
-  var itemNames = new Array('タイトル','著者','要望理由');
+  var ids = new Array('inpt-title','inpt-title-kana','inpt-author','inpt-author-kana','textarea');
+  var itemNames = new Array('タイトル','タイトル（かな）','著者','著者（かな）','要望理由');
 
+  //必須と文字数
   for( var i=0; i<ids.length; i++) {
-    if(document.getElementById(ids[i]).value == "") {
-      alert(itemNames[i] + 'は必ず入力してください。');
+    if(document.getElementById(ids[i]).value == "" || document.getElementById(ids[i]).value.length > 255) {
+      alert(itemNames[i] + 'は255文字以内で必ず入力してください。');
       return false;
     }
+  }
+
+  //ひらがな
+  if(!document.getElementById('inpt-title-kana').value.match(/^[ぁ-んー　]*$/)
+  || !document.getElementById('inpt-author-kana').value.match(/^[ぁ-んー　]*$/)){
+    alert('（かな）はひらがなで入力してください。');
+    return false;
   }
 
    var formData = {
@@ -99,6 +124,7 @@ function requestBook(memberId){
    comment: document.getElementById('textarea').value,
    requestStatus: 0
   }
+
   if (!confirm('要望を確定しますか?')) {
    return false;
   } else {
@@ -108,19 +134,24 @@ function requestBook(memberId){
     contentType: "application/json",
     data: JSON.stringify(formData),
     dataType: 'json',
+    headers: {
+                 'csrf-token': document.getElementById('csrf-token').value
+             },
     success: function(response) {
      //モーダルの入力欄全クリアしてモーダルを閉じる
      clearInputValue();
      $('#LendingProcedureModal').modal('hide');
     },
     error: function() {
-     alert("error");
+     alert("要望の登録に失敗しました");
     }
    });
   }
 }
 
-//////////要望後入力欄クリア//////////
+/**
+ * 本の要望入力欄クリア処理
+ */
 function clearInputValue() {
     var arrayId =new Array('inpt-title', 'inpt-title-kana', 'inpt-author', 'inpt-author-kana', 'textarea');
 
@@ -128,18 +159,6 @@ function clearInputValue() {
       document.getElementById(arrayId[i]).value = '';
     }
 }
-
-//////////xss対策用エスケープ処理//////////
-//function escapeHTML(string){
-//  return string.replace(/\&/g, '&amp;')
-//    .replace(/\</g, '&lt;')
-//    .replace(/\>/g, '&gt;')
-//    .replace(/\"/g, '&quot;')
-//    .replace(/\'/g, '&#x27');
-//}
-
-
-
 
 $('.reason-text').each(function(e){
 
