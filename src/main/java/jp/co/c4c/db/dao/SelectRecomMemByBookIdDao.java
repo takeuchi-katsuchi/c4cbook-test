@@ -1,16 +1,16 @@
 package jp.co.c4c.db.dao;
 
-import jp.co.c4c.db.dto.V_RecomMemDto;
-import jp.co.c4c.db.dto.V_RecomToMeBookDto;
-import jp.sf.amateras.mirage.ClasspathSqlResource;
-import jp.sf.amateras.mirage.SqlManager;
-import jp.sf.amateras.mirage.SqlResource;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import jp.co.c4c.db.dto.V_RecomMemDto;
+import jp.sf.amateras.mirage.ClasspathSqlResource;
+import jp.sf.amateras.mirage.SqlManager;
+import jp.sf.amateras.mirage.SqlResource;
 
 @Component
 public class SelectRecomMemByBookIdDao {

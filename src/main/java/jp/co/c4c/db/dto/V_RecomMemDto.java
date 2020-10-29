@@ -1,8 +1,5 @@
 package jp.co.c4c.db.dto;
 
-import java.util.Arrays;
-import java.util.Date;
-
 public class V_RecomMemDto {
 
     /////////////////////
