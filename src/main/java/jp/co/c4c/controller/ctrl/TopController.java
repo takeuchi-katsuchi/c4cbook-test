@@ -28,7 +28,7 @@ import jp.co.c4c.service.TopService;
 import jp.co.c4c.util.CommonUtil;
 
 @Controller
-@RequestMapping("/top")
+@RequestMapping(value={"/", "/top"})
 @SessionAttributes("webSessionDto")
 public class TopController {
 
