@@ -1,7 +1,5 @@
 package jp.co.c4c.db.dto;
 
-import java.util.Arrays;
-
 public class V_MyCheerBookDto {
 
     private int requestId;

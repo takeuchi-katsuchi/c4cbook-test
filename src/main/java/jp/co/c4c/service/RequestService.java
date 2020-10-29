@@ -7,11 +7,9 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import jp.co.c4c.db.dao.SelectRequestListDao;
-import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_RequestCheerDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_MyCheerBookDto;
-import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_RequestDto;
 
 @Component
