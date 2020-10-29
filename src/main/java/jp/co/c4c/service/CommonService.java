@@ -12,8 +12,6 @@ public class CommonService {
         try {
             Integer memId = webSessionDto.getMemId();
             String sessionId = webSessionDto.getSessionId();
-            System.out.println("ログインユーザー: " + memId);
-            System.out.println("セッションID: " + sessionId);
             return true;
         } catch (NullPointerException e) {
             return false;

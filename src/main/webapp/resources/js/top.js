@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    console.log("JQuery OK");
-
     // ハートをクリックした時
     $(document).on('click', 'i[name="fav"]', function () {
         let bookId = $(this).data('id');

@@ -24,7 +24,6 @@ public class SelectMemberDao {
      */
     public List<BK_M_MemBasicDto> selectAllMembers() {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDto_SelectAllMembers.sql");
-        System.out.print("Daoが接続されたよ");
         return sqlManager.getResultList(BK_M_MemBasicDto.class, sqlSrc);
     }
 
@@ -35,7 +34,6 @@ public class SelectMemberDao {
      */
     public BK_M_MemBasicDto selectMemberByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDto_SelectMemberById.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getSingleResult(BK_M_MemBasicDto.class, sqlSrc, param);

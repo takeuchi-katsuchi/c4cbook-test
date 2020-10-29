@@ -32,9 +32,7 @@ public class SelectRequestListDao {
      */
     public List<V_RequestDto> seletctRequestList() {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestData.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
-
         return sqlManager.getResultList(V_RequestDto.class, sqlSrc, param);
     }
 
@@ -45,7 +43,6 @@ public class SelectRequestListDao {
      */
     public List<V_MyCheerBookDto> seletctCheerBooksByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestIdByMemberId.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyCheerBookDto.class, sqlSrc, param);

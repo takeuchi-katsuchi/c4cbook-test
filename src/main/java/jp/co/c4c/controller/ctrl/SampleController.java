@@ -31,15 +31,11 @@ public class SampleController {
 
     @RequestMapping(value="sendMessage1")
     public String sendMessage1(Model model, SampleForm form) {
-        System.out.println(form.getMessage());
-
         return "sample";
     }
 
     @RequestMapping(value="sendMessage2")
     public String sendMessage2(Model model, SampleForm form) {
-        System.out.println(form.getMessage());
-
         return "sample";
     }
 }
