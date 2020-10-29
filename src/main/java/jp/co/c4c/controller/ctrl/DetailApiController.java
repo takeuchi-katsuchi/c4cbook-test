@@ -38,8 +38,6 @@ public class DetailApiController {
      */
     @RequestMapping(value = "/api/proceedLendReserve", method = RequestMethod.POST)
     public ResponseEntity<Object> lendReserveBook(@RequestBody BK_T_LendDto bk_T_LendDto) {
-        System.out.println(bk_T_LendDto.toString()); //確認用
-
         ApiResponse<BK_T_LendDto> response = new ApiResponse<>("sucess", bk_T_LendDto);
         detailService.saveLendBook(bk_T_LendDto);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
@@ -73,8 +71,6 @@ public class DetailApiController {
         detailForm.setV_LendHistoryDtoList(detailService.getLendHistorysByBookId(bookId));
 
         ApiResponse<BK_T_LendDto> response = new ApiResponse<>();
-
-        System.out.println(bk_T_LendDto.getLendStatus());
 
         if (bk_T_LendDto.getLendStatus() == 11) {
             detailService.updateLendBook(bk_T_LendDto);
@@ -126,7 +122,6 @@ public class DetailApiController {
             response.setStatus(toMemName + "さんにおすすめしました。");
             return new ResponseEntity<Object>(response, HttpStatus.OK);
         } catch (SQLRuntimeException e) {
-            System.out.println(e);
             response.setStatus(toMemName + "さんにはおすすめ済みです。");
             return new ResponseEntity<Object>(response, HttpStatus.OK);
         }

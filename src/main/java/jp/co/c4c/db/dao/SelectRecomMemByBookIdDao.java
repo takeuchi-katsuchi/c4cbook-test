@@ -25,10 +25,8 @@ public class SelectRecomMemByBookIdDao {
      */
     public List<V_RecomMemDto> seletctRecomMembersByBookId(int bookId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomeDao_RecomeBookByBookId.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
-
         return sqlManager.getResultList(V_RecomMemDto.class, sqlSrc, param);
     }
 

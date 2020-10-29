@@ -29,7 +29,6 @@ public class SelectMyFavoriteBooksDao {
      */
     public List<V_MyFavoriteBookDto> seletctFavoriteBooksByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_FavoritedBookDataByMemberId.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyFavoriteBookDto.class, sqlSrc, param);

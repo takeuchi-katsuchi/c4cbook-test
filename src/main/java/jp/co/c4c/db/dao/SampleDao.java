@@ -18,10 +18,7 @@ public class SampleDao {
 	public SqlManager sqlManager;
 
 	public List<SampleDto> selectNames() {
-	  System.out.print("Daoが接続されたよ");
-
       final SqlResource sqlSrc = new StringSqlResource("select * from SAMPLE;");
-
       return sqlManager.getResultList(SampleDto.class, sqlSrc);
 	}
 }

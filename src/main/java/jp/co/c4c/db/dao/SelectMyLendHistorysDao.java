@@ -30,12 +30,11 @@ public class SelectMyLendHistorysDao {
      */
     public List<V_LendHistoryDto> seletctLendHistorysByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_LendedBookDataByMemberId.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
     }
-    
+
     /**
      * マイページに表示させる予約・貸出履歴のリストを取得
      * @param memId
@@ -43,10 +42,8 @@ public class SelectMyLendHistorysDao {
      */
     public List<V_MyLendHistoryDto> seletctBooksByMemId(int memId) {
         final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookDao_BookDataByMemberId.sql");
-        System.out.print("Daoが接続されたよ");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
-
         return sqlManager.getResultList(V_MyLendHistoryDto.class, sqlSrc, param);
     }
 
