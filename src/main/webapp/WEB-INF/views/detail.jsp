@@ -23,6 +23,7 @@
 <link href='resources/js/fullcalendar/daygrid/main.css' rel='stylesheet' />
 <script src='resources/js/fullcalendar/core/main.js'></script>
 <script src='resources/js/fullcalendar/daygrid/main.js'></script>
+<script src="https://kit.fontawesome.com/fdfc67613f.js" crossorigin="anonymous"></script>
 
 <script>
 
@@ -33,43 +34,77 @@
     <jsp:include page="./header.jsp">
         <jsp:param name="act_type" value="farmer" />
     </jsp:include>
+    <input id="loginMember" type="hidden" value="${webSessionDto.memId}">
     <section class="bdy">
       <jsp:include page="./menu.jsp"></jsp:include>
         <div class="book_box">
-            <div class="row book_img">
-<!--                 <img class="javabook" src="resources/img/sample_book.jpg" alt="">
-                <img class="material" src="resources/img/book.png" alt="">
-                <img class="heart" src="resources/img/heart.jpeg" alt=""> -->
+            <div class="book_img_area">
+                <a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${detailForm.v_TopAndDetailDto.encodedBookImg}" alt=""></a>
             </div>
-            <div class="row book_info">
-                <div class="name">${detailForm.v_TopAndDetailDto.title}</div>
-                <div class="author">${detailForm.v_TopAndDetailDto.author}</div>
-                <ul class="tag">
-                    <li>ps</li>
-                    <li>java</li>
-                    <li>基本情報技術者試験</li>
-                </ul>
-            </div>
-        </div>
-        <ul>
-            <li>読まれた回数：${detailForm.v_TopAndDetailDto.lendCount}</li>
-            <li>お気に入り：${detailForm.v_TopAndDetailDto.favCount}</li>
-        </ul>
 
-        <div class="contents">
-           <!--  <button class="btn-rent" type="button" class="btn btn-secondary" data-toggle="modal" data-target="#reviewModal">貸出し・予約</button> -->
-            <button id="openLendingProcedureModal" type="button" class="btn btn-secondary">
-                貸出し・予約
-             </button>
-            <p class="detal-text">${detailForm.v_TopAndDetailDto.outline}</p>
-            <hr style="border: 0; border-top: 1.5px solid lightgray;">
-            <div class="offer">
-                <div class="mem">
-                    提供メンバーコメント:
-                    <p class="com">${detailForm.v_TopAndDetailDto.offerMemComment}</p>
+            <div class="book_info">
+                <div class="name"><a href="${detailLink}">${detailForm.v_TopAndDetailDto.title}</a></div>
+                <div class="author">${detailForm.v_TopAndDetailDto.author}</div>
+                <c:choose>
+                    <c:when test="${detailForm.v_TopAndDetailDto.memName != null}">
+                        <%-- 条件に当てはまる場合 --%>
+                        <div class="rent_disable">${detailForm.v_TopAndDetailDto.memName}に貸出中</div>
+                    </c:when>
+                    <c:otherwise>
+                        <%-- 上記すべての条件に当てはまらない場合 --%>
+                        <div class="rent_able">貸出可能です</div>
+                    </c:otherwise>
+                </c:choose>
+
+                <ul class="tag">
+                    <c:forEach items="${detailForm.v_TopAndDetailDto.tagIds}" var="tag">
+                        <li>${tag}</li>
+                    </c:forEach>
+                </ul>
+                <div class="icon_img_wrap">
+                    <div class="icon_img_area">
+                        <c:choose>
+                            <c:when test="${detailForm.lendedMemIdList.contains(webSessionDto.memId)}">
+                                <%-- 読書済みの場合 --%>
+                                <i class="fas fa-book-open fa-2x"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <%-- 読書済みでない場合 --%>
+                                <i class="noread fas fa-book fa-2x"></i>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="icon_img_area book-count">${detailForm.v_TopAndDetailDto.lendCount}</div>
+
+                    <div class="icon_img_area">
+                        <c:choose>
+                            <c:when test="${detailForm.favoriteMemIdList.contains(webSessionDto.memId)}">
+                                <%-- お気に入りしてる場合 --%>
+                                <i class="fas fa-heart fa-2x" name="fav" data-id="${detailForm.v_TopAndDetailDto.bookId}"></i>
+                            </c:when>
+                            <c:otherwise>
+                                <%-- お気に入りしていない場合 --%>
+                                <i class="noheart fas fa-heart fa-2x" name="fav" data-id="${detailForm.v_TopAndDetailDto.bookId}"></i>
+                            </c:otherwise>
+                        </c:choose>
+                    </div>
+                    <div class="icon_img_area heart-count">
+                        ${detailForm.v_TopAndDetailDto.favCount}
+                    </div>
                 </div>
             </div>
+        </div>
 
+        <div class="contents">
+            <div class="col">
+                <i class="fas fa-pencil-alt"></i> 概要
+                <p class="com">${detailForm.v_TopAndDetailDto.outline}</p>
+                <i class="far fa-comment-dots"></i> 提供メンバーコメント
+                <p class="com">${detailForm.v_TopAndDetailDto.offerMemComment}コメントコメントコメント</p>
+            </div>
+            <button id="openLendingProcedureModal" type="button" class="btn btn-secondary btn-block mt-3">
+                貸出・予約・返却
+            </button>
             <div class="tab">
                 <div class="tab-wrap">
                     <input id="TAB-01" type="radio" name="TAB" class="tab-switch" checked="checked" /><label class="tab-label" for="TAB-01">貸出し履歴</label>
@@ -80,8 +115,8 @@
                             </c:when>
 
                             <c:otherwise>
-                            	<div class="container sticky_table_wrapper">
-		                            	<table class="text-center table table-bordered sticky_table">
+                            	<div class="container">
+		                            	<table class="text-center table table-bordered">
 		                            		<thead>
 			                            		<tr>
 			                            			<th>貸出日</th>
@@ -89,6 +124,9 @@
 			                            			<th>名前</th>
 			                            		</tr>
 		                            		</thead>
+                                        </table>
+                                    <div class="table-body">
+                                        <table class="text-center table table-bordered">
 			                                <tbody>
 				                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
 			                            		<tr>
@@ -98,7 +136,8 @@
 			                            		</tr>
 				                                </c:forEach>
 			                                </tbody>
-		                            	</table>
+                                        </table>
+                                    </div>
 	                            </div>
                             </c:otherwise>
                         </c:choose>
@@ -138,7 +177,7 @@
             </div>
         </div>
         <div class="detail-review">
-          <div class="review-title">レビュー</div>
+          <div class="review-title"><i class="fas fa-star"></i>レビュー</div>
           <div id="review-list-more">
           <%--  あとで修正する --%>
           <%-- <c:forEach items="${detailForm.〇〇}" var="〇〇"> --%>

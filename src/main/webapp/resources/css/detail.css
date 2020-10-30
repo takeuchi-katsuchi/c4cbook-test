@@ -1,11 +1,6 @@
-section.bdy div.contents {
- text-align: center;
-}
-
-section.bdy div.contents div.col {
- margin: 10px 0 0;
- height: 200px;
-}
+/*section.bdy div.contents {*/
+/* text-align: center;*/
+/*}*/
 
 section.bdy div.contents div.col div.sub-contents {
  padding: 0 5px;
@@ -71,12 +66,16 @@ section.bdy div.contents div.offer div.mem {
  padding: 0 10px 0 0;
 }
 
-section.bdy div.contents div.offer p.com {
- display: inline-block;
- position: absolute;
- font-size: 11px;
- padding: 0 10px;
- margin: 0 0 10px
+/*section.bdy div.contents div.offer p.com {*/
+/* display: inline-block;*/
+/* position: absolute;*/
+/* font-size: 11px;*/
+/* padding: 0 10px;*/
+/* margin: 0 0 10px*/
+/*}*/
+
+.com {
+ font-size: 12px;
 }
 
 section.bdy div.detail-review ul li {
@@ -223,19 +222,36 @@ section.ftr {
  padding:0px !important;
 }
 
-.sticky_table_wrapper {
-  height: 200px;
-  width: 250px;
-  overflow-y: scroll;
+
+#openLendingProcedureModal {
+ display: block;
 }
 
-.sticky_table thead th {
-  /* 縦スクロール時に固定する */
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  /* tbody内のセルより手前に表示する */
-  z-index: 1;
-  background-color: #ced4da;
+.fas.fa-pencil-alt {
+  color: green;
+}
 
+.far.fa-comment-dots {
+  color: gray;
+}
+
+.fas.fa-star {
+ color: yellow;
+}
+
+th, td {
+ width: 100px;
+}
+
+.table-body {
+ width: 315px;
+ height: 200px;
+ overflow: auto;
+}
+.table {
+ margin-bottom: 0 !important;
+}
+
+.book_box {
+ margin-bottom: 0 !important;
 }

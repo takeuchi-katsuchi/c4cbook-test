@@ -1,6 +1,4 @@
 $(document).ready(function () {
-    console.log("JQuery OK");
-
     // ハートをクリックした時
     $(document).on('click', 'i[name="fav"]', function () {
         let bookId = $(this).data('id');
@@ -35,7 +33,6 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             dataType: 'json',
             success: function (response) {
-                console.log(response.status);
             },
             error: function () {
                 alert("error");
@@ -56,7 +53,6 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             dataType: 'json',
             success: function (response) {
-                console.log(response.status);
             },
             error: function () {
                 alert("error");

@@ -22,11 +22,10 @@ $(function(){
 });
 
 
-$(document).ready( function(){
+$(document).ready(function () {
 // ページ読み込み時に実行したい処理
-console.log('aaa')
-console.log('bbb', location.pathname)
- if (location.pathname != "/c4cbook/top") {
-	 $('.use_top').css("display", "none");
-}
+    if (location.pathname != "/c4cbook/top") {
+        $('.use_top').css("display", "none");
+        $('.menu').css("padding-left", "120px");
+    }
 });
