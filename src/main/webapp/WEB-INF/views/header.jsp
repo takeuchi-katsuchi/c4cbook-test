@@ -21,7 +21,7 @@
       </c:if>
       <c:if test="${newBooksCnt >= 1}">
        <c:forEach items="${topForm.offerBookNewsList}" var="list">
-        <li class="news">新しく「${list.title}」が入りました。</li>
+        <li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">新しく「${list.title}」が入りました。</a></li>
        </c:forEach>
       </c:if>
       <c:if test="${newApprovalCnt >= 1}">
@@ -30,10 +30,23 @@
        </c:forEach>
       </c:if>
       <c:if test="${recomeBooksCnt >= 1}">
-       <li class="news">本がおすすめされました。</li>
+       <c:forEach items="${topForm.recomeBookNewsList}" var="list">
+        <li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">「${list.title}」がおすすめされました。</a></li>
+       </c:forEach>
       </c:if>
      </ul></li>
-    <li class="drowerbtn"><a><img src="resources/img/menu.png" alt="メニュー"></a>
+    <li class="drowerbtn"><a href="#"><img src="resources/img/menu.png" alt="メニュー"></a>
+     <ul class="drowermenu">
+      <li class="menu"><a><form:form action="top" method="post" enctype="multipart/form-data">
+         <input type="submit" value="トップ">
+        </form:form></a></li>
+      <li class="menu"><a><form:form action="mypage" method="post" enctype="multipart/form-data">
+         <input type="submit" value="mypage">
+        </form:form></a></li>
+      <li class="menu"><a><form:form action="request" method="post" enctype="multipart/form-data">
+         <input type="submit" value="要望">
+        </form:form></a></li>
+     </ul></li>
    </ul>
   </div>
  </div>

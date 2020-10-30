@@ -17,10 +17,10 @@ import jp.co.c4c.db.dao.UpdateNewsReadDateDao;
 import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
-import jp.co.c4c.db.dto.BK_T_RecomDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
+import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
@@ -154,7 +154,7 @@ public class TopService {
      * @return
      */
     @Transactional
-    public List<BK_T_RecomDto> getRecomeBookNewsList(int memId,Date readTime) {
+    public List<V_RecomToMeBookDto> getRecomeBookNewsList(int memId,Date readTime) {
         return selectBookListDao.seletctRecomeBookNewsData(memId,readTime);
     }
 

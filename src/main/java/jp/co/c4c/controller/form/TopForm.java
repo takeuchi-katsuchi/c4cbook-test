@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.BK_T_RecomDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
+import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 /**
@@ -22,7 +22,7 @@ public class TopForm {
     List<V_MyLendHistoryDto> myLendingBookList;
     List<V_TopAndDetailDto> offerBookNewsList;
     List<BK_T_RequestDto> requestBookNewsList;
-    List<BK_T_RecomDto> recomeBookNewsList;
+    List<V_RecomToMeBookDto> recomeBookNewsList;
 
     public List<V_TopAndDetailDto> getTopAndDetailDtoList() {
         return topAndDetailDtoList;
@@ -98,11 +98,11 @@ public class TopForm {
     }
 
     // おすすめされたお知らせ情報をfromへセット
-    public List<BK_T_RecomDto> getRecomeBookNewsList() {
+    public List<V_RecomToMeBookDto> getRecomeBookNewsList() {
         return recomeBookNewsList;
     }
 
-    public void setRecomeBookNewsList(List<BK_T_RecomDto> recomeBookNewsList) {
+    public void setRecomeBookNewsList(List<V_RecomToMeBookDto> recomeBookNewsList) {
         this.recomeBookNewsList= recomeBookNewsList;
     }
 

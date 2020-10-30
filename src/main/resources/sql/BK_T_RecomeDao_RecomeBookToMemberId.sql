@@ -1,5 +1,4 @@
 /* BK_T_RecomeDao_RecomeBookToMemberId.sql */
--- MEM_IDを固定中
 
 select
     B.BOOK_ID,

@@ -9,9 +9,9 @@
 <section class="drower-menu">
  <div class="nav-menu">
   <ul class="menu-area">
-     <li><a><form:form action="top" method="post" enctype="multipart/form-data"><input type="submit" value="トップ"></form:form></a></li>
-     <li><a><form:form action="mypage" method="post" enctype="multipart/form-data"><input type="submit" value="mypage"></form:form></a></li>
-     <li><a><form:form action="request" method="post" enctype="multipart/form-data"><input type="submit" value="要望"></form:form></a></li>
+     <li class="top"><a><form:form action="top" method="post" enctype="multipart/form-data"><input type="submit" value="トップ"></form:form></a></li>
+     <li class="mypage"><a><form:form action="mypage" method="post" enctype="multipart/form-data"><input type="submit" value="mypage"></form:form></a></li>
+     <li  class="request"><a><form:form action="request" method="post" enctype="multipart/form-data"><input type="submit" value="要望"></form:form></a></li>
   </ul>
  </div>
  </section>
