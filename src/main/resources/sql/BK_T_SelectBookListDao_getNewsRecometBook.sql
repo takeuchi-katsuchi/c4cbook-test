@@ -1,13 +1,18 @@
 /* BK_T_SelectBookListDao_getNewsRecometBook.sql */
 
 select
-    RECOM_ID,
-    TO_MEM_ID,
-    RECOM_DATE
+    B.BOOK_ID,
+    B.TITLE,
+    R.TO_MEM_ID,
+    R.RECOM_DATE
 from
-    book_db.BK_T_RECOM
+    book_db.BK_T_RECOM R join
+    book_db.BK_M_BOOK B
+on R.BOOK_ID = B.BOOK_ID
 where
-    TO_MEM_ID = /*memId*/
+    R.TO_MEM_ID = /*memId*/
 And
-    RECOM_DATE > /*readTime*/
-;
+    R.RECOM_DATE > /*readTime*/
+order by
+B.BOOK_ID ASC
+ ;

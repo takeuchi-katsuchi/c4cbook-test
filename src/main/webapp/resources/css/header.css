@@ -56,7 +56,12 @@ section.header div.menu  ul.pulldown li ul {
     z-index: 1;
 }
 
-section.header div.menu  ul.pulldown li.slidebtn ul li{
+section.header input {
+ border: none;
+ background-color: #5597da;
+}
+
+section.header div.menu  ul.pulldown li.slidebtn ul li,section.header div.menu  ul.pulldown li.drowerbtn ul li{
     width: 100%;
     list-style-type: none;
 }
@@ -66,7 +71,7 @@ section.header div.menu  ul.pulldown li a{
     color: #000;
 }
 
-section.header div.menu  ul.pulldown li.news{
+section.header div.menu  ul.pulldown li.news,section.header div.menu  ul.pulldown li.menu{
     padding: 5px 0;
     margin: -5px 5px -5px -5px;
     display: block;
@@ -79,4 +84,14 @@ section.header div.menu div {
  display: flex;
  align-items: center;
  justify-content: center;
+}
+
+section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
+   display:none;
+}
+
+@media screen and (max-width: 480px) {
+  section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
+   display:block;
+}
 }

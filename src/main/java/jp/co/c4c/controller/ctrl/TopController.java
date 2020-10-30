@@ -15,11 +15,11 @@ import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.TopForm;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
-import jp.co.c4c.db.dto.BK_T_RecomDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
+import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 import jp.co.c4c.db.dto.V_TopAndDetailDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
@@ -127,10 +127,10 @@ public class TopController {
         model.addAttribute("newApprovalCnt", newApprovalCnt);
 
        // お知らせメッセージ_おすすめされた本通知の情報を取得
-       List<BK_T_RecomDto> recomeBookNewsList = topService.getRecomeBookNewsList(memId,readTime);
+       List<V_RecomToMeBookDto> recomeBookNewsList = topService.getRecomeBookNewsList(memId,readTime);
        form.setRecomeBookNewsList(recomeBookNewsList);
 
-       // 承認された本の数を確認
+       // おすすめされた本の数を確認
        int recomeBooksCnt = recomeBookNewsList.size();
        model.addAttribute("recomeBooksCnt", recomeBooksCnt);
 
