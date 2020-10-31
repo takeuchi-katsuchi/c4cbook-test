@@ -137,7 +137,7 @@ $(document).ready(function () {
         } else if (filterCond === "4") {
             editedList = getFilteredList_4(dataList);
             // 娯楽
-        }　else if (filterCond === "5") {
+        } else if (filterCond === "5") {
             editedList = getFilteredList_5(dataList);
         }
         // 要素をタグで絞り込み後のデータに入れ替え
