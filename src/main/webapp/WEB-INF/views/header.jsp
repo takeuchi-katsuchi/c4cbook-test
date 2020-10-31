@@ -6,7 +6,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-
 <section class="header">
  <div class="header-wrap">
   <h2 class="title">C4CBOOK</h2>
@@ -20,33 +19,23 @@
        <li class="news"><a href="/c4cbook/mypage">返却期限が近付いている本が${LendingCnt}件あります。</a></li>
       </c:if>
       <c:if test="${newBooksCnt >= 1}">
-       <c:forEach items="${topForm.offerBookNewsList}" var="list">
-        <li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">新しく「${list.title}」が入りました。</a></li>
-       </c:forEach>
+       <c:forEach items="${topForm.offerBookNewsList}" var="list"><li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">新しく「${list.title}」が入りました。</a></li></c:forEach>
       </c:if>
       <c:if test="${newApprovalCnt >= 1}">
-       <c:forEach items="${topForm.requestBookNewsList}" var="list">
-        <li class="news">要望していた「${list.title}」が承認されました。</li>
-       </c:forEach>
+       <c:forEach items="${topForm.requestBookNewsList}" var="list"><li class="news">要望していた「${list.title}」が承認されました。</li></c:forEach>
       </c:if>
       <c:if test="${recomeBooksCnt >= 1}">
-       <c:forEach items="${topForm.recomeBookNewsList}" var="list">
-        <li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">「${list.title}」がおすすめされました。</a></li>
-       </c:forEach>
+       <c:forEach items="${topForm.recomeBookNewsList}" var="list"><li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">「${list.title}」がおすすめされました。</a></li></c:forEach>
       </c:if>
      </ul></li>
-    <li class="drowerbtn"><a href="#"><img src="resources/img/menu.png" alt="メニュー"></a>
+    <li class="drowerbtn">
+     <a href="#"><img src="resources/img/menu.png" alt="メニュー"></a>
      <ul class="drowermenu">
-      <li class="menu"><a><form:form action="top" method="post" enctype="multipart/form-data">
-         <input type="submit" value="トップ">
-        </form:form></a></li>
-      <li class="menu"><a><form:form action="mypage" method="post" enctype="multipart/form-data">
-         <input type="submit" value="mypage">
-        </form:form></a></li>
-      <li class="menu"><a><form:form action="request" method="post" enctype="multipart/form-data">
-         <input type="submit" value="要望">
-        </form:form></a></li>
-     </ul></li>
+      <li class="menu"><a><form:form action="top" method="post" enctype="multipart/form-data"><input type="submit" value="トップ"></form:form></a></li>
+      <li class="menu"><a><form:form action="mypage" method="post" enctype="multipart/form-data"><input type="submit" value="mypage"></form:form></a></li>
+      <li class="menu"><a><form:form action="request" method="post" enctype="multipart/form-data"><input type="submit" value="要望"></form:form></a></li>
+     </ul>
+    </li>
    </ul>
   </div>
  </div>
