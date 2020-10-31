@@ -21,6 +21,8 @@ public class V_MyFavoriteBookDto {
     private String tagIds;
     /** 画像 */
     private byte[] bookImg;
+    /** 画像（encode）*/
+    private String encodedBookImg;
     /** メンバーID */
     private int memId;
 
@@ -84,6 +86,14 @@ public class V_MyFavoriteBookDto {
 
     public void setBookImg(byte[] bookImg) {
         this.bookImg = bookImg;
+    }
+
+    public String getEncodedBookImg() {
+        return encodedBookImg;
+    }
+
+    public void setEncodedBookImg(String encodedBookImg) {
+        this.encodedBookImg = encodedBookImg;
     }
 
     public int getMemId() {

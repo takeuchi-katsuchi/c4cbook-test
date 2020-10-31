@@ -15,10 +15,7 @@
 <link rel="stylesheet" href="resources/css/menu.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/detail.css" media="screen">
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-
-
 <link href='resources/js/fullcalendar/core/main.css' rel='stylesheet' />
 <link href='resources/js/fullcalendar/daygrid/main.css' rel='stylesheet' />
 <script src='resources/js/fullcalendar/core/main.js'></script>

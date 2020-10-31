@@ -1,6 +1,7 @@
 package jp.co.c4c.db.dto;
 
 import java.util.Arrays;
+import java.util.Date;
 
 public class V_MyLendHistoryDto {
 
@@ -21,6 +22,8 @@ public class V_MyLendHistoryDto {
     private String tagIds;
     /** 画像 */
     private byte[] bookImg;
+    /** 画像（encode）*/
+    private String encodedBookImg;
 
     /////////////////////
     // BK_T_LendDto
@@ -29,6 +32,8 @@ public class V_MyLendHistoryDto {
     private int memId;
     /** 貸出ステータス */
     private int lendStatus;
+    /** 返却日 */
+    private Date toDate;
 
     public int getBookId() {
         return bookId;
@@ -86,6 +91,14 @@ public class V_MyLendHistoryDto {
         this.bookImg = bookImg;
     }
 
+    public String getEncodedBookImg() {
+        return encodedBookImg;
+    }
+
+    public void setEncodedBookImg(String encodedBookImg) {
+        this.encodedBookImg = encodedBookImg;
+    }
+
     public int getMemId() {
         return memId;
     }
@@ -100,6 +113,14 @@ public class V_MyLendHistoryDto {
 
     public void setLendStatus(int lendStatus) {
         this.lendStatus = lendStatus;
+    }
+
+    public Date getToDate() {
+        return toDate;
+    }
+
+    public void setToDate(Date toDate) {
+        this.toDate = toDate;
     }
 
     @Override

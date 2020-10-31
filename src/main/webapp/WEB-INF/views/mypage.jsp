@@ -11,10 +11,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>C4C BOOK</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 <link rel="stylesheet" href="resources/css/common.css" media="screen">
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/menu.css" media="screen">
-<link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/mypage.css" media="screen">
 <link rel="stylesheet" href="resources/css/modal.css" media="screen">
 </head>
@@ -26,7 +26,7 @@
     <div class="contents">
       <div class="title">マイページ</div>
       <div class="bk-cnt">
-        いままで読んだ本…
+        いままでに読んだ本…
         <p>${myForm.count}</p>
         冊
       </div>
@@ -36,196 +36,160 @@
           <input id="TAB-01" type="radio" name="TAB" class="tab-switch"
             checked="checked" /><label class="tab-label" for="TAB-01">予約・履歴</label>
           <div class="tab-content">
-            <div class="col">
-              <h4>予約中の本</h4>
-              <c:choose>
-                <%-- ログインユーザーが予約中の本がない場合 --%>
-                <c:when test="${myForm.myResevedBookList.size() == 0}">
-                  予約中の本はありません。
-                </c:when>
-                <%-- ログインユーザーが予約中の本がある場合 --%>
-                <c:otherwise>
-                  <c:forEach items="${myForm.myResevedBookList}"
-                    var="myReserveBook">
-                    <c:url var="detailLink" value="/detail">
-                      <c:param name="bookId"
-                        value="${myReserveBook.bookId}" />
-                    </c:url>
-                    <div class="book_box">
-                      <div class="row book_img">
-                        <a href="${detailLink}"><img
-                          class="book-img"
-                          src="resources/img/sample_book.jpg" alt=""></a>
+              <div class="card mb-2">
+                <div class="card-header"><h5>予約中の本</h5></div>
+                <div class="card-body">
+                  <c:if test="${myForm.myResevedBookList.size() == 0}">
+                  <%-- ログインユーザーが予約中の本がない場合 --%>
+                    予約中の本はありません。
+                  </c:if>
+                    <%-- ログインユーザーが予約中の本がある場合 --%>
+                    <c:forEach items="${myForm.myResevedBookList}" var="myReserveBook">
+                      <c:url var="detailLink" value="/detail">
+                        <c:param name="bookId" value="${myReserveBook.bookId}" />
+                      </c:url>
+                      <div class="row justify-content-center mb-2">
+                          <div class="col-6">
+                              <div><a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${myReserveBook.encodedBookImg}" alt=""></a></div>
+                          </div>
+                          <div class="col-6">
+                            <table>
+                              <tr><td class="name"><a href="${detailLink}">${myReserveBook.title}</a></td></tr>
+                              <tr><td class="author">${myReserveBook.author}</td></tr>
+                            </table>
+                          </div>
                       </div>
+                    </c:forEach>
+                </div>
+              </div>
 
-                      <div class="row book_info">
-                        <div class="name">
-                          <a href="${detailLink}">${myReserveBook.title}</a>
-                        </div>
-                        <div class="author">${myReserveBook.author}</div>
-                        <ul class="tag">
-                          <li>${myReserveBook.tagIds}</li>
-                        </ul>
-                      </div>
-                    </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
-
-              <hr style="border: 0; border-top: 1.5px solid lightgray;">
-              <h4>あなたに貸出中の本</h4>
-              <c:choose>
-                <%-- ログインユーザーに貸出中の本がない場合 --%>
-                <c:when test="${myForm.myLendingBookList.size() == 0}">
+            <div class="card mb-2">
+              <div class="card-header"><h5>あなたに貸出中の本</h5></div>
+              <div class="card-body">
+                <c:if test="${myForm.myLendingBookList.size() == 0}">
+                  <%-- ログインユーザーに貸出中の本がない場合 --%>
                   あなたに貸出中の本はありません。
-                </c:when>
-                <%-- ログインユーザーに貸出中の本がある場合 --%>
-                <c:otherwise>
-                  <c:forEach items="${myForm.myLendingBookList}"
-                    var="myLendingBook">
+                </c:if>
+                  <c:forEach items="${myForm.myLendingBookList}" var="myLendingBook">
                     <c:url var="detailLink" value="/detail">
-                      <c:param name="bookId"
-                        value="${myLendingBook.bookId}" />
+                      <c:param name="bookId" value="${myLendingBook.bookId}" />
                     </c:url>
-                    <div class="book_box">
-                      <div class="row book_img">
-                        <a href="${detailLink}"><img
-                          class="book-img"
-                          src="resources/img/sample_book.jpg" alt=""></a>
-                      </div>
+                    <div class="row mb-2">
+                      <%-- ログインユーザーに貸出中の本がある場合 --%>
+                        <div class="col-12 lendBook-area">
+                          <span class="lendBook-mark">返却期日</span>
+                          <span class="toDate"><fmt:formatDate value="${myLendingBook.toDate}" pattern="yyyy/MM/dd" /></span>
+                          <span></span>
 
-                      <div class="row book_info">
-                        <div class="name">
-                          <a href="${detailLink}">${myLendingBook.title}</a>
                         </div>
-                        <div class="author">${myLendingBook.author}</div>
-                        <ul class="tag">
-                          <li>${myLendingBook.tagIds}</li>
-                        </ul>
-                      </div>
+                        <div class="col-6">
+                          <div><a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${myLendingBook.encodedBookImg}"  alt=""></a></div>
+                        </div>
+                        <div class="col-6">
+                          <table>
+                            <tr><td class="name"><a href="${detailLink}">${myLendingBook.title}</a></td></tr>
+                            <tr><td class="author">${myLendingBook.author}</td></tr>
+                          </table>
+                        </div>
                     </div>
                   </c:forEach>
-                </c:otherwise>
-              </c:choose>
+              </div>
+            </div>
 
-
-              <hr style="border: 0; border-top: 1.5px solid lightgray;">
-              <h4>いままでに読んだ本</h4>
-              <c:choose>
-                <%-- ログインユーザーが今までに読んだ本がない場合 --%>
-                <c:when test="${myForm.myReturnedBookList.size() == 0}">
+            <div class="card mb-2">
+              <div class="card-header"><h5>いままでに読んだ本</h5></div>
+              <div class="card-body">
+                <c:if test="${myForm.myReturnedBookList.size() == 0}">
+                  <%-- ログインユーザーが今までに読んだ本がない場合 --%>
                   いままでに読んだ本はありません。
-                </c:when>
-                <%-- ログインユーザーが今までに読んだ本がある場合 --%>
-                <c:otherwise>
-                  <c:forEach items="${myForm.myReturnedBookList}"
-                    var="myReturnedBook">
-                    <c:url var="detailLink" value="/detail">
-                      <c:param name="bookId"
-                        value="${myReturnedBookList.bookId}" />
-                    </c:url>
-                    <div class="book_box">
-                      <div class="row book_img">
-                        <a href="${detailLink}"><img
-                          class="book-img"
-                          src="resources/img/sample_book.jpg" alt=""></a>
-                      </div>
-
-                      <div class="row book_info">
-                        <div class="name">
-                          <a href="${detailLink}">${myReturnedBook.title}</a>
-                        </div>
-                        <div class="author">${myReturnedBook.author}</div>
-                        <ul class="tag">
-                          <li>${myReturnedBook.tagIds}</li>
-                        </ul>
-                      </div>
+                </c:if>
+                <c:forEach items="${myForm.myReturnedBookList}" var="myReturnedBook">
+                  <c:url var="detailLink" value="/detail">
+                    <c:param name="bookId" value="${myReturnedBook.bookId}" />
+                  </c:url>
+                  <div class="row mb-2">
+                      <%-- ログインユーザーが今までに読んだ本がある場合 --%>
+                    <div class="col-6">
+                      <div><a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${myReturnedBook.encodedBookImg}" alt=""></a></div>
                     </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
+                    <div class="col-6">
+                      <table>
+                        <tr><td class="name"><a href="${detailLink}">${myReturnedBook.title}</a></td></tr>
+                        <tr><td class="author">${myReturnedBook.author}</td></tr>
+                      </table>
+                    </div>
+                  </div>
+                </c:forEach>
+              </div>
             </div>
           </div>
 
-          <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label
-            class="tab-label" for="TAB-02">おすすめ</label>
+          <input id="TAB-02" type="radio" name="TAB" class="tab-switch" />
+          <label class="tab-label" for="TAB-02">おすすめ</label>
           <div class="tab-content">
-            <div class="col">
-              <c:choose>
-                <%-- ログインユーザーに貸出中の本がない場合 --%>
-                <c:when test="${myForm.recomToMeBookList.size() == 0}">
+            <div class="card mb-2">
+              <div class="card-header"><h5>おすすめの本</h5></div>
+              <div class="card-body">
+                <c:if test="${myForm.recomToMeBookList.size() == 0}">
+                  <%-- ログインユーザーにおすすめの本がない場合 --%>
                   おすすめの本はありません。
-                </c:when>
-                <%-- ログインユーザーに貸出中の本がある場合 --%>
-                <c:otherwise>
-                  <c:forEach items="${myForm.recomToMeBookList}"
-                    var="recomToMeBook">
-                    <c:url var="detailLink" value="/detail">
-                      <c:param name="bookId"
-                        value="${recomToMeBook.bookId}" />
-                    </c:url>
-                    <div class="book_box">
-                      <div class="row book_img">
-                        <a href="${detailLink}"><img
-                          class="book-img"
-                          src="resources/img/sample_book.jpg" alt=""></a>
-                      </div>
-
-                      <div class="row book_info">
-                        <div class="name">
-                          <a href="${detailLink}">${recomToMeBook.title}</a>
-                        </div>
-                        <div class="author">${recomToMeBook.author}</div>
-                        <ul class="tag">
-                          <li>${recomToMeBook.tagIds}</li>
-                        </ul>
-                        おすすめしている人
-                        <div>${recomToMeBook.memName}</div>
-                      </div>
+                </c:if>
+                <%-- ログインユーザーにおすすめの本がある場合 --%>
+                <c:forEach items="${myForm.recomToMeBookList}" var="recomToMeBook">
+                  <c:url var="detailLink" value="/detail">
+                    <c:param name="bookId" value="${recomToMeBook.bookId}" />
+                  </c:url>
+                  <div class="row mb-2">
+                    <div class="col-12 recom-area">
+                      <span class="recom-mark">おすすめ者</span>
+                      <span class="recom-mem">${recomToMeBook.memName}</span>
                     </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
+                    <div class="col-6">
+                      <div><a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${recomToMeBook.encodedBookImg}" alt=""></a></div>
+                    </div>
+                    <div class="col-6">
+                      <table>
+                        <tr><td class="name"><a href="${detailLink}">${recomToMeBook.title}</a></td></tr>
+                        <tr><td class="author">${recomToMeBook.author}</td></tr>
+                      </table>
+                    </div>
+                  </div>
+                </c:forEach>
+              </div>
             </div>
+
           </div>
           <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label
             class="tab-label" for="TAB-03">お気に入り</label>
           <div class="tab-content">
-            <div class="col">
-              <c:choose>
-                <%-- ログインユーザーに貸出中の本がない場合 --%>
-                <c:when test="${myForm.myFavoriteBookList.size() == 0}">
-                  お気に入りの本はありません。
-                </c:when>
-                <%-- ログインユーザーに貸出中の本がある場合 --%>
-                <c:otherwise>
-                  <c:forEach items="${myForm.myFavoriteBookList}"
-                    var="myFavoriteBook">
-                    <c:url var="detailLink" value="/detail">
-                      <c:param name="bookId"
-                        value="${myFavoriteBook.bookId}" />
-                    </c:url>
-                    <div class="book_box">
-                      <div class="row book_img">
-                        <a href="${detailLink}"><img
-                          class="book-img"
-                          src="resources/img/sample_book.jpg" alt=""></a>
-                      </div>
-
-                      <div class="row book_info">
-                        <div class="name">
-                          <a href="${detailLink}">${myFavoriteBook.title}</a>
-                        </div>
-                        <div class="author">${myFavoriteBook.author}</div>
-                        <ul class="tag">
-                          <li>${myFavoriteBook.tagIds}</li>
-                        </ul>
-                      </div>
+            <div class="card mb-2">
+              <div class="card-header"><h5>お気に入りの本</h5></div>
+              <div class="card-body">
+                <c:if test="${myForm.myFavoriteBookList.size() == 0}">
+                  <%-- ログインユーザーがお気に入りの本がない場合 --%>
+                  おすすめの本はありません。
+                </c:if>
+                <%-- ログインユーザーがお気に入りの本がある場合 --%>
+                <c:forEach items="${myForm.myFavoriteBookList}" var="myFavoriteBook">
+                  <c:url var="detailLink" value="/detail">
+                    <c:param name="bookId" value="${myFavoriteBook.bookId}" />
+                  </c:url>
+                  <div class="row justify-content-center mb-2">
+                    <div class="col-6">
+                      <div><a href="${detailLink}"><img class="book-img" src="data:image/jpeg;base64,${myFavoriteBook.encodedBookImg}" alt=""></a></div>
                     </div>
-                  </c:forEach>
-                </c:otherwise>
-              </c:choose>
+                    <div class="col-6">
+                      <table>
+                        <tr><td class="name"><a href="${detailLink}">${myFavoriteBook.title}</a></td></tr>
+                        <tr><td class="author">${myFavoriteBook.author}</td></tr>
+                      </table>
+                    </div>
+                  </div>
+                </c:forEach>
+              </div>
             </div>
+
+
           </div>
         </div>
       </div>
