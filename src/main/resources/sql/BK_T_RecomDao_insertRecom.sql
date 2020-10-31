@@ -1,5 +1,4 @@
-/* BK_T_RecomeDao_Submit_RecomeBook.sql */
-
+/* BK_T_RecomDao_insertRecom.sql */
 insert into book_db.BK_T_RECOM
 (
     BOOK_ID,

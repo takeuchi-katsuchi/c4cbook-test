@@ -37,7 +37,7 @@ public class DetailService {
      */
     @Transactional
     public V_TopAndDetailDto getBookById(int bookId) {
-        return bookDao.seletctBookById(bookId);
+        return bookDao.seletctBookByBookId(bookId);
     }
 
     /**

@@ -1,3 +1,4 @@
+/* BK_T_LendDao_updateLendBookforReview.sql */
 SELECT
     B.BOOK_ID,
     L.LEND_ID,

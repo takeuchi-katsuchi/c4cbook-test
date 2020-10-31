@@ -1,5 +1,4 @@
-/* BK_T_SelectBookDao_BookDataByMemberId.sql */
-
+/* BK_T_LendDao_seletctBooksByMemId.sql */
 select
   book_db.BK_M_BOOK.BOOK_ID,
   book_db.BK_M_BOOK.TITLE,

@@ -25,7 +25,7 @@ public class BK_M_MemBasicDao {
      * @return
      */
     public List<BK_M_MemBasicDto> selectAllMembers() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDto_SelectAllMembers.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_selectAllMembers.sql");
         return sqlManager.getResultList(BK_M_MemBasicDto.class, sqlSrc);
     }
 
@@ -35,7 +35,7 @@ public class BK_M_MemBasicDao {
      * @return
      */
     public BK_M_MemBasicDto selectMemberByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDto_SelectMemberById.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_selectMemberById.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getSingleResult(BK_M_MemBasicDto.class, sqlSrc, param);
@@ -47,7 +47,7 @@ public class BK_M_MemBasicDao {
      * @return
      */
     public List<V_FavoriteMemberDto> seletctFavoritedMembersById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_FavoritedBookDataByBookId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_seletctFavoritedMembersById.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_FavoriteMemberDto.class, sqlSrc, param);
@@ -59,7 +59,7 @@ public class BK_M_MemBasicDao {
      * @return
      */
     public List<V_RecomMemDto> seletctRecomMembersByBookId(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomeDao_RecomeBookByBookId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_seletctRecomMembersByBookId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_RecomMemDto.class, sqlSrc, param);

@@ -1,4 +1,4 @@
-/* BK_T_SelectBookListDao_getNewBooks.sql */
+/* BK_M_BookDao_seletctOfferBookNewsData.sql */
 select
     BOOK_ID,
     TITLE

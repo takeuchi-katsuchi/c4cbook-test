@@ -1,5 +1,4 @@
-/* BK_T_SelectBookDao_LendPriodByMemberId.sql */
-
+/* BK_T_LendDao_seletctLendPiriodByMemId.sql */
 select
   book_db.BK_T_LEND.MEM_ID,
   book_db.BK_T_LEND.LEND_STATUS,

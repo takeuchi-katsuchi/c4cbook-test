@@ -1,5 +1,4 @@
-/* BK_T_FavoriteDao_FavoritedBookDataByMenberId.sql */
- -- MEM_IDを固定中
+/* BK_M_BookDao_seletctFavoriteBooksByMemId.sql */
 select
     B.BOOK_ID,
     B.TITLE,

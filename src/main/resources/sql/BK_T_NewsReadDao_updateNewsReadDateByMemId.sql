@@ -1,5 +1,4 @@
-/* BK_T_NewsReadDao_update.sql */
-
+/* BK_T_NewsReadDao_updateNewsReadDateByMemId.sql */
 update
     book_db.BK_T_NEWS_READ
 set

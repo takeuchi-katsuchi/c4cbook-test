@@ -1,5 +1,4 @@
-/* BK_T_SelectBookListDao_getNewsRequestBook.sql */
-
+/* BK_T_RequestDao_seletctRequestBookNewsData.sql */
 select
     REQUEST_ID,
     TITLE,
@@ -10,8 +9,8 @@ from
     book_db.BK_T_REQUEST
 where
     MEM_ID = /*memId*/
-And
+and
     REQUEST_STATUS = 1
-And
+and
     UPDATE_AT > /*readTime*/
 ;

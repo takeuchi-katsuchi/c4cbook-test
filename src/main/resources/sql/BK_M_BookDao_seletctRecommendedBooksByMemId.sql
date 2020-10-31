@@ -1,5 +1,4 @@
-/* BK_T_RecomeDao_RecomeBookToMemberId.sql */
-
+/* BK_M_BookDao_seletctRecommendedBooksByMemId.sql */
 select
     B.BOOK_ID,
     B.TITLE,

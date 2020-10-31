@@ -23,7 +23,7 @@ public class BK_T_NewsReadDao {
      * @return
      */
     public BK_T_NewsReadDto seletctNewsReadTime(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_getReadTime.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_seletctNewsReadTime.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
 
@@ -31,6 +31,7 @@ public class BK_T_NewsReadDao {
         String sqlPramOrg = param.toString();
         char sqlPram = sqlPramOrg.charAt(7);
 
+        // TODO: 後ほど修正
         return sqlManager.getSingleResultBySql(BK_T_NewsReadDto.class,
                 "select READ_AT from book_db.BK_T_NEWS_READ where book_db.BK_T_NEWS_READ.MEM_ID = " + sqlPram);
         //           return sqlManager.getSingleResult(BK_T_NewsReadDto.class,sqlSrc,param);
@@ -41,7 +42,7 @@ public class BK_T_NewsReadDao {
      * @param memId
      */
     public void updateNewsReadDateByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_Update.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_updateNewsReadDateByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
 

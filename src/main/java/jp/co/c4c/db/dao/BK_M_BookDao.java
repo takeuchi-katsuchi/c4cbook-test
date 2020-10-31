@@ -17,10 +17,6 @@ import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
-/**
- * @author takayukiyamaoka
- *
- */
 @Component
 public class BK_M_BookDao {
 
@@ -32,8 +28,8 @@ public class BK_M_BookDao {
      * @param bookId
      * @return
      */
-    public V_TopAndDetailDto seletctBookById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_DitailDao_BookDataByBookId.sql");
+    public V_TopAndDetailDto seletctBookByBookId(int bookId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctBookByBookId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getSingleResult(V_TopAndDetailDto.class, sqlSrc, param);
@@ -44,7 +40,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_TopAndDetailDto> seletctAllBooks() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookListDao_getAllBooks.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctAllBooks.sql");
         return sqlManager.getResultList(V_TopAndDetailDto.class, sqlSrc);
     }
 
@@ -54,7 +50,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_RecomToMeBookDto> seletctRecommendedBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomeDao_RecomeBookToMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctRecommendedBooksByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_RecomToMeBookDto.class, sqlSrc, param);
@@ -66,7 +62,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_MyFavoriteBookDto> seletctFavoriteBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_FavoritedBookDataByMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctFavoriteBooksByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyFavoriteBookDto.class, sqlSrc, param);
@@ -78,7 +74,7 @@ public class BK_M_BookDao {
      * @return List<V_MyCheerBookDto>
      */
     public List<V_MyCheerBookDto> seletctCheerBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestIdByMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctCheerBooksByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyCheerBookDto.class, sqlSrc, param);
@@ -90,7 +86,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_LendHistoryDto> seletctLendHistorysByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_LendedBookDataByMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctLendHistorysByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
@@ -102,7 +98,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_TopAndDetailDto> seletctOfferBookNewsData(Date readTime) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookListDao_getNewBooks.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctOfferBookNewsData.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("readTime", readTime);
         return sqlManager.getResultList(V_TopAndDetailDto.class, sqlSrc, param);
@@ -114,7 +110,7 @@ public class BK_M_BookDao {
      * @return
      */
     public List<V_RecomToMeBookDto> seletctRecomeBookNewsData(int memId,Date readTime) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookListDao_getNewsRecometBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_BookDao_seletctRecomeBookNewsData.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         param.put("readTime", readTime);

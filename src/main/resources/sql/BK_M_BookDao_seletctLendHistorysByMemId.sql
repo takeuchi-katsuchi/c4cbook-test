@@ -1,7 +1,4 @@
-/* BK_T_LendDao_LendedBookDataByMemberId.sql */
-
--- MEM_IDは現在固定
-
+/* BK_M_BookDao_seletctLendHistorysByMemId.sql */
 select
   book_db.BK_M_BOOK.BOOK_ID,
   book_db.BK_M_BOOK.TITLE,

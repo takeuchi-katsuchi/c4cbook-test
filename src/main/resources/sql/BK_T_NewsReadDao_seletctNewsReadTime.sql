@@ -1,4 +1,4 @@
-/*BK_T_NewsReadDao_getReadTime.sql*/
+/*BK_T_NewsReadDao_seletctNewsReadTime.sql*/
 select
     READ_AT
 from

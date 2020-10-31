@@ -12,10 +12,6 @@ import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
-/**
- * @author takayukiyamaoka
- *
- */
 @Component
 public class BK_T_FavoriteDao {
 
@@ -27,7 +23,7 @@ public class BK_T_FavoriteDao {
      * @param bk_T_FavoriteDto
      */
     public void insertMyFavoriteBook(BK_T_FavoriteDto bk_T_FavoriteDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_Upsert_MyFavoriteBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_insertMyFavoriteBook.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("bookId", bk_T_FavoriteDto.getBookId());
@@ -43,7 +39,7 @@ public class BK_T_FavoriteDao {
      * @param bk_T_FavoriteDto
      */
     public void deleteMyFavoriteBookByBookIdAndMemId(BK_T_FavoriteDto bk_T_FavoriteDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_Delete_MyFavoriteBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_FavoriteDao_deleteMyFavoriteBookByBookIdAndMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bk_T_FavoriteDto.getBookId());
         param.put("memId", bk_T_FavoriteDto.getMemId());

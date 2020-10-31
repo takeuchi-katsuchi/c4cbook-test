@@ -1,4 +1,6 @@
-UPDATE book_db.BK_T_LEND
+/* BK_T_LendDao_updateLendBookByLendId.sql */
+UPDATE
+    book_db.BK_T_LEND
 SET
     LEND_STATUS = /*lendStatus*/,
     FROM_DATE = /*fromDate*/,

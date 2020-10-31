@@ -12,10 +12,6 @@ import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
-/**
- * @author takayukiyamaoka
- *
- */
 @Component
 public class BK_T_RecomDao {
 
@@ -27,7 +23,7 @@ public class BK_T_RecomDao {
      * @param bk_T_RecomDto
      */
     public void insertRecom(BK_T_RecomDto bk_T_RecomDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomeDao_Submit_RecomeBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RecomDao_insertRecom.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("bookId", bk_T_RecomDto.getBookId());

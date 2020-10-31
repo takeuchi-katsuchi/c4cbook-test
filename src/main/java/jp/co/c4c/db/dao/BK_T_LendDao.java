@@ -22,11 +22,11 @@ public class BK_T_LendDao {
     public SqlManager sqlManager;
 
     /**
-     * 貸出・予約手続き　データ登録
+     * 貸出・予約手続き データ登録
      * @param bk_T_LendDto
      */
     public void insertLendBook(BK_T_LendDto bk_T_LendDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_Submit_LendBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_insertLendBook.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("bookId", bk_T_LendDto.getBookId());
@@ -45,7 +45,7 @@ public class BK_T_LendDao {
      * @param bk_T_LendDto
      */
     public void updateLendBookByLendId(BK_T_LendDto bk_T_LendDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_Update_LendHistoryByLendId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_updateLendBookByLendId.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("lendId", bk_T_LendDto.getLendId());
@@ -58,10 +58,10 @@ public class BK_T_LendDao {
 
     /**
      * 貸出履歴にレビューを登録
-     * @param bk_T_RecomDto
+     * @param bk_T_LendDto
      */
     public void updateLendBookforReview(BK_T_LendDto bk_T_LendDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_Update_LendBookforReviewByLendId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_updateLendBookforReview.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("lendId", bk_T_LendDto.getLendId());
@@ -76,7 +76,7 @@ public class BK_T_LendDao {
      * @return
      */
     public List<V_LendHistoryDto> seletctLendHistorysById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "GetLendHistorys.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_updateLendBookforReview.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
@@ -88,7 +88,7 @@ public class BK_T_LendDao {
      * @return
      */
     public List<V_MyLendHistoryDto> seletctBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookDao_BookDataByMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_seletctBooksByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyLendHistoryDto.class, sqlSrc, param);
@@ -100,7 +100,7 @@ public class BK_T_LendDao {
      * @return
      */
     public List<BK_T_LendDto> seletctLendPiriodByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookDao_LendPriodByMemberId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_seletctLendPiriodByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
 
@@ -109,10 +109,10 @@ public class BK_T_LendDao {
 
     /**
      * 予約取り消し
-     * @param bk_T_LendDto
+     * @param lendId
      */
     public void deleteLendBookByLendId(int lendId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_Delete_LendBookByLendId.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_deleteLendBookByLendId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("lendId", lendId);
         sqlManager.executeUpdate(sqlSrc, param);

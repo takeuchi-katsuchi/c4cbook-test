@@ -1,7 +1,4 @@
-/* BK_T_FavoriteDao_Submit_MyFavoriteBook.sql */
-
--- value以降はすべてパラメータが必要
-
+/* BK_T_FavoriteDao_insertMyFavoriteBook.sql */
 insert into book_db.BK_T_FAVORITE
    (
     BOOK_ID,

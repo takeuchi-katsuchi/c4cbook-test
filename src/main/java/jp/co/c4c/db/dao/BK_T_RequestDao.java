@@ -14,10 +14,6 @@ import jp.sf.amateras.mirage.ClasspathSqlResource;
 import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
-/**
- * @author takayukiyamaoka
- *
- */
 @Component
 public class BK_T_RequestDao {
 
@@ -29,7 +25,7 @@ public class BK_T_RequestDao {
      * @param BK_T_RequestDto
      */
     public void insertRequestBook(BK_T_RequestDto bK_T_RequestDto) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_Upsert_RequestData.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_insertRequestBook.sql");
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("title", bK_T_RequestDto.getTitle());
@@ -50,7 +46,7 @@ public class BK_T_RequestDao {
      * @return List<V_RequestDto>
      */
     public List<V_RequestDto> seletctRequestList() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_V_SelectRequestListDao_RequestData.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_seletctRequestList.sql");
         Map<String, Object> param = new HashMap<>();
         return sqlManager.getResultList(V_RequestDto.class, sqlSrc, param);
     }
@@ -61,7 +57,7 @@ public class BK_T_RequestDao {
      * @return
      */
     public List<BK_T_RequestDto> seletctRequestBookNewsData(int memId,Date readTime) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_SelectBookListDao_getNewsRequestBook.sql");
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_seletctRequestBookNewsData.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         param.put("readTime", readTime);

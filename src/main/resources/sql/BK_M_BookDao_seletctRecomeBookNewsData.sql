@@ -1,5 +1,4 @@
-/* BK_T_SelectBookListDao_getNewsRecometBook.sql */
-
+/* BK_M_BookDao_seletctRecomeBookNewsData.sql */
 select
     B.BOOK_ID,
     B.TITLE,

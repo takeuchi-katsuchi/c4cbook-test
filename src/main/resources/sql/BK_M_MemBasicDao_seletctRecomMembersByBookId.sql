@@ -1,6 +1,4 @@
-/* BK_T_RecomeDao_RecomeBookByBookId.sql */
--- bookIdは現在固定
-
+/* BK_M_MemBasicDao_seletctRecomMembersByBookId.sql */
 select distinct
 	book_db.BK_T_RECOM.BOOK_ID,
     book_db.M_MEM_BASIC.MEM_NAME

@@ -1,5 +1,4 @@
-/* BK_T_RequestDao_Upsert_RequestData.sql */
-
+/* BK_T_RequestDao_insertRequestBook.sql */
 insert into book_db.BK_T_REQUEST
 (
     REQUEST_ID,

@@ -1,7 +1,4 @@
-/* BK_T_DitailDao_BookDataByBookId.sql */
-
--- BOOK_IDを固定値
-
+/* BK_M_BookDao_seletctBookByBookId.sql */
 select
   B.BOOK_ID,
   B.TITLE,
@@ -59,4 +56,4 @@ on
   B.BOOK_ID = RC.BOOK_ID
 where
   B.BOOK_ID = /*bookId*/
- ;
+;

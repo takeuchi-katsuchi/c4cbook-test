@@ -1,4 +1,4 @@
-/* BK_T_FavoriteDao_FavoritedBookDataByBookId.sql */
+/* BK_M_MemBasicDao_seletctFavoritedMembersById.sql */
 SELECT
 	F.BOOK_ID,
     F.MEM_ID,
@@ -10,4 +10,5 @@ JOIN
 ON
 	F.MEM_ID = M.MEM_ID
 WHERE
-	BOOK_ID = /*bookId*/;
+	BOOK_ID = /*bookId*/
+;

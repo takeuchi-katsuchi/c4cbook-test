@@ -1,5 +1,4 @@
-/* BK_T_RequestDao_Submit_RequestData.sql */
-
+/* BK_T_RequestCheerDao_insertCheerBook.sql */
 insert into book_db.BK_T_REQUEST_CHEER
 (
     REQUEST_ID,
