@@ -16,7 +16,6 @@ import jp.co.c4c.db.dto.BK_T_RequestCheerDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.service.RequestService;
 
-
 /**
  * @author kobarigenki
  *
@@ -44,13 +43,12 @@ public class RequestApiController {
         // セッションを取得
         HttpSession session = request.getSession(true);
         // セッションのトークンを取得
-        String token = (String)session.getAttribute("token");
+        String token = (String) session.getAttribute("token");
         // トークンチェック
         if (token == null || !(token.equals(csrf_token))) {
             // トークンがないor画面とサーバのトークンが違う場合はエラーを返す
             return new ResponseEntity<Object>(apiResponse, HttpStatus.NOT_FOUND);
         }
-
 
         apiResponse = new ApiResponse<>("sucess", bK_T_RequestDto);
 

@@ -1,16 +1,24 @@
 package jp.co.c4c.controller.ctrl;
 
-import jp.co.c4c.db.dto.*;
-import jp.co.c4c.util.CommonUtil;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+import jp.co.c4c.db.dto.ApiResponse;
+import jp.co.c4c.db.dto.BK_T_FavoriteDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
 import jp.co.c4c.service.TopService;
-
-import java.util.List;
-import java.util.stream.Collectors;
+import jp.co.c4c.util.CommonUtil;
 
 /**
  * @author takayukiyamaoka
@@ -28,7 +36,7 @@ public class TopApiController {
      * @return
      */
     @RequestMapping(value = "/api/favorite", method = RequestMethod.POST)
-    public ResponseEntity<Object> saveMyFavoriteBook(@RequestBody  BK_T_FavoriteDto bk_T_FavoriteDto) {
+    public ResponseEntity<Object> saveMyFavoriteBook(@RequestBody BK_T_FavoriteDto bk_T_FavoriteDto) {
         ApiResponse<BK_T_FavoriteDto> response = new ApiResponse<>();
 
         topService.saveMyFavoriteBook(bk_T_FavoriteDto);
@@ -39,7 +47,7 @@ public class TopApiController {
     }
 
     @RequestMapping(value = "/api/favorite-delete", method = RequestMethod.POST)
-    public ResponseEntity<Object> deleteMyFavoriteBook(@RequestBody  BK_T_FavoriteDto bk_T_FavoriteDto) {
+    public ResponseEntity<Object> deleteMyFavoriteBook(@RequestBody BK_T_FavoriteDto bk_T_FavoriteDto) {
         ApiResponse<BK_T_FavoriteDto> response = new ApiResponse<>();
 
         topService.deleteMyFavoriteBook(bk_T_FavoriteDto);
@@ -81,7 +89,6 @@ public class TopApiController {
                 .map(V_LendHistoryDto::getBookId)
                 .collect(Collectors.toList());
 
-
         response.setStatus("Success");
         response.setDataList(v_topAndDetailDtoList);
         response.setMyFavoriteBookIdList(myFavoriteBookIdList);
@@ -89,7 +96,5 @@ public class TopApiController {
 
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
-
-
 
 }

@@ -1,10 +1,9 @@
 package jp.co.c4c.controller.ctrl;
 
-import jp.co.c4c.controller.form.DetailForm;
-import jp.co.c4c.db.dto.*;
-import jp.co.c4c.service.CommonService;
-import jp.co.c4c.service.DetailService;
-import jp.co.c4c.util.CommonUtil;
+import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,9 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.stream.Collectors;
+import jp.co.c4c.controller.form.DetailForm;
+import jp.co.c4c.db.dto.BK_M_MemBasicDto;
+import jp.co.c4c.db.dto.V_FavoriteMemberDto;
+import jp.co.c4c.db.dto.V_LendHistoryDto;
+import jp.co.c4c.db.dto.V_TopAndDetailDto;
+import jp.co.c4c.db.dto.WebSessionDto;
+import jp.co.c4c.service.CommonService;
+import jp.co.c4c.service.DetailService;
+import jp.co.c4c.util.CommonUtil;
 
 @Controller
 @RequestMapping("/detail")
@@ -34,11 +39,11 @@ public class DetailController {
     }
 
     @RequestMapping
-    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, @RequestParam("bookId") int bookId,
-            Model model, DetailForm form) {
+    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, @RequestParam("bookId") int bookId, Model model, DetailForm form) {
         // ログインチェック
         boolean isLogined = commonService.isLogined(webSessionDto);
-        if (!isLogined) return "redirect:login";
+        if (!isLogined)
+            return "redirect:login";
 
         // 全メンバー取得してログインユーザー自身を除外してformにセット（おすすめする人の選択肢表示用）
         int memId = webSessionDto.getMemId();
@@ -59,7 +64,6 @@ public class DetailController {
         CommonUtil.convertTag(tagIds);
         v_topAndDetailDto.setTagIds(String.join(",", tagIds));
         form.setV_TopAndDetailDto(v_topAndDetailDto);
-
 
         // 貸出履歴　返却ステータス以外を除外してformにセット
         List<V_LendHistoryDto> lendHistoryDtoList = detailService.getLendHistorysByBookId(bookId);

@@ -28,7 +28,7 @@ import jp.co.c4c.service.TopService;
 import jp.co.c4c.util.CommonUtil;
 
 @Controller
-@RequestMapping(value={"/", "/top"})
+@RequestMapping(value = { "/", "/top" })
 @SessionAttributes("webSessionDto")
 public class TopController {
 
@@ -119,20 +119,20 @@ public class TopController {
         model.addAttribute("newBooksCnt", newBooksCnt);
 
         // お知らせメッセージ_要望した本の承認通知の情報を取得
-        List<BK_T_RequestDto> requestBookNewsList = topService.getRequestBookNewsList(memId,readTime);
+        List<BK_T_RequestDto> requestBookNewsList = topService.getRequestBookNewsList(memId, readTime);
         form.setRequestBookNewsList(requestBookNewsList);
 
         // 承認された本の数を確認
         int newApprovalCnt = requestBookNewsList.size();
         model.addAttribute("newApprovalCnt", newApprovalCnt);
 
-       // お知らせメッセージ_おすすめされた本通知の情報を取得
-       List<V_RecomToMeBookDto> recomeBookNewsList = topService.getRecomeBookNewsList(memId,readTime);
-       form.setRecomeBookNewsList(recomeBookNewsList);
+        // お知らせメッセージ_おすすめされた本通知の情報を取得
+        List<V_RecomToMeBookDto> recomeBookNewsList = topService.getRecomeBookNewsList(memId, readTime);
+        form.setRecomeBookNewsList(recomeBookNewsList);
 
-       // おすすめされた本の数を確認
-       int recomeBooksCnt = recomeBookNewsList.size();
-       model.addAttribute("recomeBooksCnt", recomeBooksCnt);
+        // おすすめされた本の数を確認
+        int recomeBooksCnt = recomeBookNewsList.size();
+        model.addAttribute("recomeBooksCnt", recomeBooksCnt);
 
         // お知らせ既読状態更新
         topService.updateReadTimeNews(memId);

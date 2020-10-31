@@ -30,15 +30,13 @@ public class LoginController {
     }
 
     @RequestMapping
-    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, LoginForm form,
-            HttpServletRequest request) {
+    public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, LoginForm form, HttpServletRequest request) {
         form.setBk_M_MemBasicDtoList(detailService.getAllMembers());
         return "login";
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public String login(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, BindingResult res,
-            @RequestParam("memId") int memId, HttpServletRequest request) {
+    public String login(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, BindingResult res, @RequestParam("memId") int memId, HttpServletRequest request) {
         webSessionDto.setMemId(memId);
         webSessionDto.setSessionId(request.getSession().getId());
         return "redirect:top";

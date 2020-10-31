@@ -1,5 +1,18 @@
 package jp.co.c4c.controller.ctrl;
 
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
 import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.MyForm;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
@@ -9,18 +22,6 @@ import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.MyService;
 import jp.co.c4c.util.CommonUtil;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/mypage")
@@ -42,8 +43,7 @@ public class MyController {
     public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, Model model, MyForm form) {
         // ログインチェック
         boolean isLogined = commonService.isLogined(webSessionDto);
-        if (!isLogined)
-            return "redirect:login";
+        if (!isLogined) return "redirect:login";
 
         int memId = webSessionDto.getMemId();
 
@@ -82,6 +82,7 @@ public class MyController {
         List<Integer> bookIdList = myAllReturnedBookList.stream()
                 .map(V_MyLendHistoryDto::getBookId)
                 .collect(Collectors.toList());
+
         // 重複しているBookIdを削除
         List<Integer> trimedBookIdList = new ArrayList<>(new LinkedHashSet<>(bookIdList));
         for (int i = 0; i < trimedBookIdList.size(); i++) {
@@ -90,6 +91,7 @@ public class MyController {
             Optional<V_MyLendHistoryDto> optional = myAllReturnedBookList.stream()
                     .filter(obj -> obj.getBookId() == trimedBookIdList.get(index))
                     .findFirst();
+
             optional.ifPresent(obj -> editedMyReturnedBookList.add(obj));
         }
 
@@ -134,7 +136,7 @@ public class MyController {
                 editedrecomToMeBookDtoList.get(i).setMemName(memNames);
             }
         }
-        
+
         //////////////////////////////////////////////
         // ログインユーザーがお気に入りの本
         //////////////////////////////////////////////

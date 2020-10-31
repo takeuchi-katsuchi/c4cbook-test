@@ -20,7 +20,6 @@ import jp.co.c4c.db.dto.V_LendHistoryDto;
 import jp.co.c4c.service.DetailService;
 import jp.sf.amateras.mirage.exception.SQLRuntimeException;
 
-
 /**
  * @author takayukiyamaoka
  *
@@ -53,8 +52,7 @@ public class DetailApiController {
         DetailForm detailForm = new DetailForm();
         detailForm.setV_LendHistoryDtoList(detailService.getLendHistorysByBookId(bookId));
 
-        ApiResponse<List<V_LendHistoryDto>> response = new ApiResponse<>("sucess",
-                detailForm.getV_LendHistoryDtoList());
+        ApiResponse<List<V_LendHistoryDto>> response = new ApiResponse<>("sucess", detailForm.getV_LendHistoryDtoList());
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
@@ -117,7 +115,7 @@ public class DetailApiController {
         ApiResponse<BK_T_RecomDto> response = new ApiResponse<>();
 
         try {
-            //　おすすめを登録
+            // おすすめを登録
             detailService.saveRecom(bk_T_RecomDto);
             response.setStatus(toMemName + "さんにおすすめしました。");
             return new ResponseEntity<Object>(response, HttpStatus.OK);
@@ -141,7 +139,5 @@ public class DetailApiController {
         response.setStatus("レビューを登録しました。");
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
-
-
 
 }

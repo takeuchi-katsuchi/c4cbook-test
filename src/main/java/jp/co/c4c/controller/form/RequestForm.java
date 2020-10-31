@@ -4,7 +4,6 @@ import java.util.List;
 
 import jp.co.c4c.db.dto.V_RequestDto;
 
-
 /**
  * 本要望画面 Formクラス
  */

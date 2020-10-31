@@ -42,7 +42,7 @@ public class MyService {
     public List<V_RecomToMeBookDto> getRecommendedBooksByMemId(int memId) {
         return selectRecomToMeBookListDao.seletctRecommendedBooksByMemId(memId);
     }
-    
+
     /**
      * マイページに表示させるお気に入り本のリストを取得
      * @param memId
@@ -52,7 +52,5 @@ public class MyService {
     public List<V_MyFavoriteBookDto> getMyFavoriteBooksByMemId(int memId) {
         return selectFavoriteBooksDao.seletctFavoriteBooksByMemId(memId);
     }
-    
-    
 
 }

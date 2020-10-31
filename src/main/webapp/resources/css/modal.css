@@ -1,22 +1,20 @@
 .sort_title {
-	color: #0033FF;
-	font-family: sans-serif;
-	font-weight: 700;
+ color: #0033FF;
+ font-family: sans-serif;
+ font-weight: 700;
 }
 
 .filter_title {
-	color: #0033FF;
-	font-family: sans-serif;
-	font-weight: 700;
+ color: #0033FF;
+ font-family: sans-serif;
+ font-weight: 700;
 }
 
-
 /*** custom checkboxes ***/
-
 input[type=checkbox] { display:none; } /* to hide the checkbox itself */
 input[type=checkbox] + label:before {
-	font-family: FontAwesome;
-	display: inline-block;
+ font-family: FontAwesome;
+ display: inline-block;
 }
 
 input[type=checkbox] + label:before { content: "\f096"; } /* unchecked icon */

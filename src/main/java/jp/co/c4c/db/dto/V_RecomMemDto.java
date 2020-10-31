@@ -7,6 +7,7 @@ public class V_RecomMemDto {
     /////////////////////
     /** 本ID */
     private int bookId;
+
     /////////////////////
     // BK_M_MemBasicDto
     /////////////////////
