@@ -12,7 +12,7 @@ import jp.sf.amateras.mirage.SqlManager;
 import jp.sf.amateras.mirage.SqlResource;
 
 @Component
-public class SelectNewsReadDataDao {
+public class BK_T_NewsReadDao {
 
     @Autowired
     public SqlManager sqlManager;
@@ -36,4 +36,15 @@ public class SelectNewsReadDataDao {
         //           return sqlManager.getSingleResult(BK_T_NewsReadDto.class,sqlSrc,param);
     }
 
+    /**
+     * 既読日時更新
+     * @param memId
+     */
+    public void updateNewsReadDateByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_Update.sql");
+        Map<String, Object> param = new HashMap<>();
+        param.put("memId", memId);
+
+        sqlManager.executeUpdate(sqlSrc, param);
+    }
 }
