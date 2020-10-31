@@ -25,6 +25,8 @@ public class V_LendHistoryDto {
     private Date toDate;
     /** レビュー */
     private String review;
+    /** 更新日 */
+    private Date updateAt;
 
     /////////////////////
     // BK_M_MemBasicDto
@@ -82,6 +84,14 @@ public class V_LendHistoryDto {
 
     public String getReview() {
         return review;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
     }
 
     public void setReview(String review) {

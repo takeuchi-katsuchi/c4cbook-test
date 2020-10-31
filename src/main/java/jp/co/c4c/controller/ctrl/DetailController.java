@@ -1,11 +1,10 @@
 package jp.co.c4c.controller.ctrl;
 
 import jp.co.c4c.controller.form.DetailForm;
-import jp.co.c4c.db.dto.BK_M_MemBasicDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.WebSessionDto;
+import jp.co.c4c.db.dto.*;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.DetailService;
+import jp.co.c4c.util.CommonUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +48,18 @@ public class DetailController {
         form.setBk_M_MemBasicDtoList(bk_m_memBasicDtoList);
 
         // 対象の本
-        form.setV_TopAndDetailDto(detailService.getBookById(bookId));
+        V_TopAndDetailDto v_topAndDetailDto = detailService.getBookById(bookId);
+        // 画像のバイナリデータを文字列に変換
+        CommonUtil commonUtil = new CommonUtil();
+        String dataString = commonUtil.convByteToString(v_topAndDetailDto.getBookImg());
+        v_topAndDetailDto.setEncodedBookImg(dataString);
+
+        /* tagIdを文字列に変換 */
+        String[] tagIds = v_topAndDetailDto.getTagIds().split(",");
+        CommonUtil.convertTag(tagIds);
+        v_topAndDetailDto.setTagIds(String.join(",", tagIds));
+        form.setV_TopAndDetailDto(v_topAndDetailDto);
+
 
         // 貸出履歴　返却ステータス以外を除外してformにセット
         List<V_LendHistoryDto> lendHistoryDtoList = detailService.getLendHistorysByBookId(bookId);
@@ -60,9 +70,21 @@ public class DetailController {
             }
         }
         form.setV_LendHistoryDtoList(lendHistoryDtoList);
+        // 対象の本を読書済みのmemIdリストを取得
+        List<Integer> lendedMemIdList = lendHistoryDtoList.stream()
+                .map(V_LendHistoryDto::getMemId)
+                .collect(Collectors.toList());
+        form.setLendedMemIdList(lendedMemIdList);
 
         // お気に入りしてる人
-        form.setV_FavoriteMemberDtoList(detailService.getFavoriteMembersById(bookId));
+        List<V_FavoriteMemberDto> v_favoriteMemberDtoList = detailService.getFavoriteMembersById(bookId);
+        form.setV_FavoriteMemberDtoList(v_favoriteMemberDtoList);
+        // 対象の本をお気に入りしているmemIdリストformにセット
+        List<Integer> favoriteMemIdList = v_favoriteMemberDtoList.stream()
+                .map(V_FavoriteMemberDto::getMemId)
+                .collect(Collectors.toList());
+        form.setFavoriteMemIdList(favoriteMemIdList);
+
         // おすすめしてる人
         form.setV_RecomMemDtoList(detailService.getRecomMembersById(bookId));
         return "detail";

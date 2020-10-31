@@ -11,9 +11,10 @@ div.book_box {
 div.book_img_area {
     height: 200px;
     width: 150px;
+    padding-left: 20px;
 }
 div.book_img_area img {
-    width: 97%;
+    width: 100%;
 }
 
 .fa-book-open,.fa-book {
@@ -37,8 +38,8 @@ div.book_img_area img {
 div.book_info {
     width: 210px;
     height: auto;
-    padding-left: 20px;
-    padding-top: 11px;
+    padding-left: 30px;
+
 }
 
 div.name {
@@ -112,7 +113,7 @@ ul.tag li {
     border-radius: 10px 0px 0px 10px;
 }
 ul.tag li:before {
-    content: '‚óè';
+    content: 'Åú';
     color: white;
 }
 

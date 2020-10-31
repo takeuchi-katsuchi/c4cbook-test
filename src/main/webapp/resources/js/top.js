@@ -33,7 +33,6 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             dataType: 'json',
             success: function (response) {
-                console.log(response.status);
             },
             error: function () {
                 alert("error");
@@ -54,7 +53,6 @@ $(document).ready(function () {
             data: JSON.stringify(formData),
             dataType: 'json',
             success: function (response) {
-                console.log(response.status);
             },
             error: function () {
                 alert("error");
