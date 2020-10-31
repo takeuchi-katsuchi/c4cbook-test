@@ -42,8 +42,7 @@ public class DetailController {
     public String init(@ModelAttribute("webSessionDto") WebSessionDto webSessionDto, @RequestParam("bookId") int bookId, Model model, DetailForm form) {
         // ログインチェック
         boolean isLogined = commonService.isLogined(webSessionDto);
-        if (!isLogined)
-            return "redirect:login";
+        if (!isLogined) return "redirect:login";
 
         // 全メンバー取得してログインユーザー自身を除外してformにセット（おすすめする人の選択肢表示用）
         int memId = webSessionDto.getMemId();
