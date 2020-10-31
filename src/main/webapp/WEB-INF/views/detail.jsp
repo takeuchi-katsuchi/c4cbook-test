@@ -115,7 +115,7 @@
                             </c:when>
 
                             <c:otherwise>
-                            	<div class="container">
+                                    <div class="table-wrapper">
 		                            	<table class="text-center table table-bordered">
 		                            		<thead>
 			                            		<tr>
@@ -124,9 +124,6 @@
 			                            			<th>名前</th>
 			                            		</tr>
 		                            		</thead>
-                                        </table>
-                                    <div class="table-body">
-                                        <table class="text-center table table-bordered">
 			                                <tbody>
 				                                <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
 			                            		<tr>
@@ -138,40 +135,54 @@
 			                                </tbody>
                                         </table>
                                     </div>
-	                            </div>
                             </c:otherwise>
                         </c:choose>
                     </div>
                     <input id="TAB-02" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-02">お気に入りしている人</label>
                     <div class="tab-content">
-                        <c:choose>
-                            <c:when
-                                test="${empty detailForm.v_FavoriteMemberDtoList}">
-                                <div>お気に入りしている人はいません。</div>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${detailForm.v_FavoriteMemberDtoList}" var="favoriteMember">
-                                            <ul>
-                                                <li>${favoriteMember.memName}</li>
-                                            </ul>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
+                        <div class="container">
+                            <c:choose>
+                                <c:when test="${empty detailForm.v_FavoriteMemberDtoList}">
+                                    <div>お気に入りしている人はいません。</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="table-body">
+                                        <table class="text-center table table-borderless">
+                                            <tbody>
+                                            <c:forEach items="${detailForm.v_FavoriteMemberDtoList}" var="favoriteMember">
+                                                <tr>
+                                                    <td>${favoriteMember.memName}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                     </div>
                     <input id="TAB-03" type="radio" name="TAB" class="tab-switch" /><label class="tab-label" for="TAB-03">おすすめしている人</label>
                     <div class="tab-content">
-                        <c:choose>
-                            <c:when test="${empty detailForm.v_RecomMemDtoList}">
-                                <div>おすすめしている人はいません。</div>
-                            </c:when>
-                            <c:otherwise>
-                                <c:forEach items="${detailForm.v_RecomMemDtoList}" var="recomMember">
-                                    <ul>
-                                        <li>${recomMember.memName}</li>
-                                    </ul>
-                                </c:forEach>
-                            </c:otherwise>
-                        </c:choose>
+                        <div class="container">
+                            <c:choose>
+                                <c:when test="${empty detailForm.v_RecomMemDtoList}">
+                                    <div>おすすめしている人はいません。</div>
+                                </c:when>
+                                <c:otherwise>
+                                    <div class="table-body">
+                                        <table class="text-center table table-borderless">
+                                            <tbody>
+                                            <c:forEach items="${detailForm.v_RecomMemDtoList}" var="recomMember">
+                                                <tr>
+                                                    <td>${recomMember.memName}</td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </c:otherwise>
+                            </c:choose>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -179,59 +190,22 @@
         <div class="detail-review">
           <div class="review-title"><i class="fas fa-star"></i>レビュー</div>
           <div id="review-list-more">
-          <%--  あとで修正する --%>
-          <%-- <c:forEach items="${detailForm.〇〇}" var="〇〇"> --%>
-           <ul>
-            <li>
-            <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-            <li>
-             <div class="review-contents">説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。説明が平易でわかりやすいです。他のプログラミングスキルがそれほどなくても理解できるようになっています。おすすめです。</div>
-             <div class="reviewer">
-              <span>2020/10/10</span>
-              <span>中川愛華</span>
-             </div>
-            </li>
-           </ul>
+              <c:if test="${empty detailForm.v_LendHistoryDtoList}">
+                  レビューはありません。
+              </c:if>
+              <ul>
+                  <c:forEach items="${detailForm.v_LendHistoryDtoList}" var="lendHistory">
+                      <c:if test="${not empty lendHistory.review}">
+                          <li>
+                              <div class="review-contents">${lendHistory.review}</div>
+                              <div class="reviewer">
+                                  <span><fmt:formatDate value="${lendHistory.updateAt}" pattern="yyyy/MM/dd" /></span>
+                                  <span>${lendHistory.memName}</span>
+                              </div>
+                          </li>
+                      </c:if>
+                  </c:forEach>
+              </ul>
            <div class="read-more" id="more-btn">その他のレビューを表示<i class="fa fa-chevron-down" aria-hidden="true"></i></div>
            <div class="read-more" id="close-btn">閉じる<i class="fa fa-chevron-up" aria-hidden="true"></i></div>
           </div>

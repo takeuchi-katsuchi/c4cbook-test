@@ -6,6 +6,7 @@ SELECT
     L.FROM_DATE,
     L.TO_DATE,
     L.REVIEW,
+    L.UPDATE_AT,
     M.MEM_NAME
 FROM
     book_db.BK_M_BOOK as B
