@@ -1,18 +1,5 @@
 package jp.co.c4c.controller.ctrl;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
 import jp.co.c4c.constant.LendStatus;
 import jp.co.c4c.controller.form.MyForm;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
@@ -21,6 +8,19 @@ import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.MyService;
+import jp.co.c4c.util.CommonUtil;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/mypage")
@@ -52,6 +52,13 @@ public class MyController {
         //////////////////////////////////////////////
         // ログインユーザーの貸出・予約履歴全件取得
         List<V_MyLendHistoryDto> myLendHistoryDtoList = myService.getBooksByMemId(memId);
+
+        // 画像のバイナリデータを文字列に変換
+        CommonUtil commonUtil = new CommonUtil();
+        for (V_MyLendHistoryDto v_myLendHistoryDto : myLendHistoryDtoList) {
+            String dataString = commonUtil.convByteToString(v_myLendHistoryDto.getBookImg());
+            v_myLendHistoryDto.setEncodedBookImg(dataString);
+        }
 
         // ログインユーザーが予約中の本で絞り込み
         List<V_MyLendHistoryDto> myResevedBookList = myLendHistoryDtoList.stream()
@@ -93,6 +100,11 @@ public class MyController {
         // ログインユーザーにおすすめされている本
         //////////////////////////////////////////////
         List<V_RecomToMeBookDto> recomToMeBookDtoList = myService.getRecommendedBooksByMemId(memId);
+        // 画像のバイナリデータを文字列に変換
+        for (V_RecomToMeBookDto v_recomToMeBookDto : recomToMeBookDtoList) {
+            String dataString = commonUtil.convByteToString(v_recomToMeBookDto.getBookImg());
+            v_recomToMeBookDto.setEncodedBookImg(dataString);
+        }
 
         List<Integer> bookIdList2 = recomToMeBookDtoList.stream()
                 .map(V_RecomToMeBookDto::getBookId)
@@ -127,6 +139,11 @@ public class MyController {
         // ログインユーザーがお気に入りの本
         //////////////////////////////////////////////
         List<V_MyFavoriteBookDto> myFavoriteBookDtoList = myService.getMyFavoriteBooksByMemId(memId);
+        // 画像のバイナリデータを文字列に変換
+        for (V_MyFavoriteBookDto v_myFavoriteBookDto : myFavoriteBookDtoList) {
+            String dataString = commonUtil.convByteToString(v_myFavoriteBookDto.getBookImg());
+            v_myFavoriteBookDto.setEncodedBookImg(dataString);
+        }
 
         // ログインユーザーが読書済みの本の数をformにセット
         form.setCount(readBookCount);

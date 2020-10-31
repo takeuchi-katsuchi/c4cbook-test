@@ -22,6 +22,8 @@ public class V_RecomToMeBookDto {
     private String tagIds;
     /** 画像 */
     private byte[] bookImg;
+    /** 画像（encode）*/
+    private String encodedBookImg;
 
     /////////////////////
     // BK_T_RecomDto
@@ -87,6 +89,14 @@ public class V_RecomToMeBookDto {
 
     public byte[] getBookImg() {
         return bookImg;
+    }
+
+    public String getEncodedBookImg() {
+        return encodedBookImg;
+    }
+
+    public void setEncodedBookImg(String encodedBookImg) {
+        this.encodedBookImg = encodedBookImg;
     }
 
     public void setBookImg(byte[] bookImg) {

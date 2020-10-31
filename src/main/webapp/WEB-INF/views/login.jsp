@@ -31,7 +31,6 @@
             <h4>ログイン</h4>
                 <form action="" method="post">
                     <select class="form-control" name="memId">
-                        <option value=0>ゲストユーザー</option>
                         <c:forEach items="${loginForm.bk_M_MemBasicDtoList}" var="member">
                             <option value="${member.memId}">${member.memName}</option>
                         </c:forEach>
