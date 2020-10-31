@@ -45,7 +45,7 @@ $(function() {
 		if (location.pathname != "/c4cbook/top") {
 			$('.use_top').css("display", "none");
 			$('.slidebtn').css("display", "none");
-			$('.menu').css("padding-left", "120px");
+			$('.menu').css("padding-left", "160px");
 		}
 	});
 });
