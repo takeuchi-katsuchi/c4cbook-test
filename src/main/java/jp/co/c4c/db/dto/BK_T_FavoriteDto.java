@@ -2,9 +2,6 @@ package jp.co.c4c.db.dto;
 
 public class BK_T_FavoriteDto {
 
-    /////////////////////
-    // BK_M_BookDto
-    /////////////////////
     /** 本ID */
     private int bookId;
     /** タイトル */

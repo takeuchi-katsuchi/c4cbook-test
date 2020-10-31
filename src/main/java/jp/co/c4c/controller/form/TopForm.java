@@ -48,12 +48,10 @@ public class TopForm {
         this.myLendedBookIdList = myLendedBookIdList;
     }
 
-    // お知らせ既読更新日時取得
     public Date getReadTimeNews() {
         return readTime;
     }
 
-    // お知らせ既読更新日時をformへセット
     public void setReadTimeNews(Date readTime) {
         this.readTime = readTime;
     }
@@ -66,7 +64,6 @@ public class TopForm {
         this.lendNewsList = lendNewsList;
     }
 
-    // 貸出数を取得
     public int getCountMyLendingBookList() {
         return lendNewsList.size();
     }
@@ -79,31 +76,28 @@ public class TopForm {
         this.myLendingBookList = myLendingBookList;
     }
 
-    // 新規入荷本のお知らせ情報をfromへセット
     public List<V_TopAndDetailDto> getOfferBookNewsList() {
         return offerBookNewsList;
     }
 
     public void setOfferBookNewsList(List<V_TopAndDetailDto> offerBookNewsList) {
-        this.offerBookNewsList= offerBookNewsList;
+        this.offerBookNewsList = offerBookNewsList;
     }
 
-    // 要望承認のお知らせ情報をfromへセット
     public List<BK_T_RequestDto> getRequestBookNewsList() {
         return requestBookNewsList;
     }
 
     public void setRequestBookNewsList(List<BK_T_RequestDto> requestBookNewsList) {
-        this.requestBookNewsList= requestBookNewsList;
+        this.requestBookNewsList = requestBookNewsList;
     }
 
-    // おすすめされたお知らせ情報をfromへセット
     public List<V_RecomToMeBookDto> getRecomeBookNewsList() {
         return recomeBookNewsList;
     }
 
     public void setRecomeBookNewsList(List<V_RecomToMeBookDto> recomeBookNewsList) {
-        this.recomeBookNewsList= recomeBookNewsList;
+        this.recomeBookNewsList = recomeBookNewsList;
     }
 
 }

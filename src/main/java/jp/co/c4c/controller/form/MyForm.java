@@ -26,7 +26,7 @@ public class MyForm {
 
     /**
      * 読んだ本の数
-     * 
+     *
      * @return 読んだ本の数
      */
     public String getCount() {
@@ -35,7 +35,7 @@ public class MyForm {
 
     /**
      * 読んだ本の数
-     * 
+     *
      * @param count 読んだ本の数
      */
     public void setCount(String count) {

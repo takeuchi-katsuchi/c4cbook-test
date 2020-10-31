@@ -185,9 +185,6 @@ public class BK_T_LendDto {
         this.updateAt = updateAt;
     }
 
-    public BK_T_LendDto() {
-    }
-
     @Override
     public String toString() {
         return "BK_T_LendDto [lendId=" + lendId + ", bookId=" + bookId + ", memId=" + memId + ", lendStatus="

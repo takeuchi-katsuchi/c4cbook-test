@@ -1,5 +1,3 @@
-
-
 .nav-menu {
  padding: 20px;
  width: 90%;
@@ -42,6 +40,6 @@ input[type="submit"]:hover {
 
 @media screen and (max-width: 480px) {
  .drower-menu {
-  display:none;
+  display: none;
  }
 }

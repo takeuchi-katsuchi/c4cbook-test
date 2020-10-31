@@ -144,8 +144,8 @@ public class TopService {
      * @return
      */
     @Transactional
-    public List<BK_T_RequestDto> getRequestBookNewsList(int memId,Date readTime) {
-        return selectBookListDao.seletctRequestBookNewsData(memId,readTime);
+    public List<BK_T_RequestDto> getRequestBookNewsList(int memId, Date readTime) {
+        return selectBookListDao.seletctRequestBookNewsData(memId, readTime);
     }
 
     /**
@@ -154,8 +154,8 @@ public class TopService {
      * @return
      */
     @Transactional
-    public List<V_RecomToMeBookDto> getRecomeBookNewsList(int memId,Date readTime) {
-        return selectBookListDao.seletctRecomeBookNewsData(memId,readTime);
+    public List<V_RecomToMeBookDto> getRecomeBookNewsList(int memId, Date readTime) {
+        return selectBookListDao.seletctRecomeBookNewsData(memId, readTime);
     }
 
 }

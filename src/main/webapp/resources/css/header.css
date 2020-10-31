@@ -3,8 +3,8 @@ section.header {
  margin-bottom: 10px;
 }
 
-section.header input{
- border:none;
+section.header input {
+ border: none;
 }
 
 .title {
@@ -14,7 +14,6 @@ section.header input{
  text-align: left;
  padding-top: 20px;
 }
-
 
 section.header div {
  display: flex;
@@ -34,26 +33,26 @@ section.header div.menu div, img {
 }
 
 /* Topmenu部分 */
-div.menu  li{
-    float: left;
-    position:relative;
+div.menu  li {
+ float: left;
+ position: relative;
 }
 
 /* プルダウンメニュー関連 */
-section.header div.menu  ul.pulldown{
-    list-style-type: none;
+section.header div.menu  ul.pulldown {
+ list-style-type: none;
 }
 
 section.header div.menu  ul.pulldown li ul {
-    display: none;
-    width: 30vw;
-    position: absolute;
-    margin-left: -5px;
-    margin-top: 5px;
-    background: #5597da;
-    border: solid 1px #000000;
-    padding: 0 1vw 0 1vw;
-    z-index: 1;
+ display: none;
+ width: 30vw;
+ position: absolute;
+ margin-left: -5px;
+ margin-top: 5px;
+ background: #5597da;
+ border: solid 1px #000000;
+ padding: 0 1vw 0 1vw;
+ z-index: 1;
 }
 
 section.header input {
@@ -61,23 +60,23 @@ section.header input {
  background-color: #5597da;
 }
 
-section.header div.menu  ul.pulldown li.slidebtn ul li,section.header div.menu  ul.pulldown li.drowerbtn ul li{
-    width: 100%;
-    list-style-type: none;
+section.header div.menu  ul.pulldown li.slidebtn ul li, section.header div.menu  ul.pulldown li.drowerbtn ul li {
+ width: 100%;
+ list-style-type: none;
 }
 
-section.header div.menu  ul.pulldown li a{
-    padding: 5px 0;
-    color: #000;
+section.header div.menu  ul.pulldown li a {
+ padding: 5px 0;
+ color: #000;
 }
 
-section.header div.menu  ul.pulldown li.news,section.header div.menu  ul.pulldown li.menu{
-    padding: 5px 0;
-    margin: -5px 5px -5px -5px;
-    display: block;
-    color: #000;
-    width: auto;
-    text-align: left;
+section.header div.menu  ul.pulldown li.news, section.header div.menu  ul.pulldown li.menu {
+ padding: 5px 0;
+ margin: -5px 5px -5px -5px;
+ display: block;
+ color: #000;
+ width: auto;
+ text-align: left;
 }
 
 section.header div.menu div {
@@ -87,11 +86,11 @@ section.header div.menu div {
 }
 
 section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
-   display:none;
+ display: none;
 }
 
 @media screen and (max-width: 480px) {
-  section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
-   display:block;
-}
+ section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
+  display: block;
+ }
 }
