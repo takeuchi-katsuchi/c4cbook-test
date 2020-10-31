@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.db.dao.BK_M_BookDao;
-import jp.co.c4c.db.dao.BK_T_LendDao;
+import jp.co.c4c.db.dao.SelectMyFavoriteBooksDao;
+import jp.co.c4c.db.dao.SelectMyLendHistorysDao;
+import jp.co.c4c.db.dao.SelectRecomToMeBookListDao;
 import jp.co.c4c.db.dto.V_MyFavoriteBookDto;
 import jp.co.c4c.db.dto.V_MyLendHistoryDto;
 import jp.co.c4c.db.dto.V_RecomToMeBookDto;
@@ -16,9 +17,11 @@ import jp.co.c4c.db.dto.V_RecomToMeBookDto;
 public class MyService {
 
     @Autowired
-    BK_T_LendDao lendDao;
+    SelectMyLendHistorysDao selectMyLendHistorysDao;
     @Autowired
-    BK_M_BookDao bookDao;
+    SelectRecomToMeBookListDao selectRecomToMeBookListDao;
+    @Autowired
+    SelectMyFavoriteBooksDao selectFavoriteBooksDao;
 
     /**
      * マイページに表示させる予約・貸出履歴のリストを取得
@@ -27,7 +30,7 @@ public class MyService {
      */
     @Transactional
     public List<V_MyLendHistoryDto> getBooksByMemId(int memId) {
-        return lendDao.seletctBooksByMemId(memId);
+        return selectMyLendHistorysDao.seletctBooksByMemId(memId);
     }
 
     /**
@@ -37,7 +40,7 @@ public class MyService {
      */
     @Transactional
     public List<V_RecomToMeBookDto> getRecommendedBooksByMemId(int memId) {
-        return bookDao.seletctRecommendedBooksByMemId(memId);
+        return selectRecomToMeBookListDao.seletctRecommendedBooksByMemId(memId);
     }
 
     /**
@@ -47,7 +50,7 @@ public class MyService {
      */
     @Transactional
     public List<V_MyFavoriteBookDto> getMyFavoriteBooksByMemId(int memId) {
-        return bookDao.seletctFavoriteBooksByMemId(memId);
+        return selectFavoriteBooksDao.seletctFavoriteBooksByMemId(memId);
     }
 
 }
