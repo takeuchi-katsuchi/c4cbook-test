@@ -1,4 +1,7 @@
 /* BK_T_LendDao_LendedBookDataByBookId.sql */
+
+-- BOOK_IDは現在固定
+
 select
   book_db.BK_T_LEND.MEM_ID,
   book_db.BK_T_LEND.FROM_DATE,

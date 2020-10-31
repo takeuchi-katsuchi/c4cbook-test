@@ -2,33 +2,33 @@ package jp.co.c4c.service;
 
 import java.util.List;
 
+import jp.co.c4c.db.dao.*;
+import jp.co.c4c.db.dto.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-
-import jp.co.c4c.db.dao.BK_M_BookDao;
-import jp.co.c4c.db.dao.BK_M_MemBasicDao;
-import jp.co.c4c.db.dao.BK_T_LendDao;
-import jp.co.c4c.db.dao.BK_T_RecomDao;
-import jp.co.c4c.db.dto.BK_M_MemBasicDto;
-import jp.co.c4c.db.dto.BK_T_LendDto;
-import jp.co.c4c.db.dto.BK_T_RecomDto;
-import jp.co.c4c.db.dto.V_FavoriteMemberDto;
-import jp.co.c4c.db.dto.V_LendHistoryDto;
-import jp.co.c4c.db.dto.V_RecomMemDto;
-import jp.co.c4c.db.dto.V_TopAndDetailDto;
 
 @Component
 public class DetailService {
 
     @Autowired
-    private BK_M_BookDao bookDao;
+    private SelectBookDataDao selectBookDataDao;
     @Autowired
-    private BK_T_LendDao lendDao;
+    private SelectLendHistorysDao selectLendHistorysDao;
     @Autowired
-    private BK_M_MemBasicDao memBasicDao;
+    private SelectFavoritedMembersDao selectFavoritedMembersDao;
     @Autowired
-    private BK_T_RecomDao recomDao;
+    private SelectRecomMemByBookIdDao selectRecomMemByBookIdDao;
+    @Autowired
+    private InsertLendBookDao insertLendBookDao;
+    @Autowired
+    private UpdateLendBookDao updateLendBookDao;
+    @Autowired
+    private DeleteLendBookDao deleteLendBookDao;
+    @Autowired
+    private SelectMemberDao selectMemberDao;
+    @Autowired
+    private InsertRecomDao insertRecomDao;
 
     /**
      * 詳細ページに表示させる本を取得
@@ -37,7 +37,7 @@ public class DetailService {
      */
     @Transactional
     public V_TopAndDetailDto getBookById(int bookId) {
-        return bookDao.seletctBookByBookId(bookId);
+        return selectBookDataDao.seletctBookById(bookId);
     }
 
     /**
@@ -47,7 +47,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_LendHistoryDto> getLendHistorysByBookId(int bookId) {
-        return lendDao.seletctLendHistorysById(bookId);
+        return selectLendHistorysDao.seletctLendHistorysById(bookId);
     }
 
     /**
@@ -57,7 +57,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
-        return memBasicDao.seletctFavoritedMembersById(bookId);
+        return selectFavoritedMembersDao.seletctFavoritedMembersById(bookId);
     }
 
     /**
@@ -67,7 +67,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_RecomMemDto> getRecomMembersById(int bookId) {
-        return memBasicDao.seletctRecomMembersByBookId(bookId);
+        return selectRecomMemByBookIdDao.seletctRecomMembersByBookId(bookId);
     }
 
     /**
@@ -76,7 +76,7 @@ public class DetailService {
      */
     @Transactional
     public void saveLendBook(BK_T_LendDto bk_T_LendDto) {
-        lendDao.insertLendBook(bk_T_LendDto);
+        insertLendBookDao.insertLendBook(bk_T_LendDto);
     }
 
     /**
@@ -85,7 +85,7 @@ public class DetailService {
      */
     @Transactional
     public void updateLendBook(BK_T_LendDto bk_T_LendDto) {
-        lendDao.updateLendBookByLendId(bk_T_LendDto);
+        updateLendBookDao.updateLendBookByLendId(bk_T_LendDto);
     }
 
     /**
@@ -94,7 +94,7 @@ public class DetailService {
      */
     @Transactional
     public void deleteLendBook(int lendId) {
-        lendDao.deleteLendBookByLendId(lendId);
+        deleteLendBookDao.deleteLendBookByLendId(lendId);
     }
 
     /**
@@ -103,7 +103,7 @@ public class DetailService {
      */
     @Transactional
     public List<BK_M_MemBasicDto> getAllMembers() {
-        return memBasicDao.selectAllMembers();
+        return selectMemberDao.selectAllMembers();
     }
 
     /**
@@ -113,7 +113,7 @@ public class DetailService {
      */
     @Transactional
     public BK_M_MemBasicDto getMemberById(int memId) {
-        return memBasicDao.selectMemberByMemId(memId);
+        return selectMemberDao.selectMemberByMemId(memId);
     }
 
     /**
@@ -122,7 +122,7 @@ public class DetailService {
      */
     @Transactional
     public void saveRecom(BK_T_RecomDto bk_T_RecomDto) {
-        recomDao.insertRecom(bk_T_RecomDto);
+        insertRecomDao.insertRecom(bk_T_RecomDto);
     }
 
     /**
@@ -131,7 +131,7 @@ public class DetailService {
      */
     @Transactional
     public void saveReview(BK_T_LendDto bk_T_LendDto) {
-        lendDao.updateLendBookforReview(bk_T_LendDto);
+        updateLendBookDao.updateLendBookforReview(bk_T_LendDto);
     }
 
 }
