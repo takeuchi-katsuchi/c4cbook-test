@@ -1,8 +1,8 @@
 package jp.co.c4c.controller.form;
 
-import java.util.List;
-
 import jp.co.c4c.db.dto.*;
+
+import java.util.List;
 
 /**
  * 詳細画面 Formクラス
@@ -21,6 +21,9 @@ public class DetailForm {
     BK_T_LendDto bk_T_LendDto;
     /** メンバー全員 ByLendId */
     List<BK_M_MemBasicDto> bk_M_MemBasicDtoList;
+
+    List<Integer> favoriteMemIdList;
+    List<Integer> lendedMemIdList;
 
     public V_TopAndDetailDto getV_TopAndDetailDto() {
         return v_TopAndDetailDto;
@@ -68,5 +71,21 @@ public class DetailForm {
 
     public void setV_RecomMemDtoList(List<V_RecomMemDto> v_RecomMemDtoList) {
         this.v_RecomMemDtoList = v_RecomMemDtoList;
+    }
+
+    public List<Integer> getFavoriteMemIdList() {
+        return favoriteMemIdList;
+    }
+
+    public void setFavoriteMemIdList(List<Integer> favoriteMemIdList) {
+        this.favoriteMemIdList = favoriteMemIdList;
+    }
+
+    public List<Integer> getLendedMemIdList() {
+        return lendedMemIdList;
+    }
+
+    public void setLendedMemIdList(List<Integer> lendedMemIdList) {
+        this.lendedMemIdList = lendedMemIdList;
     }
 }

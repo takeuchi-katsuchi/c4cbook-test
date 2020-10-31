@@ -13,7 +13,7 @@
 		<div class="modal-content">
 
 			<div class="modal-header">
-				<h5 class="modal-title" id="myLargeModalLabel">予約・貸出手続き</h5>
+				<h5 class="modal-title" id="myLargeModalLabel">貸出・予約・返却 手続き</h5>
 				<button type="button" class="close"
 						data-dismiss="modal" aria-label="Close">
 					<span aria-hidden="true">&times;</span>
@@ -50,7 +50,7 @@
 
 			<div class="modal-footer">
 				<button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-				<button id="save" type="button" class="btn btn-primary">予約</button>
+				<button id="save" type="button" class="btn btn-primary">確定</button>
 			</div>
 
 		</div>
@@ -63,7 +63,7 @@
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">予約・貸出ステータス更新</h4>
+				<h4 class="modal-title">ステータス更新</h4>
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			</div>
 			<div class="modal-body form-group">
