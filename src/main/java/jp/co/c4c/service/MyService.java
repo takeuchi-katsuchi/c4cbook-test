@@ -27,7 +27,7 @@ public class MyService {
      */
     @Transactional
     public List<V_MyLendHistoryDto> getBooksByMemId(int memId) {
-        return lendDao.seletctBooksByMemId(memId);
+        return lendDao.selectBooksByMemId(memId);
     }
 
     /**
@@ -37,7 +37,7 @@ public class MyService {
      */
     @Transactional
     public List<V_RecomToMeBookDto> getRecommendedBooksByMemId(int memId) {
-        return bookDao.seletctRecommendedBooksByMemId(memId);
+        return bookDao.selectRecommendedBooksByMemId(memId);
     }
 
     /**
@@ -47,7 +47,7 @@ public class MyService {
      */
     @Transactional
     public List<V_MyFavoriteBookDto> getMyFavoriteBooksByMemId(int memId) {
-        return bookDao.seletctFavoriteBooksByMemId(memId);
+        return bookDao.selectFavoriteBooksByMemId(memId);
     }
 
 }

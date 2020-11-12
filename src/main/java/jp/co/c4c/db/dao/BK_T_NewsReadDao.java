@@ -22,8 +22,8 @@ public class BK_T_NewsReadDao {
      * @param memId
      * @return
      */
-    public BK_T_NewsReadDto seletctNewsReadTime(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_seletctNewsReadTime.sql");
+    public BK_T_NewsReadDto selectNewsReadTime(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_NewsReadDao_selectNewsReadTime.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
 

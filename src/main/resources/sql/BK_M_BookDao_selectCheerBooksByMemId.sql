@@ -1,4 +1,4 @@
-/* BK_M_BookDao_seletctCheerBooksByMemId.sql */
+/* BK_M_BookDao_selectCheerBooksByMemId.sql */
 select
     B.REQUEST_ID
 from

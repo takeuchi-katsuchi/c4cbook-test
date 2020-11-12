@@ -1,4 +1,4 @@
-/* BK_M_BookDao_seletctAllBooks.sql */
+/* BK_M_BookDao_selectAllBooks.sql */
 select
     B.BOOK_ID,
     B.TITLE,

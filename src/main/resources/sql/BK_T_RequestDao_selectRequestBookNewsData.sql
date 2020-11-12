@@ -1,4 +1,4 @@
-/* BK_T_RequestDao_seletctRequestBookNewsData.sql */
+/* BK_T_RequestDao_selectRequestBookNewsData.sql */
 select
     REQUEST_ID,
     TITLE,

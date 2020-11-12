@@ -1,4 +1,4 @@
-/* BK_M_BookDao_seletctLendHistorysByMemId.sql */
+/* BK_M_BookDao_selectLendHistorysByMemId.sql */
 select
   book_db.BK_M_BOOK.BOOK_ID,
   book_db.BK_M_BOOK.TITLE,

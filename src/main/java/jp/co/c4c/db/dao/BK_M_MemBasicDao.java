@@ -46,8 +46,8 @@ public class BK_M_MemBasicDao {
      * @param bookId
      * @return
      */
-    public List<V_FavoriteMemberDto> seletctFavoritedMembersById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_seletctFavoritedMembersById.sql");
+    public List<V_FavoriteMemberDto> selectFavoritedMembersById(int bookId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_selectFavoritedMembersById.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_FavoriteMemberDto.class, sqlSrc, param);
@@ -58,8 +58,8 @@ public class BK_M_MemBasicDao {
      * @param bookId
      * @return
      */
-    public List<V_RecomMemDto> seletctRecomMembersByBookId(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_seletctRecomMembersByBookId.sql");
+    public List<V_RecomMemDto> selectRecomMembersByBookId(int bookId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_M_MemBasicDao_selectRecomMembersByBookId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_RecomMemDto.class, sqlSrc, param);

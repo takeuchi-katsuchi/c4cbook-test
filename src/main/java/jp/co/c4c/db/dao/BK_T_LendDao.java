@@ -30,8 +30,8 @@ public class BK_T_LendDao {
         Map<String, Object> param = new HashMap<>();
         Date date = new Date();
         param.put("bookId", bk_T_LendDto.getBookId());
-        param.put("mId", bk_T_LendDto.getMemId());
-        param.put("lstatus", bk_T_LendDto.getLendStatus());
+        param.put("memId", bk_T_LendDto.getMemId());
+        param.put("lendStatus", bk_T_LendDto.getLendStatus());
         param.put("fromDate", bk_T_LendDto.getFromDate());
         param.put("toDate", bk_T_LendDto.getToDate());
         param.put("delFlg", 0);
@@ -75,8 +75,8 @@ public class BK_T_LendDao {
      * @param bookId
      * @return
      */
-    public List<V_LendHistoryDto> seletctLendHistorysById(int bookId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_updateLendBookforReview.sql");
+    public List<V_LendHistoryDto> selectLendHistorysById(int bookId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_selectLendHistorysById.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("bookId", bookId);
         return sqlManager.getResultList(V_LendHistoryDto.class, sqlSrc, param);
@@ -87,8 +87,8 @@ public class BK_T_LendDao {
      * @param memId
      * @return
      */
-    public List<V_MyLendHistoryDto> seletctBooksByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_seletctBooksByMemId.sql");
+    public List<V_MyLendHistoryDto> selectBooksByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_selectBooksByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         return sqlManager.getResultList(V_MyLendHistoryDto.class, sqlSrc, param);
@@ -99,8 +99,8 @@ public class BK_T_LendDao {
      * @param memId
      * @return
      */
-    public List<BK_T_LendDto> seletctLendPiriodByMemId(int memId) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_seletctLendPiriodByMemId.sql");
+    public List<BK_T_LendDto> selectLendPiriodByMemId(int memId) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_LendDao_selectLendPiriodByMemId.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
 

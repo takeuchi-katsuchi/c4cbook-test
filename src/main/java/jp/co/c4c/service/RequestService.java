@@ -31,7 +31,7 @@ public class RequestService {
      */
     @Transactional
     public List<V_RequestDto> getRequestList() {
-        return requestDao.seletctRequestList();
+        return requestDao.selectRequestList();
     }
 
     /**
@@ -59,6 +59,6 @@ public class RequestService {
      */
     @Transactional
     public List<V_MyCheerBookDto> getCheerBooks(int memId) {
-        return bookDao.seletctCheerBooksByMemId(memId);
+        return bookDao.selectCheerBooksByMemId(memId);
     }
 }

@@ -14,8 +14,8 @@ insert into book_db.BK_T_LEND
 values
 (
     /*bookId*/,
-    /*mId*/,
-    /*lstatus*/,
+    /*memId*/,
+    /*lendStatus*/,
     /*fromDate*/,
     /*toDate*/,
     /*review*/,

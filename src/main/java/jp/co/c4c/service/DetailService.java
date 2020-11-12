@@ -37,7 +37,7 @@ public class DetailService {
      */
     @Transactional
     public V_TopAndDetailDto getBookById(int bookId) {
-        return bookDao.seletctBookByBookId(bookId);
+        return bookDao.selectBookByBookId(bookId);
     }
 
     /**
@@ -47,7 +47,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_LendHistoryDto> getLendHistorysByBookId(int bookId) {
-        return lendDao.seletctLendHistorysById(bookId);
+        return lendDao.selectLendHistorysById(bookId);
     }
 
     /**
@@ -57,7 +57,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_FavoriteMemberDto> getFavoriteMembersById(int bookId) {
-        return memBasicDao.seletctFavoritedMembersById(bookId);
+        return memBasicDao.selectFavoritedMembersById(bookId);
     }
 
     /**
@@ -67,7 +67,7 @@ public class DetailService {
      */
     @Transactional
     public List<V_RecomMemDto> getRecomMembersById(int bookId) {
-        return memBasicDao.seletctRecomMembersByBookId(bookId);
+        return memBasicDao.selectRecomMembersByBookId(bookId);
     }
 
     /**

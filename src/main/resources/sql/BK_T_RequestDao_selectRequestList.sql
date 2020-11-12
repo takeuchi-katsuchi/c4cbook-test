@@ -1,4 +1,4 @@
-/* BK_T_RequestDao_seletctRequestList.sql */
+/* BK_T_RequestDao_selectRequestList.sql */
 select
     book_db.BK_T_REQUEST.REQUEST_ID,
     book_db.BK_T_REQUEST.TITLE,

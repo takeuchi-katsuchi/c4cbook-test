@@ -45,8 +45,8 @@ public class BK_T_RequestDao {
      * 要望ページに表示させるデータを取得
      * @return List<V_RequestDto>
      */
-    public List<V_RequestDto> seletctRequestList() {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_seletctRequestList.sql");
+    public List<V_RequestDto> selectRequestList() {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_selectRequestList.sql");
         Map<String, Object> param = new HashMap<>();
         return sqlManager.getResultList(V_RequestDto.class, sqlSrc, param);
     }
@@ -56,8 +56,8 @@ public class BK_T_RequestDao {
      * @param memId,readTime
      * @return
      */
-    public List<BK_T_RequestDto> seletctRequestBookNewsData(int memId,Date readTime) {
-        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_seletctRequestBookNewsData.sql");
+    public List<BK_T_RequestDto> selectRequestBookNewsData(int memId,Date readTime) {
+        final SqlResource sqlSrc = new ClasspathSqlResource("sql/" + "BK_T_RequestDao_selectRequestBookNewsData.sql");
         Map<String, Object> param = new HashMap<>();
         param.put("memId", memId);
         param.put("readTime", readTime);

@@ -1,4 +1,4 @@
-/* BK_T_LendDao_seletctLendPiriodByMemId.sql */
+/* BK_T_LendDao_selectLendPiriodByMemId.sql */
 select
   book_db.BK_T_LEND.MEM_ID,
   book_db.BK_T_LEND.LEND_STATUS,
@@ -8,7 +8,7 @@ from
 where
   book_db.BK_T_LEND.DEL_FLG = 0
 and
-  book_db.BK_T_LEND.MEM_ID =  /*memId*/
+  book_db.BK_T_LEND.MEM_ID = /*memId*/
 and
   book_db.BK_T_LEND.LEND_STATUS = 11
 ;

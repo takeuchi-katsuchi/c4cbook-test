@@ -41,7 +41,7 @@ public class TopService {
      */
     @Transactional
     public List<V_TopAndDetailDto> getAllBooks() {
-        return bookDao.seletctAllBooks();
+        return bookDao.selectAllBooks();
     }
 
     /**
@@ -51,7 +51,7 @@ public class TopService {
      */
     @Transactional
     public List<V_MyFavoriteBookDto> getFavoriteBooks(int memId) {
-        return bookDao.seletctFavoriteBooksByMemId(memId);
+        return bookDao.selectFavoriteBooksByMemId(memId);
     }
 
     /**
@@ -61,7 +61,7 @@ public class TopService {
      */
     @Transactional
     public List<V_LendHistoryDto> getlendedBooks(int memId) {
-        return bookDao.seletctLendHistorysByMemId(memId);
+        return bookDao.selectLendHistorysByMemId(memId);
     }
 
     /**
@@ -89,7 +89,7 @@ public class TopService {
      */
     @Transactional
     public List<BK_T_LendDto> getLendNewsByMemId(int memId) {
-        return lendDao.seletctLendPiriodByMemId(memId);
+        return lendDao.selectLendPiriodByMemId(memId);
     }
 
     /**
@@ -99,7 +99,7 @@ public class TopService {
      */
     @Transactional
     public BK_T_NewsReadDto getNewReadTime(int memId) {
-        return newsReadDao.seletctNewsReadTime(memId);
+        return newsReadDao.selectNewsReadTime(memId);
     }
 
     /**
@@ -129,7 +129,7 @@ public class TopService {
      */
     @Transactional
     public List<V_TopAndDetailDto> getOfferBookNewsList(Date readTime) {
-        return bookDao.seletctOfferBookNewsData(readTime);
+        return bookDao.selectOfferBookNewsData(readTime);
     }
 
     /**
@@ -139,7 +139,7 @@ public class TopService {
      */
     @Transactional
     public List<BK_T_RequestDto> getRequestBookNewsList(int memId, Date readTime) {
-        return requestDao.seletctRequestBookNewsData(memId, readTime);
+        return requestDao.selectRequestBookNewsData(memId, readTime);
     }
 
     /**
@@ -149,7 +149,7 @@ public class TopService {
      */
     @Transactional
     public List<V_RecomToMeBookDto> getRecomeBookNewsList(int memId, Date readTime) {
-        return bookDao.seletctRecomeBookNewsData(memId, readTime);
+        return bookDao.selectRecomeBookNewsData(memId, readTime);
     }
 
 }

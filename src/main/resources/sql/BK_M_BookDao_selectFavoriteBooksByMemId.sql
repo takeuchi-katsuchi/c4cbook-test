@@ -1,4 +1,4 @@
-/* BK_M_BookDao_seletctFavoriteBooksByMemId.sql */
+/* BK_M_BookDao_selectFavoriteBooksByMemId.sql */
 select
     B.BOOK_ID,
     B.TITLE,

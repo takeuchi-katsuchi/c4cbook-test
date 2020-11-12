@@ -1,6 +1,6 @@
-/* BK_M_MemBasicDao_seletctRecomMembersByBookId.sql */
+/* BK_M_MemBasicDao_selectRecomMembersByBookId.sql */
 select distinct
-	book_db.BK_T_RECOM.BOOK_ID,
+    book_db.BK_T_RECOM.BOOK_ID,
     book_db.M_MEM_BASIC.MEM_NAME
 from
     book_db.BK_T_RECOM join book_db.M_MEM_BASIC
