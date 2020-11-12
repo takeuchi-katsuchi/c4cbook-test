@@ -6,7 +6,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
-<section class="request">
+<section class="book-list">
  <c:forEach items="${topForm.topAndDetailDtoList}" var="topAndDetail">
 
   <c:url var="detailLink" value="/detail">

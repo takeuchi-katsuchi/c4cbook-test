@@ -148,7 +148,7 @@ $(document).ready(function () {
     ////////////////////////////////////////////////////////
     function insertNewElement (editedList) {
         // 元々の要素を削除
-        $(`.request`).children().remove();
+        $(`.book-list`).children().remove();
         // 並び替えた要素を全件追加する
         for (let i = 0; i < editedList.length; i++) {
             // url
@@ -190,7 +190,7 @@ $(document).ready(function () {
             }
 
             // 要素を追加
-            $('.request').append(`
+            $('.book-list').append(`
                     <div class="book_box">
 						<div class="book_img_area">
 							<a href="${destinationUrl}"><img class="book-img" src="data:image/jpeg;base64,${editedList[i]["encodedBookImg"]}" alt=""></a>
