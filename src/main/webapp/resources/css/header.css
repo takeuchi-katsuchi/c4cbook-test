@@ -43,9 +43,8 @@ section.header div.menu  ul.pulldown {
  list-style-type: none;
 }
 
-section.header div.menu  ul.pulldown li ul {
+section.header div.menu  ul.pulldown ul.submenu {
  display: none;
- width: 30vw;
  position: absolute;
  margin-left: -5px;
  margin-top: 5px;
@@ -58,11 +57,6 @@ section.header div.menu  ul.pulldown li ul {
 section.header input {
  border: none;
  background-color: #5597da;
-}
-
-section.header div.menu  ul.pulldown li.slidebtn ul li, section.header div.menu  ul.pulldown li.drowerbtn ul li {
- width: 100%;
- list-style-type: none;
 }
 
 section.header div.menu  ul.pulldown li a {
@@ -85,12 +79,14 @@ section.header div.menu div {
  justify-content: center;
 }
 
+/* スマホ用プルダウンメニュー関連 */
 section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
  display: none;
+ position: absolute;
+ right: 0;
+ background: #5597da;
 }
 
-@media screen and (max-width: 480px) {
- section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
-  display: block;
- }
+input[type="submit"]:hover {
+ color: #da2323;
 }

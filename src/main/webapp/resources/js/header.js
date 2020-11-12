@@ -1,12 +1,15 @@
 $(function() {
-	$(".header ul.pulldown li.slidebtn>a").addClass("menuClose");
+
+	var windowWidth = window.innerWidth;
+
 	$(".header ul.submenu").addClass("menuClose");
+	$(".header ul.pulldown li.slidebtn>a").addClass("menuClose");
 
 	$(".header ul.pulldown li.slidebtn>a").each(function() {
 		var allsubmenu = $(".header ul.submenu");
-		var btn = $(this);
+		var btn1 = $(this);
 		var submenu = $(this).next();
-		btn.click(function() {
+		btn1.click(function() {
 			if ($(this).hasClass("menuOpen")) {
 				$(this).removeClass("menuOpen").addClass("menuClose");
 				$(submenu).slideUp("fast");
@@ -14,30 +17,31 @@ $(function() {
 				$(allsubmenu).slideUp("fast");
 				$(".header ul.pulldown li.slidebtn>a").removeClass("menuOpen").addClass("menuClose");
 				$(submenu).slideDown("fast");
-				$(btn).removeClass("menuClose").addClass("menuOpen");
+				$(btn1).removeClass("menuClose").addClass("menuOpen");
 			}
 			return false;
 		});
 	});
+
+	$(".header ul.drowermenu").addClass("menuClose");
 	$(".header ul.pulldown li.drowerbtn>a").addClass("menuClose");
 
 	$(".header ul.pulldown li.drowerbtn>a").each(function() {
-		var allsubmenu = $(".header ul.drowermenu");
-		var btn = $(this);
+		var alldrowermenu = $(".header ul.drowermenu");
+		var btn2 = $(this);
 		var drowermenu = $(this).next();
-		btn.click(function() {
-			if ($(this).hasClass("menuOpen") && $(allsubmenu).css("display")=="block") {
+		btn2.click(function() {
+			if ($(this).hasClass("menuOpen")) {
 				$(this).removeClass("menuOpen").addClass("menuClose");
 				$(drowermenu).slideUp("fast");
-			} else  if($(this).hasClass("menuClose")  && $(allsubmenu).css("display")=="block"){
-				$(allsubmenu).slideUp("fast");
+			} else if ($(this).hasClass("menuClose") && windowWidth < 768)  {
+				$(alldrowermenu).slideUp("fast");
 				$(".header ul.pulldown li.drowerbtn>a").removeClass("menuOpen").addClass("menuClose");
-				$(drowermenu).slideDown("fast");
-				$(btn).removeClass("menuClose").addClass("menuOpen");
+				$(alldrowermenu).slideDown("fast");
+				$(btn2).removeClass("menuClose").addClass("menuOpen");
 			}
 			return false;
 		})
-		$(".header ul.pulldown li.drowerbtn>a").addClass("menuClose");
 	});
 
 	$(document).ready(function() {
