@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.db.dao.SelectRequestListDao;
+import jp.co.c4c.db.dao.BK_M_BookDao;
+import jp.co.c4c.db.dao.BK_T_RequestCheerDao;
+import jp.co.c4c.db.dao.BK_T_RequestDao;
 import jp.co.c4c.db.dto.BK_T_RequestCheerDto;
 import jp.co.c4c.db.dto.BK_T_RequestDto;
 import jp.co.c4c.db.dto.V_MyCheerBookDto;
@@ -16,7 +18,11 @@ import jp.co.c4c.db.dto.V_RequestDto;
 public class RequestService {
 
     @Autowired
-    private SelectRequestListDao selectRequestListDao;
+    private BK_M_BookDao bookDao;
+    @Autowired
+    private BK_T_RequestCheerDao requestCheerDao;
+    @Autowired
+    private BK_T_RequestDao requestDao;
 
     /**
      * 要望ページに表示させる本を取得
@@ -25,7 +31,7 @@ public class RequestService {
      */
     @Transactional
     public List<V_RequestDto> getRequestList() {
-        return selectRequestListDao.seletctRequestList();
+        return requestDao.selectRequestList();
     }
 
     /**
@@ -34,7 +40,7 @@ public class RequestService {
      */
     @Transactional
     public void saveRequestBook(BK_T_RequestDto bK_T_RequestDto) {
-        selectRequestListDao.insertRequestBook(bK_T_RequestDto);
+        requestDao.insertRequestBook(bK_T_RequestDto);
     }
 
     /**
@@ -43,7 +49,7 @@ public class RequestService {
      */
     @Transactional
     public void saveCheerCount(BK_T_RequestCheerDto bK_T_RequestCheerDto) {
-        selectRequestListDao.insertCheerBook(bK_T_RequestCheerDto);
+        requestCheerDao.insertCheerBook(bK_T_RequestCheerDto);
     }
 
     /**
@@ -53,6 +59,6 @@ public class RequestService {
      */
     @Transactional
     public List<V_MyCheerBookDto> getCheerBooks(int memId) {
-        return selectRequestListDao.seletctCheerBooksByMemId(memId);
+        return bookDao.selectCheerBooksByMemId(memId);
     }
 }

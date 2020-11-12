@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
-import jp.co.c4c.db.dao.DeleteMyFavoriteBookDao;
-import jp.co.c4c.db.dao.InsertMyFavoriteBookDao;
-import jp.co.c4c.db.dao.SelectBookListDao;
-import jp.co.c4c.db.dao.SelectMyFavoriteBooksDao;
-import jp.co.c4c.db.dao.SelectMyLendHistorysDao;
-import jp.co.c4c.db.dao.SelectNewsReadDataDao;
-import jp.co.c4c.db.dao.UpdateNewsReadDateDao;
+import jp.co.c4c.db.dao.BK_M_BookDao;
+import jp.co.c4c.db.dao.BK_T_FavoriteDao;
+import jp.co.c4c.db.dao.BK_T_LendDao;
+import jp.co.c4c.db.dao.BK_T_NewsReadDao;
+import jp.co.c4c.db.dao.BK_T_RequestDao;
 import jp.co.c4c.db.dto.BK_T_FavoriteDto;
 import jp.co.c4c.db.dto.BK_T_LendDto;
 import jp.co.c4c.db.dto.BK_T_NewsReadDto;
@@ -27,19 +25,15 @@ import jp.co.c4c.db.dto.V_TopAndDetailDto;
 public class TopService {
 
     @Autowired
-    private SelectBookListDao selectBookListDao;
+    private BK_T_RequestDao requestDao;
     @Autowired
-    private SelectMyFavoriteBooksDao selectFavoriteBooksDao;
+    private BK_M_BookDao bookDao;
     @Autowired
-    private SelectMyLendHistorysDao selectMyLendHistorysDao;
+    private BK_T_LendDao lendDao;
     @Autowired
-    private SelectNewsReadDataDao selectNewsReadDataDao;
+    private BK_T_NewsReadDao newsReadDao;
     @Autowired
-    private UpdateNewsReadDateDao updateNewsReadDateDao;
-    @Autowired
-    private InsertMyFavoriteBookDao insertMyFavoriteBookDao;
-    @Autowired
-    private DeleteMyFavoriteBookDao deleteMyFavoriteBookDao;
+    private BK_T_FavoriteDao favoriteDao;
 
     /**
      * トップページに表示させる本のリストを取得
@@ -47,7 +41,7 @@ public class TopService {
      */
     @Transactional
     public List<V_TopAndDetailDto> getAllBooks() {
-        return selectBookListDao.seletctAllBooks();
+        return bookDao.selectAllBooks();
     }
 
     /**
@@ -57,7 +51,7 @@ public class TopService {
      */
     @Transactional
     public List<V_MyFavoriteBookDto> getFavoriteBooks(int memId) {
-        return selectFavoriteBooksDao.seletctFavoriteBooksByMemId(memId);
+        return bookDao.selectFavoriteBooksByMemId(memId);
     }
 
     /**
@@ -67,7 +61,7 @@ public class TopService {
      */
     @Transactional
     public List<V_LendHistoryDto> getlendedBooks(int memId) {
-        return selectMyLendHistorysDao.seletctLendHistorysByMemId(memId);
+        return bookDao.selectLendHistorysByMemId(memId);
     }
 
     /**
@@ -76,7 +70,7 @@ public class TopService {
      */
     @Transactional
     public void saveMyFavoriteBook(BK_T_FavoriteDto bk_T_FavoriteDto) {
-        insertMyFavoriteBookDao.insertMyFavoriteBook(bk_T_FavoriteDto);
+        favoriteDao.insertMyFavoriteBook(bk_T_FavoriteDto);
     }
 
     /**
@@ -85,7 +79,7 @@ public class TopService {
      */
     @Transactional
     public void deleteMyFavoriteBook(BK_T_FavoriteDto bk_T_FavoriteDto) {
-        deleteMyFavoriteBookDao.deleteMyFavoriteBookByBookIdAndMemId(bk_T_FavoriteDto);
+        favoriteDao.deleteMyFavoriteBookByBookIdAndMemId(bk_T_FavoriteDto);
     }
 
     /**
@@ -95,7 +89,7 @@ public class TopService {
      */
     @Transactional
     public List<BK_T_LendDto> getLendNewsByMemId(int memId) {
-        return selectBookListDao.seletctLendPiriodByMemId(memId);
+        return lendDao.selectLendPiriodByMemId(memId);
     }
 
     /**
@@ -105,7 +99,7 @@ public class TopService {
      */
     @Transactional
     public BK_T_NewsReadDto getNewReadTime(int memId) {
-        return selectNewsReadDataDao.seletctNewsReadTime(memId);
+        return newsReadDao.selectNewsReadTime(memId);
     }
 
     /**
@@ -125,7 +119,7 @@ public class TopService {
      */
     @Transactional
     public void updateReadTimeNews(int memId) {
-        updateNewsReadDateDao.updateNewsReadDateByMemId(memId);
+        newsReadDao.updateNewsReadDateByMemId(memId);
     }
 
     /**
@@ -135,7 +129,7 @@ public class TopService {
      */
     @Transactional
     public List<V_TopAndDetailDto> getOfferBookNewsList(Date readTime) {
-        return selectBookListDao.seletctOfferBookNewsData(readTime);
+        return bookDao.selectOfferBookNewsData(readTime);
     }
 
     /**
@@ -145,7 +139,7 @@ public class TopService {
      */
     @Transactional
     public List<BK_T_RequestDto> getRequestBookNewsList(int memId, Date readTime) {
-        return selectBookListDao.seletctRequestBookNewsData(memId, readTime);
+        return requestDao.selectRequestBookNewsData(memId, readTime);
     }
 
     /**
@@ -155,7 +149,7 @@ public class TopService {
      */
     @Transactional
     public List<V_RecomToMeBookDto> getRecomeBookNewsList(int memId, Date readTime) {
-        return selectBookListDao.seletctRecomeBookNewsData(memId, readTime);
+        return bookDao.selectRecomeBookNewsData(memId, readTime);
     }
 
 }
