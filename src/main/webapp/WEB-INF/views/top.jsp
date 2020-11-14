@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="resources/css/common.css" media="screen">
 <link rel="stylesheet" href="resources/css/header.css" media="screen">
 <link rel="stylesheet" href="resources/css/menu.css" media="screen">
-<link rel="stylesheet" href="resources/css/top.css" media="screen">
 <link rel="stylesheet" href="resources/css/book-list.css" media="screen">
 <link rel="stylesheet" href="resources/css/modal.css" media="screen">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
