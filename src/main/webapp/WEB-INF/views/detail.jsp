@@ -36,7 +36,7 @@
     <c:choose>
      <c:when test="${detailForm.v_TopAndDetailDto.memName != null}">
       <%-- 条件に当てはまる場合 --%>
-      <div class="rent_disable">${detailForm.v_TopAndDetailDto.memName}に貸出中</div>
+      <div class="rent_disable">${detailForm.v_TopAndDetailDto.memName}さんに貸出中</div>
      </c:when>
      <c:otherwise>
       <%-- 上記すべての条件に当てはまらない場合 --%>
