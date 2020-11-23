@@ -28,13 +28,14 @@
        <c:forEach items="${topForm.recomeBookNewsList}" var="list"><li class="news"><a href="/c4cbook/detail?bookId=${list.bookId}">「${list.title}」がおすすめされました。</a></li></c:forEach>
       </c:if>
      </ul></li>
-    <li class="drowerbtn"><a href="#"><img src="resources/img/menu.png" alt="メニュー"></a>
+     <li class="drowerbtn">
+     <a href="#"><img src="resources/img/menu.png" alt="メニュー"></a>
+     </li>
      <ul class="drowermenu">
       <li class="menu"><a><form:form action="top" method="post" enctype="multipart/form-data"><input type="submit" value="トップ"></form:form></a></li>
       <li class="menu"><a><form:form action="mypage" method="post" enctype="multipart/form-data"><input type="submit" value="mypage"></form:form></a></li>
       <li class="menu"><a><form:form action="request" method="post" enctype="multipart/form-data"><input type="submit" value="要望"></form:form></a></li>
      </ul>
-    </li>
    </ul>
   </div>
  </div>

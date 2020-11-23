@@ -38,7 +38,7 @@ input[type="submit"]:hover {
  color: #da2323;
 }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 640px) {
  .drower-menu {
   display: none;
  }

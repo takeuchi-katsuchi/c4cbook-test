@@ -43,20 +43,25 @@ section.header div.menu  ul.pulldown {
  list-style-type: none;
 }
 
-section.header div.menu  ul.pulldown ul.submenu {
- display: none;
- position: absolute;
- margin-left: -5px;
- margin-top: 5px;
- background: #5597da;
- border: solid 1px #000000;
- padding: 0 1vw 0 1vw;
- z-index: 1;
+section.header div.menu ul.pulldown ul.submenu {
+    display: none;
+    position: fixed;
+    margin-top: 30px;
+    background: #b9ffff;
+    border: solid 1px #000000;
+    z-index: 1;
+    width: 360px;
+    padding: 0px 10px;
+    transform: translate(-77%, -50%);
 }
 
 section.header input {
  border: none;
- background-color: #5597da;
+ background-color: #b9ffff;
+}
+
+section.header div.menu  ul.pulldown li.slidebtn ul li, section.header div.menu  ul.pulldown li.drowerbtn ul li {
+ list-style-type: none;
 }
 
 section.header div.menu  ul.pulldown li a {
@@ -64,13 +69,17 @@ section.header div.menu  ul.pulldown li a {
  color: #000;
 }
 
-section.header div.menu  ul.pulldown li.news, section.header div.menu  ul.pulldown li.menu {
- padding: 5px 0;
- margin: -5px 5px -5px -5px;
- display: block;
- color: #000;
- width: auto;
- text-align: left;
+section.header div.menu ul.pulldown li.news, section.header div.menu ul.pulldown li.news {
+ left: 0;
+}
+
+section.header div.menu ul.pulldown li.news, section.header div.menu ul.pulldown li.menu {
+    display: block;
+    color: #000;
+    background-color: #b9ffff;
+    text-align: right;
+    float: right;
+    width:30vw;
 }
 
 section.header div.menu div {
@@ -79,14 +88,12 @@ section.header div.menu div {
  justify-content: center;
 }
 
-/* スマホ用プルダウンメニュー関連 */
-section.header div.menu  ul.pulldown li.drowerbtn ul.drowermenu {
+section.header div.menu  ul.pulldown ul.drowermenu {
  display: none;
- position: absolute;
- right: 0;
- background: #5597da;
 }
 
-input[type="submit"]:hover {
- color: #da2323;
+@media screen and (max-width: 480px) {
+ section.header div.menu  ul.pulldown ul.drowermenu {
+  display: block;
+ }
 }
