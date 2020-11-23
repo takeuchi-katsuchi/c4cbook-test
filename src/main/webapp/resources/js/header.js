@@ -11,9 +11,18 @@ $(function() {
 		var submenu = $(this).next();
 		btn1.click(function() {
 			if ($(this).hasClass("menuOpen")) {
+
+				// メニューが表示されていた場合は、スライドを閉じる
+				$(".header ul.drowermenu").removeClass("menuOpen").addClass("menuClose");
+				$(".header ul.drowermenu").slideUp("fast");
+
 				$(this).removeClass("menuOpen").addClass("menuClose");
 				$(submenu).slideUp("fast");
 			} else {
+				// メニューが表示されていた場合は、スライドを閉じる
+				$(".header ul.drowermenu").removeClass("menuOpen").addClass("menuClose");
+				$(".header ul.drowermenu").slideUp("fast");
+
 				$(allsubmenu).slideUp("fast");
 				$(".header ul.pulldown li.slidebtn>a").removeClass("menuOpen").addClass("menuClose");
 				$(submenu).slideDown("fast");
@@ -29,14 +38,22 @@ $(function() {
 	$(".header ul.pulldown li.drowerbtn>a").each(function() {
 		var alldrowermenu = $(".header ul.drowermenu");
 		var btn2 = $(this);
-		var drowermenu = $(this).next();
+		$(alldrowermenu).slideUp("fast");
 		btn2.click(function() {
 			if ($(this).hasClass("menuOpen")) {
+
+				// メニューが表示されていた場合は、スライドを閉じる
+				$(".header ul.submenu").removeClass("menuOpen").addClass("menuClose");
+				$(".header ul.submenu").slideUp("fast");
+
 				$(this).removeClass("menuOpen").addClass("menuClose");
-				$(drowermenu).slideUp("fast");
-			} else if ($(this).hasClass("menuClose") && windowWidth < 768)  {
 				$(alldrowermenu).slideUp("fast");
-				$(".header ul.pulldown li.drowerbtn>a").removeClass("menuOpen").addClass("menuClose");
+			} else if ($(this).hasClass("menuClose") && windowWidth < 640)  {
+
+				// メニューが表示されていた場合は、スライドを閉じる
+				$(".header ul.submenu").removeClass("menuOpen").addClass("menuClose");
+				$(".header ul.submenu").slideUp("fast");
+
 				$(alldrowermenu).slideDown("fast");
 				$(btn2).removeClass("menuClose").addClass("menuOpen");
 			}
@@ -49,7 +66,6 @@ $(function() {
 		if (location.pathname != "/c4cbook/top") {
 			$('.use_top').css("display", "none");
 			$('.slidebtn').css("display", "none");
-			$('.menu').css("padding-left", "160px");
 		}
 	});
 });

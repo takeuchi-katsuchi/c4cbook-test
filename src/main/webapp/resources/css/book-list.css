@@ -43,7 +43,6 @@ div.book_info {
 }
 
 div.name {
- position: relative;
  text-shadow: 0 0 2px white;
  color: #333;
  font-size: 19px;
