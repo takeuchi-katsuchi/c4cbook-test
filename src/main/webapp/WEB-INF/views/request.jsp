@@ -30,7 +30,7 @@
     <c:forEach items="${requestForm.reqInfoList}" varStatus="status" var="reqInfo">
      <div class="line">
       <div class="line-book-info" <c:if test="${reqInfo.requestStatus == 9 }">id="end_pblctn"</c:if>>
-       <div class="book_img_area"><img class="book-img" id="bookImg" src="resources/img/sample_book.jpg" alt=""></div>
+       <div class="book_img_area"><img class="book-img" id="bookImg" src="data:image/jpeg;base64,${reqInfo.encodedBookImg}" alt=""></div>
        <div class="book_info">
         <div class="name"><c:out value="${reqInfo.title}"/></div>
         <div class="author"><c:out value="${reqInfo.author}"/></div>
