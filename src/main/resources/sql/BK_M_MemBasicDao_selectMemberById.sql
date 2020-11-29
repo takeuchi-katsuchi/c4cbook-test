@@ -1,4 +1,4 @@
-/*BK_M_MemBasicDao_selectMemberById*/
+-- BK_M_MemBasicDao_selectMemberById
 SELECT
     M.MEM_ID,
     M.MEM_NAME,
