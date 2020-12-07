@@ -17,8 +17,10 @@ public class V_RequestDto {
     private String author;
     /** 著者かな */
     private String authorKana;
-    /** 本画像 */
+    /** 画像 */
     private byte[] bookImg;
+    /** 画像（encode）*/
+    private String encodedBookImg;
     /** 要望者ID */
     private String memId;
     /** 要望コメント */
@@ -122,7 +124,7 @@ public class V_RequestDto {
     }
 
     /**
-     * 著者かなを取得する
+     * 画像を取得する
      * @return bookImg
      */
     public byte[] getBookImg() {
@@ -130,11 +132,27 @@ public class V_RequestDto {
     }
 
     /**
-     * 著者かなを設定する
+     * 画像を設定する
      * @param authorKana
      */
     public void setBookImg(byte[] bookImg) {
         this.bookImg = bookImg;
+    }
+
+    /**
+     * 画像（encode）を取得する
+     * @return bookImg
+     */
+    public String getEncodedBookImg() {
+        return encodedBookImg;
+    }
+
+    /**
+     * 画像（encode）を設定する
+     * @param authorKana
+     */
+    public void setEncodedBookImg(String encodedBookImg) {
+        this.encodedBookImg = encodedBookImg;
     }
 
     /**

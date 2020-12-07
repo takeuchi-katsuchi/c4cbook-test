@@ -17,9 +17,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 import jp.co.c4c.controller.form.RequestForm;
 import jp.co.c4c.db.dto.V_MyCheerBookDto;
+import jp.co.c4c.db.dto.V_RequestDto;
 import jp.co.c4c.db.dto.WebSessionDto;
 import jp.co.c4c.service.CommonService;
 import jp.co.c4c.service.RequestService;
+import jp.co.c4c.util.CommonUtil;
 
 @Controller
 @RequestMapping("/request")
@@ -69,7 +71,15 @@ public class RequestController {
         // 要望Idのリストをformにセット
         form.setMyCheerBookIdList(myCheerBookIdList);
         // 要望されている本の一覧を取得
-        form.setReqInfoList(requestService.getRequestList());
+        List<V_RequestDto> requestDtoList = requestService.getRequestList();
+
+        CommonUtil commonUtil = new CommonUtil();
+        for(V_RequestDto dto : requestDtoList) {
+            String dataString = commonUtil.convByteToString(dto.getBookImg());
+            dto.setEncodedBookImg(dataString);
+        }
+
+        form.setReqInfoList(requestDtoList);
 
         return "request";
     }
